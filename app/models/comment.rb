@@ -12,4 +12,7 @@ class Comment < ActiveRecord::Base
 
   # NOTE: Comments belong to a user
   belongs_to :user
+  
+  acts_as_likeable
+  acts_as_mentioner
 end

@@ -50,6 +50,8 @@ gem 'devise'
 
 gem 'acts_as_commentable'
 
+gem 'socialization'
+
 gem 'simplecov', :require => false, :group => :test
 
 gem 'faker'
