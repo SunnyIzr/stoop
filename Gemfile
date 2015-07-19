@@ -48,6 +48,8 @@ gem 'spring',        group: :development
 
 gem 'devise'
 
+gem 'acts_as_commentable'
+
 gem 'simplecov', :require => false, :group => :test
 
 gem 'faker'
