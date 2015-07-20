@@ -32,6 +32,9 @@ class User < ActiveRecord::Base
   
   validates_attachment_content_type :cover, :content_type => /\Aimage\/.*\Z/   
   
+  include PublicActivity::Model
+  tracked
+  
   def name
     return self.first_name.to_s + ' ' + self.last_name.to_s
   end

@@ -1,7 +1,10 @@
 class Event < ActiveRecord::Base
   has_many :invites
   has_many :attendees, through: :invites
-  belongs_to :creator, class_name: 'User', foreign_key: 'creator_id' 
+  belongs_to :creator, class_name: 'User', foreign_key: 'creator_id'
+  
+  include PublicActivity::Model
+  tracked 
   
   def confirmed_guests
   end

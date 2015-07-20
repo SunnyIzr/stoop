@@ -10,6 +10,9 @@ class Post < ActiveRecord::Base
                   :s3_credentials => Proc.new{|a| a.instance.s3_credentials }
   
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/                  
+  
+  include PublicActivity::Model
+  tracked
                   
                   
   def s3_credentials

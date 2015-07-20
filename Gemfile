@@ -64,6 +64,8 @@ gem 'mailboxer'
 
 gem 'link_thumbnailer'
 
+gem 'public_activity'
+
 group :test, :development do
   gem 'rspec-mocks'
   gem 'rspec-rails'
