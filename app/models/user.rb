@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
   belongs_to :neighborhood
   has_many :posts, dependent: :destroy
   
+  has_many :events, class_name: 'Event', foreign_key: 'creator_id'
+  has_many :incoming_invites, class_name: 'Invite', foreign_key: 'attendee_id'
+  has_many :invited_events, through: :incoming_invites, class_name: 'Event', foreign_key: 'attendee_id'
+  
   serialize :contact, Hash
   
   has_attached_file :avatar,

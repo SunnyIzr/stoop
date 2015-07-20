@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150720214953) do
+ActiveRecord::Schema.define(version: 20150720222411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,15 @@ ActiveRecord::Schema.define(version: 20150720214953) do
   add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
+  create_table "events", force: true do |t|
+    t.string   "name"
+    t.string   "event_type"
+    t.datetime "start_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "creator_id"
+  end
+
   create_table "follows", force: true do |t|
     t.string   "follower_type"
     t.integer  "follower_id"
@@ -46,6 +55,12 @@ ActiveRecord::Schema.define(version: 20150720214953) do
 
   add_index "follows", ["followable_id", "followable_type"], name: "fk_followables", using: :btree
   add_index "follows", ["follower_id", "follower_type"], name: "fk_follows", using: :btree
+
+  create_table "invites", force: true do |t|
+    t.integer "event_id"
+    t.integer "attendee_id"
+    t.boolean "accepted"
+  end
 
   create_table "likes", force: true do |t|
     t.string   "liker_type"
