@@ -20,3 +20,17 @@ task 'db:seed_users' => :environment do
     puts "User#{i+1} of 10 complete!"
   end
 end
+
+
+desc 'Seed Database with Posts'
+task 'db:seed_posts' => :environment do
+  puts "Now seeding database with 100 users..."
+  100.times do |i|
+    Faker::Config.locale = 'en-US'
+    p = Post.new
+    p.body = Faker::Company.catch_phrase
+    p.user = User.all.sample
+    p.save
+    puts "User#{i+1} of 100 complete!"
+  end
+end

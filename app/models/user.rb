@@ -9,12 +9,16 @@ class User < ActiveRecord::Base
          
   belongs_to :building
   belongs_to :neighborhood
-  has_many :posts
+  has_many :posts, dependent: :destroy
   
   acts_as_messageable
   
   def name
     return self.first_name.to_s + ' ' + self.last_name.to_s
+  end
+  
+  def mailboxer_email(object)
+    nil
   end
   
 end
