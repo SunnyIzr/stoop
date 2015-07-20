@@ -62,6 +62,8 @@ gem 'aws-sdk', '~> 1.5.7'
 
 gem 'mailboxer'
 
+gem 'link_thumbnailer'
+
 group :test, :development do
   gem 'rspec-mocks'
   gem 'rspec-rails'
