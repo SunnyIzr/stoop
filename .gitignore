@@ -16,3 +16,6 @@
 /tmp
 
 /pseudocodes/*
+
+/coverage/*
+/scripts/*
