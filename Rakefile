@@ -12,10 +12,10 @@ task 'db:seed_users' => :environment do
   10.times do |i|
     Faker::Config.locale = 'en-US'
     u = User.new
-    u.email = Faker::Internet.email
     u.password = 'password'
     u.first_name = Faker::Name.first_name
     u.last_name = Faker::Name.last_name
+    u.email = Faker::Internet.email(u.first_name + ' ' + u.last_name)
     u.save
     puts "User#{i+1} of 10 complete!"
   end
