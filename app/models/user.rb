@@ -8,12 +8,25 @@ class User < ActiveRecord::Base
   acts_as_mentionable
   acts_as_follower
   acts_as_followable
+  acts_as_messageable
          
   belongs_to :building
   belongs_to :neighborhood
   has_many :posts, dependent: :destroy
   
-  acts_as_messageable
+  serialize :contact, Hash
+  
+  has_attached_file :avatar,
+                  :storage => :s3,
+                  :s3_credentials => Proc.new{|a| a.instance.s3_credentials }
+  
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/   
+  
+  has_attached_file :cover,
+                  :storage => :s3,
+                  :s3_credentials => Proc.new{|a| a.instance.s3_credentials }
+  
+  validates_attachment_content_type :cover, :content_type => /\Aimage\/.*\Z/   
   
   def name
     return self.first_name.to_s + ' ' + self.last_name.to_s
@@ -21,6 +34,10 @@ class User < ActiveRecord::Base
   
   def mailboxer_email(object)
     nil
+  end
+  
+  def s3_credentials
+    {:bucket => ENV['BUCKET'], :access_key_id => ENV['ACCESS_KEY_ID'], :secret_access_key => ENV['SECRET_ACCESS_KEY']}
   end
   
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150720194100) do
+ActiveRecord::Schema.define(version: 20150720214953) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -154,6 +154,20 @@ ActiveRecord::Schema.define(version: 20150720194100) do
     t.integer  "neighborhood_id"
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "gender"
+    t.text     "after_five_pm"
+    t.date     "date_of_birth"
+    t.string   "profession"
+    t.text     "about"
+    t.text     "contact"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
   end
 
   add_index "users", ["building_id"], name: "index_users_on_building_id", using: :btree
