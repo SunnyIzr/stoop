@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
   belongs_to :building
   belongs_to :neighborhood
   has_many :posts
+  
+  acts_as_messageable
 end

@@ -60,6 +60,8 @@ gem "paperclip", "~> 4.1"
 
 gem 'aws-sdk', '~> 1.5.7'
 
+gem 'mailboxer'
+
 group :test, :development do
   gem 'rspec-mocks'
   gem 'rspec-rails'
