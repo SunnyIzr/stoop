@@ -14,10 +14,19 @@ class UsersController < ApplicationController
   end
   
   def update
-    user = User.find(params[:id])
-    if user == current_user
-      user.update!(user_params)
-      redirect_to user
+    @user = User.find(params[:id])
+    if @user == current_user
+      if @user.update!(user_params)
+        respond_to do |format|
+          format.json{ render json: @user }
+          format.html{ redirect_to @user }
+        end
+      else
+        respond_to do |format|
+          format.json{ render nothing: true }
+          format.html{ redirect_to root_path }
+        end
+      end
     end
   end
   
