@@ -6,30 +6,33 @@ Rails.application.routes.draw do
     root to: 'users#feed', as: :authenticated_root
   end
   
-  #Static Pages
+  #Static Pages Routes
   root to: 'static_pages#index'
   get '/financial-district' => 'static_pages#financial_district'
   
   
-  #User Pages
+  #User Routes
   resources :users, only: [:show, :update]
   
-  #Events Pages
+  #Events Routes
   get '/events' => 'events#index', as: :events
   resources :events, only: [:create, :show]
   
-  #Mailboxer Pages
+  #Mailboxer Routes
   resources :messages
   resources :conversations
   
-  #Post Pages
+  #Post Routes
   resources :posts, only: [:create]
   
-  #Comment Pages
+  #Comment Routes
   resources :comments, only: [:create]
   
-  #Comment Pages
+  #Like Routes
   resources :likes, only: [:create]
+  
+  #Follow Routes
+  resources :follows, only: [:create]
   
   
   # The priority is based upon order of creation: first created -> highest priority.
