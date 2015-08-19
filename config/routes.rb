@@ -19,8 +19,17 @@ Rails.application.routes.draw do
   resources :events, only: [:create, :show]
   
   #Mailboxer Pages
-    resources :messages
-    resources :conversations
+  resources :messages
+  resources :conversations
+  
+  #Post Pages
+  resources :posts, only: [:create]
+  
+  #Comment Pages
+  resources :comments, only: [:create]
+  
+  #Comment Pages
+  resources :likes, only: [:create]
   
   
   # The priority is based upon order of creation: first created -> highest priority.
