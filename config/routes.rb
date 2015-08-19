@@ -1,10 +1,18 @@
 Rails.application.routes.draw do
   
   devise_for :users
+
+  authenticated :user do
+    root to: 'users#feed', as: :authenticated_root
+  end
   
   #Static Pages
   root to: 'static_pages#index'
   get '/financial-district' => 'static_pages#financial_district'
+  
+  
+  #User Pages
+  resources :users, only: [:show, :update]
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
