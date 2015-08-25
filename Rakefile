@@ -51,3 +51,13 @@ task 'db:seed_events' => :environment do
     puts "Evebt#{i+1} of 10 complete!"
   end
 end
+
+desc 'Seed User Profiles with Avatars'
+task 'db:seed_avatars' => :environment do
+  puts "Now seeding database with avatars..."
+  User.all.each do |user|
+    user.avatar = Faker::Avatar.image
+    user.save
+    puts "Evebt#{i+1} of 10 complete!"
+  end
+end
