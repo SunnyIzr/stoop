@@ -7,7 +7,7 @@
         <img class="img-responsive logo" src="<%= asset_path 'stoop-logo.png' %>" alt="Stoop">
       </div>
       <div class="col-xs-6">
-        <a class="login" href="#">Login</a>
+        <%= link_to 'Login', new_user_session_path, class: 'login' %>
       </p>
     </div>
 
