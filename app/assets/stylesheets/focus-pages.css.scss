@@ -1,0 +1,112 @@
+.focus-page {
+	background-color:$lightBlue;
+
+	.container {
+		max-width:600px;
+
+		img.logo {
+			margin-top:50px;
+			margin-bottom:30px;
+		}
+
+		input.custom {
+			background-color:#d2e4e5;
+			padding:10px;
+			width:100%;
+			margin-bottom:25px;
+			border:none;
+		}
+		input.login {
+			background-color:white;
+			color:$lightBlue;
+			font-weight:bold;
+			font-size:120%;
+		}
+		a.create {
+			background-color:$header;
+			text-align:center;
+			padding:10px;
+			width:100%;
+			margin-bottom:25px;
+			border:none;
+			text-decoration:none !important;
+			color:white;
+			display:block;
+			font-weight:bold;
+			font-size:120%;
+		}
+
+		label input {
+			display:none;
+		}
+		label span {
+			height:20px;
+			width:20px;
+			border:none;
+			background-color:#c7dddf;
+			display:inline-block;
+			position:relative;
+			line-height:25px; 
+			color:white;
+			margin-right:10px;
+		}
+		[type=checkbox]:checked + span:before {
+			content:'\2714';
+			position:absolute;
+			top:1px;
+			left:3px;
+			font-size:125%;
+		}
+		p.checkbox-text {
+			display:inline-block;
+			color:white;
+			height:25px;
+			padding:0px;
+			margin:0px;
+			font-size:125%;
+		}
+		a.forgot {
+			float:right;
+			color:white;
+			font-size:125%;
+			text-decoration:none;
+			border-bottom:2px solid white;
+			font-weight:bold;
+		}
+		form {
+			margin-bottom:25px;
+		}
+		.social-login {
+			margin-top:25px;
+		}
+		#warning {
+			color:$orange;
+			font-weight:bold;
+			font-size:120%;
+			margin-top:30px;
+		}
+	}
+	::-webkit-input-placeholder {
+	   color:white;
+	   font-size:120%;
+	   font-weight:bold;
+	}
+
+	:-moz-placeholder { /* Firefox 18- */
+	   color:white; 
+	   font-size:120%;
+	   font-weight:bold; 
+	}
+
+	::-moz-placeholder {  /* Firefox 19+ */
+	   color:white;
+	   font-size:120%;
+	   font-weight:bold;  
+	}
+
+	:-ms-input-placeholder {  
+	   color:white;
+	   font-size:120%;
+	   font-weight:bold;  
+	}
+}
