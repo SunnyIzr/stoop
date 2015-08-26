@@ -186,11 +186,20 @@ ul.side-nav {
 				float:left;
 				margin-right:10px;
 			}
-
+			button{
+				background: none;
+    		border: none;
+    		float: right;
+    		margin-left: 10px;
+    		font-size: 130%;
+			}
 			.fa {
 				float:right;
 				margin-left:10px;
 				font-size:130%;
+			}
+			.fa-heart-o,.fa-heart{
+				font-size: 100%;
 			}
 		}
 

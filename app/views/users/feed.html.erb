@@ -27,7 +27,12 @@
                 <p class="like-count"><%= post.likers(User).size %> Likes</p>
                 <p class="comment-count"><%= post.comments.size %> Comments</p>
                 <i class="fa fa-comment-o"></i>
-                <i class="fa fa-heart"></i>
+                <%=form_for Like.new do |f| %>
+                  <%= f.hidden_field :likeable_id, value: post.id %>
+                  <%= f.button type: 'submit' do %>
+                    <i class="fa fa-heart<%unless current_user.likes?(post)%>-o<%end%>"></i>
+                  <% end %>
+                <% end %>
               </div>
             </div>
             <div class="row">
