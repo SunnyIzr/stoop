@@ -75,3 +75,19 @@ task 'db:seed_post_images' => :environment do
     end
   end
 end
+
+desc 'Seed Posts with Random Comments and Likes'
+task 'db:seed_comments_likes' => :environment do
+  puts "Now seeding posts with comments and likes..."
+  Post.all.each_with_index do |post,i|
+    users = User.all - [post.user]
+    [*0..10].sample.times do |i|
+      post.comments.create(user: users.sample, comment: Faker::Lorem.sentence(1))
+    end
+    [*0..25].sample.times do |i|
+      users.sample.like!(post)
+    end
+    puts "Post#{i+1} of #{Post.all.size} complete!"
+  end
+end
+
