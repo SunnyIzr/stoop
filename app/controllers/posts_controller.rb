@@ -2,11 +2,12 @@ class PostsController < ApplicationController
   before_filter :authenticate_user!
   
   def create
-    @post = Post.create(post_params)
-    @post.user = current_user
-    if @post.save
+    post = Post.create(post_params)
+    post.user = current_user
+    if post.save
+      @data = post.data(current_user)
       respond_to do |format|
-        format.json { render json: @post}
+        format.json { render json: @data}
         format.html { redirect_to root_path }
       end
     else
@@ -19,7 +20,7 @@ class PostsController < ApplicationController
   
   def show
     post = Post.find(params[:id])
-    @data = post.data
+    @data = post.data(current_user)
     respond_to do |format|
       format.json { render json: @data }
     end

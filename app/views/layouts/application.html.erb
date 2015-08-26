@@ -52,7 +52,7 @@
             </div>
             <% end %>
             
-            <%= form_for Post.new do |f| %>
+            <%= form_for Post.new, remote: true do |f| %>
             <%= f.text_area :body, class: 'text-area', placeholder: 'Status' %>
             <div class="control-bar">
               <i class="fa fa-camera"></i>

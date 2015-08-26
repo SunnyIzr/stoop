@@ -1,19 +1,19 @@
 <div class="container after-profile">
   <div class="row">
-    <div class="posts col-sm-8">
-      <div class='row'>
+    <div class="col-sm-8">
+      <div class='posts row'>
         <% @posts.each do |post| %>
       
-        <div class='post'>
+        <div class='post post-id-<%= post.id %>'>
           <div class="post-area">
             <div class="row">
               <div class="col-sm-2 col-xs-3">
-                <img class="img-responsive" src="<%= post.user.avatar %>" alt="">
+                <img class="img-responsive avatar" src="<%= post.user.avatar %>" alt="">
               </div>
               <div class="col-sm-10 col-xs-9">
                 <h3 class="name"><%= link_to post.user.name, user_path(post.user) %></h3>
                 <p class="time"><%= post.created_at.strftime('%m/%d/%y %I:%M%P') %></p>
-                <p><%= post.body %></p>
+                <p class='body'><%= post.body %></p>
                 
                 <% if post.image.present? %>
                   <img class="img-responsive" src="<%= post.image %>" alt="">
@@ -24,13 +24,13 @@
           <div class="after-post-area">
             <div class="row">
               <div class="col-xs-12 comment-bar">
-                <p class="like-count"><%= post.likers(User).size %> Likes</p>
-                <p class="comment-count"><%= post.comments.size %> Comments</p>
+                <p class="like-count"><span><%= post.likers(User).size %></span> Likes</p>
+                <p class="comment-count"><span><%= post.comments.size %></span> Comments</p>
                 <i class="fa fa-comment-o"></i>
-                <%=form_for Like.new do |f| %>
-                  <%= f.hidden_field :likeable_id, value: post.id %>
+                <%=form_for Like.new, remote: true do |f| %>
+                  <%= f.hidden_field :likeable_id, value: post.id, class: 'likeable_id' %>
                   <%= f.button type: 'submit' do %>
-                    <i class="fa fa-heart<%unless current_user.likes?(post)%>-o<%end%>"></i>
+                    <i class="current-user-like fa fa-heart <%unless current_user.likes?(post)%>fa-heart-o<%end%>"></i>
                   <% end %>
                 <% end %>
               </div>
@@ -55,9 +55,44 @@
         </div>
       
         <% end %>
+        
       </div>
-      
+
+      <div class='post hide'>
+        <div class="post-area">
+          <div class="row">
+            <div class="col-sm-2 col-xs-3">
+              <img class="img-responsive avatar" src="" alt="">
+            </div>
+            <div class="col-sm-10 col-xs-9">
+              <h3 class="name"></h3>
+              <p class="time"></p>
+              <p class='body'></p>
+              
+              <img class="img-responsive" src="" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="after-post-area">
+          <div class="row">
+            <div class="col-xs-12 comment-bar">
+              <p class="like-count"><span>0</span> Likes</p>
+              <p class="comment-count"><span>0</span> Comments</p>
+              <i class="fa fa-comment-o"></i>
+              <%=form_for Like.new, remote: true do |f| %>
+                <%= f.hidden_field :likeable_id, value: nil, class: 'likeable_id' %>
+                <%= f.button type: 'submit' do %>
+                  <i class="current-user-like fa fa-heart fa-heart-o"></i>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+          <div class="row">
+          </div>
+        </div>
+      </div>
     </div>
+    
     <div class="col-sm-4 side-bar-margin">
 
       

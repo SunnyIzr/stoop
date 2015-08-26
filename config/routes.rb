@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   resources :conversations
   
   #Post Routes
-  resources :posts, only: [:create]
+  resources :posts, only: [:create,:show]
   
   #Comment Routes
   resources :comments, only: [:create]

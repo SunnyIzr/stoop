@@ -19,10 +19,14 @@ class Post < ActiveRecord::Base
     {:bucket => ENV['BUCKET'], :access_key_id => ENV['ACCESS_KEY_ID'], :secret_access_key => ENV['SECRET_ACCESS_KEY']}
   end
   
-  def data
+  def data(current_user=nil)
     hash = self.attributes
-    hash[:user] = self.user
+    hash[:created_at_formatted] = self.created_at.strftime('%m/%d/%y %I:%M%P')
+    hash[:user] = self.user.attributes
+    hash[:user][:name] = self.user.name
+    hash[:user][:avatar] = self.user.avatar
     hash[:like_count] = self.likers(User).size
+    hash[:current_user_like] =  current_user.nil? ? nil : current_user.likes?(self)
     hash[:likers] = self.likers(User)
     hash[:comment_count] = self.comments.size
     hash[:comments] = self.comments
