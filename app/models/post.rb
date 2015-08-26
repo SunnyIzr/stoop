@@ -18,5 +18,15 @@ class Post < ActiveRecord::Base
   def s3_credentials
     {:bucket => ENV['BUCKET'], :access_key_id => ENV['ACCESS_KEY_ID'], :secret_access_key => ENV['SECRET_ACCESS_KEY']}
   end
+  
+  def data
+    hash = self.attributes
+    hash[:user] = self.user
+    hash[:like_count] = self.likers(User).size
+    hash[:likers] = self.likers(User)
+    hash[:comment_count] = self.comments.size
+    hash[:comments] = self.comments
+    hash
+  end
    
 end

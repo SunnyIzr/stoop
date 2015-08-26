@@ -17,6 +17,14 @@ class PostsController < ApplicationController
     end
   end
   
+  def show
+    post = Post.find(params[:id])
+    @data = post.data
+    respond_to do |format|
+      format.json { render json: @data }
+    end
+  end
+  
   private
   def post_params
     params.require(:post).permit(:body,:image,:location)
