@@ -2,13 +2,88 @@
 <html>
 <head>
   <title>Stoop</title>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <%= yield %>
+  
+  
+  
+  <div class="inner-page">
+    
+    <header class="inner">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2">
+            <img class="img-responsive" src="<%= asset_path 'header-logo.jpg' %>" alt="">
+          </div>
+          <div class="col-sm-6 search-column">
+            <input type="text" class="search-field empty" id="iconified" placeholder="&#xF002; " style="font-family:Arial, FontAwesome; font-size:20px;">
+          </div>
+          <div class="col-sm-4 nav-column">
+            <img class="settings" src="<%= asset_path 'settings.png' %>" alt="Settings">
+            <img class="profile-pic" src="<%= asset_path 'profile-tn.png' %>" alt="">
+          </div>
+        </div>
+      </div>
+      
+    </header>
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4 col-sm-push-8">
+          <ul class="side-nav">
+            <li><a href="#">Feed</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Messages</a></li>
+            <li><a href="#">Small Business Listings</a></li>
+            <li><a href="#">My Incentives</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-8 col-sm-pull-4">
+
+          <div class="row">
+            <div class="col-xs-12 building-neighborhood-bar">
+              <a href="#" style="border-right:2px solid white; padding-right:20px;">My Building</a>
+              <a href="#" class="active" style="padding-left:20px;">My Neighborhood</a>
+              <!--NOTE: I recommend toggling the class "active" on/off with jquery-->
+            </div>
+
+          <textarea class="text-area" name="" placeholder="Status"></textarea>
+            <div class="control-bar">
+              <i class="fa fa-camera"></i>
+              <i class="fa fa-map-marker"></i>
+              <i class="fa fa-paperclip"></i>
+              <input type="submit" class="post" value="POST">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <%= yield %>
+    
+    
+    <footer>
+      <img src="<%= asset_path 'footer-logo.jpg' %>">
+        <br>
+      <p>&copy; 2005-2015 Pandora Media, Inc. All Rights Reserved</p>
+      <p>Pandora and the Music Genome project are registered trademarks of Pandora Media, Inc.</p>
+    </footer>
+
+    <div class="chat-bar">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4 col-sm-offset-8 chat-button">
+            <i class="fa fa-circle-o"></i> Instant Chat
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+    
 </body>
 </html>
