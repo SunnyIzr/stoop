@@ -50,14 +50,16 @@
               <a href="#" class="active" style="padding-left:20px;">My Neighborhood</a>
               <!--NOTE: I recommend toggling the class "active" on/off with jquery-->
             </div>
-
-          <textarea class="text-area" name="" placeholder="Status"></textarea>
+            
+            <%= form_for Post.new do |f| %>
+            <%= f.text_area :body, class: 'text-area', placeholder: 'Status' %>
             <div class="control-bar">
               <i class="fa fa-camera"></i>
               <i class="fa fa-map-marker"></i>
               <i class="fa fa-paperclip"></i>
-              <input type="submit" class="post" value="POST">
+              <%= f.submit 'POST', class: 'post' %>
             </div>
+            <% end %>
           </div>
         </div>
       </div>

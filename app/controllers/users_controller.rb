@@ -2,7 +2,9 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
   
   def feed
-    @posts = Post.all.shuffle[0..4]
+    all_posts = Post.all.shuffle[0..4] - [Post.last]
+    @posts = [Post.last] + all_posts
+    
   end
   
   def show
