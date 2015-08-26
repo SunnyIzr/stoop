@@ -1,1 +1,150 @@
-Show User - (<%= @user.email %>)
+<div class="container profile">
+  <div class="row">
+    <img class="img-responsive" src="<%= asset_path 'incentive-neighborhood-cover.jpg' %>" alt="">
+    <div class="col-xs-3">
+      <img class="img-responsive profile-pic" src="<%= @user.avatar %>" alt="">
+    </div>
+    <div class="col-xs-9">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+  </div>
+</div>
+
+<div class="container after-profile">
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="post-area">
+        <div class="row">
+          <div class="col-sm-2 col-xs-3">
+            <img class="img-responsive" src="<%= asset_path 'sushi.jpg' %>" alt="">
+          </div>
+          <div class="col-sm-10 col-xs-9">
+            <h3 class="name">Sushi Mama</h3>
+            <p class="time">4 min ago</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+            <img class="img-responsive" src="<%= asset_path 'sushi-roll.jpg' %>" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="after-post-area">
+        <div class="row">
+          <div class="col-xs-12 comment-bar">
+            <p class="like-count">15 Likes</p>
+            <p class="comment-count">2 Comments</p>
+            <i class="fa fa-comment-o"></i>
+            <i class="fa fa-heart"></i>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 comments">
+            <div class="row comment">
+              <div class="col-xs-2">
+                <img class="img-responsive" src="<%= asset_path 'drew.jpg' %>" alt="">
+              </div>
+              <div class="col-xs-10">
+                <p>This is a comment and <a href="#">this is a link</a></p>
+                <p class="time">2 min ago <span class="heart"><i class="fa fa-heart-o"></i></p>
+                <!--NOTE: for the above span of "heart" just ommit the "-0" if wanting a filled in heart-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4 side-bar-margin">
+
+      <div class="progress">
+        <div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%;">
+          50% Complete
+        </div>
+      </div>
+      <div class="progress-status">
+        <a href="#">Complete my profile now</a>
+      </div>
+
+      <img class="img-responsive map" src="<%= asset_path 'map.jpg' %>" alt="Map">
+
+      <div class="info-box">
+        <h3>Following</h3>
+        <div class="row">
+          <div class="col-xs-4">
+            <img class="img-responsive" src="<%= asset_path 'drew.jpg' %>" alt="">
+          </div>
+          <div class="col-xs-4">
+            <img class="img-responsive" src="<%= asset_path 'lior.jpg' %>" alt="">
+          </div>
+          <div class="col-xs-4">
+            <img class="img-responsive" src="<%= asset_path 'sadie.jpg' %>" alt="">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4">
+            <img class="img-responsive" src="<%= asset_path 'syd.jpg' %>" alt="">
+          </div>
+          <div class="col-xs-4">
+            <img class="img-responsive" src="<%= asset_path 'sadie.jpg' %>" alt="">
+          </div>
+          <div class="col-xs-4">
+            <img class="img-responsive" src="<%= asset_path 'drew.jpg' %>" alt="">
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <h3>People In My Building</h3>
+        <div class="row">
+          <div class="col-xs-4">
+            <img class="img-responsive" src="<%= asset_path 'drew.jpg' %>" alt="">
+          </div>
+          <div class="col-xs-4">
+            <img class="img-responsive" src="<%= asset_path 'lior.jpg' %>" alt="">
+          </div>
+          <div class="col-xs-4">
+            <img class="img-responsive" src="<%= asset_path 'sadie.jpg' %>" alt="">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4">
+            <img class="img-responsive" src="<%= asset_path 'syd.jpg' %>" alt="">
+          </div>
+          <div class="col-xs-4">
+            <img class="img-responsive" src="<%= asset_path 'sadie.jpg' %>" alt="">
+          </div>
+          <div class="col-xs-4">
+            <img class="img-responsive" src="<%= asset_path 'drew.jpg' %>" alt="">
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <h3>Interests</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco</p>
+
+        <h3>Professions</h3>
+        <p><b>Counselor</b> at URJ Camp Coleman</p>
+        <p><b>Receptionist</b> at Surfcorp</p>
+
+        <h3>Contact</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco</p>
+
+        
+      </div>
+
+    </div>
+  </div>
+</div>

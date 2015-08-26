@@ -43,13 +43,14 @@
           </ul>
         </div>
         <div class="col-sm-8 col-sm-pull-4">
-
           <div class="row">
+            <% if current_page?(authenticated_root_path) %>
             <div class="col-xs-12 building-neighborhood-bar">
               <a href="#" style="border-right:2px solid white; padding-right:20px;">My Building</a>
               <a href="#" class="active" style="padding-left:20px;">My Neighborhood</a>
               <!--NOTE: I recommend toggling the class "active" on/off with jquery-->
             </div>
+            <% end %>
             
             <%= form_for Post.new do |f| %>
             <%= f.text_area :body, class: 'text-area', placeholder: 'Status' %>
