@@ -55,9 +55,23 @@ end
 desc 'Seed User Profiles with Avatars'
 task 'db:seed_avatars' => :environment do
   puts "Now seeding database with avatars..."
-  User.all.each do |user|
+  User.all.each_with_index do |user,i|
     user.avatar = Faker::Avatar.image
     user.save
-    puts "Evebt#{i+1} of 10 complete!"
+    puts "User#{i+1} of #{User.all.size} complete!"
+  end
+end
+
+desc 'Seed Posts with Image'
+task 'db:seed_post_images' => :environment do
+  puts "Now seeding database with avatars..."
+  topics = %w[animals cars nature cities]
+  suckr = ImageSuckr::GoogleSuckr.new
+  Post.all.each_with_index do |post,i|
+    if [true,false].sample
+      post.image = suckr.get_image_url({'q' => topics.sample })
+      post.save
+      puts "Post#{i+1} of #{Post.all.size} complete!"
+    end
   end
 end

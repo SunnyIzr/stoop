@@ -66,6 +66,8 @@ gem 'link_thumbnailer'
 
 gem 'public_activity'
 
+gem 'image_suckr'
+
 group :test, :development do
   gem 'rspec-mocks'
   gem 'rspec-rails'

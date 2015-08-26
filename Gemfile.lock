@@ -88,6 +88,7 @@ GEM
       image_size
       typhoeus
     image_size (1.4.1)
+    image_suckr (0.2.0)
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
@@ -234,6 +235,7 @@ DEPENDENCIES
   dotenv-rails
   factory_girl_rails
   faker
+  image_suckr
   jbuilder (~> 1.2)
   jquery-rails
   link_thumbnailer
