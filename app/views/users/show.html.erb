@@ -26,7 +26,13 @@
       <div class='side-nav'>
         
         <ul class="side-nav">
-          <li><a href='#'>Follow</a></li>
+          <li>
+            <%=form_for Follow.new, html: { class: 'new_follow' }, remote: true do |f| %>
+              <%= f.hidden_field :followable_id, value: @user.id, class: 'followable_id' %>
+              <%= f.hidden_field :followable_type, value: 'User', class: 'followable_type' %>
+              <%= f.submit current_user.follows?(@user) ? 'Unfollow' : 'Follow', class: 'follow-btn' %>
+            <% end %>
+          </li>
           <li><a href='#' style='cursor:not-allowed;'>Message</a></li>
       </ul>
         

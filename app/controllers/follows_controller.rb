@@ -3,7 +3,25 @@ class FollowsController < ApplicationController
   
   def create
     @user = current_user
-    @user.follow!(User.find(params[:followable_id]))
+    @object = Object.const_get(follow_params[:followable_type]).find(follow_params[:followable_id])
+    if @user.follows?(@object)
+      @user.unfollow!(@object)
+      respond_to do |format|
+        format.json {render json: false}
+        format.html { redirect_to user_path(@object) }
+      end
+    else
+      @user.follow!(@object)
+      respond_to do |format|
+        format.json {render json: true}
+        format.html { redirect_to user_path(@object) }
+      end
+    end
+  end
+  
+  private
+  def follow_params
+    params.require(:follow).permit(:followable_id,:followable_type)
   end
   
 end
