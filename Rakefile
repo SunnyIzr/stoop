@@ -10,12 +10,15 @@ desc 'Seed Database with Users'
 task 'db:seed_users' => :environment do
   puts "Now seeding database with 10 users..."
   10.times do |i|
+    user_data = JSON.load(open(str))['results'][0]['users']
     Faker::Config.locale = 'en-US'
     u = User.new
     u.password = 'password'
-    u.first_name = Faker::Name.first_name
-    u.last_name = Faker::Name.last_name
-    u.email = Faker::Internet.email(u.first_name + ' ' + u.last_name)
+    u.first_name = user_data['name']['first']
+    u.last_name = user_data['name']['last']
+    u.email = user_data['email']
+    u.gender = user_data['gender']
+    u.avatar = user_data['picture']['medium']
     u.save
     puts "User#{i+1} of 10 complete!"
   end
@@ -52,16 +55,6 @@ task 'db:seed_events' => :environment do
   end
 end
 
-desc 'Seed User Profiles with Avatars'
-task 'db:seed_avatars' => :environment do
-  puts "Now seeding database with avatars..."
-  User.all.each_with_index do |user,i|
-    user.avatar = Faker::Avatar.image
-    user.save
-    puts "User#{i+1} of #{User.all.size} complete!"
-  end
-end
-
 desc 'Seed Posts with Image'
 task 'db:seed_post_images' => :environment do
   puts "Now seeding database with avatars..."
@@ -88,6 +81,19 @@ task 'db:seed_comments_likes' => :environment do
       users.sample.like!(post)
     end
     puts "Post#{i+1} of #{Post.all.size} complete!"
+  end
+end
+
+desc 'Seed Users with About Copy and Cover Image'
+task 'db:seed_abouts_covers' => :environment do
+  puts "Now seeding users with abouts and cover images..."
+  topics = %w[animals cars nature cities]
+  User.all.each_with_index do |user,i|
+    user.about = Faker::Lorem.paragraph(12).size
+    suckr = ImageSuckr::GoogleSuckr.new
+    user.cover = suckr.get_image_url({'q' => topics.sample, 'imgsz' => 'xxlarge' })
+    user.save
+    puts "User#{i+1} of #{User.all.size} complete!"
   end
 end
 
