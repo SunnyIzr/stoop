@@ -5,7 +5,6 @@ var PostEvents = {
   },
   newLike: function(){
     $(document).on('ajax:success','.new_like', function(e,data,status,xhr){
-      postId = $(this).closest('.post').data('id')
       Post.refresh(data)
     })
   },
