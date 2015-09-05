@@ -13,8 +13,8 @@ task 'db:seed_users' => :environment do
     user_data = JSON.load(open('https://randomuser.me/api/'))['results'][0]['user']
     u = User.new
     u.password = 'password'
-    u.first_name = user_data['name']['first']
-    u.last_name = user_data['name']['last']
+    u.first_name = user_data['name']['first'].capitalize
+    u.last_name = user_data['name']['last'].capitalize
     u.email = user_data['email']
     u.gender = user_data['gender']
     u.avatar = user_data['picture']['medium']
@@ -56,7 +56,7 @@ end
 
 desc 'Seed Posts with Image'
 task 'db:seed_post_images' => :environment do
-  puts "Now seeding database with avatars..."
+  puts "Now seeding posts with random images..."
   topics = %w[animals cars nature cities]
   suckr = ImageSuckr::GoogleSuckr.new
   Post.all.each_with_index do |post,i|
