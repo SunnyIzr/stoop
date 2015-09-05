@@ -10,7 +10,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if @user == current_user
-      render 'edit'
+      # render 'edit'
+      render 'show'
     else
       render 'show'
     end
