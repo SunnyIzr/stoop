@@ -1,0 +1,7 @@
+<div class='comment_field col-xs-12 hide'>
+  <%=form_for Comment.new, remote: true do |f| %>
+    <%= f.text_field :comment, class: 'new_comment_body', placeholder: 'Write a Comment...' %>
+    <%= f.hidden_field :commentable_id, value: nil %>
+    <%= f.hidden_field :commentable_type, value: 'Post' %>
+  <% end %>
+</div>

@@ -1,0 +1,17 @@
+<div class='row comment <%= comment.id.nil? ? "hide" : "comment-id-#{comment.id}" %>'>
+  <div class="col-xs-2">
+    <img class="img-responsive avatar" src="<%= comment.user.avatar unless comment.id.nil? %>" alt="">
+  </div>
+  <div class="col-xs-10">
+    <p class='comment_body'><%= comment.comment %></p>
+    <p class="time_wrapper"><span class='time'><%= comment.created_at.strftime('%m/%d/%y %I:%M%P') unless comment.id.nil? %></span></p>
+    <%=form_for Like.new, html: { class: 'new_comment_like'}, remote: true do |f| %>
+      <%= f.hidden_field :likeable_id, value: comment.id, class: 'likeable_id' %>
+      <%= f.hidden_field :likeable_type, value: 'Comment', class: 'likeable_type' %>
+      <%= f.button type: 'submit' do %>
+        <span class="heart"><i class="current-user-comment-like fa fa-heart <%unless current_user.likes?(comment)%>fa-heart-o<%end%>"></i></span>
+      <% end %>
+      <p class='like-count-wrapper'><span class='comment-like-count'><%= comment.likers(User).size %></span> Likes<p>
+    <% end %>
+  </div>
+</div>

@@ -4,130 +4,20 @@
       <div class='posts row'>
         <% @posts.each do |post| %>
       
-        <div class='post post-id-<%= post.id %>'>
-          <div class="post-area">
-            <div class="row">
-              <div class="col-sm-2 col-xs-3">
-                <img class="img-responsive avatar" src="<%= post.user.avatar %>" alt="">
-              </div>
-              <div class="col-sm-10 col-xs-9">
-                <h3 class="name"><%= link_to post.user.name, user_path(post.user) %></h3>
-                <p class="time"><%= post.created_at.strftime('%m/%d/%y %I:%M%P') %></p>
-                <p class='body'><%= post.body %></p>
-                
-                <% if post.image.present? %>
-                  <img class="img-responsive" src="<%= post.image %>" alt="">
-                <% end %>
-              </div>
-            </div>
-          </div>
-          <div class="after-post-area">
-            <div class="row">
-              <div class="col-xs-12 comment-bar">
-                <p class="like-count"><span><%= post.likers(User).size %></span> Likes</p>
-                <p class="comment-count"><span><%= post.comments.size %></span> Comments</p>
-                <a href='#' class='addNewComment'><i class="fa fa-comment-o"></i></a>
-                <%=form_for Like.new, html: { class: 'new_post_like'}, remote: true do |f| %>
-                  <%= f.hidden_field :likeable_id, value: post.id, class: 'likeable_id' %>
-                  <%= f.hidden_field :likeable_type, value: 'Post', class: 'likeable_type' %>
-                  <%= f.button type: 'submit' do %>
-                    <i class="current-user-like fa fa-heart <%unless current_user.likes?(post)%>fa-heart-o<%end%>"></i>
-                  <% end %>
-                <% end %>
-                <br>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-12 comments">
-              <% post.comments.each do |comment| %>
-                <div class="row comment comment-id-<%= comment.id %>">
-                  <div class="col-xs-2">
-                    <img class="img-responsive avatar" src="<%= comment.user.avatar %>" alt="">
-                  </div>
-                  <div class="col-xs-10">
-                    <p class='comment_body'><%= comment.comment %></p>
-                    <p class="time_wrapper"><span class='time'><%= comment.created_at.strftime('%m/%d/%y %I:%M%P') %></span></p>
-                    <%=form_for Like.new, html: { class: 'new_comment_like'}, remote: true do |f| %>
-                      <%= f.hidden_field :likeable_id, value: comment.id, class: 'likeable_id' %>
-                      <%= f.hidden_field :likeable_type, value: 'Comment', class: 'likeable_type' %>
-                      <%= f.button type: 'submit' do %>
-                        <span class="heart"><i class="current-user-comment-like fa fa-heart <%unless current_user.likes?(comment)%>fa-heart-o<%end%>"></i></span>
-                      <% end %>
-                      <p class='like-count-wrapper'><span class='comment-like-count'><%= comment.likers(User).size %></span> Likes<p>
-                    <% end %>
-                  </div>
-                </div>
-              <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
+        <%= render partial: 'post', locals: {post: post} %>
       
         <% end %>
         
       </div>
 
 <!-- HIDDEN SKELETON ELEMENTS: POST, COMMENT, NEW COMMENT FORM -->
-      <div class='post hide'>
-        <div class="post-area">
-          <div class="row">
-            <div class="col-sm-2 col-xs-3">
-              <img class="img-responsive avatar" src="" alt="">
-            </div>
-            <div class="col-sm-10 col-xs-9">
-              <h3 class="name"></h3>
-              <p class="time"></p>
-              <p class='body'></p>
-              
-              <img class="img-responsive" src="" alt="">
-            </div>
-          </div>
-        </div>
-        <div class="after-post-area">
-          <div class="row">
-            <div class="col-xs-12 comment-bar">
-              <p class="like-count"><span>0</span> Likes</p>
-              <p class="comment-count"><span>0</span> Comments</p>
-              <a href='#' class='addNewComment'><i class="fa fa-comment-o"></i></a>
-              <%=form_for Like.new, html: { class: 'new_post_like'}, remote: true do |f| %>
-                <%= f.hidden_field :likeable_id, value: nil, class: 'likeable_id' %>
-                <%= f.hidden_field :likeable_type, value: 'Post', class: 'likeable_type' %>
-                <%= f.button type: 'submit' do %>
-                  <i class="current-user-like fa fa-heart fa-heart-o"></i>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-12 comments">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row comment hide">
-        <div class="col-xs-2">
-          <img class="img-responsive avatar" src="" alt="">
-        </div>
-        <div class="col-xs-10">
-          <p class='comment_body'></p>
-          <p class="time_wrapper"><span class='time'></span></p>
-          <%=form_for Like.new, html: { class: 'new_comment_like'}, remote: true do |f| %>
-            <%= f.hidden_field :likeable_id, value: nil, class: 'likeable_id' %>
-            <%= f.hidden_field :likeable_type, value: 'Comment', class: 'likeable_type' %>
-            <%= f.button type: 'submit' do %>
-              <span class="heart"><i class="current-user-comment-like fa fa-heart fa-heart-o"></i></span>
-            <% end %>
-            <p class='like-count-wrapper'><span class='comment-like-count'>0</span> Likes<p>
-          <% end %>
-        </div>
-      </div>
-      <div class='comment_field col-xs-12 hide'>
-        <%=form_for Comment.new, remote: true do |f| %>
-          <%= f.text_field :comment, class: 'new_comment_body', placeholder: 'Write a Comment...' %>
-          <%= f.hidden_field :commentable_id, value: nil %>
-          <%= f.hidden_field :commentable_type, value: 'Post' %>
-        <% end %>
-      </div>
+      <%= render partial: 'post', locals: {post: Post.new} %>
+      
+      <%= render partial: 'comment', locals: {comment: Comment.new} %>
+      
+      <%= render partial: 'comment_field', locals: {comment: Comment.new} %>
+      
+      
     </div>
     
     <div class="col-sm-4 side-bar-margin">

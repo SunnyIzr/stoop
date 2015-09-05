@@ -1,0 +1,44 @@
+<div class='post <%= post.id.nil? ? "hide" : "post-id-#{post.id}" %>'>
+  <div class="post-area">
+    <div class="row">
+      <div class="col-sm-2 col-xs-3">
+        <img class="img-responsive avatar" src="<%= post.user.avatar unless post.id.nil? %>" alt="">
+      </div>
+      <div class="col-sm-10 col-xs-9">
+        <h3 class="name"><%= link_to post.user.name, user_path(post.user) unless post.id.nil? %></h3>
+        <p class="time"><%= post.created_at.strftime('%m/%d/%y %I:%M%P') unless post.id.nil? %></p>
+        <p class='body'><%= post.body %></p>
+        
+        <% if post.image.present? %>
+          <img class="img-responsive" src="<%= post.image %>" alt="">
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="after-post-area">
+    <div class="row">
+      <div class="col-xs-12 comment-bar">
+        <p class="like-count"><span><%= post.likers(User).size %></span> Likes</p>
+        <p class="comment-count"><span><%= post.comments.size %></span> Comments</p>
+        <a href='#' class='addNewComment'><i class="fa fa-comment-o"></i></a>
+        <%=form_for Like.new, html: { class: 'new_post_like'}, remote: true do |f| %>
+          <%= f.hidden_field :likeable_id, value: post.id, class: 'likeable_id' %>
+          <%= f.hidden_field :likeable_type, value: 'Post', class: 'likeable_type' %>
+          <%= f.button type: 'submit' do %>
+            <i class="current-user-like fa fa-heart <%unless current_user.likes?(post)%>fa-heart-o<%end%>"></i>
+          <% end %>
+        <% end %>
+        <br>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 comments">
+      <% post.comments.each do |comment| %>
+      
+      <%= render partial: 'comment', locals: {comment: comment} %>
+      
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
