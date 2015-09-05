@@ -88,7 +88,7 @@ task 'db:seed_abouts_covers' => :environment do
   puts "Now seeding users with abouts and cover images..."
   topics = %w[animals cars nature cities]
   User.all.each_with_index do |user,i|
-    user.about = Faker::Lorem.paragraph(12).size
+    user.about = Faker::Lorem.paragraph(12)
     suckr = ImageSuckr::GoogleSuckr.new
     user.cover = suckr.get_image_url({'q' => topics.sample, 'imgsz' => 'xxlarge' })
     user.save
