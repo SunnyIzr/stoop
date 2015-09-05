@@ -37,20 +37,19 @@
               </div>
             </div>
             <div class="row">
-              <% post.comments.each do |comment| %>
               <div class="col-xs-12 comments">
-                <div class="row comment">
+              <% post.comments.each do |comment| %>
+                <div class="row comment comment-id-<%= comment.id %>">
                   <div class="col-xs-2">
-                    <img class="img-responsive" src="<%= comment.user.avatar %>" alt="">
+                    <img class="img-responsive avatar" src="<%= comment.user.avatar %>" alt="">
                   </div>
                   <div class="col-xs-10">
-                    <p><%= comment.comment %></p>
-                    <p class="time"><%= comment.created_at.strftime('%m/%d/%y %I:%M%P') %> <span class="heart"><i class="fa fa-heart-o"></i></p>
-                    <!--NOTE: for the above span of "heart" just ommit the "-0" if wanting a filled in heart-->
+                    <p class='comment_body'><%= comment.comment %></p>
+                    <p class="time_wrapper"><span class='time'><%= comment.created_at.strftime('%m/%d/%y %I:%M%P') %></span> <span class="heart"><i class="fa fa-heart-o"></i></p>
                   </div>
                 </div>
-              </div>
               <% end %>
+              </div>
             </div>
           </div>
         </div>
@@ -59,6 +58,7 @@
         
       </div>
 
+<!-- HIDDEN SKELETON ELEMENTS: POST, COMMENT, NEW COMMENT FORM -->
       <div class='post hide'>
         <div class="post-area">
           <div class="row">
@@ -92,9 +92,18 @@
           </div>
         </div>
       </div>
+      <div class="row comment hide">
+        <div class="col-xs-2">
+          <img class="img-responsive avatar" src="" alt="">
+        </div>
+        <div class="col-xs-10">
+          <p class='comment_body'></p>
+          <p class="time_wrapper"><span class='time'></span> <span class="heart"><i class="fa fa-heart-o"></i></p>
+        </div>
+      </div>
       <div class='comment_field col-xs-12 hide'>
         <%=form_for Comment.new, remote: true do |f| %>
-          <%= f.text_field :comment, class: 'new_comment', placeholder: 'Write a Comment...' %>
+          <%= f.text_field :comment, class: 'new_comment_body', placeholder: 'Write a Comment...' %>
           <%= f.hidden_field :commentable_id, value: nil %>
           <%= f.hidden_field :commentable_type, value: 'Post' %>
         <% end %>

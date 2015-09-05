@@ -2,13 +2,12 @@ class CommentsController < ApplicationController
   before_filter :authenticate_user!
   
   def create
-    p '*'*100
-    p 'RUNNING CREATE COMMENTS'
-    @comment = Comment.create(comment_params)
-    @comment.user = current_user
-    if @comment.save
+    comment = Comment.create(comment_params)
+    comment.user = current_user
+    if comment.save
+      @data = comment.data(current_user)
       respond_to do |format|
-        format.json { render json: @comment}
+        format.json { render json: @data}
         format.html { redirect_to root_path }
       end
     else
@@ -16,6 +15,14 @@ class CommentsController < ApplicationController
         format.json { render nothing: true }
         format.html { redirect_to root_path }
       end
+    end
+  end
+  
+  def show
+    comment = Comment.find(params[:id])
+    @data = comment.data(current_user)
+    respond_to do |format|
+      format.json { render json: @data }
     end
   end
   

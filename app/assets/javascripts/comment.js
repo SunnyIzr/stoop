@@ -15,6 +15,9 @@ var CommentEvents = {
   newLike: function(){
   },
   newComment: function(){
+    $(document).on('ajax:success','.new_comment', function(e,data,status,xhr){
+      Comment.addNew(data)
+    })
   }
 }
 
@@ -26,6 +29,17 @@ var Comment = {
     // ONLY refreshes view
   },
   addNew: function(comment){
+    $('.post-id-' + comment.post.id ).find('.new_comment_body').val('')
+    $('.post-id-' + comment.post.id ).find('.new_comment_body').blur()
+    $el = $('.comment.hide').clone()
+    $el.removeClass('hide')
+    
+    $el.addClass("comment-id-" + comment.id) 
+    $el.find('.comment_body').html(comment.comment)
+    $el.find('.time').html(comment.created_at_formatted)
+    $el.find('.avatar').attr('src',comment.user.avatar)
+    
+    $('.post-id-' + comment.commentable_id).find('.comments').append($el)
   },
   addCommentField: function($commentBar,postId){
     $el = $('.comment_field.hide').clone()
@@ -34,5 +48,6 @@ var Comment = {
     $el.find('input[name="comment[commentable_id]"]').val(postId)
     
     $commentBar.append($el)
+    $el.find('.new_comment_body').focus()
   }
 }
