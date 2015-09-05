@@ -124,6 +124,17 @@ task 'db:seed_follows' => :environment do
   
 end
 
+desc 'Seed Comment LIkes'
+task 'db:seed_comment_likes' => :environment do
+  puts "Now seeding comment likes..."
+  Comment.all.each_with_index do |comment, i|
+    [*0..8].each{ |n| User.all.sample.like!(comment) }
+    
+    puts "Comment#{i+1} of #{Comment.all.size} complete!"
+  end
+  
+end
+
 
 
 
