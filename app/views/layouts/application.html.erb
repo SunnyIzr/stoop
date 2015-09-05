@@ -24,7 +24,7 @@
           </div>
           <div class="col-sm-4 nav-column">
             <img class="settings" src="<%= asset_path 'settings.png' %>" alt="Settings">
-            <img class="profile-pic" src="<%= asset_path 'profile-tn.png' %>" alt="">
+            <img class="profile-pic" src="<%= current_user.avatar %>" alt="">
           </div>
         </div>
       </div>
@@ -48,8 +48,19 @@
     <div class="chat-bar">
       <div class="container">
         <div class="row">
-          <div class="col-sm-4 col-sm-offset-8 chat-button">
-            <i class="fa fa-circle-o"></i> Instant Chat
+          <div class="col-sm-4 col-sm-offset-8 chat-box">
+            <div class='top-bar'>
+              <i class="fa fa-circle-o"></i> Instant Chat
+            </div>
+            <div class='conversations'>
+              <% 35.times do |d| %>
+              <div class='conversation'>
+                <img class='img-responsive' src='<%= current_user.avatar %>'>
+                <p class='name'><%= current_user.name + d.to_s%></p>
+                <div class='clear'></div>                  
+              </div>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
