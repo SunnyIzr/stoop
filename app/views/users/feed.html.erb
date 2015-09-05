@@ -1,3 +1,32 @@
+<div class="container">
+  <div class="row">
+    
+    <div class="col-sm-4 col-sm-push-8">
+      <%= render partial: 'layouts/nav' %>
+    </div>
+    
+    <div class="col-sm-8 col-sm-pull-4">
+      <div class="row">
+        <div class="col-xs-12 building-neighborhood-bar">
+          <a href="#" style="border-right:2px solid white; padding-right:20px;">My Building</a>
+          <a href="#" class="active" style="padding-left:20px;">My Neighborhood</a>
+          <!--NOTE: I recommend toggling the class "active" on/off with jquery-->
+        </div>
+        
+        <%= form_for Post.new, remote: true do |f| %>
+        <%= f.text_area :body, class: 'text-area', placeholder: 'Status' %>
+        <div class="control-bar">
+          <i class="fa fa-camera"></i>
+          <i class="fa fa-map-marker"></i>
+          <i class="fa fa-paperclip"></i>
+          <%= f.submit 'POST', class: 'post' %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container after-profile">
   <div class="row">
     <div class="col-sm-8">
