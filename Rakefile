@@ -112,5 +112,18 @@ task 'db:seed_buildings_neighborhoods' => :environment do
   end
 end
 
+desc 'Seed Follower Relationships'
+task 'db:seed_follows' => :environment do
+  puts "Now seeding follow relationships..."
+  User.all.each_with_index do |user, i|
+    users = User.all - [user]
+    [*6..15].each{ |n| user.follow!(users.sample) }
+    
+    puts "User#{i+1} of #{User.all.size} complete!"
+  end
+  
+end
+
+
 
 

@@ -28,26 +28,11 @@
       <div class="info-box">
         <h3>Following</h3>
         <div class="row">
+          <% @user.followees(User).sample(6).each do |user| %>
           <div class="col-xs-4">
-            <img class="img-responsive" src="<%= asset_path 'drew.jpg' %>" alt="">
+            <img class="img-responsive" src="<%= user.avatar %>" alt="">
           </div>
-          <div class="col-xs-4">
-            <img class="img-responsive" src="<%= asset_path 'lior.jpg' %>" alt="">
-          </div>
-          <div class="col-xs-4">
-            <img class="img-responsive" src="<%= asset_path 'sadie.jpg' %>" alt="">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-4">
-            <img class="img-responsive" src="<%= asset_path 'syd.jpg' %>" alt="">
-          </div>
-          <div class="col-xs-4">
-            <img class="img-responsive" src="<%= asset_path 'sadie.jpg' %>" alt="">
-          </div>
-          <div class="col-xs-4">
-            <img class="img-responsive" src="<%= asset_path 'drew.jpg' %>" alt="">
-          </div>
+          <% end %>
         </div>
       </div>
 
