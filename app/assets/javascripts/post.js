@@ -4,7 +4,7 @@ var PostEvents = {
     this.newPost();
   },
   newLike: function(){
-    $(document).on('ajax:success','.new_like', function(e,data,status,xhr){
+    $(document).on('ajax:success','.new_post_like', function(e,data,status,xhr){
       Post.refresh(data)
     })
   },

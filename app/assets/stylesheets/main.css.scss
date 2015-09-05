@@ -242,7 +242,20 @@ ul.side-nav {
 						font-size:160%;
 						margin-left:15px;
 					}
-				}		
+				}
+				.newCommentLike{
+					color: $blue;
+				}
+				.like-count-wrapper{
+					font-size: 70%;
+					display: inline;
+				}
+				.new_comment_like{
+					button{
+						background: none;
+						border:none;
+					}
+				}
 			}
 		}
 	}

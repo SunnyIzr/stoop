@@ -13,21 +13,27 @@ var CommentEvents = {
     })
   },
   newLike: function(){
+    $(document).on('ajax:success','.new_comment_like', function(e,data,status,xhr){
+      Comment.refresh(data)
+    })
   },
   newComment: function(){
     $(document).on('ajax:success','.new_comment', function(e,data,status,xhr){
       Comment.addNew(data)
-      myData = data
     })
   }
 }
 
 var Comment = {
-  getRefresh: function(id){
-    //Gets Comment data AND refreshes view
-  },
   refresh: function(comment){
     // ONLY refreshes view
+    $el = $(".comment-id-" + comment.id)
+    $el.find('.comment-like-count').html(comment.like_count)
+    if ( comment.current_user_like ){
+      $el.find('.current-user-comment-like').removeClass('fa-heart-o')
+    } else {
+      $el.find('.current-user-comment-like').addClass('fa-heart-o')
+    }
   },
   addNew: function(comment){
     $('.post-id-' + comment.post.id ).find('.comment_field').remove()
@@ -39,6 +45,7 @@ var Comment = {
     $el.find('.comment_body').html(comment.comment)
     $el.find('.time').html(comment.created_at_formatted)
     $el.find('.avatar').attr('src',comment.user.avatar)
+    $el.find('.likeable_id').val(comment.id)
     
     $('.post-id-' + comment.commentable_id).find('.comments').append($el)
     Post.refresh(comment.post)

@@ -3,17 +3,17 @@ class LikesController < ApplicationController
   
   def create
     user = current_user
-    post = Post.find(like_params[:likeable_id])
-    if user.likes?(post)
-      user.unlike!(post)
-      @data = post.data(current_user)
+    object = Object.const_get(like_params[:likeable_type]).find(like_params[:likeable_id])
+    if user.likes?(object)
+      user.unlike!(object)
+      @data = object.data(current_user)
       respond_to do |format|
         format.json { render json: @data}
         format.html { redirect_to root_path }
       end      
     else
-      user.like!(post)
-      @data = post.data(current_user)
+      user.like!(object)
+      @data = object.data(current_user)
       respond_to do |format|
         format.json { render json: @data}
         format.html { redirect_to root_path }
@@ -24,7 +24,7 @@ class LikesController < ApplicationController
   private
   
   def like_params
-    params.require(:like).permit(:likeable_id)
+    params.require(:like).permit(:likeable_id,:likeable_type)
   end
   
 end
