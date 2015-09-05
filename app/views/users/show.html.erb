@@ -25,7 +25,10 @@
       
       <div class='side-nav'>
         
-        <%= render partial: 'layouts/nav' %>
+        <ul class="side-nav">
+          <li><a href='#'>Follow</a></li>
+          <li><a href='#' style='cursor:not-allowed;'>Message</a></li>
+      </ul>
         
       </div>
 
@@ -36,7 +39,7 @@
         <div class="row">
           <% @user.followees(User).sample(6).each do |user| %>
           <div class="col-xs-4">
-            <img class="img-responsive" src="<%= user.avatar %>" alt="">
+            <a href='<%= user_path(user) %>'><img class="img-responsive" src="<%= user.avatar %>" alt=""></a>
           </div>
           <% end %>
         </div>
@@ -47,7 +50,7 @@
         <div class="row">
         <% @user.building.users.sample(6).each_with_index do |user| %>
           <div class="col-xs-4">
-            <img class="img-responsive" src="<%= user.avatar %>" alt="">
+            <a href='<%= user_path(user) %>'><img class="img-responsive" src="<%= user.avatar %>" alt=""></a>
           </div>
           <% end %>
         </div>
