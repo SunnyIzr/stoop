@@ -133,6 +133,11 @@ ul.side-nav {
 	margin-top:40px;
 	background-color:white;
 	color:#abcdcf;
+	
+	.cover-img-wrapper{
+		height: 300px;
+		overflow: hidden;
+	}
 
 	.profile-pic {
 		margin-top:-100px;
