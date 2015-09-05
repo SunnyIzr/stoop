@@ -96,3 +96,21 @@ task 'db:seed_abouts_covers' => :environment do
   end
 end
 
+desc 'Seed Buildings & Neighborhoods'
+task 'db:seed_buildings_neighborhoods' => :environment do
+  puts "Now seeding buildings and neighborhoods..."
+  fidi = Neighborhood.create(name: 'Financial District')
+  Building.create(name: '15 William Street', neighborhood: fidi)
+  Building.create(name: '50 West Street', neighborhood: fidi)
+  
+  soho = Neighborhood.create(name: 'SoHo')
+  Building.create(name: '150 Thompson Street', neighborhood: soho)
+  Building.create(name: '35 Bond Street', neighborhood: soho)
+  
+  User.all.each do |user|
+    user.update!(building: Building.all.sample)
+  end
+end
+
+
+
