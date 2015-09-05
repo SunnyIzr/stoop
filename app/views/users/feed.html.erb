@@ -26,13 +26,14 @@
               <div class="col-xs-12 comment-bar">
                 <p class="like-count"><span><%= post.likers(User).size %></span> Likes</p>
                 <p class="comment-count"><span><%= post.comments.size %></span> Comments</p>
-                <i class="fa fa-comment-o"></i>
+                <a href='#' class='addNewComment'><i class="fa fa-comment-o"></i></a>
                 <%=form_for Like.new, remote: true do |f| %>
                   <%= f.hidden_field :likeable_id, value: post.id, class: 'likeable_id' %>
                   <%= f.button type: 'submit' do %>
                     <i class="current-user-like fa fa-heart <%unless current_user.likes?(post)%>fa-heart-o<%end%>"></i>
                   <% end %>
                 <% end %>
+                <br>
               </div>
             </div>
             <div class="row">
@@ -90,6 +91,13 @@
           <div class="row">
           </div>
         </div>
+      </div>
+      <div class='comment_field col-xs-12 hide'>
+        <%=form_for Comment.new, remote: true do |f| %>
+          <%= f.text_field :comment, class: 'new_comment', placeholder: 'Write a Comment...' %>
+          <%= f.hidden_field :commentable_id, value: nil %>
+          <%= f.hidden_field :commentable_type, value: 'Post' %>
+        <% end %>
       </div>
     </div>
     
