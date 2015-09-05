@@ -17,7 +17,7 @@ task 'db:seed_users' => :environment do
     u.last_name = user_data['name']['last'].capitalize
     u.email = user_data['email']
     u.gender = user_data['gender']
-    u.avatar = user_data['picture']['medium']
+    u.avatar = user_data['picture']['large']
     u.save
     puts "User#{i+1} of 10 complete!"
   end
