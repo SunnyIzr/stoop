@@ -79,7 +79,7 @@
             <div class="col-xs-12 comment-bar">
               <p class="like-count"><span>0</span> Likes</p>
               <p class="comment-count"><span>0</span> Comments</p>
-              <i class="fa fa-comment-o"></i>
+              <a href='#' class='addNewComment'><i class="fa fa-comment-o"></i></a>
               <%=form_for Like.new, remote: true do |f| %>
                 <%= f.hidden_field :likeable_id, value: nil, class: 'likeable_id' %>
                 <%= f.button type: 'submit' do %>
@@ -89,6 +89,8 @@
             </div>
           </div>
           <div class="row">
+            <div class="col-xs-12 comments">
+            </div>
           </div>
         </div>
       </div>

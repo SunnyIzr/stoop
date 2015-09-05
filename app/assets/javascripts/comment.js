@@ -17,6 +17,7 @@ var CommentEvents = {
   newComment: function(){
     $(document).on('ajax:success','.new_comment', function(e,data,status,xhr){
       Comment.addNew(data)
+      myData = data
     })
   }
 }
@@ -29,8 +30,8 @@ var Comment = {
     // ONLY refreshes view
   },
   addNew: function(comment){
-    $('.post-id-' + comment.post.id ).find('.new_comment_body').val('')
-    $('.post-id-' + comment.post.id ).find('.new_comment_body').blur()
+    $('.post-id-' + comment.post.id ).find('.comment_field').remove()
+    $('.post-id-' + comment.post.id ).find('.new_comment_body').remove()
     $el = $('.comment.hide').clone()
     $el.removeClass('hide')
     
@@ -40,6 +41,7 @@ var Comment = {
     $el.find('.avatar').attr('src',comment.user.avatar)
     
     $('.post-id-' + comment.commentable_id).find('.comments').append($el)
+    Post.refresh(comment.post)
   },
   addCommentField: function($commentBar,postId){
     $el = $('.comment_field.hide').clone()

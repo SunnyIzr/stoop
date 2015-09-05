@@ -28,7 +28,7 @@ class Comment < ActiveRecord::Base
     hash[:like_count] = self.likers(User).size
     hash[:current_user_like] =  current_user.nil? ? nil : current_user.likes?(self)
     hash[:likers] = self.likers(User)
-    hash[:post] = self.commentable
+    hash[:post] = self.commentable.data(current_user)
     hash
   end
 end
