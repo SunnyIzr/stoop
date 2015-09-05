@@ -10,8 +10,7 @@ desc 'Seed Database with Users'
 task 'db:seed_users' => :environment do
   puts "Now seeding database with 10 users..."
   10.times do |i|
-    user_data = JSON.load(open(str))['results'][0]['users']
-    Faker::Config.locale = 'en-US'
+    user_data = JSON.load(open('https://randomuser.me/api/'))['results'][0]['user']
     u = User.new
     u.password = 'password'
     u.first_name = user_data['name']['first']
