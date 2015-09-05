@@ -124,7 +124,7 @@ task 'db:seed_follows' => :environment do
   
 end
 
-desc 'Seed Comment LIkes'
+desc 'Seed Comment Likes'
 task 'db:seed_comment_likes' => :environment do
   puts "Now seeding comment likes..."
   Comment.all.each_with_index do |comment, i|

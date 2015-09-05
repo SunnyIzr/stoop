@@ -82,6 +82,9 @@ header.inner {
 	   color:$header;  
 	}
 }
+.text-area:focus{
+	outline: 0;
+}
 
 .control-bar {
 	background-color:#e4f0f0;
@@ -101,6 +104,9 @@ header.inner {
 		font-size:18px;
 		float:right;
 		margin-right:15px;
+	}
+	.post:focus{
+		outline: 0;
 	}
 }
 
@@ -198,6 +204,9 @@ ul.side-nav {
     		margin-left: 10px;
     		font-size: 130%;
 			}
+			button:focus{
+				outline: 0;
+			}
 			.fa {
 				float:right;
 				margin-left:10px;
@@ -224,6 +233,10 @@ ul.side-nav {
 					color: $blue;
 					padding-left: 5px;
 					padding-right: 5px;
+				}
+				
+				input.new_comment_body:focus{
+					outline: 0;
 				}
 			}
 		}
@@ -260,6 +273,9 @@ ul.side-nav {
 						background: none;
 						border:none;
 					}
+					button:focus{
+						outline: 0;
+					}
 				}
 			}
 		}
@@ -292,6 +308,9 @@ a.add-to-fav {
     display: block;
     background: none;
     border: none;
+	}
+	.follow-btn:focus{
+		outline: 0;
 	}
 }
 
@@ -474,6 +493,9 @@ a.add-to-fav {
 		font-size:18px;
 		float:right;
 		margin-right:15px;
+	}
+	.post:focus{
+		outline: 0;
 	}
 }
 
