@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
   acts_as_messageable
          
   belongs_to :building
-  belongs_to :neighborhood
   has_many :posts, dependent: :destroy
   
   has_many :events, class_name: 'Event', foreign_key: 'creator_id', dependent: :destroy
@@ -37,6 +36,10 @@ class User < ActiveRecord::Base
   
   def name
     return self.first_name.to_s + ' ' + self.last_name.to_s
+  end
+  
+  def neighborhood
+    self.building.neighborhood
   end
   
   def mailboxer_email(object)
