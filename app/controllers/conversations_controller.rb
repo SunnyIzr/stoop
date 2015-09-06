@@ -14,6 +14,7 @@ class ConversationsController < ApplicationController
     end
 
     @conversations = @conversations.paginate(page: params[:page], per_page: 10)
+  
   end
   
   def static_index
@@ -21,6 +22,7 @@ class ConversationsController < ApplicationController
   end
 
   def show
+    @recipient = (@conversation.participants - [current_user]).first
   end
   
   def reply

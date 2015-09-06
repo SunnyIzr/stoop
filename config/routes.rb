@@ -19,7 +19,6 @@ Rails.application.routes.draw do
   resources :events, only: [:create, :show]
   
   #Mailboxer Routes
-  get '/messages' => 'messages#index'
   resources :messages, only: [:new, :create]
   resources :conversations, only: [:index, :show, :destroy] do
     member do
