@@ -7,3 +7,16 @@
 @import 'focus-pages';
 @import 'signup';
 @import "main";
+@import 'chosen';
+
+
+.messages {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+.avatar{
+  width: 35px;
+}

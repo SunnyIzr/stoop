@@ -15,4 +15,7 @@
 //= require turbolinks
 //= require bootstrap.min
 //= require smooth-scroll
+//= require jquery.turbolinks
+//= require chosen-jquery
+//= require messages
 //= require_tree .

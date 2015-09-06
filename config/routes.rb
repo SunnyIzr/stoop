@@ -19,8 +19,17 @@ Rails.application.routes.draw do
   resources :events, only: [:create, :show]
   
   #Mailboxer Routes
-  resources :messages
-  resources :conversations
+  resources :messages, only: [:new, :create]
+  resources :conversations, only: [:index, :show, :destroy] do
+    member do
+      post :restore
+      post :reply
+      post :mark_as_read
+    end
+    collection do
+      delete :empty_trash
+    end
+  end
   
   #Post Routes
   resources :posts, only: [:create,:show]

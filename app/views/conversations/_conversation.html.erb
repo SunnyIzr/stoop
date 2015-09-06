@@ -1,46 +1,22 @@
-<%= div_for(conversation, :class =>"#{ 'unread ' if conversation.is_unread?(@actor) }") do %>
+<li class="list-group-item clearfix">
+  <%= link_to conversation.subject, conversation_path(conversation) %>
 
-  <div class="content_left">
-    <div class="avatar">
-      <%= link_to image_tag(conversation.last_sender.logo.url(:small),
-                            :title => conversation.last_sender.name,
-                            :alt => conversation.last_sender.name),
-                  conversation.last_sender.subject %>
-    </div>
+  <div class="btn-group-vertical pull-right">
+    <% if conversation.is_trashed?(current_user) %>
+      <%= link_to 'Restore', restore_conversation_path(conversation), class: 'btn btn-xs btn-info', method: :post %>
+    <% else %>
+      <%= link_to 'Move to trash', conversation_path(conversation), class: 'btn btn-xs btn-danger', method: :delete,
+                  data: {confirm: 'Are you sure?'} %>
 
-    <header>
-      <h5>
-        <%= link_to truncate_name(conversation.last_sender.name), conversation.last_sender.subject %>
-      </h5>
-      <div class="date">
-        <%= t('time.ago', :time => time_ago_in_words(conversation.updated_at)) %>
-      </div>
-    </header>
-
-  </div>
-
-  <div class="content_right">
-
-    <div class="subject">
-      <%= link_to(truncate(conversation.subject, :length => 55), conversation_path(conversation.id,:box => @box,:page => params[:page])) %>
-    </div>
-
-    <% unless @box.eql?'trash' %>
-      <div class="action">
-      
-        <%= link_to(image_tag('cancel.png', :alt => t('mailboxer.delete'), :title => t('mailboxer.delete')),
-                    conversation_path(conversation, :location => @box,
-                                                    :box => @box,
-                                                    :page => params[:page]),
-                                                    :confirm => t('mailboxer.delete_confirm',
-                                                                  :object => conversation.subject),
-                                                    :method => :delete,
-                                                    :remote => true) %>
-      </div>
+      <% if conversation.is_unread?(current_user) %>
+        <%= link_to 'Mark as read', mark_as_read_conversation_path(conversation),
+                    class: 'btn btn-xs btn-info', method: :post %>
+      <% end %>
     <% end %>
-
-    <div class="briefing">
-      <%= raw(truncate(strip_tags(conversation.last_message.body), :length => 50)) %>
-    </div>
   </div>
-<% end %>
+
+  <p><%= render 'conversations/participants', conversation: conversation %></p>
+
+  <p><%= conversation.last_message.body %>
+    <small>(<span class="text-muted"><%= conversation.last_message.created_at.strftime("%-d %B %Y, %H:%M:%S") %></span>)</small></p>
+</li>
