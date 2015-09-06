@@ -15,6 +15,10 @@ class ConversationsController < ApplicationController
 
     @conversations = @conversations.paginate(page: params[:page], per_page: 10)
   end
+  
+  def static_index
+    render_text 'hi'
+  end
 
   def show
   end
