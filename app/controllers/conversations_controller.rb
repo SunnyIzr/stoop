@@ -5,20 +5,19 @@ class ConversationsController < ApplicationController
   before_action :get_box, only: [:index]
 
   def index
-    if @box.eql? "inbox"
-      @conversations = @mailbox.inbox
-    elsif @box.eql? "sent"
-      @conversations = @mailbox.sentbox
-    else
-      @conversations = @mailbox.trash
-    end
+    # Full Mailbox Code--saving this for later
+    # if @box.eql? "inbox"
+    #   @conversations = @mailbox.inbox
+    # elsif @box.eql? "sent"
+    #   @conversations = @mailbox.sentbox
+    # else
+    #   @conversations = @mailbox.trash
+    # end
 
-    @conversations = @conversations.paginate(page: params[:page], per_page: 10)
+    # @conversations = @conversations.paginate(page: params[:page], per_page: 10)
+    
+    redirect_to conversation_path(current_user.mailbox.conversations.first)
   
-  end
-  
-  def static_index
-    render_text 'hi'
   end
 
   def show

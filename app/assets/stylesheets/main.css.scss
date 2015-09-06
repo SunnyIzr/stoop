@@ -523,7 +523,10 @@ a.add-to-fav {
 }
 
 .side-bar-chat {
-
+	height: 300px;
+	overflow-y: scroll;
+	.chat-conversations{
+	}
 	.col-xs-12 {
 		margin-bottom:5px;
 		background-color:white;
@@ -647,16 +650,20 @@ background-color:white;
 		}
 }
 .msg-top{
-margin:0px;
-padding:0;
+	margin:0px;
+	padding:0;
 }
 .new-msg{
-margin:0px;
-padding:5px 0px;
-background-color:#dfeced;
-font-size:20px;
-color:#abcdcf;
-text-align:center;
+	margin:0px;
+	padding:5px 0px;
+	background-color:#dfeced;
+	font-size:20px;
+	color:#abcdcf;
+	text-align:center;
+}
+.new-msg:hover{
+	color:#abcdcf;
+	text-decoration: none;
 }
 
  .msg-bg{

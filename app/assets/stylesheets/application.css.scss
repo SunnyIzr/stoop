@@ -20,3 +20,25 @@
 .avatar{
   width: 35px;
 }
+
+#newMessage{
+  .chosen-container{
+    width: 100% !important;
+  }
+  .form-control{
+    border-radius: 0;
+  }
+  .modal-content{
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .btn-primary{
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    background-color: #abccce;
+    text-transform: uppercase;
+    border: none;
+  }
+}
