@@ -13,24 +13,8 @@
   
   <div class="inner-page">
     
-    <header class="inner">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-2">
-            <a href='/'><img class="img-responsive" src="<%= asset_path 'header-logo.jpg' %>" alt=""></a>
-          </div>
-          <div class="col-sm-6 search-column">
-            <input type="text" class="search-field empty" id="iconified" placeholder="&#xF002; " style="font-family:Arial, FontAwesome; font-size:20px;">
-          </div>
-          <div class="col-sm-4 nav-column">
-            <img class="settings" src="<%= asset_path 'settings.png' %>" alt="Settings">
-            <img class="profile-pic" src="<%= current_user.avatar %>" alt="">
-          </div>
-        </div>
-      </div>
-      
-    </header>
-    
+    <%= render partial: 'layouts/header' %>
+        
     <% if current_page?(authenticated_root_path) %>
     
     <% end %>    
@@ -39,9 +23,8 @@
     
     <footer>
       <img src="<%= asset_path 'footer-logo.jpg' %>">
-        <br>
-      <p>&copy; 2005-2015 Pandora Media, Inc. All Rights Reserved</p>
-      <p>Pandora and the Music Genome project are registered trademarks of Pandora Media, Inc.</p>
+      <br>
+      <p>&copy; 2015 Mdrn-Group Inc. All Rights Reserved</p>
     </footer>
 
     <%= render partial: 'layouts/chat' %>

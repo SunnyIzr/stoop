@@ -48,10 +48,16 @@ header.inner {
 	.nav-column {
 		margin-top:10px;
 
-		img {
+		img, a {
 			float:right;
 			margin-left:30px;
 			height:40px;
+			color: $lightBlue;
+		
+		}
+		.settings{
+			font-size: 42px;
+			line-height: 42px;
 		}
 	}
 	.profile-pic{

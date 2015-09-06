@@ -1,0 +1,18 @@
+<header class="inner">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-2">
+        <a href='/'><img class="img-responsive" src="<%= asset_path 'header-logo.jpg' %>" alt=""></a>
+      </div>
+      <div class="col-sm-6 search-column">
+        <input type="text" class="search-field empty" id="iconified" placeholder="&#xF002; " style="font-family:Arial, FontAwesome; font-size:20px;">
+      </div>
+      <div class="col-sm-4 nav-column">
+        
+        <%= link_to('<i class="fa fa-power-off"></i>'.html_safe, destroy_user_session_path, class: 'settings', :method => :delete) %>
+
+        <a href='/users/<%= current_user.id %>'><img class="profile-pic" src="<%= current_user.avatar %>" alt=""></a>
+      </div>
+    </div>
+  </div>  
+</header>
