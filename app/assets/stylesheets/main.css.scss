@@ -350,6 +350,63 @@ a.add-to-fav {
 	z-index:99;
 	border: 2px solid #fff;
  
+ 	.single-chat-box{
+ 		height: 400px;
+    bottom: 0;
+    position: absolute;
+    background-color: 2px solid #fff;
+    right:350px;
+    width: 325px;
+		padding-left:0;
+		padding-right:0;
+		overflow: scroll;
+		background: #fff;
+		 .top-bar{
+    	color:$lightBlue;
+			text-align:center;
+			height: 41px;
+			background: $header;
+			cursor: pointer;
+    }
+    .conversation-wrapper{
+    	.message{
+    		padding: 10px 5px;
+    		.img-wrapper{
+    			float: left;
+    			padding: 0 10px;
+    			width: 23%;
+	    		img{
+	    			width:100%;
+	    			border-radius: 100%;
+	    		}
+    		}
+    		.text{
+    			float: right;
+    			padding: 10px;
+    			width: 75%;
+    			font-size: 14px;
+    			line-height: 17px !important;
+    			background: $orange;
+    			border-radius: 10px;
+    			
+    		}
+    		.clear{
+    			clear: both;
+    		}
+    	}
+    	.message.opposing-user{
+    		.img-wrapper{
+    			float: right;
+    		}
+    		.text{
+    			float: left;
+    			background: $blue;
+    			color: #fff;
+    		}
+    		
+    	}
+    }
+ 	}
 
 	.chat-box {
 		height: 500px;
