@@ -13,6 +13,8 @@ class Post < ActiveRecord::Base
   
   include PublicActivity::Model
   tracked
+  
+  self.per_page = 10
                   
                   
   def s3_credentials
