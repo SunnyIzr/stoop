@@ -13,15 +13,7 @@
           <!--NOTE: I recommend toggling the class "active" on/off with jquery-->
         </div>
         
-        <%= form_for Post.new, remote: true do |f| %>
-        <%= f.text_area :body, class: 'text-area', placeholder: 'Status' %>
-        <div class="control-bar">
-          <i class="fa fa-camera"></i>
-          <i class="fa fa-map-marker"></i>
-          <i class="fa fa-paperclip"></i>
-          <%= f.submit 'POST', class: 'post' %>
-        </div>
-        <% end %>
+        <%= render partial: 'posts/new' %>
       </div>
     </div>
   </div>

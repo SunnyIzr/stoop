@@ -20,4 +20,5 @@
 //= require jquery.turbolinks
 //= require chosen-jquery
 //= require messages
+//= require dropzone
 //= require_tree .

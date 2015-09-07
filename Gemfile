@@ -78,6 +78,8 @@ gem 'sass-rails', '~> 4.0.5'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-turbolinks'
 
+gem 'dropzonejs-rails'
+
 group :test, :development do
   gem 'rspec-mocks'
   gem 'rspec-rails'
