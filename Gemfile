@@ -69,7 +69,7 @@ gem 'public_activity'
 gem 'image_suckr'
 
 gem "jquery-ui-rails"
-gem 'rails4-autocomplete'
+gem 'rails4-autocomplete', '1.0.7', path: 'vendor/gems/rails4-autocomplete-1.0.7'
 
 gem 'bootstrap-will_paginate'
 gem 'will_paginate'
