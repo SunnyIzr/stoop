@@ -20,12 +20,14 @@ class User < ActiveRecord::Base
   serialize :contact, Hash
   
   has_attached_file :avatar,
+                  :default_url => '/assets/default-avatar.png',
                   :storage => :s3,
                   :s3_credentials => Proc.new{|a| a.instance.s3_credentials }
   
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/   
   
   has_attached_file :cover,
+                  :default_url => '/assets/default-cover.jpg',
                   :storage => :s3,
                   :s3_credentials => Proc.new{|a| a.instance.s3_credentials }
   
