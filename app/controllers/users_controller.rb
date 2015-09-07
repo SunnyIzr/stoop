@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
-  autocomplete :user, :first_name
+  autocomplete :user, :first_name, full: true, extra_data: [:id,:last_name], display_value: :search_display_value, id_element: '#search'
   
   def feed
     all_posts = Post.all.shuffle[0..4] - [Post.last]

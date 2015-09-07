@@ -46,6 +46,10 @@ class User < ActiveRecord::Base
     nil
   end
   
+  def search_display_value
+    self.name
+  end
+  
   def s3_credentials
     {:bucket => ENV['BUCKET'], :access_key_id => ENV['ACCESS_KEY_ID'], :secret_access_key => ENV['SECRET_ACCESS_KEY']}
   end

@@ -3,4 +3,5 @@ $(document).ready(function(){
   CommentEvents.init();
   FollowEvents.init();
   MessageEvents.init();
+  LiveSearch.init();
 })
