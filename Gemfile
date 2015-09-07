@@ -80,6 +80,8 @@ gem 'jquery-turbolinks'
 
 gem 'dropzonejs-rails'
 
+gem 'x-editable-rails'
+
 group :test, :development do
   gem 'rspec-mocks'
   gem 'rspec-rails'
