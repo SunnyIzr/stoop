@@ -3,6 +3,7 @@ $(document).ready(function(){
   CommentEvents.init();
   FollowEvents.init();
   MessageEvents.init();
+  Signup.init();
   
   //Dropzone
   postDropzone = Dropzone.options.newPost = {

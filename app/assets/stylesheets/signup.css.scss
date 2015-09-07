@@ -22,7 +22,24 @@
 		float:right;
 		padding:15px 0px 15px 80px;
 	}
-
+	.form-group{
+		margin-bottom: 0;
+	}
+	.chosen-container{
+		width: 100%;
+    padding: 10px;
+    background-color: #91a0ab;
+    border: none;
+    margin-bottom: 25px;
+    .chosen-single{
+    	background: none !important;
+    	border: none !important;
+    	box-shadow: none !important;
+    	color: #fff !important;
+    	font-size: 120% !important;
+    	font-weight: bold !important;
+    }
+	}
 	input {
 		width:100%;
 		padding:10px;
