@@ -5,6 +5,8 @@ $(document).ready(function(){
   MessageEvents.init();
   Signup.init();
   
+  $('.editable').editable()
+  
   //Dropzone
   postDropzone = Dropzone.options.newPost = {
     paramName: "post[image]", // The name that will be used to transfer the file
