@@ -103,6 +103,14 @@ header.inner {
 	margin-top:-5px;
 	padding:0px 20px;
 	color:#abcdcf;
+	
+	a{
+		color:#abcdcf;
+	}
+	
+	a.active{
+		color: $blue;
+	}
 
 	.fa {
 		font-size:22px;

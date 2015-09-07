@@ -1,19 +1,19 @@
-<%= form_for Post.new, html: {class: 'hide'}, remote: true do |f| %>
+<%= form_for Post.new, html: {class: 'non-dropzone'}, remote: true do |f| %>
   <%= f.text_area :body, class: 'text-area', placeholder: 'Status' %>
   <div class="control-bar">
-    <i class="fa fa-camera"></i>
-    <i class="fa fa-map-marker"></i>
+    <a class='post-types imgPost' href='#'><i class="fa fa-camera"></i></a>
+    <a class='post-types' href='#'><i class="fa fa-map-marker"></i></a>
     <%= f.submit 'POST', class: 'post' %>
   </div>
 <% end %>
 
 
-<%= form_for Post.new, html: {class: 'dropzone'} do |f| %>
+<%= form_for Post.new, html: {class: 'dropzone hide'} do |f| %>
   <%= f.text_area :body, class: 'text-area', placeholder: 'Status' %>
   <%= f.file_field :image, class: 'hide' %>
   <div class="control-bar">
-    <i class="fa fa-camera"></i>
-    <i class="fa fa-map-marker"></i>
+    <a class='post-types imgPost active' href='#'><i class="fa fa-camera"></i></a>
+    <a class='post-types' href='#'><i class="fa fa-map-marker"></i></a>
     <button id='submit-image-post' class='post'>Post</button>
   </div>
 <% end %>

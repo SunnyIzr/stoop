@@ -2,6 +2,7 @@ var PostEvents = {
   init: function(){
     this.newLike();
     this.newPost();
+    this.togglePostTypes();
   },
   newLike: function(){
     $(document).on('ajax:success','.new_post_like', function(e,data,status,xhr){
@@ -11,6 +12,18 @@ var PostEvents = {
   newPost: function(){
     $('.new_post').on('ajax:success', function(e,data,status,xhr){
       Post.addNew(data)
+    })
+  },
+  togglePostTypes: function(){
+    $('.imgPost').click(function(e){
+      e.preventDefault();
+      if ( $('.dropzone').hasClass('hide') ){
+        $('.non-dropzone').addClass('hide')
+        $('.dropzone').removeClass('hide')
+      } else {
+        $('.dropzone').addClass('hide')
+        $('.non-dropzone').removeClass('hide')
+      }
     })
   }
 }
