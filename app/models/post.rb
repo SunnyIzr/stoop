@@ -22,6 +22,8 @@ class Post < ActiveRecord::Base
   def data(current_user=nil)
     hash = self.attributes
     hash[:created_at_formatted] = self.created_at.strftime('%m/%d/%y %I:%M%P')
+    hash[:image_present] = self.image.present?
+    hash[:image] = self.image
     hash[:user] = self.user.attributes
     hash[:user][:name] = self.user.name
     hash[:user][:avatar] = self.user.avatar

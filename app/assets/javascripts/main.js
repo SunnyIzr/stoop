@@ -11,12 +11,14 @@ $(document).ready(function(){
     autoProcessQueue: false,
     init: function() {
 
+      // Limit to only uploading 1 file
       this.on("addedfile", function() {
         if (this.files[1]!=null){
           this.removeFile(this.files[0]);
         }
       });
-          
+      
+      // Upload file only when user initiates
       var submitButton = document.querySelector("#submit-image-post")
           myDropzone = this; // closure
 
@@ -29,6 +31,12 @@ $(document).ready(function(){
       // files are dropped here:
       this.on("addedfile", function() {
         // Show submit button here and/or inform user to click it.
+      });
+      
+      this.on("success", function(file, responseText) {
+            $('.text-area').val('')
+            myDropzone.removeAllFiles();
+            Post.addNew(responseText)
       });
 
     },

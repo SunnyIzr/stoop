@@ -9,9 +9,7 @@
         <p class="time"><%= post.created_at.strftime('%m/%d/%y %I:%M%P') unless post.id.nil? %></p>
         <p class='body'><%= post.body %></p>
         
-        <% if post.image.present? %>
-          <img class="img-responsive" src="<%= post.image %>" alt="">
-        <% end %>
+        <img class="img-responsive post-img <%= 'hide' unless post.image.present? %>" src="<%= post.image %>" alt="">
       </div>
     </div>
   </div>

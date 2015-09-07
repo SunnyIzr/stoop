@@ -51,6 +51,10 @@ var Post = {
     $el.find('.name').html("<a href='/users/" + post.user.id + "'>"+ post.user.name + "</a>")
     $el.find('.avatar').attr('src',post.user.avatar)
     $el.find('.likeable_id').attr('value',post.id)
+    if ( post.image_present == true ){
+      $el.find('.post-img').removeClass('hide')
+      $el.find('.post-img').attr('src',post.image)
+    }
     
     $('.posts').prepend($el)
   }
