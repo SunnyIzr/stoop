@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   
   
   #User Routes
-  resources :users, only: [:show, :update]
+  resources :users, only: [:show, :update] do
+    get :autocomplete_user_first_name, on: :collection
+  end  
   
   #Events Routes
   get '/events' => 'events#index', as: :events

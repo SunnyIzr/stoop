@@ -1,5 +1,7 @@
 //= require bootstrap.min
 //= require font-awesome.min
+//= require jquery.ui.all
+
 
 @import 'fonts-colors';
 @import 'general-tags';
@@ -9,6 +11,11 @@
 @import "main";
 @import 'chosen';
 
+
+#search{
+  font-family:Arial, FontAwesome;
+  font-size:20px;
+}
 
 .messages {
   max-height: 400px;

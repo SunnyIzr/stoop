@@ -5,7 +5,7 @@
         <a href='/'><img class="img-responsive" src="<%= asset_path 'header-logo.jpg' %>" alt=""></a>
       </div>
       <div class="col-sm-6 search-column">
-        <input type="text" class="search-field empty" id="iconified" placeholder="&#xF002; " style="font-family:Arial, FontAwesome; font-size:20px;">
+        <%= autocomplete_field_tag :search, params[:search], autocomplete_user_first_name_users_path, {class: "search-query search-field empty", placeholder: "&#xF002; ".html_safe, type: "search"} %> 
       </div>
       <div class="col-sm-4 nav-column">
         

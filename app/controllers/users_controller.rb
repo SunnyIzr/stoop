@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
+  autocomplete :user, :first_name
   
   def feed
     all_posts = Post.all.shuffle[0..4] - [Post.last]

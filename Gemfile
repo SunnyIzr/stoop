@@ -68,6 +68,9 @@ gem 'public_activity'
 
 gem 'image_suckr'
 
+gem "jquery-ui-rails"
+gem 'rails4-autocomplete'
+
 gem 'bootstrap-will_paginate'
 gem 'will_paginate'
 gem 'chosen-rails'
