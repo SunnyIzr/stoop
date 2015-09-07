@@ -3,14 +3,17 @@ class UsersController < ApplicationController
   autocomplete :user, :first_name, full: true, extra_data: [:id, :first_name, :last_name,:avatar_file_name,:avatar_content_type], display_value: :avatar
   
   def feed
-    # all_posts = Post.all.shuffle[0..4] - [Post.last]
-    # @posts = [Post.last] + all_posts
-    @posts = Post.paginate(page: params[:page], per_page: 15).order('created_at DESC')
+    @posts = Post.paginate(page: params[:page], per_page: 5).order('created_at DESC')
+    respond_to do |format|
+      format.html
+      format.js
+    end
   
   end
   
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts.paginate(page: params[:page], per_page: 5).order('created_at DESC')
     if @user == current_user
       # render 'edit'
       render 'show'
