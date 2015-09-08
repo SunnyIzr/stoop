@@ -21,6 +21,6 @@
 //= require chosen-jquery
 //= require messages
 //= require dropzone
-//= require editable/bootstrap-editable
-//= require editable/rails
+//= require xeditable
+//= require xeditable-demo
 //= require_tree .

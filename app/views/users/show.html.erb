@@ -5,7 +5,11 @@
       <img class="img-responsive profile-pic" src="<%= @user.avatar %>" alt="">
     </div>
     <div class="col-xs-9">
-      <p><%= editable @user, :about %></p>
+      <% if false %>
+      <p><%= editable @user, :about, type: 'textarea' %></p>
+      <% end %>
+      
+      <p><a data-type="textarea" data-cols='30' class='<%= "inline-field" %> about-section' data-url="/users/<%= @user.id %>" data-object="user" data-attribute="about" data-placeholder="First Name"><%= @user.about %></a></p>
     </div>
   </div>
 </div>
