@@ -15,10 +15,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts.paginate(page: params[:page], per_page: 5).order('created_at DESC')
     if @user == current_user
-      # render 'edit'
-      render 'show'
+      @editable = true
     else
-      render 'show'
+      @editable = false
     end
   end
   
@@ -41,6 +40,6 @@ class UsersController < ApplicationController
   
   private
   def user_params
-    params.require(:user).permit(:email,:building_id,:neighborhood_id,:first_name,:last_name,:gender,:after_five_pm,:date_of_birth,:profession,:about,:contact,:avatar)
+    params.require(:user).permit(:email,:building_id,:neighborhood_id,:first_name,:last_name,:gender,:after_five_pm,:date_of_birth,:profession,:about,:contact,:avatar,:cover)
   end
 end

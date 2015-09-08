@@ -102,10 +102,10 @@ header.inner {
 	line-height:45px;
 	margin-top:-5px;
 	padding:0px 20px;
-	color:#abcdcf;
+	color:$midGreen;
 	
 	a{
-		color:#abcdcf;
+		color:$midGreen;
 	}
 	
 	a.active{
@@ -156,7 +156,7 @@ ul.side-nav {
 .profile {
 	margin-top:40px;
 	background-color:white;
-	color:#abcdcf;
+	color:$midGreen;
 	
 	.cover-img-wrapper{
 		height: 300px;
@@ -166,6 +166,50 @@ ul.side-nav {
 	.profile-pic {
 		margin-top:-100px;
 		margin-left:-10px;
+	}
+	.img-wrapper,
+	.cover-img-wrapper{
+		position: relative;
+		.overlay{
+			background: $blue;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			opacity: 0.0;
+			left: -10px;
+			cursor: pointer;
+		}
+		span{
+			position: absolute;
+			top: 50%;
+			color: #fff;
+			font-size: 15px;
+			text-align: center;
+			width: 100%;
+			opacity: 0.0;
+			left:-10px;
+			transform: translateY(-50%);
+		}
+		.new-profile-pic-form,
+		.new-cover-pic-form{
+			position: absolute;
+			top: 0;
+			left: -10px;
+			width: 100%;
+			height: 100%;
+			background: none;
+		}
+		
+	}
+	.img-wrapper:hover,
+	.cover-img-wrapper:hover{
+		.overlay{
+			opacity: 0.75;
+		}
+		span{
+			opacity: 1.0;
+		}
 	}
 	p {
 		margin-top:10px;
@@ -204,7 +248,7 @@ ul.side-nav {
 		padding:0px 15px;
 
 		.comment-bar {
-			background-color:#abcdcf;
+			background-color:$midGreen;
 			color:white;
 			padding:10px 10px 0px 10px;
 			height:auto;
@@ -338,7 +382,7 @@ a.add-to-fav {
 	margin-bottom:30px;
 
 	h3 {
-		color:#abcdcf;
+		color:$midGreen;
 		border-bottom:2px solid white;
 		margin:0px;
 		margin-top:10px;
@@ -593,7 +637,7 @@ a.add-to-fav {
 	line-height:45px;
 	margin-top:0px;
 	padding:0px 20px;
-	color:#abcdcf;
+	color:$midGreen;
 
 	.fa {
 		font-size:22px;
@@ -622,18 +666,18 @@ background-color:white;
 		}
 
 		.name {
-			color:#abcdcf;
+			color:$midGreen;
 		}
 		.time {
 			font-size:70%;
-			color:#abcdcf;
+			color:$midGreen;
 		}
 		h3 {
 			margin-top:0px;
-			color:#abcdcf;
+			color:$midGreen;
 		}
 		p{
-		color:#abcdcf;
+		color:$midGreen;
 		}
 }
 
@@ -672,11 +716,11 @@ background-color:white;
 	padding:5px 0px;
 	background-color:#dfeced;
 	font-size:20px;
-	color:#abcdcf;
+	color:$midGreen;
 	text-align:center;
 }
 .new-msg:hover{
-	color:#abcdcf;
+	color:$midGreen;
 	text-decoration: none;
 }
 
@@ -692,11 +736,11 @@ background-color: #dfeced;
 }
 
 .recent-chat:active{
-background-color:#abcdcf;
+background-color:$midGreen;
 }
 
   .recent-chat-active  {
-  background-color: #abcdcf !important; }
+  background-color: $midGreen !important; }
   
   .msg-search-field {
   background-color: #dfeced;

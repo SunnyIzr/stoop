@@ -1,15 +1,47 @@
 <div class="container profile">
   <div class="row">
-    <div class='cover-img-wrapper'><img class="img-responsive" src="<%= @user.cover %>" alt=""></div>
+    <div class='cover-img-wrapper'>
+      
+      <% if @editable %>
+          
+          <div class='overlay'></div>
+          <img id='cover_pic' class="img-responsive cover-pic" data-user-id='<%= @user.id %>' src="<%= @user.cover %>" alt="">
+          <%= form_for @user, html: {id: 'new_cover_pic', class: 'dropzone new-cover-pic-form'} do |f| %>
+            <%= f.file_field :image, class: 'hide' %>
+          <% end %>
+          
+      <% else %>
+        
+        <img class="img-responsive" src="<%= @user.cover %>" alt="">
+        
+      <% end %>
+      
+    </div>
     <div class="col-xs-3">
-      <img class="img-responsive profile-pic" src="<%= @user.avatar %>" alt="">
+      
+      <% if @editable %>
+      
+        <div class='img-wrapper change-profile-pic'>
+          <div class='overlay'></div>
+          <img id='profile_pic' class="img-responsive profile-pic" data-user-id='<%= @user.id %>' src="<%= @user.avatar %>" alt="">
+          <%= form_for @user, html: {id: 'new_profile_pic', class: 'dropzone new-profile-pic-form'} do |f| %>
+            <%= f.file_field :image, class: 'hide' %>
+          <% end %>
+        </div>
+      
+      <% else %>
+      
+        <img class="img-responsive profile-pic" data-user-id='<%= @user.id %>' src="<%= @user.avatar %>" alt="">
+        
+      <% end %>
+      
     </div>
     <div class="col-xs-9">
       <% if false %>
-      <p><%= editable @user, :about, type: 'textarea' %></p>
+      <p><%= @user.about %></p>
       <% end %>
       
-      <p><a data-type="textarea" data-cols='30' class='<%= "inline-field" %> about-section' data-url="/users/<%= @user.id %>" data-object="user" data-attribute="about" data-placeholder="First Name"><%= @user.about %></a></p>
+      <p><a data-type="textarea" data-cols='30' class='<%= @editable ? "inline-field" : "uneditable" %> about-section' data-url="/users/<%= @user.id %>" data-object="user" data-attribute="about" data-placeholder="First Name"><%= @user.about %></a></p>
     </div>
   </div>
 </div>

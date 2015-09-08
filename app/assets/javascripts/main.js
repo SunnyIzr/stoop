@@ -7,6 +7,7 @@ $(document).ready(function(){
   
   $('.editable').editable()
   
+  
   //Dropzone
   postDropzone = Dropzone.options.newPost = {
     paramName: "post[image]", // The name that will be used to transfer the file
@@ -40,6 +41,54 @@ $(document).ready(function(){
             $('.text-area').val('')
             myDropzone.removeAllFiles();
             Post.addNew(responseText)
+      });
+
+    },
+    accept: function(file, done) {
+      done();
+    }
+  };
+  
+  profilePicDropzone = Dropzone.options.newProfilePic = {
+    paramName: "user[avatar]", // The name that will be used to transfer the file
+    maxFilesize: 2, // MB
+    init: function() {
+
+      // Limit to only uploading 1 file
+      this.on("addedfile", function() {
+        if (this.files[1]!=null){
+          this.removeFile(this.files[0]);
+        }
+      });
+      
+      this.on("success", function(file, responseText) {
+        setTimeout(function(){
+          location.reload()
+        },2000)
+      });
+
+    },
+    accept: function(file, done) {
+      done();
+    }
+  };
+  
+  coverPicDropzone = Dropzone.options.newCoverPic = {
+    paramName: "user[cover]", // The name that will be used to transfer the file
+    maxFilesize: 2, // MB
+    init: function() {
+
+      // Limit to only uploading 1 file
+      this.on("addedfile", function() {
+        if (this.files[1]!=null){
+          this.removeFile(this.files[0]);
+        }
+      });
+      
+      this.on("success", function(file, responseText) {
+        setTimeout(function(){
+          location.reload()
+        },2000)
       });
 
     },
