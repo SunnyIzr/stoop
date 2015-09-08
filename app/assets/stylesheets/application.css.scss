@@ -34,6 +34,23 @@
   }
 }
 
+//Editable Styling
+.editable-buttons{
+  .btn-sm{
+    border-radius: none !important;
+  }
+  .btn-primary{
+    background: $blue;
+  }
+  .btn-default{
+    background: $lightBlue;
+  }
+}
+
+.editable-click, a.editable-click{
+  color: $blue;
+}
+
 
 //Mailbox Styling
 .messages {

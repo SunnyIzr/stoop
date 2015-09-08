@@ -4709,10 +4709,10 @@
     //buttons
     $.fn.editableform.buttons =
         '<button type="submit" class="btn btn-sm btn-primary editable-submit">'+
-        '<i class="glyph-icon icon-check"></i>'+
+        '<i class="fa fa-check"></i>'+
         '</button>'+
         '<button type="button" class="btn btn-sm btn-default editable-cancel">'+
-        '<i class="glyph-icon icon-times"></i>'+
+        '<i class="fa fa-times"></i>'+
         '</button>';
 
     //error classes
