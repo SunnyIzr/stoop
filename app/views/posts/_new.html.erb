@@ -1,5 +1,6 @@
 <%= form_for Post.new, html: {class: 'non-dropzone'}, remote: true do |f| %>
   <%= f.text_area :body, class: 'text-area', placeholder: 'Status' %>
+  <%= hidden_field_tag :account_type, account_type %>
   <div class="control-bar">
     <a class='post-types imgPost' href='#'><i class="fa fa-camera"></i></a>
     <a class='post-types' href='#'><i class="fa fa-map-marker"></i></a>
@@ -10,6 +11,7 @@
 
 <%= form_for Post.new, html: {class: 'dropzone hide'} do |f| %>
   <%= f.text_area :body, class: 'text-area', placeholder: 'Status' %>
+  <%= hidden_field_tag :account_type, account_type %>
   <%= f.file_field :image, class: 'hide' %>
   <div class="control-bar">
     <a class='post-types imgPost active' href='#'><i class="fa fa-camera"></i></a>

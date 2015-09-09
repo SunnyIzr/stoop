@@ -1,0 +1,129 @@
+<div class="container profile">
+  <div class="row">
+    <div class='cover-img-wrapper'>
+      
+      <% if @editable %>
+          
+          <div class='overlay'></div>
+          <img id='cover_pic' class="img-responsive cover-pic" data-user-id='<%= @business.id %>' src="<%= @business.cover %>" alt="">
+          <%= form_for @business, html: {id: 'new_cover_pic', class: 'dropzone new-cover-pic-form'} do |f| %>
+            <%= f.file_field :image, class: 'hide' %>
+          <% end %>
+          
+      <% else %>
+        
+        <img class="img-responsive" src="<%= @business.cover %>" alt="">
+        
+      <% end %>
+      
+    </div>
+    <div class="col-xs-3">
+      
+      <% if @editable %>
+      
+        <div class='img-wrapper change-profile-pic'>
+          <div class='overlay'></div>
+          <img id='profile_pic' class="img-responsive profile-pic" data-user-id='<%= @business.id %>' src="<%= @business.avatar %>" alt="">
+          <%= form_for @business, html: {id: 'new_profile_pic', class: 'dropzone new-profile-pic-form'} do |f| %>
+            <%= f.file_field :image, class: 'hide' %>
+          <% end %>
+        </div>
+      
+      <% else %>
+      
+        <img class="img-responsive profile-pic" data-user-id='<%= @business.id %>' src="<%= @business.avatar %>" alt="">
+        
+      <% end %>
+      
+    </div>
+    <div class="col-xs-9">
+      <% if false %>
+      <p><%= @business.about %></p>
+      <% end %>
+      
+      <p><a data-type="textarea" data-cols='30' class='<%= @editable ? "inline-field" : "uneditable" %> about-section' data-url="/users/<%= @business.id %>" data-object="user" data-attribute="about" data-placeholder="First Name"><%= @business.about %></a></p>
+    </div>
+  </div>
+</div>
+
+<div class="container after-profile">
+  <div class="row">
+    <div class="col-sm-8">
+      
+      <% if @editable %>
+      <div style='padding-top: 40px;'>
+        <%= render partial: 'posts/new', locals: {account_type: 'Business'} %>
+      </div>
+      <% end %>
+        
+      <div class='posts'>
+        <% @posts.each do |post| %>
+        
+        <%= render partial: 'posts/post', locals: {post: post} %>
+        
+        <% end %>
+      </div>
+      <div id="infinite-scrolling">
+        <%= will_paginate @posts %>
+      </div>
+    </div>
+    <div class="col-sm-4 side-bar-margin">
+      
+      <div class='side-nav'>
+        
+        <ul class="side-nav">
+          <li>
+            <%=form_for Follow.new, html: { class: 'new_follow' }, remote: true do |f| %>
+              <%= f.hidden_field :followable_id, value: @business.id, class: 'followable_id' %>
+              <%= f.hidden_field :followable_type, value: 'Business', class: 'followable_type' %>
+              <%= f.submit current_user.follows?(@business) ? 'Unfollow' : 'Follow', class: 'follow-btn' %>
+            <% end %>
+          </li>
+      </ul>
+        
+      </div>
+      
+      <img class="img-responsive map" src="<%= asset_path 'map.jpg' %>" alt="Map">
+      <div class="info-box">
+        <h3>Following</h3>
+        <div class="row">
+          <% @business.followers(User).sample(6).each do |user| %>
+          <div class="col-xs-4">
+            <a href='<%= user_path(user) %>'><img class="img-responsive" src="<%= user.avatar %>" alt=""></a>
+          </div>
+          <% end %>
+        </div>
+      </div>
+<% if false %>
+
+      <div class="info-box">
+        <h3>Interests</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco</p>
+
+        <h3>Professions</h3>
+        <p><b>Counselor</b> at URJ Camp Coleman</p>
+        <p><b>Receptionist</b> at Surfcorp</p>
+
+        <h3 class='hide'>Contact</h3>
+        <p class='hide'>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco</p>
+
+        
+      </div>
+      
+<% end %>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- HIDDEN SKELETON ELEMENTS: POST, COMMENT, NEW COMMENT FORM -->
+<%= render partial: 'posts/post', locals: {post: Post.new} %>
+
+<%= render partial: 'users/comment', locals: {comment: Comment.new} %>
+
+<%= render partial: 'users/comment_field', locals: {comment: Comment.new} %>

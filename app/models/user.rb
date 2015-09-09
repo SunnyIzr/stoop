@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   acts_as_followable
   acts_as_messageable
   
-  belongs_to :business
+  has_many :businesses
   
   belongs_to :building
   has_many :posts, as: :account, dependent: :destroy
@@ -44,6 +44,10 @@ class User < ActiveRecord::Base
   
   def name
     return self.first_name.to_s + ' ' + self.last_name.to_s
+  end
+  
+  def business
+    self.businesses.first
   end
   
   def business?

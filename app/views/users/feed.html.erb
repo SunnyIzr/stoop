@@ -13,7 +13,7 @@
           <!--NOTE: I recommend toggling the class "active" on/off with jquery-->
         </div>
         
-        <%= render partial: 'posts/new' %>
+        <%= render partial: 'posts/new', locals: {account_type: 'User'} %>
       </div>
     </div>
   </div>

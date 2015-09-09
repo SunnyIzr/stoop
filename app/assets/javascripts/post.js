@@ -11,6 +11,8 @@ var PostEvents = {
   },
   newPost: function(){
     $('.new_post').on('ajax:success', function(e,data,status,xhr){
+      console.log('success!')
+      window.data = data
       Post.addNew(data)
     })
   },

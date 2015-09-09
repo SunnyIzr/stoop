@@ -3,7 +3,11 @@ class PostsController < ApplicationController
   
   def create
     post = Post.create(post_params)
-    post.account = current_user.poster
+    if params[:account_type] == 'User'
+      post.account = current_user
+    else
+      post.account = current_user.business
+    end
     if post.save
       @data = post.data(current_user)
       respond_to do |format|
