@@ -135,6 +135,17 @@ task 'db:seed_comment_likes' => :environment do
   
 end
 
+desc 'Seed Businesses'
+task 'db:businesses' => :environment do
+  Business.create(name: 'Ulysses NYC',neighborhood: Neighborhood.all[0] ,contact: { street: '95 Pearl Street', city: 'New York', state: 'NY', phone: '2124820400', website: 'http://www.ulyssesnyc.com/'}, user: User.all[-1] , established: Date.new(2001,2,15), industry: 'Restaurant/Bar', avatar: 'https://scontent-iad3-1.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/1910192_23119486423_6266_n.jpg?oh=da0a1401d68a7c70544567d44c87deae&oe=5661DB6A' , cover:'https://scontent-iad3-1.xx.fbcdn.net/hphotos-xpa1/t31.0-8/964435_10151726901661424_939077620_o.jpg')
+  Business.create(name: 'Cipriani Wall Street',neighborhood: Neighborhood.all[0] ,contact: { street: '55 Wall Street', city: 'New York', state: 'NY', phone: '21269940999', website: 'http://www.cipriani.com'}, user: User.all[-2] , established: Date.new(2001,2,15), industry: 'Restaurant' , avatar: 'https://scontent-iad3-1.xx.fbcdn.net/hphotos-xtp1/v/t1.0-9/11406784_889867234413077_5895602547016594819_n.jpg?oh=24eb99f79f381fdd2157573e5fb1dca4&oe=5661D9F5', cover: 'https://scontent-iad3-1.xx.fbcdn.net/hphotos-xta1/t31.0-8/1519650_889867514413049_851333459850627548_o.jpg' )
+  Business.create(name: 'Stone Street Tavern',neighborhood: Neighborhood.all[0] ,contact: { street: '52 Stone Street', city: 'New York', state: 'NY', phone: '2127855658', website: 'http://www.stonestreettavernnyc.com'}, user: User.all[-3] , established: Date.new(2001,2,15), industry: 'Restaurant' , avatar: 'https://scontent-iad3-1.xx.fbcdn.net/hphotos-ash2/t31.0-8/1912014_10152489993342639_6433290640296906989_o.jpg' , cover: 'https://scontent-iad3-1.xx.fbcdn.net/hphotos-xaf1/v/t1.0-9/420593_10150595678767639_25034836_n.jpg?oh=c30c2f8942324ebd3f10684c87b7af96&oe=56704FB6' )
+  Business.create(name: 'Balthazar',neighborhood: Neighborhood.all[1] ,contact: { street: '80 Spring Street', city: 'New York', state: 'NY', phone: '2129651414', website: 'http://www.balthazarny.com'}, user: User.all[-4] , established: Date.new(2001,2,15), industry: 'Restaurant' , avatar: 'https://s-media-cache-ak0.pinimg.com/736x/f3/25/f7/f325f789896e9b5db6b3214588ce427a.jpg', cover: 'http://www.nolitahearts.com/wp-content/uploads/2015/01/balthazar-restaurant-nolita.jpg')
+  Business.create(name: 'SoHo Cigar Bar',neighborhood: Neighborhood.all[1] ,contact: { street: '32 Watts Street', city: 'New York', state: 'NY', phone: '2129411781', website: 'http://www.sohocigarbar.com'}, user: User.all[-5] , established: Date.new(2001,2,15), industry: 'Bar', avatar: 'https://scontent-iad3-1.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/11148507_1015594728465769_3345374380004370865_n.jpg?oh=7a2c98881cb11179b25d1b209fa8fed5&oe=56A70AC8', cover: 'https://scontent-iad3-1.xx.fbcdn.net/hphotos-xfp1/t31.0-8/11952966_1051532721538636_1302513966882702663_o.jpg')
+  Business.create(name: 'Owen',neighborhood: Neighborhood.all[1] ,contact: { street: '809 Washington Street', city: 'New York', state: 'NY', phone: '2125249770', website: 'http://www.owennyc.com'}, user: User.all[-6] , established: Date.new(2001,2,15), industry: 'Retail' , avatar: 'https://scontent-iad3-1.xx.fbcdn.net/hphotos-xpf1/v/t1.0-9/11168577_855059877896881_3419238358207629570_n.jpg?oh=f11d8c443ecd31f8c22f2c3ac1adde7c&oe=56A28E15', cover: 'https://scontent-iad3-1.xx.fbcdn.net/hphotos-xpa1/v/t1.0-9/935157_606905642712307_566782075_n.jpg?oh=452d42c02e511fc32efd3d5019a64643&oe=56A484AB')
+  
+end
+
 
 
 

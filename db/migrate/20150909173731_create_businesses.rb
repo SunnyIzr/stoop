@@ -7,8 +7,8 @@ class CreateBusinesses < ActiveRecord::Migration
       t.belongs_to :user
       t.date :established
       t.string :industry
-      t.attachment :users, :avatar
-      t.attachment :users, :cover
+      t.attachment :avatar
+      t.attachment :cover
     end
   end
 end
