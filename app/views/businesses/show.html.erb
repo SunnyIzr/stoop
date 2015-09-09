@@ -85,7 +85,7 @@
       
       <img class="img-responsive map" src="<%= asset_path 'map.jpg' %>" alt="Map">
       <div class="info-box">
-        <h3>Following</h3>
+        <h3>Followers</h3>
         <div class="row">
           <% @business.followers(User).sample(6).each do |user| %>
           <div class="col-xs-4">
@@ -94,27 +94,20 @@
           <% end %>
         </div>
       </div>
-<% if false %>
-
+      
       <div class="info-box">
-        <h3>Interests</h3>
+        <h3>Industry</h3>
+        <p>Restaurant/Bar</p>
+
+        <h3>Hours of Operation</h3>
+        <p>11am-10pm mon-sun</p>
+
+        <h3>Contact</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco</p>
-
-        <h3>Professions</h3>
-        <p><b>Counselor</b> at URJ Camp Coleman</p>
-        <p><b>Receptionist</b> at Surfcorp</p>
-
-        <h3 class='hide'>Contact</h3>
-        <p class='hide'>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco</p>
-
-        
+        quis nostrud exercitation ullamco</p>  
       </div>
       
-<% end %>
 
     </div>
   </div>
