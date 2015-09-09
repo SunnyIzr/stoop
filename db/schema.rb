@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150909171606) do
+ActiveRecord::Schema.define(version: 20150909173917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,27 @@ ActiveRecord::Schema.define(version: 20150909171606) do
   create_table "buildings", force: true do |t|
     t.string  "name"
     t.integer "neighborhood_id"
+  end
+
+  create_table "businesses", force: true do |t|
+    t.string   "name"
+    t.integer  "neighborhood_id"
+    t.text     "contact"
+    t.integer  "user_id"
+    t.date     "established"
+    t.string   "industry"
+    t.string   "users_file_name"
+    t.string   "users_content_type"
+    t.integer  "users_file_size"
+    t.datetime "users_updated_at"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
   end
 
   create_table "comments", force: true do |t|
@@ -172,18 +193,18 @@ ActiveRecord::Schema.define(version: 20150909171606) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.integer  "building_id"
     t.string   "first_name"
     t.string   "last_name"
@@ -201,10 +222,11 @@ ActiveRecord::Schema.define(version: 20150909171606) do
     t.string   "cover_content_type"
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
-    t.boolean  "business_acct",          default: false
+    t.integer  "business_id"
   end
 
   add_index "users", ["building_id"], name: "index_users_on_building_id", using: :btree
+  add_index "users", ["business_id"], name: "index_users_on_business_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
