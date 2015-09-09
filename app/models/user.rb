@@ -36,10 +36,6 @@ class User < ActiveRecord::Base
   include PublicActivity::Model
   tracked
   
-  def self.neighbors
-    User.where(business_acct: false)
-  end
-  
   def name
     if self.business_acct
       return self.first_name.to_s
