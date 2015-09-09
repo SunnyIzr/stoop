@@ -2,10 +2,10 @@
   <div class="post-area">
     <div class="row">
       <div class="col-sm-2 col-xs-3">
-        <img class="img-responsive avatar" src="<%= post.user.avatar unless post.id.nil? %>" alt="">
+        <img class="img-responsive avatar" src="<%= post.account.avatar unless post.id.nil? %>" alt="">
       </div>
       <div class="col-sm-10 col-xs-9">
-        <h3 class="name"><%= link_to post.user.name, user_path(post.user) unless post.id.nil? %></h3>
+        <h3 class="name"><%= link_to post.account.name, post.account.business? ? business_path(post.account) : user_path(post.account) unless post.id.nil? %></h3>
         <p class="time"><%= post.created_at.strftime('%m/%d/%y %I:%M%P') unless post.id.nil? %></p>
         <p class='body'><%= post.body %></p>
         

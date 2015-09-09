@@ -3,7 +3,7 @@ class Post < ActiveRecord::Base
   acts_as_likeable
   acts_as_mentioner
   
-  belongs_to :user
+  belongs_to :account, polymorphic: true
   
   has_attached_file :image,
                   :storage => :s3,
@@ -26,9 +26,9 @@ class Post < ActiveRecord::Base
     hash[:created_at_formatted] = self.created_at.strftime('%m/%d/%y %I:%M%P')
     hash[:image_present] = self.image.present?
     hash[:image] = self.image
-    hash[:user] = self.user.attributes
-    hash[:user][:name] = self.user.name
-    hash[:user][:avatar] = self.user.avatar
+    hash[:user] = self.account.attributes
+    hash[:user][:name] = self.account.name
+    hash[:user][:avatar] = self.account.avatar
     hash[:like_count] = self.likers(User).size
     hash[:current_user_like] =  current_user.nil? ? nil : current_user.likes?(self)
     hash[:likers] = self.likers(User)

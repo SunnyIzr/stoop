@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class Business < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -10,14 +10,8 @@ class User < ActiveRecord::Base
   acts_as_followable
   acts_as_messageable
   
-  belongs_to :business
-  
   belongs_to :building
   has_many :posts, as: :account, dependent: :destroy
-  
-  has_many :events, class_name: 'Event', foreign_key: 'creator_id', dependent: :destroy
-  has_many :incoming_invites, class_name: 'Invite', foreign_key: 'attendee_id', dependent: :destroy
-  has_many :invited_events, through: :incoming_invites, class_name: 'Event', foreign_key: 'attendee_id', dependent: :destroy
   
   serialize :contact, Hash
   
@@ -35,27 +29,8 @@ class User < ActiveRecord::Base
   
   validates_attachment_content_type :cover, :content_type => /\Aimage\/.*\Z/   
   
-  include PublicActivity::Model
-  tracked
-  
-  def self.business_accts
-    User.where(business_id: nil)
-  end
-  
-  def name
-    return self.first_name.to_s + ' ' + self.last_name.to_s
-  end
-  
   def business?
-    !self.business.nil?
-  end
-  
-  def poster
-    self.business? ? self.business : self
-  end
-  
-  def neighborhood
-    self.building.neighborhood
+    true
   end
   
   def mailboxer_email(object)

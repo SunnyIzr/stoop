@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   
   
   #User Routes
+  resources :businesses, only: [:show, :update]  
   resources :users, only: [:show, :update] do
     get :autocomplete_user_first_name, on: :collection
   end  
