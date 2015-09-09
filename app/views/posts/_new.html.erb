@@ -1,4 +1,4 @@
-<%= form_for Post.new, html: {class: 'non-dropzone'}, remote: true do |f| %>
+<%= form_for Post.new, html: {class: 'non-dropzone new_post'}, remote: true do |f| %>
   <%= f.text_area :body, class: 'text-area', placeholder: 'Status' %>
   <%= hidden_field_tag :account_type, account_type %>
   <div class="control-bar">
@@ -9,7 +9,7 @@
 <% end %>
 
 
-<%= form_for Post.new, html: {class: 'dropzone hide'} do |f| %>
+<%= form_for Post.new, html: {class: 'dropzone hide new_post'} do |f| %>
   <%= f.text_area :body, class: 'text-area', placeholder: 'Status' %>
   <%= hidden_field_tag :account_type, account_type %>
   <%= f.file_field :image, class: 'hide' %>

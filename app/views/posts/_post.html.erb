@@ -18,7 +18,9 @@
       <div class="col-xs-12 comment-bar">
         <p class="like-count"><span><%= post.likers(User).size %></span> Likes</p>
         <p class="comment-count"><span><%= post.comments.size %></span> Comments</p>
-        <a href='#' class='addNewComment'><i class="fa fa-comment-o"></i></a>
+        <% unless account_type == 'Business' %>
+          <a href='#' class='addNewComment'><i class="fa fa-comment-o"></i></a>
+        <% end %>
         <%=form_for Like.new, html: { class: 'new_post_like'}, remote: true do |f| %>
           <%= f.hidden_field :likeable_id, value: post.id, class: 'likeable_id' %>
           <%= f.hidden_field :likeable_type, value: 'Post', class: 'likeable_type' %>
@@ -33,7 +35,7 @@
       <div class="col-xs-12 comments">
       <% post.comments.each do |comment| %>
       
-      <%= render partial: 'comment', locals: {comment: comment} %>
+      <%= render partial: 'users/comment', locals: {comment: comment} %>
       
       <% end %>
       </div>

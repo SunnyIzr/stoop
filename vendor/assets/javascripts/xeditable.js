@@ -4912,7 +4912,7 @@
 
 
                 var pos = this.getPosition();
-                // var actualWidth = $tip[0].offsetWidth;
+                var actualWidth = $tip[0].offsetWidth;
                 var actualHeight = $tip[0].offsetHeight;
 
                 if (autoPlace) {
