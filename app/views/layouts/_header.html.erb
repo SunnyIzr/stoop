@@ -10,8 +10,12 @@
       <div class="col-sm-4 nav-column">
         
         <%= link_to('<i class="fa fa-power-off"></i>'.html_safe, destroy_user_session_path, class: 'settings', :method => :delete) %>
-
-        <a href='/users/<%= current_user.id %>'><img class="profile-pic" src="<%= current_user.avatar %>" alt=""></a>
+        
+        <% if current_user.business? %>
+          <a href='/businesses/<%= current_user.business.id %>'><img class="profile-pic" src="<%= current_user.business.avatar %>" alt=""></a>
+        <% else %>
+          <a href='/users/<%= current_user.id %>'><img class="profile-pic" src="<%= current_user.avatar %>" alt=""></a>
+        <% end %>
       </div>
     </div>
   </div>  

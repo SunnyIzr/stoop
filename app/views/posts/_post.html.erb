@@ -24,8 +24,10 @@
         <%=form_for Like.new, html: { class: 'new_post_like'}, remote: true do |f| %>
           <%= f.hidden_field :likeable_id, value: post.id, class: 'likeable_id' %>
           <%= f.hidden_field :likeable_type, value: 'Post', class: 'likeable_type' %>
-          <%= f.button type: 'submit' do %>
-            <i class="current-user-like fa fa-heart <%unless current_user.likes?(post)%>fa-heart-o<%end%>"></i>
+          <% unless account_type == 'Business' %>
+            <%= f.button type: 'submit' do %>
+              <i class="current-user-like fa fa-heart <%unless current_user.likes?(post)%>fa-heart-o<%end%>"></i>
+            <% end %>
           <% end %>
         <% end %>
         <br>

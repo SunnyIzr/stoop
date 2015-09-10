@@ -64,6 +64,7 @@
       
       <div class='side-nav'>
         
+        <% unless current_user.business? %>
         <ul class="side-nav">
           <li>
             <%=form_for Follow.new, html: { class: 'new_follow' }, remote: true do |f| %>
@@ -73,7 +74,8 @@
             <% end %>
           </li>
           <li><a href='#' data-toggle='modal' data-target='#newMessage'>Message</a></li>
-      </ul>
+        </ul>
+        <% end %>
         
       </div>
       

@@ -1,10 +1,9 @@
 <ul class="side-nav">
   <li><%= link_to 'Feed', root_path %></li>
-  <li><a href="#" style='cursor:not-allowed;'>Events</a></li>
-  <li><%= link_to 'Messages', conversations_path %></li>
-  <li><a href="#" style='cursor:not-allowed;'>Small Business Listings</a></li>
-  <li><a href="#" style='cursor:not-allowed;'>My Incentives</a></li>
-  <% if current_user.business? %>
-  <li><%= link_to 'My Business', business_path(current_user.business) %></li>
+  <% unless current_user.business? %>
+    <li><a href="#" style='cursor:not-allowed;'>Events</a></li>
+    <li><%= link_to 'Messages', conversations_path %></li>
+    <li><a href="#" style='cursor:not-allowed;'>Small Business Listings</a></li>
   <% end %>
+  <li><a href="#" style='cursor:not-allowed;'>My Incentives</a></li>
 </ul>
