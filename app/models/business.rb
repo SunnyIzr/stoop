@@ -29,6 +29,10 @@ class Business < ActiveRecord::Base
     true
   end
   
+  def active_incentive
+    self.incentives.where(active: true).last
+  end
+  
   def mailboxer_email(object)
     nil
   end

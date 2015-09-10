@@ -11,6 +11,10 @@ class Incentive < ActiveRecord::Base
     [:cash, :percent]
   end
   
+  def copy
+    "#{self.discount_type == :percent ? '%' : '$' }#{self.discount} off"
+  end
+  
   def s3_credentials
     {:bucket => ENV['BUCKET'], :access_key_id => ENV['ACCESS_KEY_ID'], :secret_access_key => ENV['SECRET_ACCESS_KEY']}
   end

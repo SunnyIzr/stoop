@@ -156,10 +156,26 @@ ul.side-nav {
 	}
 }
 
+.incentive-wrapper{
+	background: $lightBlue;
+	text-align: center;
+	padding-bottom: 15px;
+  margin-bottom: -20px;
+	h3{
+		text-transform: uppercase;
+   	font-weight: 300;
+    color: #D5861E;
+	}
+	a{
+		color: $blue;
+	}
+}
+
 .profile {
 	margin-top:40px;
 	background-color:white;
 	color:$midGreen;
+	
 	
 	.cover-img-wrapper{
 		height: 300px;
