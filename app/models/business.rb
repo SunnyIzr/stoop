@@ -4,6 +4,7 @@ class Business < ActiveRecord::Base
   acts_as_mentionable
   acts_as_followable
   
+  has_many :incentives
   belongs_to :neighborhood
   belongs_to :user
   has_many :posts, as: :account, dependent: :destroy

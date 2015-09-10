@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   acts_as_messageable
   
   has_many :businesses
+  has_many :discount_codes
   
   belongs_to :building
   has_many :posts, as: :account, dependent: :destroy

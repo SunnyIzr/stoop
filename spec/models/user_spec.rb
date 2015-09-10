@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   it { should have_many(:incoming_invites) }
   it { should have_many(:events) }
+  it { should have_many(:discount_codes) }
   it { should have_many(:invited_events) }
   it { should have_attached_file(:avatar) }
   it { should validate_attachment_content_type(:avatar).
