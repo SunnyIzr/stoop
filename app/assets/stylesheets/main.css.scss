@@ -166,7 +166,13 @@ ul.side-nav {
    	font-weight: 300;
     color: #D5861E;
 	}
-	a{
+	a,p{
+		color: $blue;
+	}
+	input{
+		background: none;
+		box-shadow: none;
+		border: none;
 		color: $blue;
 	}
 }

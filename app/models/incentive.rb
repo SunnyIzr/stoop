@@ -1,5 +1,6 @@
 class Incentive < ActiveRecord::Base
   has_many :discount_codes
+  has_many :users, through: :discount_codes
   belongs_to :business
   
   has_attached_file :image,
@@ -13,6 +14,10 @@ class Incentive < ActiveRecord::Base
   
   def copy
     "#{self.discount_type == :percent ? '%' : '$' }#{self.discount} off"
+  end
+  
+  def discount_code(user)
+    self.discount_codes.where(user: user)[0]
   end
   
   def s3_credentials

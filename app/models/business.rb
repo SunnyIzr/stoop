@@ -33,6 +33,10 @@ class Business < ActiveRecord::Base
     self.incentives.where(active: true).last
   end
   
+  def active_discount_code?(user)
+    active_incentive.users.include?(user)
+  end
+  
   def mailboxer_email(object)
     nil
   end
