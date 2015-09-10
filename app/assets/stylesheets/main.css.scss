@@ -34,7 +34,7 @@ header.inner {
 	padding:8px 0px;
 
 	.search-column {
-		margin-top:10px;
+		margin-top:3px;
 
 		.search-field {
 			height:40px;
@@ -45,8 +45,11 @@ header.inner {
 
 		}
 	}
+	.logo{
+		max-width: 70%;
+	}
 	.nav-column {
-		margin-top:10px;
+		margin-top:5px;
 
 		img, a {
 			float:right;

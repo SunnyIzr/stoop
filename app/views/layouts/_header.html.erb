@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-2">
-        <a href='/'><img class="img-responsive" src="<%= asset_path 'header-logo.jpg' %>" alt=""></a>
+        <a href='/'><img class="img-responsive logo" src="<%= asset_path 'header-logo.jpg' %>" alt=""></a>
       </div>
       <div class="col-sm-6 search-column">
         <%= autocomplete_field_tag :search, params[:search], autocomplete_user_first_name_users_path, {class: "search-query search-field empty", placeholder: "&#xF002; ".html_safe, type: "search"} %> 
