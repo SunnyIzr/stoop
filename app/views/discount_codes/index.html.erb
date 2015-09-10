@@ -1,0 +1,27 @@
+<div class='container table-container'>
+  <div class='row'>
+    <h3>My Incentives</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Business</th>
+          <th>Discount</th>
+          <th>Code</th>
+          <th>Expiration</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @discount_codes.each do |dc| %>
+        <tr>
+          <td><%= link_to dc.business.name, business_path(dc.business) %></td>
+          <td><%= dc.incentive.copy %></td>
+          <td><%= dc.code %></td>
+          <td><%= dc.incentive.expiration %></td>
+          <td><%= dc.status %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -20,4 +20,8 @@ class DiscountCodesController < ApplicationController
 
   def update
   end
+  
+  def index
+    @discount_codes = current_user.discount_codes
+  end
 end

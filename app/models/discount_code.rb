@@ -8,4 +8,12 @@ class DiscountCode < ActiveRecord::Base
     DiscountCode.create(user: user, incentive: incentive, code: code )
   end
   
+  def business
+    self.incentive.business
+  end
+  
+  def status
+    self.claimed ? 'Claimed' : 'Unclaimed'
+  end
+  
 end

@@ -56,7 +56,7 @@ Rails.application.routes.draw do
   
   #Incentive and DiscountCode Routes
   resources :incentives, only: [:index,:show,:create,:update]
-  resources :discount_codes, only: [:show,:create,:update]
+  resources :discount_codes, only: [:index,:show,:create,:update]
   
   
   # The priority is based upon order of creation: first created -> highest priority.

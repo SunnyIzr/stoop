@@ -13,7 +13,7 @@ class Incentive < ActiveRecord::Base
   end
   
   def copy
-    "#{self.discount_type == :percent ? '%' : '$' }#{self.discount} off"
+    self.discount_type == 'percent' ? "#{self.discount}% off" : "$#{self.discount} off"
   end
   
   def discount_code(user)
