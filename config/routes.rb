@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   
+  get "incentives/create"
+  get "incentives/show"
+  get "incentives/index"
+  get "discount_codes/create"
+  get "discount_codes/show"
+  get "discount_codes/update"
   devise_for :users
 
   authenticated :user do
@@ -47,6 +53,10 @@ Rails.application.routes.draw do
   
   #Follow Routes
   resources :follows, only: [:create]
+  
+  #Incentive and DiscountCode Routes
+  resources :incentives, only: [:index,:show,:create,:update]
+  resources :discount_codes, only: [:show,:create,:update]
   
   
   # The priority is based upon order of creation: first created -> highest priority.
