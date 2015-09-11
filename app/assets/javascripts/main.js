@@ -8,6 +8,10 @@ $(document).ready(function(){
   $('.editable').editable()
   
   
+  $('.clickable-row').click(function(){
+    window.location.href = $(this).data('target')
+  })
+  
   //Dropzone
   postDropzone = Dropzone.options.newPost = {
     paramName: "post[image]", // The name that will be used to transfer the file

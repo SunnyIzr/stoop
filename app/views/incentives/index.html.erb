@@ -1,0 +1,39 @@
+<div class='container table-container'>
+  <div class='row'>
+    <h3>My Incentives</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Incentive</th>
+          <th>Type</th>
+          <th>Amount</th>
+          <th>Details</th>
+          <th>Expiration</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @incentives.each do |i| %>
+        <tr class='clickable-row' data-target='<%= incentive_path(i)%>'>
+          <td><%= i.copy %></td>
+          <td><%= i.discount_type.capitalize %></td>
+          <td><%= i.discount %></td>
+          <td><%= i.details %></td>
+          <td><%= i.expiration %></td>
+          <td><%= i.status %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div id='newIncentive'>
+  <%= form_for Incentive.new do |f| %>
+  <%= f.select :discount_type, '<option value="percent">Percent</option><option value="cash">Cash</option>'.html_safe, {}, {class: 'form-control' } %>
+  <%= f.number_field :discount, placeholder: "Discount Amount", class: 'form-control' %>
+  <%= f.date_field :expiration, class: 'form-control' %>
+  <%= f.text_field :details, placeholder: "Details on Your Incentive", class: 'form-control' %>
+  <%= f.submit 'Create', class: 'form-control' %>
+  <% end %>
+</div>

@@ -1,0 +1,54 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-sm-4'>
+      <strong>Discount Type:</strong> <a href="#"  data-type="select" data-pk="1" data-value="<%= @incentive.discount_type %>" data-title="Select Type" class='inline-incentive-type' data-url="/incentives/<%=@incentive.id%>" data-object="incentive" data-attribute="discount_type" data-placeholder="Select Discount Type"></a><br>
+      <strong>Amount:</strong> <a data-type="text" class='inline-field' data-url="/incentives/<%= @incentive.id %>" data-object="incentive" data-attribute="discount" data-placeholder="Discount Amount"><%= @incentive.discount %> </a><br>
+      <strong>Expiration:</strong> <a href="#" data-type="date" class='inline-date' data-url="/incentives/<%=@incentive.id%>" data-object="incentive" data-attribute="expiration" data-placeholder="Expiration Date"><%= @incentive.expiration.strftime('%b %d, %Y') %></a><br>
+      <strong>Details:</strong> <a data-type="text" class='inline-field' data-url="/incentives/<%= @incentive.id %>" data-object="incentive" data-attribute="details" data-placeholder="Discount Details"><%= @incentive.details %> </a><br>
+      <% if @incentive.active %>
+        <%= form_for @incentive do |f| %>
+          <%= f.hidden_field :active, value: 'false' %>
+          <%= f.submit 'Make Inactive' %>
+        <% end %>
+      <% else %>
+        <%= form_for @incentive do |f| %>
+          <%= f.hidden_field :active, value: 'true' %>
+          <%= f.submit 'Activate' %>
+        <% end %>
+      <% end %>
+      <%= link_to 'Back to My Incentives', incentives_path %>
+    </div>
+  
+    <div class='col-sm-8'>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Discount</th>
+            <th>Code</th>
+            <th>Expiration</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @incentive.discount_codes.each do |dc| %>
+          <tr>
+            <td><%= link_to dc.user.name, user_path(dc.user) %></td>
+            <td><%= dc.incentive.copy %></td>
+            <td><%= dc.code %></td>
+            <td><%= dc.incentive.expiration %></td>
+            <td><% if dc.claimed %>
+                  Claimed
+                <% else %>
+                  <%= form_for dc do |f| %>
+                    <%= f.hidden_field :claimed, value: 'true' %>
+                    <%= f.submit 'CLAIM' %>
+                  <% end %>
+                <% end %>
+           </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+</div>

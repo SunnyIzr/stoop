@@ -20,6 +20,14 @@ class Incentive < ActiveRecord::Base
     self.discount_codes.where(user: user)[0]
   end
   
+  def status
+    if self.expiration < Time.new
+      'Expired'
+    else
+      self.active ? 'Active' : 'Inactive'
+    end
+  end
+  
   def s3_credentials
     {:bucket => ENV['BUCKET'], :access_key_id => ENV['ACCESS_KEY_ID'], :secret_access_key => ENV['SECRET_ACCESS_KEY']}
   end
