@@ -28,6 +28,10 @@ class BusinessesController < ApplicationController
     end
   end
   
+  def index
+    @businesses = Business.all
+  end
+  
   private
   def business_params
     params.require(:business).permit(:name,:neighborhood_id,:contact,:established,:industry,:about,:avatar,:cover)

@@ -3,7 +3,7 @@
   <% unless current_user.business? %>
     <li><a href="#" style='cursor:not-allowed;'>Events</a></li>
     <li><%= link_to 'Messages', conversations_path %></li>
-    <li><a href="#" style='cursor:not-allowed;'>Small Business Listings</a></li>
+    <li><%= link_to 'Small Business Listings', businesses_path %></li>
     <li><%= link_to 'My Incentives', discount_codes_path %></li>
     <% else %>
     <li><%= link_to 'My Incentives', incentives_path %></li>

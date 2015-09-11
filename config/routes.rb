@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end  
   
   #Business Routes
-  resources :businesses, only: [:show, :update]  
+  resources :businesses, only: [:index, :show, :update]  
   
   #Events Routes
   get '/events' => 'events#index', as: :events
