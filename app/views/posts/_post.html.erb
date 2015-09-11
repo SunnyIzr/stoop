@@ -1,3 +1,4 @@
+<% account_type = current_user.business? ? 'Business' : 'User'%>
 <div class='post <%= post.id.nil? ? "hide" : "post-id-#{post.id}" %>'>
   <div class="post-area">
     <div class="row">

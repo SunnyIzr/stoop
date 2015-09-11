@@ -52,7 +52,7 @@
       <div class='posts'>
         <% @posts.each do |post| %>
         
-        <%= render partial: 'posts/post', locals: {post: post, account_type: 'User'} %>
+        <%= render partial: 'posts/post', locals: {post: post } %>
         
         <% end %>
       </div>
@@ -132,7 +132,7 @@
 <%= render partial: 'messages/new' %>
 
 <!-- HIDDEN SKELETON ELEMENTS: POST, COMMENT, NEW COMMENT FORM -->
-<%= render partial: 'posts/post', locals: {post: Post.new, account_type: 'User'} %>
+<%= render partial: 'posts/post', locals: {post: Post.new } %>
 
 <%= render partial: 'comment', locals: {comment: Comment.new} %>
 
