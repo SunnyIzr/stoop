@@ -19,7 +19,7 @@
     </div>
     
     
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'newUser' }) do |f| %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'hide newUser' }) do |f| %>
       
       <div class="column-left">
 
@@ -37,7 +37,7 @@
         <div class='form-group'>
           <%= f.select :building_id, building_options, {}, { class: 'form-control chosen-it'} %>
         </div>
-        <input type="text" placeholder="Phone Number">
+        <%= text_field_tag 'contact[phone]', nil, placeholder: 'Phone Number' %>
 
         <!--NOTE: only call this on an error-->
         <div id="warning hide">
@@ -56,12 +56,11 @@
     <% end %>
     
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'hide newBusiness' }) do |f| %>
+      <%= f.fields_for :businesses do |business_form| %>
       
       <div class="column-left">
-        <%= f.fields_for :businesses do |business_form| %>
-          <%= business_form.text_field :name, placeholder: 'Business Name*' %>
-          <%= business_form.text_field :industry, placeholder: 'Industry*' %>
-        <% end %>
+        <%= business_form.text_field :name, placeholder: 'Business Name*' %>
+        <%= business_form.text_field :industry, placeholder: 'Industry*' %>
         <%= f.email_field :email, placeholder: 'Email*' %>
         <%= f.password_field :password, placeholder: 'Password*' %>
         <%= f.password_field :password_confirmation, placeholder: 'Confirm Password*' %>
@@ -69,12 +68,12 @@
 
       <div class="column-right">
         <div class='form-group'>
-          <%= select_tag :neighborhood, neighborhood_options, style: 'margin-top: 50px;', class: 'form-control chosen-it' %>
+          <%= business_form.select :neighborhood_id, neighborhood_options, {}, {style: 'margin-top: 50px;', class: 'form-control chosen-it'} %>
+          <%= text_field_tag 'contact[address1]', nil, placeholder: 'Address1*' %>
+          <%= text_field_tag 'contact[address2]', nil, placeholder: 'Address2*' %>
+          <%= text_field_tag 'contact[city]', nil, placeholder: 'City*' %>
+          <%= text_field_tag 'contact[phone]', nil, placeholder: 'Phone*' %>
         </div>
-        <div class='form-group'>
-          
-        </div>
-        <input type="text" placeholder="Phone Number">
 
         <!--NOTE: only call this on an error-->
         <div id="warning hide">
@@ -92,6 +91,7 @@
     
 
     
+      <% end %>
     <% end %>
 
   </div>
