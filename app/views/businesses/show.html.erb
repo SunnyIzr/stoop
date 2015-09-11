@@ -1,9 +1,10 @@
-<% unless current_user.business? %>
+<% unless current_user.business? || @business.active_incentive.nil? %>
 <div class='container'>
   <div class='row incentive-wrapper'>
     <h3><strong><%= @business.active_incentive.copy%></strong> <%= @business.name%></h3>
     <% if @business.active_discount_code?(current_user) %>
-      <p>Your Code: <%= @business.active_incentive.discount_code(current_user).code %></p>
+      <p>Your Code: <%= @business.active_incentive.discount_code(current_user).code %><br>
+      <%= link_to 'View All Discount Codes', discount_codes_path %></p>
     <% else %>
       <%= form_for DiscountCode.new do |f| %>
         <%= hidden_field_tag :business_id, @business.id %>

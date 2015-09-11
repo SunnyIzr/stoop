@@ -786,9 +786,37 @@ background-color:$midGreen;
 
 .table-container{
 	background: #fff;
-	min-height: 100%;
+	min-height: 600px;
+	a.back-link{
+		padding-top: 10px;
+		display: block;
+	}
 	h3{
 		text-align: center;
 		padding-bottom: 25px;
+		color: $blue;
+	}
+	.col-sm-8 h3,
+	.col-sm-4 h3{
+		text-align: left;
+	}
+	.col-sm-4{
+		min-height: 600px;
+		border-right: 1px solid $lightBlue;
+	}
+	.btn-primary{
+		border-radius: 0;
+		border: none;
+		background: $orange;
+	}
+}
+#newIncentive{
+	.form-control{
+		border-radius: 0;
+	}
+	.btn-primary{
+		border-radius: 0;
+		background: $orange;
+		border: none;
 	}
 }

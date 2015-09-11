@@ -17,7 +17,7 @@
           <td><%= link_to dc.business.name, business_path(dc.business) %></td>
           <td><%= dc.incentive.copy %></td>
           <td><%= dc.code %></td>
-          <td><%= dc.incentive.expiration %></td>
+          <td><%= dc.incentive.expiration.nil? ? 'Never' : dc.incentive.expiration %></td>
           <td><%= dc.status %></td>
         </tr>
         <% end %>
