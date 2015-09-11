@@ -30,7 +30,7 @@ class Business < ActiveRecord::Base
   end
   
   def active_incentive
-    self.incentives.where(active: true).last
+    self.incentives.where(active: true).select{ |i| !i.expired? }.last
   end
   
   def active_discount_code?(user)

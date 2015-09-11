@@ -1,6 +1,8 @@
 class IncentivesController < ApplicationController
   def create
-    incentive = Incentive.create(incentive_params)
+    updated_params = incentive_params
+    updated_params[:business_id] = current_user.business.id
+    incentive = Incentive.new(updated_params)
     incentive.business = current_user.business
     if incentive.save
       respond_to do |format|
@@ -19,7 +21,7 @@ class IncentivesController < ApplicationController
   end
 
   def index
-    @incentives = current_user.business.incentives
+    @incentives = current_user.business.incentives.sort.reverse
   end
   
   def update
