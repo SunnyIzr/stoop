@@ -8,6 +8,7 @@
           <th>Type</th>
           <th>Amount</th>
           <th>Details</th>
+          <th>Issued</th>
           <th>Expiration</th>
           <th>Status</th>
         </tr>
@@ -19,6 +20,7 @@
           <td><%= i.discount_type.capitalize %></td>
           <td><%= i.discount %></td>
           <td><%= i.details %></td>
+          <td><%= i.discount_codes.size %></td>
           <td><%= i.expiration %></td>
           <td><%= i.status %></td>
         </tr>

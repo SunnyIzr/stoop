@@ -784,6 +784,7 @@ background-color:$midGreen;
 }
 
 
+//Incentives Styling
 .table-container{
 	background: #fff;
 	min-height: 600px;
@@ -795,6 +796,9 @@ background-color:$midGreen;
 		text-align: center;
 		padding-bottom: 25px;
 		color: $blue;
+	}
+	.editable-input{
+		width: auto;
 	}
 	.col-sm-8 h3,
 	.col-sm-4 h3{
