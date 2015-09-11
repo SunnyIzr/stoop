@@ -10,15 +10,17 @@ class User < ActiveRecord::Base
   acts_as_followable
   acts_as_messageable
   
-  has_many :businesses
+  
+  has_many :businesses, dependent: :destroy
+  accepts_nested_attributes_for :businesses
   has_many :discount_codes
   
   belongs_to :building
   has_many :posts, as: :account, dependent: :destroy
   
-  has_many :events, class_name: 'Event', foreign_key: 'creator_id', dependent: :destroy
-  has_many :incoming_invites, class_name: 'Invite', foreign_key: 'attendee_id', dependent: :destroy
-  has_many :invited_events, through: :incoming_invites, class_name: 'Event', foreign_key: 'attendee_id', dependent: :destroy
+  has_many :events, class_name: 'Event', foreign_key: 'creator_id'
+  has_many :incoming_invites, class_name: 'Invite', foreign_key: 'attendee_id'
+  has_many :invited_events, through: :incoming_invites, class_name: 'Event', foreign_key: 'attendee_id'
   
   serialize :contact, Hash
   

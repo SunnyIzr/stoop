@@ -1,12 +1,5 @@
 Rails.application.routes.draw do
-  
-  get "incentives/create"
-  get "incentives/show"
-  get "incentives/index"
-  get "discount_codes/create"
-  get "discount_codes/show"
-  get "discount_codes/update"
-  devise_for :users
+  devise_for :users, controllers: { registrations: "users/registrations" }
 
   authenticated :user do
     root to: 'users#feed', as: :authenticated_root
