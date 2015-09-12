@@ -22,7 +22,7 @@
     </div>
   <% end %>
   <div class="row">
-    <%= form_tag reply_conversation_path(@conversation), method: :post do %>
+    <%= form_tag reply_conversation_path(@conversation), method: :post, remote: true do %>
       <%= text_area_tag 'body', nil, cols: 3, class: 'msg-text-area', placeholder: 'Write a reply', required: true %>
       <div class="msg-control-bar">
         <i class="fa fa-camera"></i>
