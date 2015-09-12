@@ -3,12 +3,20 @@ class UsersController < ApplicationController
   autocomplete :user, :first_name, full: true, extra_data: [:id, :first_name, :last_name,:avatar_file_name,:avatar_content_type], display_value: :avatar
   
   def feed
-    @posts = Post.paginate(page: params[:page], per_page: 5).order('created_at DESC')
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    @posts = Post.where(neighborhood_id: current_user.neighborhood.id).paginate(page: params[:page], per_page: 5).order('created_at DESC')  
+  end
   
+  def filtered_feed
+    if params[:filter] == 'building'
+      @posts = Post.where(building_id: current_user.building.id).paginate(page: params[:page], per_page: 5).order('created_at DESC')
+    elsif params[:filter] == 'neighborhood'
+      @posts = Post.where(neighborhood_id: current_user.neighborhood.id).paginate(page: params[:page], per_page: 5).order('created_at DESC')  
+    end
+    @filter = params[:filter]
+    respond_to do |format|
+      format.html { render 'feed' }
+      format.js { render 'building_feed' }
+    end
   end
   
   def show

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     root to: 'users#feed', as: :authenticated_root
   end
   
+  get '/feed/:filter' => 'users#filtered_feed'
+  
   #Static Pages Routes
   root to: 'static_pages#index'
   get '/financial-district' => 'static_pages#financial_district'

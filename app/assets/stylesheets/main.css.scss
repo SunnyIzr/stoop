@@ -596,6 +596,16 @@ a.add-to-fav {
 		font-weight:normal;
 	}
 }
+.building-neighborhood-bar.building{
+	a:nth-child(1){
+		color: white;
+	}
+}
+.building-neighborhood-bar.neighborhood{
+	a:nth-child(2){
+		color: white;
+	}
+}
 
 .search-field {
 	height:40px;
