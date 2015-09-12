@@ -5,8 +5,11 @@ class PostsController < ApplicationController
     post = Post.create(post_params)
     if params[:account_type] == 'User'
       post.account = current_user
+      post.neighborhood = current_user.neighborhood
+      post.building = current_user.building
     else
       post.account = current_user.business
+      post.neighborhood = current_user.business.neighborhood
     end
     if post.save
       @data = post.data(current_user)
