@@ -1,5 +1,5 @@
 <% recipient = (conversation.participants - [current_user]).first %>
-<a class='conversation-preview' href='<%= conversation_path(conversation) %>'>
+<a class='conversation-preview loadScript' href='<%= conversation_path(conversation) %>'>
   <div class="col-xs-12 conversation-link conversation-id-<%=conversation.id%> <%= "recent-chat-active" if @conversation == conversation %>">
     <div class="row">
       <div class="col-xs-4">

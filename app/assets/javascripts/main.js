@@ -7,6 +7,13 @@ $(document).ready(function(){
   
   $('.editable').editable()
   
+  $(document).on('click', 'a.loadScript', function(e){
+    e.preventDefault();
+    $.getScript(this.href,function(res){
+      res
+    })
+  })
+  
   
   $('.clickable-row').click(function(){
     window.location.href = $(this).data('target')
