@@ -15,16 +15,23 @@ class ConversationsController < ApplicationController
     # end
 
     # @conversations = @conversations.paginate(page: params[:page], per_page: 10)
+    respond_to do |format|
+      format.html { redirect_to conversation_path(current_user.mailbox.conversations.first) }
+      format.js
+    end
     
-    redirect_to conversation_path(current_user.mailbox.conversations.first)
-  
   end
 
   def show
+    @conversations = current_user.mailbox.conversations.paginate(page: params[:page], per_page: 5)
     @recipient = (@conversation.participants - [current_user]).first
     respond_to do |format|
       format.html
-      format.js
+      if params[:page].nil?
+        format.js
+      else
+        format.js {render 'show_conversations_preview'}
+      end
     end
   end
   

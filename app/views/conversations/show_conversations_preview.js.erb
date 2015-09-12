@@ -1,0 +1,7 @@
+$('.conversations').append("<%= j render @conversations %>");
+<% if @conversations.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate @conversations %>');
+<% else %>
+  $(window).off('scroll');
+  $('.pagination').remove();
+<% end %>

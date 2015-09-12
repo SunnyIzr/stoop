@@ -3,22 +3,12 @@
   <div class="col-xs-12 hide">
     <input type="text" class="search-field empty" id="iconified" placeholder="&#xF002; " style="font-family:Arial, FontAwesome; font-size:20px;">
   </div>
-  <div class='chat-conversations'>
-    <% @current_user.mailbox.conversations.limit(10).each do |conversation| %>
-    <% recipient = (conversation.participants - [current_user]).first %>
-      <a class='conversation-preview' href='<%= conversation_path(conversation) %>'>
-        <div class="col-xs-12 conversation-link conversation-id-<%=conversation.id%> <%= "recent-chat-active" if @conversation == conversation %>">
-          <div class="row">
-            <div class="col-xs-4">
-              <img class="img-responsive" src="<%= recipient.avatar %>" alt="<%= recipient.first_name %>">
-            </div>
-            <div class="col-xs-8">
-              <h4 class="chat-name"><%= recipient.name %></h4>
-              <span class="chat"><%= conversation.messages.last.body.truncate(60) %></span>
-            </div>
-          </div>
-        </div>
-      </a>
+  <div class='conversations'>
+    <% @conversations.each do |conversation| %>
+      <%= render partial: 'mailboxer/conversations/conversation', locals: {conversation: conversation} %>
     <% end %>
+  </div>
+  <div id="infinite-scrolling">
+    <%= will_paginate @conversations %>
   </div>
 </div>
