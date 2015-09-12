@@ -1,0 +1,3 @@
+$('#conversation').html("<%= j (render 'show') %>")
+$('.conversation-link').removeClass('recent-chat-active')
+$('.conversation-id-<%=@conversation.id%>').addClass('recent-chat-active')

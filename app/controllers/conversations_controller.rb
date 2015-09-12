@@ -22,6 +22,10 @@ class ConversationsController < ApplicationController
 
   def show
     @recipient = (@conversation.participants - [current_user]).first
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
   
   def reply
