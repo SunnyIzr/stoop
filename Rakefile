@@ -40,17 +40,22 @@ end
 desc 'Seed Database with Events'
 task 'db:seed_events' => :environment do
   puts "Now seeding database with 10 events..."
+  topics = %w[animals cars nature cities]
   10.times do |i|
+    n = [*0..39].sample
     Faker::Config.locale = 'en-US'
     e = Event.new
-    e.creator_id = User.all[i].id
-    e.name = "Event #{i}"
+    e.creator_id = User.all[n].id
+    e.name = Faker::Company.bs.titleize
     e.event_type = 'social'
-    ids = [*0..9] - [i]
-    ids.shuffle!
-    5.times { e.attendees << User.all[ids.pop] }
+    e.start_time
+    address = Faker::Address.new
+    e.location = JSON.load(open('https://randomuser.me/api/'))['results'][0]['user']['location']
+    5.times { e.attendees << User.all.sample }
+    suckr = ImageSuckr::GoogleSuckr.new
+    e.cover = suckr.get_image_url({'q' => topics.sample, 'imgsz' => 'xxlarge' })
     e.save
-    puts "Evebt#{i+1} of 10 complete!"
+    puts "Event#{i+1} of 10 complete!"
   end
 end
 
@@ -145,7 +150,6 @@ task 'db:businesses' => :environment do
   Business.create(name: 'Owen',neighborhood: Neighborhood.all[1] ,contact: { street: '809 Washington Street', city: 'New York', state: 'NY', phone: '2125249770', website: 'http://www.owennyc.com'}, user: User.all[-6] , established: Date.new(2001,2,15), industry: 'Retail' , avatar: 'https://scontent-iad3-1.xx.fbcdn.net/hphotos-xpf1/v/t1.0-9/11168577_855059877896881_3419238358207629570_n.jpg?oh=f11d8c443ecd31f8c22f2c3ac1adde7c&oe=56A28E15', cover: 'https://scontent-iad3-1.xx.fbcdn.net/hphotos-xpa1/v/t1.0-9/935157_606905642712307_566782075_n.jpg?oh=452d42c02e511fc32efd3d5019a64643&oe=56A484AB')
   
 end
-
 
 
 
