@@ -24,12 +24,17 @@ class Event < ActiveRecord::Base
   end
   
   def confirmed_guests
+    self.invites.where(accepted: true).map{ |i| i.attendee }
   end
   
   def declined_guests
   end
   
   def unconfirmed_guests
+  end
+  
+  def coords
+    Geocoder.coordinates(self.location['street'] + ', ' + self.location['city'] +', ' + self.location['state'] + ', US')
   end
   
   def s3_credentials

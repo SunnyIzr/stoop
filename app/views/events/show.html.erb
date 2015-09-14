@@ -1,1 +1,98 @@
-Show Event - (<%= @event.name %>)
+<div class="container profile">
+  <div class="row">
+    <div class='cover-img-wrapper'>
+      
+      <% if false %>
+          
+          <div class='overlay'></div>
+          <img id='cover_pic' class="img-responsive cover-pic" data-user-id='<%= @business.id %>' src="<%= @business.cover %>" alt="">
+          <%= form_for @business, html: {id: 'new_cover_pic', class: 'dropzone new-cover-pic-form'} do |f| %>
+            <%= f.file_field :image, class: 'hide' %>
+          <% end %>
+          
+      <% else %>
+        
+        <img class="img-responsive" src="<%= @event.cover %>" alt="">
+        
+      <% end %>
+      
+    </div>
+    
+    <div class="col-xs-9">
+      <% if false %>
+        <p><a data-type="textarea" data-cols='30' class='<%= @editable ? "inline-field" : "uneditable" %> about-section' data-url="/businesses/<%= @business.id %>" data-object="business" data-attribute="about" data-placeholder="First Name"><%= @business.about %></a></p>
+      <% end %>
+      
+    </div>
+  </div>
+</div>
+
+
+<div class="container after-profile">
+  <div class="row">
+    <div class="col-sm-8">
+            
+      <div class="info-box events-info">
+        <h3>Hosting</h3>
+        <p><%= link_to @event.creator.name, user_path(@creator) %></p>
+        
+        <h3>Location</h3>
+        <p><%= @event.location['street'].titleize + ', ' + @event.location['city'].titleize + ', ' + @event.location['state'].titleize %></p>
+
+        <h3>Time</h3>
+        <p><%= @event.date + ' at ' + @event.time %></p>
+        
+        <h3>About</h3>
+        <p><%= @event.about %></p>
+        
+      </div>
+      
+      <div class="info-box">
+        <h3>Attending</h3>
+        <div class="row">
+          <% @event.confirmed_guests.sample(8).each do |user| %>
+          <div class="col-xs-3">
+            <a href='<%= user_path(user) %>'><img class="img-responsive" src="<%= user.avatar %>" alt=""></a>
+          </div>
+          <% end %>
+        </div>
+      </div>
+      
+      <div class="info-box">
+        <h3>Invited</h3>
+        <div class="row">
+          <% @event.attendees.sample(8).each do |user| %>
+          <div class="col-xs-3">
+            <a href='<%= user_path(user) %>'><img class="img-responsive" src="<%= user.avatar %>" alt=""></a>
+          </div>
+          <% end %>
+        </div>
+      </div>
+      
+
+    </div>
+    <div class="col-sm-4 side-bar-margin">
+      
+      <div class='side-nav'>
+        
+        <ul class="side-nav">
+          <li>
+            <a href='#'>Attend</a>
+          </li>
+      </ul>
+        
+      </div>
+      
+      <div id="map-container">
+        <div id="map-canvas" data-lat='<%= @coords[0] %>' data-lng='<%= @coords[1] %>'></div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&sensor=true"></script>
+<script>
+  GoogleMaps.init()
+</script>

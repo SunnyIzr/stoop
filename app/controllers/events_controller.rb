@@ -7,6 +7,8 @@ class EventsController < ApplicationController
   
   def show
     @event = Event.find(params[:id])
+    @coords = @event.coords
+    @editable = @event.creator == current_user
     if @event.creator == current_user
       render 'edit'
     else
