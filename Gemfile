@@ -80,6 +80,8 @@ gem 'jquery-turbolinks'
 
 gem 'dropzonejs-rails'
 
+gem 'geocoder'
+
 group :test, :development do
   gem 'rspec-mocks'
   gem 'rspec-rails'

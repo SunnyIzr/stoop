@@ -4,6 +4,7 @@ class BusinessesController < ApplicationController
   def show
     @business = Business.find(params[:id])
     @posts = @business.posts.paginate(page: params[:page], per_page: 5).order('created_at DESC')
+    @coords = @business.coords
     if @business.user == current_user
       @editable = true
     else

@@ -25,6 +25,10 @@ class Business < ActiveRecord::Base
   
   validates_attachment_content_type :cover, :content_type => /\Aimage\/.*\Z/   
   
+  def coords
+    Geocoder.coordinates(self.contact[:street]+', '+self.contact[:city]+', '+self.contact[:state]+', US')
+  end
+  
   def business?
     true
   end

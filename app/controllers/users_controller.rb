@@ -22,6 +22,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.paginate(page: params[:page], per_page: 5).order('created_at DESC')
+    @coords = @user.building.coords
     if @user == current_user
       @editable = true
     else
