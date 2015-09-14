@@ -3,7 +3,7 @@
   <%= hidden_field_tag :account_type, account_type %>
   <div class="control-bar">
     <a class='post-types imgPost' href='#'><i class="fa fa-camera"></i></a>
-    <a class='post-types' href='#'><i class="fa fa-map-marker"></i></a>
+    <a class='post-types' href='#'><i class="hide fa fa-map-marker"></i></a>
     <%= f.submit 'POST', class: 'post' %>
   </div>
 <% end %>
@@ -15,7 +15,7 @@
   <%= f.file_field :image, class: 'hide' %>
   <div class="control-bar">
     <a class='post-types imgPost active' href='#'><i class="fa fa-camera"></i></a>
-    <a class='post-types' href='#'><i class="fa fa-map-marker"></i></a>
+    <a class='post-types' href='#'><i class="hide fa fa-map-marker"></i></a>
     <button id='submit-image-post' class='post'>Post</button>
   </div>
 <% end %>
