@@ -80,10 +80,8 @@
       </div>
       
       <div id="map-container">
-        <div id="map-canvas"></div>
+        <div id="map-canvas" data-lat='40.917828' data-lng='-74.310185'></div>
       </div>
-      
-      <img class="img-responsive map" src="<%= asset_path 'map.jpg' %>" alt="Map">
 
       <div class="info-box">
         <h3>Following</h3>
@@ -137,3 +135,8 @@
 <%= render partial: 'comment', locals: {comment: Comment.new} %>
 
 <%= render partial: 'comment_field', locals: {comment: Comment.new, account_type: 'User'} %>
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&sensor=true"></script>
+<script>
+  GoogleMaps.init()
+</script>
