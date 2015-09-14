@@ -48,7 +48,8 @@ task 'db:seed_events' => :environment do
     e.creator_id = User.all[n].id
     e.name = Faker::Company.bs.titleize
     e.event_type = 'social'
-    e.start_time
+    e.start_time = Time.new
+    e.about = Faker::Lorem.paragraph(12)
     address = Faker::Address.new
     e.location = JSON.load(open('https://randomuser.me/api/'))['results'][0]['user']['location']
     5.times { e.attendees << User.all.sample }

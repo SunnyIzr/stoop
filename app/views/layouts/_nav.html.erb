@@ -1,7 +1,7 @@
 <ul class="side-nav">
   <li><%= link_to 'Feed', root_path %></li>
   <% unless current_user.business? %>
-    <li><a href="#" style='cursor:not-allowed;'>Events</a></li>
+    <li><%= link_to 'Events', events_path %></li>
     <li><%= link_to 'Messages', conversations_path %></li>
     <li><%= link_to 'Small Business Listings', businesses_path %></li>
     <li><%= link_to 'My Incentives', discount_codes_path %></li>

@@ -1,19 +1,22 @@
-.event_profile{
-margin:20px 0px;
-padding:0px;
-background:url(../images/EVENT-I.jpg) no-repeat left top;
-float:left;
-z-index:999;
+.event{
+  margin:20px 0px;
+  padding:0px;
+  float:left;
+  position: relative;
+  height: 315px;
+  overflow: hidden;
+  img{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+  .event-content{
+    position: relative;
+    z-index: 1;
+  }
 }
-
-.event_profile2{
-margin:20px 0px;
-padding:0px;
-background:url(../images/EVENT-II.jpg) no-repeat left top;
-float:left;
-}
-
-.short_by{
+.sort_by{
   color:#345064;
   font-size:12px;
   float:left;
@@ -23,17 +26,17 @@ float:left;
   width:100%;
   clear:both;
 }
-.short_by a{
+.sort_by a{
   color:#345064;
 }
 .event_name {
   background: #ffffff none repeat scroll 0 0;
   color: #345064;
   float: left;
-  font-size: 25px;
+  font-size: 20px;
   margin: 15px;
-  padding: 5px 0 5px 20px;
-  width: 245px;
+  padding: 5px 20px;
+  width: 300px;
 }
 .event_dis {
   background: #ffffff none repeat scroll 0 0;
@@ -41,8 +44,8 @@ float:left;
   float: left;
   font-size: 30px;
   margin: 0 0 15px 15px;
-  padding: 5px 0 0 20px;
-  width: 245px;
+  padding: 5px 20px 0;
+  width: 300px;
 }
 
 .event_dis h2{
@@ -70,7 +73,7 @@ float:left;
 }
 
 .attend{
-  margin:32% 15px 15px 0px;
+  margin:28% 15px 15px 0px;
   padding:5px 0px;
   width:100px;
   float:right;
@@ -82,42 +85,43 @@ float:left;
 .info-box2 {
   padding: 5px 15px;
   background-color: #dfeced;
-  margin-bottom: 30px; }
-  .info-box2 h3 {
-    color: #abcdcf;
+  margin-top: 30px;
+  margin-bottom: 30px; 
+}
+.info-box2 h3 {
+  color: #abcdcf;
   font-size:20px;
-    border-bottom: 2px solid #26474a;
-    margin: 0px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    display: inline-block; }
-  .info-box2 img {
-    margin: 15px 0px; }
+  border-bottom: 2px solid #26474a;
+  margin: 0px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: inline-block; 
+}
+.info-box2 img {
+  margin: 15px 0px; 
+}
 @media only screen 
-  and (min-width: 320px) 
-  and (max-width: 480px) {
-.event_name {
-  background: #ffffff none repeat scroll 0 0;
-  color: #345064;
-  float: left;
-  font-size: 25px;
-  margin: 15px;
-  padding: 5px 0 5px 20px;
-  width: 88%;
-}
-.event_dis {
-  background: #ffffff none repeat scroll 0 0;
-  clear: both;
-  float: left;
-  font-size: 30px;
-  margin: 0 0 15px 15px;
-  padding: 5px 0 0 20px;
-  width: 88%;
-}
-.attend {
-  margin: 4% 15px 15px 0;
-}
-}
-.settings {
-    margin: 10px 0 0;
+and (min-width: 320px) 
+and (max-width: 480px) {
+  .event_name {
+    background: #ffffff none repeat scroll 0 0;
+    color: #345064;
+    float: left;
+    font-size: 25px;
+    margin: 15px;
+    padding: 5px 0 5px 20px;
+    width: 88%;
+  }
+  .event_dis {
+    background: #ffffff none repeat scroll 0 0;
+    clear: both;
+    float: left;
+    font-size: 30px;
+    margin: 0 0 15px 15px;
+    padding: 5px 0 0 20px;
+    width: 88%;
+  }
+  .attend {
+    margin: 4% 15px 15px 0;
+  }
 }

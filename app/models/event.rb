@@ -15,6 +15,14 @@ class Event < ActiveRecord::Base
   include PublicActivity::Model
   tracked 
   
+  def date
+    self.start_time.strftime('%b %d')
+  end
+  
+  def time
+    self.start_time.strftime('%l:%M %p')
+  end
+  
   def confirmed_guests
   end
   

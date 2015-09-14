@@ -1,53 +1,68 @@
 <div class="container">
   <div class="row">
     
-    <div class="col-sm-4 col-sm-push-8">
+    <div class="col-sm-8">
+      
+      <div class="col-xs-12 building-neighborhood-bar"> <a href="#" class="active" >CREATE EVENT</a></div>
+      
+      <div class='events'>
+        <% @events.each do |event| %>
+        <div class="col-xs-12 col-sm-12 event">
+          <img src='<%= event.cover %>'>
+          <div class='event-content'>
+          
+            <div class="event_name"><%= event.name %></div>
+            <div class="event_dis">
+              <h2><%= event.date %></h2>
+              <span><%= event.location['street'].upcase %></span>
+              <p><%= event.about.truncate(100) %></p>
+              <span>+ Read More</span>
+            </div>
+            <div class="attend">Attend</div>
+          
+          </div>
+        </div>
+        
+        <% end %>
+        
+      </div>
+        
+    </div>
+    
+    <div class="col-sm-4">
       <%= render partial: 'layouts/nav' %>
-    </div>
-
-  </div>
-</div>
-
-
-
-
-
-<div class='container'>
-  <div class="col-xs-12 col-sm-8">
-    <div class="short_by"><a href="#">Short By</a></div>
-    
-    <div class="col-xs-12 col-sm-12 event_profile">
-      <div class="event_name"><strong>Event</strong> Name</div>
-      <div class="event_dis">
-        <h2>DATE & TIME</h2>
-        <span>LOCATION</span>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,  eiusmod tempor incididunt ut labore eiusmod           tempor incididunt ut labore et dolore </p>
-        <span>+ Read More</span>
+      
+      <div class="info-box2">
+        <h3>EVENTS I’M ATTENDING</h3>
+        
+        <div class="row">
+          <div class="col-xs-4">
+            <img class="img-responsive" src="<%= asset_path 'drew.jpg' %>" alt="">
+          </div>
+          <div class="col-xs-4">
+            <img class="img-responsive" src="<%= asset_path 'lior.jpg' %>" alt="">
+          </div>
+          <div class="col-xs-4">
+            <img class="img-responsive" src="<%= asset_path 'sadie.jpg' %>" alt="">
+          </div>
+          <div class="col-xs-4">
+            <img class="img-responsive" src="<%= asset_path 'syd.jpg' %>" alt="">
+          </div>
+          <div class="col-xs-4">
+            <img class="img-responsive" src="<%= asset_path 'sadie.jpg' %>" alt="">
+          </div>
+          <div class="col-xs-4">
+            <img class="img-responsive" src="<%= asset_path 'drew.jpg' %>" alt="">
+          </div>
+        </div>
+        
       </div>
-      <div class="attend">Attend</div>
     </div>
-    
-    <div class="col-xs-12 col-sm-12 event_profile2">
-      <div class="event_name"><strong>Event</strong> Name</div>
-      <div class="event_dis">
-        <h2>DATE & TIME</h2>
-        <span>LOCATION</span>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,  eiusmod tempor incididunt ut labore eiusmod           tempor incididunt ut labore et dolore </p>
-        <span>+ Read More</span>
-      </div>
-      <div class="attend">Attend</div>
-    </div>
-    
-    <div class="col-xs-12 col-sm-12 event_profile">
-      <div class="event_name"><strong>Event</strong> Name</div>
-      <div class="event_dis">
-        <h2>DATE & TIME</h2>
-        <span>LOCATION</span>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,  eiusmod tempor incididunt ut labore eiusmod           tempor incididunt ut labore et dolore </p>
-        <span>+ Read More</span>
-      </div>
-      <div class="attend">Attend</div>
-    </div>                     
     
   </div>
-</div>
+
+</di/21v>
+
+
+
+
