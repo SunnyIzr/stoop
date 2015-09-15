@@ -22,8 +22,15 @@ class EventsController < ApplicationController
   
   def update
     @event = Event.find(params[:id])
+    unless event_params[:location].nil?
+      location = @event.location
+      location[event_params[:location].first[0]] = event_params[:location].first[1]
+      @event.update(location: location)
+    else
+      @event.update!(event_params)
+    end
     if @event.creator == current_user
-      if @event.update!(event_params)
+      if @event.save
         respond_to do |format|
           format.json{ render json: @event }
           format.html{ redirect_to @event }
@@ -40,6 +47,13 @@ class EventsController < ApplicationController
   def update_time
     @event = Event.find(params[:id])
     updates = {}
+    unless params[:event][:start_time].nil?
+      updates[:hour] = @event.start_time.hour
+      updates[:min] = @event.start_time.min
+      updates[:day] = Date.parse(params[:event][:start_time]).day
+      updates[:month] = Date.parse(params[:event][:start_time]).month
+      updates[:year] = Date.parse(params[:event][:start_time]).year
+    end
     unless params[:event][:hour].nil?
       updates[:hour] = DatetimeHelper.hour(@event.start_time.strftime('%P'), params[:event][:hour])
     end
@@ -69,7 +83,7 @@ class EventsController < ApplicationController
   
   private
   def event_params
-    params.require(:event).permit(:name,:event_type,:start_time,:creator_id,:location,:cover)
+    params.require(:event).permit(:name,:about,:event_type,:start_time,:creator_id,:cover,:location =>[:street,:city,:state])
   end
   
 end

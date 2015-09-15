@@ -31,11 +31,11 @@
         <p><%= link_to @event.creator.name, user_path(@creator) %></p>
         
         <h3>Location</h3>
-        <p><%= @event.location['street'].titleize + ', ' + @event.location['city'].titleize + ', ' + @event.location['state'].titleize %></p>
+        <p><a data-type="text" class='<%= @editable ? "inline-field" : "uneditable" %> about-section' data-url="/events/<%= @event.id %>" data-object="event" data-attribute="location[street]" data-placeholder="Street"><%= @event.location['street'].titleize %></a>, <a data-type="text" class='<%= @editable ? "inline-field" : "uneditable" %> about-section' data-url="/events/<%= @event.id %>" data-object="event" data-attribute="location[city]" data-placeholder="Street"><%= @event.location['city'].titleize %></a>, <a data-type="select" class='<%= @editable ? "inline-state" : "uneditable" %> about-section' data-url="/events/<%= @event.id %>" data-object="event" data-attribute="location[state]" data-value='<%= @event.location["state"] %>' data-placeholder="Street"></a></p>
 
         <h3>Date</h3>
         <% if @editable %>
-        <p><a data-type="date" data-cols='30' class='<%= @editable ? "inline-date" : "uneditable" %>' data-url="/events/<%= @event.id %>" data-object="event" data-attribute="start_time" data-placeholder="Start Time"><%= @event.start_time.strftime('%b %d, %Y') %></a></p>
+        <p><a data-type="date" data-cols='30' class='<%= @editable ? "inline-date" : "uneditable" %>' data-url="/events/update_time/<%= @event.id %>" data-object="event" data-attribute="start_time" data-placeholder="Start Time"><%= @event.start_time.strftime('%b %d, %Y') %></a></p>
         <% else %>
           <p><%= @event.date %></p>
         <% end %>
@@ -88,7 +88,12 @@
         
         <ul class="side-nav">
           <li>
-            <a href='#'>Attend</a>
+            <%=form_for Invite.new, html: { class: 'new_follow' } do |f| %>
+              <%= f.hidden_field :event_id, value: @event.id, class: 'followable_id' %>
+              <%= f.hidden_field :attendee_id, value: current_user.id, class: 'followable_id' %>
+              <%= f.hidden_field :accepted, value: !@event.confirmed_guests.include?(current_user), class: 'followable_id' %>
+              <%= f.submit @event.confirmed_guests.include?(current_user) ? 'Decline' : 'Accept', class: 'follow-btn' %>
+            <% end %>
           </li>
       </ul>
         
