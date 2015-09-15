@@ -607,6 +607,28 @@ a.add-to-fav {
 	}
 }
 
+.building-neighborhood-bar.all{
+	a:nth-child(4){
+		color: white;
+	}
+}
+.building-neighborhood-bar.pending_invitations{
+	a:nth-child(1){
+		color: white;
+	}
+}
+.building-neighborhood-bar.attending{
+	a:nth-child(2){
+		color: white;
+	}
+}
+.building-neighborhood-bar.created{
+	a:nth-child(3){
+		color: white;
+	}
+}
+
+
 .search-field {
 	height:40px;
 	border:none;

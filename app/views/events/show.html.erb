@@ -96,7 +96,7 @@
               <%= f.hidden_field :event_id, value: @event.id, class: 'followable_id' %>
               <%= f.hidden_field :attendee_id, value: current_user.id, class: 'followable_id' %>
               <%= f.hidden_field :accepted, value: !@event.confirmed_guests.include?(current_user), class: 'followable_id' %>
-              <%= f.submit @event.confirmed_guests.include?(current_user) ? 'Decline' : 'Accept', class: 'follow-btn' %>
+              <%= f.submit @event.confirmed_guests.include?(current_user) ? 'Decline' : 'Attend', class: 'follow-btn' %>
             <% end %>
           </li>
       </ul>

@@ -2,7 +2,16 @@ class EventsController < ApplicationController
   before_filter :authenticate_user!
   
   def index
-    @events = Event.all
+    @filter = params[:filter]
+    if @filter.nil?
+      @events = Event.all
+    elsif @filter == 'pending_invitations'
+      @events = current_user.pending_invitations.map{ |i| i.event }
+    elsif @filter == 'attending'
+      @events = current_user.attending_events
+    elsif @filter == 'created'
+      @events = current_user.events
+    end
   end
   
   def show

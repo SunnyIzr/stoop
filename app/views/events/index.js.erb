@@ -1,0 +1,10 @@
+$('.events').html('<%= j render @events %>');
+$('.building-neighborhood-bar').removeClass('pending_invitations')
+$('.building-neighborhood-bar').removeClass('attending')
+$('.building-neighborhood-bar').removeClass('created')
+$('.building-neighborhood-bar').removeClass('all')
+<% if @filter.nil? %>
+  $('.building-neighborhood-bar').addClass('all')
+<% else %>
+  $('.building-neighborhood-bar').addClass('<%= @filter %>')
+<% end %>

@@ -65,6 +65,14 @@ class User < ActiveRecord::Base
     self.building.neighborhood
   end
   
+  def pending_invitations
+    self.incoming_invites.where(accepted: nil)
+  end
+  
+  def attending_events
+    self.incoming_invites.where(accepted: true).map{ |invite| invite.event }
+  end
+  
   def mailboxer_email(object)
     nil
   end
