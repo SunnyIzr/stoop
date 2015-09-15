@@ -22,4 +22,5 @@
 //= require dropzone
 //= require xeditable
 //= require xeditable-demo
+//= require bootstrap-datetimepicker.min
 //= require_tree .

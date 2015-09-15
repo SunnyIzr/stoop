@@ -107,4 +107,28 @@ $(document).ready(function(){
       done();
     }
   };
+  
+  eventCoverPicDropzone = Dropzone.options.newEventCoverPic = {
+    paramName: "event[cover]", // The name that will be used to transfer the file
+    maxFilesize: 2, // MB
+    init: function() {
+
+      // Limit to only uploading 1 file
+      this.on("addedfile", function() {
+        if (this.files[1]!=null){
+          this.removeFile(this.files[0]);
+        }
+      });
+      
+      this.on("success", function(file, responseText) {
+        setTimeout(function(){
+          location.reload()
+        },2000)
+      });
+
+    },
+    accept: function(file, done) {
+      done();
+    }
+  };
 })

@@ -55,7 +55,19 @@ $(function(){
             weekStart: 1
         },
         pk: 1,
-        name: 'username'
+        name: 'expiration'
+    });
+    
+    
+    $('.inline-date').editable({
+        format: 'yyyy-mm-dd',
+        viewformat: 'M dd, yyyy',
+        placement: 'right',
+        datepicker: {
+            weekStart: 1
+        },
+        pk: 1,
+        name: 'date'
     });
 
 
@@ -103,6 +115,25 @@ $(function(){
         source: [
             {value: 'cash', text: 'Cash'},
             {value: 'percent', text: 'Percent'}
+        ],
+        display: function(value, sourceData) {
+            var colors = {0: "blue", 1: "green"},
+                elem = $.grep(sourceData, function(o){return o.value == value;});
+
+            if(elem.length) {
+                $(this).text(elem[0].text).css("color", colors[value]);
+            } else {
+                $(this).empty();
+            }
+        }
+    });
+    
+    $('.inline-meridian').editable({
+        mode: 'inline',
+        pk: 1,
+        source: [
+            {value: 'am', text: 'am'},
+            {value: 'pm', text: 'pm'}
         ],
         display: function(value, sourceData) {
             var colors = {0: "blue", 1: "green"},

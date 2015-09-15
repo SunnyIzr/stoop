@@ -21,7 +21,8 @@ Rails.application.routes.draw do
   resources :businesses, only: [:index, :show, :update]  
   
   #Events Routes
-  resources :events, only: [:index, :create, :show]
+  put '/events/update_time/:id' => 'events#update_time'
+  resources :events, only: [:index, :create, :show, :update]
   resources :invites, only: [:create,:update]
   
   #Mailboxer Routes
