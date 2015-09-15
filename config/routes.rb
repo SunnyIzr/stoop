@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   
   #Events Routes
   put '/events/update_time/:id' => 'events#update_time'
+  post '/invites/create-bulk' => 'invites#create_bulk'
   resources :events, only: [:index, :create, :show, :update]
   resources :invites, only: [:create,:update]
   

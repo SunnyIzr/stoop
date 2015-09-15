@@ -21,7 +21,12 @@ class InvitesController < ApplicationController
     end
   end
 
-  def update
+  def create_bulk
+    @event = Event.find(params[:event_id])
+    params[:attendees].each do |attendee_id|
+      Invite.create(event_id: @event.id, attendee_id: attendee_id)
+    end
+    redirect_to @event
   end
   
   private
