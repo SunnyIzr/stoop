@@ -3,7 +3,7 @@
     
     <div class="col-sm-8">
       
-      <div class="col-xs-12 building-neighborhood-bar"> <a href="#" class="active" >CREATE EVENT</a></div>
+      <div class="col-xs-12 building-neighborhood-bar"> <a href="#" class="active" data-toggle='modal' data-target='#newEvent'>CREATE EVENT</a></div>
       
       <div class='events'>
         <% @events.each do |event| %>
@@ -16,7 +16,7 @@
               <h2><%= event.date %></h2>
               <span><%= event.location['street'].upcase %></span>
               <p><%= event.about.truncate(100) %></p>
-              <span>+ Read More</span>
+              <span><%= link_to '+ Read More', event_path(event) %></span>
             </div>
             <div class="attend">Attend</div>
           
@@ -64,5 +64,5 @@
 </div>
 
 
-
+<%= render partial: 'events/new' %>
 

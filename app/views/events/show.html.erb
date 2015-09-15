@@ -31,7 +31,11 @@
         <p><%= link_to @event.creator.name, user_path(@creator) %></p>
         
         <h3>Location</h3>
+        <% if @editable %>
         <p><a data-type="text" class='<%= @editable ? "inline-field" : "uneditable" %> about-section' data-url="/events/<%= @event.id %>" data-object="event" data-attribute="location[street]" data-placeholder="Street"><%= @event.location['street'].titleize %></a>, <a data-type="text" class='<%= @editable ? "inline-field" : "uneditable" %> about-section' data-url="/events/<%= @event.id %>" data-object="event" data-attribute="location[city]" data-placeholder="Street"><%= @event.location['city'].titleize %></a>, <a data-type="select" class='<%= @editable ? "inline-state" : "uneditable" %> about-section' data-url="/events/<%= @event.id %>" data-object="event" data-attribute="location[state]" data-value='<%= @event.location["state"] %>' data-placeholder="Street"></a></p>
+        <% else %>
+        <p><%= @event.location['street'].titleize + ', ' + @event.location['city'].titleize + ', ' + @event.location['state'].titleize %></p>
+        <% end %>
 
         <h3>Date</h3>
         <% if @editable %>
