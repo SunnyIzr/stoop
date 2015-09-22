@@ -15,7 +15,7 @@
         <div class="col-sm-1 setting"><img class="settings" src="<%= asset_path 'settings.png' %>" alt="Settings"></div>
       </div>
       
-      <div id='conversation'>
+      <div id='conversation' data-convo-id='<%=@conversation.id%>'>
         
         <%= render partial: 'conversations/show' %>
         

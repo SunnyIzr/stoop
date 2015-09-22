@@ -1,3 +1,5 @@
 $('#conversation').html("<%= j (render 'show') %>")
+$('#conversation').data('convo-id',<%= @conversation.id %>)
 $('.conversation-link').removeClass('recent-chat-active')
 $('.conversation-id-<%=@conversation.id%>').addClass('recent-chat-active')
+window.Poll(<%= @conversation.id %>)
