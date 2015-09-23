@@ -1,10 +1,13 @@
 var GoogleMaps = {
   init: function(){
-    lat = $('#map-canvas').data('lat')
-    lng = $('#map-canvas').data('lng')
-    this.loadMap(lat,lng)
+    $('.map-canvas').each(function(){
+      GoogleMaps.loadMap($(this))
+    })
+    // this.loadMap($('#map-canvas'))
   },
-  loadMap: function(lat,lng){
+  loadMap: function($map){
+    lat = $map.data('lat')
+    lng = $map.data('lng')
     var mapOptions = {
       center: new google.maps.LatLng(lat, lng),
       zoom: 16,
@@ -15,7 +18,7 @@ var GoogleMaps = {
       overviewMapControl: true
     };
     // initializing map
-    map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
+    map = new google.maps.Map($map[0],mapOptions);
     createMarker({lat: lat, lng: lng}, map, 'Building')
   }
 }

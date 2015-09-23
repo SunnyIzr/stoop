@@ -2,6 +2,7 @@ var PostEvents = {
   init: function(){
     this.newLike();
     this.newPost();
+    this.toggleCheckinPost();
     this.togglePostTypes();
   },
   newLike: function(){
@@ -22,9 +23,25 @@ var PostEvents = {
       if ( $('.dropzone').hasClass('hide') ){
         $('.non-dropzone').addClass('hide')
         $('.dropzone').removeClass('hide')
+        $('#map-container').addClass('hide')
       } else {
         $('.dropzone').addClass('hide')
         $('.non-dropzone').removeClass('hide')
+      }
+    })
+  },
+  toggleCheckinPost: function(){
+    $('.checkInPost').click(function(e){
+      e.preventDefault();
+      if ( $('#search-map-container').hasClass('hide') ){
+        $('#search-map-container').removeClass('hide')
+        if ( searchMap == null ){
+          navigator.geolocation.getCurrentPosition(function(pos){
+            GooglePlaces.init(pos.coords.latitude,pos.coords.longitude)
+          })
+        }
+      } else {
+        $('#search-map-container').addClass('hide')
       }
     })
   }
@@ -59,6 +76,7 @@ var Post = {
     $('#new_post').find('textarea').val('')
     $el = $('.post.hide').clone()
     $el.removeClass('hide')
+    $('#search-map-container').addClass('hide')
     
     $el.addClass("post-id-" + post.id) 
     $el.find('.body').html(post.body)
@@ -70,7 +88,21 @@ var Post = {
       $el.find('.post-img').removeClass('hide')
       $el.find('.post-img').attr('src',post.image)
     }
+    if ( post.lat.length > 0 && post.lng.length > 0 ){
+      $el.find('.map-canvas').attr('data-lat',post.lat);
+      $el.find('.map-canvas').attr('data-lng',post.lng);
+      setTimeout(function(){
+        $el.find('.map-container').removeClass('hide')
+        GoogleMaps.init()
+      },2500)
+    }
     
     $('.posts').prepend($el)
+  },
+  persistCheckIn: function(){
+    lat = map.center.H
+    lng = map.center.L
+    $('#post_lat').val(lat)
+    $('#post_lng').val(lng)
   }
 }

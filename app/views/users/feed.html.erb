@@ -49,3 +49,11 @@
 <%= render partial: 'comment', locals: {comment: Comment.new} %>
 
 <%= render partial: 'comment_field', locals: {comment: Comment.new} %>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBXVDHlPxh0K-IVqTDS8jvr542HFfCP00&libraries=places"></script>
+
+<script>
+  window.searchMap = null
+  GoogleMaps.init()
+</script>
+

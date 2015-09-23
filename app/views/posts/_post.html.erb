@@ -11,6 +11,11 @@
         <p class='body'><%= post.body %></p>
         
         <img class="img-responsive post-img <%= 'hide' unless post.image.present? %>" src="<%= post.image %>" alt="">
+        
+        <div class="map-container <% unless !post.lat.nil? && !post.lng.nil? %>hide<% end %>">
+          <div class="map-canvas" data-lat='<%= post.lat %>' data-lng='<%= post.lng %>'></div>
+        </div>
+          
       </div>
     </div>
   </div>

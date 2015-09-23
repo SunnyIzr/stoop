@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require faye
 //= require jquery.ui.all
 //= require autocomplete-rails-uncompressed
 //= require bootstrap.min

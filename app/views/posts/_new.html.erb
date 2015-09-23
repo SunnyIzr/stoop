@@ -1,9 +1,11 @@
 <%= form_for Post.new, html: {class: 'non-dropzone new_post'}, remote: true do |f| %>
   <%= f.text_area :body, class: 'text-area', placeholder: 'Status' %>
   <%= hidden_field_tag :account_type, account_type %>
+  <%= f.hidden_field :lat, value: nil %>
+  <%= f.hidden_field :lng, value: nil %>
   <div class="control-bar">
     <a class='post-types imgPost' href='#'><i class="fa fa-camera"></i></a>
-    <a class='post-types' href='#'><i class="hide fa fa-map-marker"></i></a>
+    <a class='post-types checkInPost' href='#'><i class="fa fa-map-marker"></i></a>
     <%= f.submit 'POST', class: 'post' %>
   </div>
 <% end %>
@@ -19,3 +21,9 @@
     <button id='submit-image-post' class='post'>Post</button>
   </div>
 <% end %>
+
+
+<div id='search-map-container' class="map-container hide">
+      <div id='search-map-canvas' class='map-canvas'></div>
+      <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+  </div>
