@@ -15,7 +15,7 @@ class BusinessesController < ApplicationController
   def update
     @business = Business.find(params[:id])
     if @business.user == current_user
-      if @user.update!(user_params)
+      if @business.update!(business_params)
         respond_to do |format|
           format.json{ render json: @business }
           format.html{ redirect_to @business }

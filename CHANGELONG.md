@@ -7,6 +7,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 
+## [0.6.1] - 2015-09-24
+### Changed
+- Messages are loaded through AJAX
+- Users can filter their building/neighborhood
+- Users/Business profiles show their location via Google Map
+- Users can check into a location on a post
+- Events infrastructure is in place
+
 ## [0.5.1] - 2015-09-11
 ### Changed
 - User can Edit their own page: About,Avatar,Cover

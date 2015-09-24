@@ -187,7 +187,16 @@ ul.side-nav {
 		height: 300px;
 		overflow: hidden;
 	}
-
+	.name-section{
+		margin-top: -40px;
+		span{
+			background: #fff;
+			font-size: 24px;
+		}
+		a{
+			font-size: 24px;
+		}
+	}
 	.profile-pic {
 		margin-top:-100px;
 		margin-left:-10px;

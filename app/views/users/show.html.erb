@@ -37,9 +37,8 @@
       
     </div>
     <div class="col-xs-9">
-      <% if false %>
-      <p><%= @user.about %></p>
-      <% end %>
+      
+      <p class='name-section'><span>&nbsp;<a data-type="text" data-cols='30' class='<%= @editable ? "inline-field" : "uneditable" %>' data-url="/users/<%= @user.id %>" data-object="user" data-attribute="first_name" data-placeholder="First Name"><%= @user.first_name %></a> <a data-type="text" data-cols='30' class='<%= @editable ? "inline-field" : "uneditable" %>' data-url="/users/<%= @user.id %>" data-object="user" data-attribute="last_name" data-placeholder="Last Name"><%= @user.last_name %></a>&nbsp;</span></p>
       
       <p><a data-type="textarea" data-cols='30' class='<%= @editable ? "inline-field" : "uneditable" %> about-section' data-url="/users/<%= @user.id %>" data-object="user" data-attribute="about" data-placeholder="First Name"><%= @user.about %></a></p>
     </div>
