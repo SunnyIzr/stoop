@@ -7,7 +7,7 @@
 
 
 .container {
-	max-width:990px;
+	max-width:1200px;
 }
 footer {
 	background-color:$offwhite;
@@ -72,7 +72,7 @@ header.inner {
 .text-area {
 	width:100%;
 	background-color:white;
-	height:220px;
+	height:120px;
 	border:none;
 	padding:10px 20px;
 	color:$header;
@@ -199,7 +199,10 @@ ul.side-nav {
 	}
 	.profile-pic {
 		margin-top:-100px;
-		margin-left:-10px;
+		margin-left:-15px;
+	}
+	a.uneditable{
+		color: $blue;	
 	}
 	.img-wrapper,
 	.cover-img-wrapper{
