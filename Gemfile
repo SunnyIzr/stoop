@@ -82,6 +82,9 @@ gem 'dropzonejs-rails'
 
 gem 'geocoder'
 
+
+gem 'yelp', require: 'yelp'
+
 group :test, :development do
   gem 'rspec-mocks'
   gem 'rspec-rails'
