@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.all
-//= require autocomplete-rails-uncompressed
+
 //= require bootstrap.min
 //= require smooth-scroll
 //= require jquery.turbolinks
