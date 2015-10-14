@@ -12,6 +12,10 @@ class BusinessesController < ApplicationController
     end
   end
   
+  def show_unverified
+    @business = Yelp.client.business(params[:id])
+  end
+  
   def update
     @business = Business.find(params[:id])
     if @business.user == current_user

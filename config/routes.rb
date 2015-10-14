@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   #Business Routes
   post '/yelp/search' => 'yelp#search'
   post '/businesses/search' => 'businesses#search'
+  get '/unverified_businesses/:id' => 'businesses#show_unverified'
   resources :businesses, only: [:index, :show, :update]  
   
   #Events Routes

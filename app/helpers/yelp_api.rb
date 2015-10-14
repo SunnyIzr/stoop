@@ -9,6 +9,6 @@ module YelpApi
   end
   
   def business(id)
-    Yelp.business(id)
+    Yelp.client.business(id)
   end
 end

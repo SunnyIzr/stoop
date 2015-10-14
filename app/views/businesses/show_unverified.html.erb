@@ -1,0 +1,58 @@
+<div class="container profile">
+  <div class="row">
+    <div class='cover-img-wrapper'>
+        
+      <img class="img-responsive" src="<%=  %>" alt="">
+      
+    </div>
+    <div class="col-xs-3">
+      
+      
+      <img class="img-responsive profile-pic" data-user-id='<%= @business.id %>' src="<%= @business.image_url %>" alt="">
+      
+    </div>
+    <div class="col-xs-9">
+    
+      <p class='name-section'><span>&nbsp;<a data-type="text" data-cols='30' class="uneditable" ><%= @business.name %></a>&nbsp;</span></p>
+      
+    </div>
+  </div>
+</div>
+
+<div class="container after-profile">
+  <div class="row">
+    <div class="col-sm-8">
+        
+      <div class='posts'>
+      </div>
+      <div id="infinite-scrolling">
+      </div>
+    </div>
+    <div class="col-sm-4 side-bar-margin">
+      
+      <div class='side-nav'>
+        
+      </div>
+      
+      <div id="map-container">
+        <div id="map-canvas" data-lat='<%= @business.location.coordinate.latitude %>' data-lng='<%= @business.location.coordinate.longitude %>'></div>
+      </div>
+
+      
+      <div class="info-box">
+        <h3>Industry</h3>
+        <p><%= @business.categories.map{|cat| cat[0]}.join(', ') %></p>
+
+        <h3>Contact</h3>
+        <p><%= @business.phone %></p>  
+      </div>
+      
+
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&sensor=true"></script>
+<script>
+  GoogleMaps.init()
+</script>
