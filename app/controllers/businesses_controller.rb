@@ -33,6 +33,11 @@ class BusinessesController < ApplicationController
     @businesses = Business.all
   end
   
+  def search
+    term = params[:term].downcase
+    render json: Business.where('lower(name) LIKE ? OR lower(industry) LIKE ?', "%#{ term }%", "%#{ term }%").map{ |business| {id: business.id, name: business.name, avatar: business.avatar} }
+  end
+  
   private
   def business_params
     params.require(:business).permit(:name,:neighborhood_id,:contact,:established,:industry,:about,:avatar,:cover)

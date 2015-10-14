@@ -5,7 +5,7 @@ module YelpApi
   end
   
   def search_by_coords(term,coords)
-    Yelp.search_by_coordinates( { latitude: coords[0], longitude: coords[1] }, { term: term, limit: 10 } )
+    Yelp.client.search_by_coordinates( { latitude: coords[0], longitude: coords[1] }, { term: term, limit: 10 } )
   end
   
   def business(id)

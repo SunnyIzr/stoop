@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   end  
   
   #Business Routes
+  post '/yelp/search' => 'yelp#search'
+  post '/businesses/search' => 'businesses#search'
   resources :businesses, only: [:index, :show, :update]  
   
   #Events Routes
