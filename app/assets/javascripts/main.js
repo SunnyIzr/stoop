@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  SearchAutocomplete.init();
   PostEvents.init();
   CommentEvents.init();
   FollowEvents.init();

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   
   
   #User Routes
+  post '/users/search' => 'users#search'
   resources :users, only: [:show, :update] do
     get :autocomplete_user_first_name, on: :collection
   end  

@@ -6,12 +6,9 @@
       </div>
       <div class="col-sm-6 search-column">
         <%= autocomplete_field_tag :search, params[:search], autocomplete_user_first_name_users_path, {class: "search-query search-field empty", placeholder: "&#xF002; ".html_safe, type: "search"} %> 
+        <div class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-1" tabindex="0" style="width: 555px; top: 40px; left: 15px; display:none;">
           <h5>USERS</h5>
-        <div class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-1" tabindex="0" style="width: 555px; top: 40px; left: 15px;">
-          <h5>USERS</h5>
-          <ul style='padding: 0;'>
-            <li class="ui-menu-item" role="presentation"><a href="/users/12" id="ui-id-2" class="ui-corner-all" tabindex="-1"><img class="img-responsive mini-avatar" src="http://s3.amazonaws.com/stoop353/users/avatars/000/000/012/original/85.jpg"><span>Ashley Bennett</span></a></li>
-            <li class="ui-menu-item" role="presentation"><a href="/users/25" id="ui-id-3" class="ui-corner-all" tabindex="-1"><img class="img-responsive mini-avatar" src="http://s3.amazonaws.com/stoop353/users/avatars/000/000/025/original/65.jpg"><span>Ashley Bryant</span></a></li>
+          <ul class='usersList' style='padding: 0;'>
           </ul>
           <h5>BUSINESSES</h5>
           <ul style='padding: 0;'>

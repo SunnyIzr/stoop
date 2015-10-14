@@ -47,6 +47,11 @@ class UsersController < ApplicationController
     end
   end
   
+  def search
+    term = params[:term].downcase
+    render json: User.where('lower(first_name) LIKE ? OR lower(last_name) LIKE ?', "%#{ term }%", "%#{ term }%").map{ |user| {id: user.id, name: user.name, avatar: user.avatar} }
+  end
+  
   private
   def user_params
     params.require(:user).permit(:email,:building_id,:neighborhood_id,:first_name,:last_name,:gender,:after_five_pm,:date_of_birth,:profession,:about,:contact,:avatar,:cover)
