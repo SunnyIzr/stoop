@@ -1,13 +1,12 @@
 ProfileEvents = {
   init: function(){
-    this.profilePic();
-    
+    this.completeProfile();
   },
-  profilePic: function(){
-    $('.change-profile-pic').click(function(e){
+  completeProfile: function(){
+    $('a.completeProfile').click(function(e){
       e.preventDefault();
-      $('.new-profile-pic-form').removeClass('hide')
-      $('.change-profile-pic').addClass('hide')
+      $(this).addClass('hide');
+      $('.progress-details').removeClass('hide');
     })
   }
 }

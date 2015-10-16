@@ -46,7 +46,7 @@
 </div>
 
 <div class="container after-profile">
-  <div class="row">
+  <div class="row"> 
     <div class="col-sm-8">
       <div class='posts'>
         <% @posts.each do |post| %>
@@ -61,9 +61,8 @@
     </div>
     <div class="col-sm-4 side-bar-margin">
       
+      <% unless current_user.business? || @editable %>
       <div class='side-nav'>
-        
-        <% unless current_user.business? %>
         <ul class="side-nav">
           <li>
             <%=form_for Follow.new, html: { class: 'new_follow' }, remote: true do |f| %>
@@ -73,10 +72,46 @@
             <% end %>
           </li>
           <li><a href='#' data-toggle='modal' data-target='#newMessage'>Message</a></li>
-        </ul>
-        <% end %>
-        
+        </ul>  
       </div>
+      <% end %>
+      
+      <% if @editable && @user.profile_completion < 100 %>
+      <div class="progress">
+        <div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="<%= @user.profile_completion %>" aria-valuemin="0" aria-valuemax="100" style="width:<%=@user.profile_completion%>%;">
+          <%= @user.profile_completion %>% Complete
+        </div>
+      </div>
+      <div class="progress-status">
+        <a class='completeProfile' href="#">Complete my profile now</a>
+        <div class='progress-details hide'>
+        <p>Please complete the following:</p>
+        <ul>
+          
+          <% if @missing_profile_elements.include?("about") %>
+          <li>About Description</li>
+          <% end %>
+          
+          <% if @missing_profile_elements.include?("avatar") %>
+          <li>Profile Image</li>
+          <% end %>
+          
+          <% if @missing_profile_elements.include?("cover") %>
+          <li>Cover Image</li>
+          <% end %>
+          
+          <% if @missing_profile_elements.include?("interests") %>
+          <li>Interests</li>
+          <% end %>
+          
+          <% if @missing_profile_elements.include?("profession") %>
+          <li>Profession</li>
+          <% end %>
+          
+        </ul>
+        </div>
+      </div>
+      <% end %>
       
       <div class="map-container">
         <div class="map-canvas" data-lat='<%= @coords[0] %>' data-lng='<%= @coords[1] %>'></div>

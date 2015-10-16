@@ -5,6 +5,7 @@ $(document).ready(function(){
   FollowEvents.init();
   MessageEvents.init();
   Signup.init();
+  ProfileEvents.init();
   
   $('.editable').editable()
   

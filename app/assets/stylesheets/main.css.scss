@@ -571,7 +571,11 @@ a.add-to-fav {
 	padding:10px;
 	text-align:center;
 	font-size:120%;
-
+	ul{
+		text-align: left;
+		 width: 80%;
+    margin-left: 20%;
+	}
 	a {
 		color:$orange;
 		text-decoration:none !important;

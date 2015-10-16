@@ -24,6 +24,7 @@ class UsersController < ApplicationController
     @posts = @user.posts.paginate(page: params[:page], per_page: 5).order('created_at DESC')
     @coords = @user.building.coords
     if @user == current_user
+      @missing_profile_elements = @user.missing_profile_elements
       @editable = true
     else
       @editable = false
