@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   has_many :invited_events, through: :incoming_invites, class_name: 'Event', foreign_key: 'attendee_id'
   
   serialize :contact, Hash
+  serialize :interests, Array
   
   has_attached_file :avatar,
                   :default_url => '/assets/default-avatar.png',
