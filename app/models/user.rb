@@ -87,12 +87,13 @@ class User < ActiveRecord::Base
     missing << 'about' if self.about.to_s.empty?
     missing << 'avatar' if !self.avatar.present?
     missing << 'cover' if !self.cover.present?
+    missing << 'interests' if self.interests.empty?
     missing << 'profession' if self.profession.to_s.empty?
     missing
   end
   
   def profile_completion
-    inputs = ( bool_to_i(!self.about.to_s.empty?) * 0.3 ) + ( bool_to_i(self.avatar.present?) * 0.1 ) + ( bool_to_i(self.cover.present?) * 0.1 ) + ( bool_to_i(!self.profession.to_s.empty?) * 0.1 )
+    inputs = ( bool_to_i(!self.about.to_s.empty?) * 0.3 ) + ( bool_to_i(self.avatar.present?) * 0.1 ) + ( bool_to_i(self.cover.present?) * 0.1 ) + ( bool_to_i(!self.interests.empty?) * 0.1 ) + ( bool_to_i(!self.profession.to_s.empty?) * 0.1 )
     complete = 0.3 + inputs
     (complete * 100).to_i
   end
