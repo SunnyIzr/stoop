@@ -77,6 +77,16 @@ class User < ActiveRecord::Base
     nil
   end
   
+  def bool_to_i(bool)
+    bool ? 1 : 0
+  end
+  
+  def profile_completion
+    inputs = ( bool_to_i(!self.about.to_s.empty?) * 0.3 ) + ( bool_to_i(self.avatar.present?) * 0.1 ) + ( bool_to_i(self.cover.present?) * 0.1 ) + ( bool_to_i(!self.profession.to_s.empty?) * 0.1 )
+    complete = 0.3 + inputs
+    (complete * 100).to_i
+  end
+  
   def s3_credentials
     {:bucket => ENV['BUCKET'], :access_key_id => ENV['ACCESS_KEY_ID'], :secret_access_key => ENV['SECRET_ACCESS_KEY']}
   end
