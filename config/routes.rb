@@ -14,9 +14,10 @@ Rails.application.routes.draw do
   
   #User Routes
   post '/users/search' => 'users#search'
-  resources :users, only: [:show, :update] do
+  resources :users, only: [:show, :update, :index] do
     get :autocomplete_user_first_name, on: :collection
-  end  
+  end
+  get '/users/:id/verify' => 'users#verify'
   
   #Business Routes
   post '/yelp/search' => 'yelp#search'

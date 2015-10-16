@@ -3,7 +3,12 @@ class UsersController < ApplicationController
   autocomplete :user, :first_name, full: true, extra_data: [:id, :first_name, :last_name,:avatar_file_name,:avatar_content_type], display_value: :avatar
   
   def feed
-    @posts = Post.where(neighborhood_id: current_user.neighborhood.id).paginate(page: params[:page], per_page: 5).order('created_at DESC')  
+    if current_user.admin
+      @users = User.where(verified: false).sort
+      render 'admin/unverified_users'
+    else
+      @posts = Post.where(neighborhood_id: current_user.neighborhood.id).paginate(page: params[:page], per_page: 5).order('created_at DESC')  
+    end
   end
   
   def filtered_feed
@@ -45,6 +50,21 @@ class UsersController < ApplicationController
           format.html{ redirect_to root_path }
         end
       end
+    end
+  end
+  
+  def verify
+    if current_user.admin
+      @user = User.find(params[:id])
+      @user.update!(verified: true)
+      redirect_to root_path
+    end
+  end
+  
+  def index
+    if current_user.admin
+      @users = User.all.sort
+      render 'admin/users'
     end
   end
   

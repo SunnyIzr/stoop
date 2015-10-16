@@ -1,0 +1,46 @@
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li class="active"><a href="/">Overview <span class="sr-only">(current)</span></a></li>
+        <li><a href="/users">All Users</a></li>
+      </ul>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+      <h2 class="sub-header">Unverified Users</h2>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Gender</th>
+              <th>Sign Up Date</th>
+              <th>Last Login</th>
+              <th>Sign In Count</th>
+              <th>Verified</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= user.name %></td>
+              <td><%= user.email %></td>
+              <td><%= user.gender.to_s.upcase[0] %></td>
+              <td><%= user.created_at.nil? ? 'N/A' : user.created_at.strftime('%b %e, %y %l:%M%P %Z') %></td>
+              <td><%= user.last_sign_in_at.nil? ? 'N/A' : user.last_sign_in_at.strftime('%b %e, %y %l:%M%P %Z') %></td>
+              <td><%= user.sign_in_count %></td>
+              <td><%= user.verified ? '' : ('<a href="/users/' + user.id.to_s + '/verify" class="btn btn-primary">VERIFY</a>').html_safe %></td>
+            </tr>
+          <% end %>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -68,6 +68,8 @@ gem 'public_activity'
 
 gem 'image_suckr'
 
+gem 'awesome_print'
+
 gem "jquery-ui-rails"
 gem 'rails4-autocomplete', '1.0.7', path: 'vendor/gems/rails4-autocomplete-1.0.7'
 

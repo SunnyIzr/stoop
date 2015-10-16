@@ -33,6 +33,7 @@ GEM
     acts_as_commentable (4.0.2)
     addressable (2.3.8)
     arel (4.0.2)
+    awesome_print (1.6.1)
     aws-sdk (1.5.8)
       httparty (~> 0.7)
       json (~> 1.4)
@@ -268,6 +269,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_commentable
+  awesome_print
   aws-sdk (~> 1.5.7)
   bootstrap-will_paginate
   chosen-rails

@@ -9,7 +9,13 @@ class ApplicationController < ActionController::Base
   
   
   def choose_layout
-    current_user.nil? ? 'public_facing' : 'application'
+    if current_user.nil?
+      'public_facing'
+    elsif current_user.admin
+      'admin'
+    else
+      'application'
+    end
   end
   
   rescue_from ActiveRecord::RecordNotFound do
