@@ -128,6 +128,62 @@ $(function(){
         }
     });
     
+    $('.inline-industry').editable({
+        mode: 'inline',
+        pk: 1,
+        source: [
+            {value: 'restaurant/bar', text: 'Restaurant/Bar'},
+            {value: 'retail', text: 'Retail'},
+            {value: 'nightclub', text: 'Nightclub'},
+            {value: 'beauty/grooming', text: 'Beauty/Grooming'},
+            {value: 'hotel', text: 'Hotel'}
+        ],
+        display: function(value, sourceData) {
+            var colors = {0: "blue", 1: "blue"},
+                elem = $.grep(sourceData, function(o){return o.value == value;});
+
+            if(elem.length) {
+                $(this).text(elem[0].text).css("color", colors[value]);
+            } else {
+                $(this).empty();
+            }
+        }
+    });
+    
+    
+    $('.inline-profession').editable({
+        mode: 'inline',
+        pk: 1,
+        source: [
+            {value: 'finance', text: 'Finance'},
+            {value: 'legal', text: 'Legal'},
+            {value: 'medicine', text: 'Medicine'},
+            {value: 'technology', text: 'Technology'},
+            {value: 'real estate', text: 'Real Estate'}
+        ],
+        display: function(value, sourceData) {
+            var colors = {0: "blue", 1: "blue"},
+                elem = $.grep(sourceData, function(o){return o.value == value;});
+
+            if(elem.length) {
+                $(this).text(elem[0].text).css("color", colors[value]);
+            } else {
+                $(this).empty();
+            }
+        }
+    });
+    
+    $('.inline-interests').editable({
+        mode: 'inline',
+        pk: 1,
+        source: [
+            {value: 'movies', text: 'Movies'},
+            {value: 'music', text: 'Music'},
+            {value: 'books', text: 'Books'},
+            {value: 'sports', text: 'Sports'},
+            {value: 'foodie', text: 'Foodie'}
+        ]
+    });
     $('.inline-meridian').editable({
         mode: 'inline',
         pk: 1,

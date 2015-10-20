@@ -113,8 +113,10 @@
       </div>
       
       <div class="info-box">
-        <h3>Industry</h3>
-        <p>Restaurant/Bar</p>
+        <% unless @business.industry.to_s.empty? && !@editable %>
+          <h3>Industry</h3>
+          <p><a data-type="select" class='<%= @editable ? "inline-industry" : "" %>' data-url="/businesses/<%= @business.id %>" data-object="business" data-value='<%= @business.industry %>'data-attribute="industry" data-placeholder="industry"><%= @business.industry %></a></p>
+        <% end %>
 
         <h3>Hours of Operation</h3>
         <p>11am-10pm mon-sun</p>

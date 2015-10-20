@@ -93,9 +93,9 @@ class User < ActiveRecord::Base
   end
   
   def profile_completion
-    inputs = ( bool_to_i(!self.about.to_s.empty?) * 0.3 ) + ( bool_to_i(self.avatar.present?) * 0.1 ) + ( bool_to_i(self.cover.present?) * 0.1 ) + ( bool_to_i(!self.interests.empty?) * 0.1 ) + ( bool_to_i(!self.profession.to_s.empty?) * 0.1 )
-    complete = 0.3 + inputs
-    (complete * 100).to_i
+    inputs = ( bool_to_i(!self.about.to_s.empty?) * 30 ) + ( bool_to_i(self.avatar.present?) * 10 ) + ( bool_to_i(self.cover.present?) * 10 ) + ( bool_to_i(!self.interests.empty?) * 10 ) + ( bool_to_i(!self.profession.to_s.empty?) * 10 )
+    complete = 30 + inputs
+    complete
   end
   
   def s3_credentials

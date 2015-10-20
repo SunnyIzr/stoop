@@ -140,14 +140,15 @@
       </div>
 
       <div class="info-box">
+        <% unless @user.interests.empty? && !@editable %>
         <h3>Interests</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco</p>
-
-        <h3>Professions</h3>
-        <p><b>Counselor</b> at URJ Camp Coleman</p>
-        <p><b>Receptionist</b> at Surfcorp</p>
+        <p><a data-type="checklist" class='<%= @editable ? "inline-interests" : "uneditable" %>' data-url="/users/<%= @user.id %>" data-object="user" data-value='<%= @user.interests.join(', ') %>'data-attribute="interests" data-placeholder="Interests"><%= @user.interests.join(', ').titleize %></a></p>
+        <% end %>
+        
+        <% unless @user.profession.to_s.empty? && !@editable %>
+        <h3>Profession</h3>
+        <p><a data-type="select" class='<%= @editable ? "inline-profession" : "uneditable" %>' data-url="/users/<%= @user.id %>" data-object="user" data-value='<%= @user.profession %>'data-attribute="profession" data-placeholder="Profession"><%= @user.profession %></a></p>
+        <% end %>
 
         <h3 class='hide'>Contact</h3>
         <p class='hide'>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
