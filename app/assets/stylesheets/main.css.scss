@@ -146,12 +146,21 @@ ul.side-nav {
 		a {
 			color:#b1d0d2;
 			padding:10px 20px;
-			font-size:20px;
+			font-size:14px;
 			display:block;
 
 			&:hover {
 				text-decoration:none;
 			}
+		}
+	}
+	li:hover{
+		background: #b1d0d2;
+		a{
+			color: #fff;
+		}
+		.follow-btn{
+			color: #fff;
 		}
 	}
 }
@@ -188,18 +197,22 @@ ul.side-nav {
 		overflow: hidden;
 	}
 	.name-section{
-		margin-top: -40px;
+		margin-top: -101px;
+		margin-bottom: 40px;
 		span{
 			background: #fff;
-			font-size: 24px;
+			font-size: 55px;
+			padding-bottom: 10px;
 		}
 		a{
-			font-size: 24px;
+			font-size: 50px;
+		}
+		.first-name{
+			font-weight: 800;
 		}
 	}
 	.profile-pic {
 		margin-top:-100px;
-		margin-left:-15px;
 	}
 	a.uneditable{
 		color: $blue;	
@@ -214,8 +227,10 @@ ul.side-nav {
 			position: absolute;
 			top: 0;
 			opacity: 0.0;
-			left: -10px;
 			cursor: pointer;
+		}
+		.dropzone{
+			border: none;
 		}
 		span{
 			position: absolute;
@@ -232,7 +247,7 @@ ul.side-nav {
 		.new-cover-pic-form{
 			position: absolute;
 			top: 0;
-			left: -10px;
+			left: 0px;
 			width: 100%;
 			height: 100%;
 			background: none;
@@ -247,6 +262,9 @@ ul.side-nav {
 		span{
 			opacity: 1.0;
 		}
+	}
+	.change-profile-pic{
+		left: -15px;
 	}
 	p {
 		margin-top:10px;
@@ -313,6 +331,12 @@ ul.side-nav {
 			}
 			.fa-heart-o,.fa-heart{
 				font-size: 100%;
+			}
+			.fa-heart:before{
+				color: #ed9522;
+			}
+			.fa-heart-o:before{
+				color: #fff;
 			}
 			a.addNewComment{
 				color: #fff;
@@ -403,7 +427,7 @@ a.add-to-fav {
 	.follow-btn{
 		color: #b1d0d2;
     padding: 10px 20px;
-    font-size: 20px;
+    font-size: 14px;
     display: block;
     background: none;
     border: none;
