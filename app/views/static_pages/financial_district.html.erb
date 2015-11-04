@@ -1,1 +1,168 @@
-Neighborhood Home Page
+<div class="intro-neighborhood">
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-xs-6">
+        <img class="img-responsive logo" src="<%= asset_path 'stoop-logo.png' %>" alt="Stoop">
+      </div>
+      <div class="col-xs-6">
+        <%= link_to 'Login', new_user_session_path, class: 'login' %>
+      </p>
+    </div>
+
+    <div class="row cta">
+      <h1>FINCANCIAL DISTRICT</h1>
+      <h2>Subhead</h2>
+      <a href="#" class="cta-btn">How It Works</a>
+    </div>
+
+    <div class="row cta-form">
+      <div class="col-sm-3">
+        <input class="cst-input" type="text" placeholder="FULL NAME">
+      </div>
+      <div class="col-sm-3">
+        <input class="cst-input" type="text" placeholder="EMAIL">
+      </div>
+      <div class="col-sm-3">
+        <input class="cst-input" type="text" placeholder="NEIGHBORHOOD">
+      </div>
+      <div class="col-sm-3">
+        <button class="cta-submit" type="submit">Sign Up</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="how-it-works">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <h2>Community Advocate</h2>
+        <img class="img-responsive" src="<%= asset_path 'divider.jpg' %>">
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-xs-7">
+      <img class="img-responsive" src="<%= asset_path 'syd2.jpg' %>" alt="">
+        <div class="connect-with">To Connect With Her Sign Up <a href="#">Here</a></div>
+      </div>
+      <div class="col-xs-5 details">
+        <h2>Sydney Schiff</h2>
+        <p class="info"><span class="age">23 &nbsp; |</span> &nbsp; RECEPTIONSIST</p>
+        <ul class="list">
+         <li>- Lived in FIDI for 4 years</li>
+         <li>- Happy hour drinks</li>
+         <li>- Get lost here</li>
+         <li>- Meet people here</li>
+         <li>- Find your zen</li>
+       </ul>
+     </div>
+     
+   </div>
+ </div>
+</div>
+
+<div class="container-fluid highlights">
+  <h2>FIDI HIGHLIGHTS</h2>
+  <h3>Your neighborhood at a glance</h3>
+</div>
+
+
+
+<div class="interests">
+
+  <div class="container">
+    <div class="row">
+      <h2>WHAT'S AROUND</h2>
+      <div class="col-xs-4">
+      <img class="img-responsive" src="<%= asset_path 'fraunces.jpg' %>" alt="">
+        <h4>Fraunces Tavern Eats</h4>
+      </div>
+      <div class="col-xs-4">
+      <img class="img-responsive" src="<%= asset_path 'ale-house.jpg' %>" alt="">
+        <h4>Stone Street Ale House</h4>
+      </div>
+      <div class="col-xs-4">
+      <img class="img-responsive" src="<%= asset_path 'pier.jpg' %>" alt="">
+        <h4>Pier A Hangouts &amp; Eats</h4>
+      </div>
+    </div>
+
+    <div class="clear"></div>
+
+    <div class="row">
+      <h2>HIDDEN GEMS</h2>
+      <div class="col-xs-4">
+      <img class="img-responsive" src="<%= asset_path 'bull.jpg' %>" alt="">
+        <h4>Charging Bull Random</h4>
+      </div>
+      <div class="col-xs-4">
+      <img class="img-responsive" src="<%= asset_path 'bowling-green.jpg' %>" alt="">
+        <h4>Bowling Green Parks &amp; Squares</h4>
+      </div>
+      <div class="col-xs-4">
+      <img class="img-responsive" src="<%= asset_path 'nyse.jpg' %>" alt="">
+        <h4>New York Stock Exchange Historical Sites</h4>
+      </div>
+    </div>
+
+
+    <div class="clear"></div>
+
+    <div class="row">
+
+      <h2>ARTS &AMP; CULTURE</h2>
+
+      <div class="col-xs-4">
+      <img class="img-responsive" src="<%= asset_path 'galleries.jpg' %>" alt="">
+        <h4>Galleries</h4>
+      </div>
+      <div class="col-xs-4">
+      <img class="img-responsive" src="<%= asset_path 'sculptures.jpg' %>" alt="">
+        <h4>Sculptures</h4>
+      </div>
+      <div class="col-xs-4">
+      <img class="img-responsive" src="<%= asset_path 'museums.jpg' %>" alt="">
+        <h4>Museums</h4>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="container-fluid did-you-know">
+
+  <h2>DID YOU KNOW?</h2>
+  <h3>Subhead</h3>
+  <div class="video-wrapper">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+      <img class="img-responsive" src="<%= asset_path 'video-placeholder.jpg' %>">
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer style="background-color:white;"><!--change footer from normal-->
+
+<img src="<%= asset_path 'footer-logo-white.jpg' %>">
+
+  <br>
+
+  <p>&copy; <script language="JavaScript" type="text/javascript">
+    now = new Date
+    theYear=now.getYear()
+    if (theYear < 1900)
+    theYear=theYear+1900
+    document.write(theYear)
+</script> Pandora Media, Inc. All Rights Reserved</p>
+  <p>Pandora and the Music Genome project are registered trademarks of Pandora Media, Inc.</p>
+
+</footer>

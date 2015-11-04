@@ -16,6 +16,9 @@
 @import 'events';
 
 
+input:focus{
+  outline-color: #fff !important;
+}
 
 // Search Styling
 #search{

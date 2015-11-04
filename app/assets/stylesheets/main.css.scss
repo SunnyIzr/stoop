@@ -9,6 +9,9 @@
 .container {
 	max-width:1200px;
 }
+.body-container{
+	padding-top: 71px;
+}
 footer {
 	background-color:$offwhite;
 	color:#abccce;
@@ -32,6 +35,10 @@ footer {
 header.inner {
 	background-color:$header;
 	padding:8px 0px;
+	position: fixed;
+	width: 100%;
+	z-index: 1;
+	top:0;
 
 	.search-column {
 		margin-top:3px;
@@ -132,6 +139,12 @@ header.inner {
 }
 
 
+ul.feed-side-nav{
+	
+	position: fixed;
+	max-width: 360px;
+	width: 100%;
+}
 
 ul.side-nav {
 	list-style-type:none;
@@ -187,7 +200,7 @@ ul.side-nav {
 }
 
 .profile {
-	margin-top:40px;
+	margin-top:71px;
 	background-color:white;
 	color:$midGreen;
 	
@@ -290,6 +303,7 @@ ul.side-nav {
 
 		.name {
 			color:$orange;
+			font-weight: 500;
 		}
 		.time {
 			font-size:70%;
@@ -621,7 +635,7 @@ a.add-to-fav {
 	margin-bottom:20px;
 	text-align:center;
 	font-size:130%;
-	font-weight:bold;
+	font-weight:500;
 
 	a {
 		color:$header;
