@@ -18,8 +18,16 @@
         </div>
       </div>
       <div class="col-sm-4 nav-column">
-        
-        <%= link_to('<i class="fa fa-power-off"></i>'.html_safe, destroy_user_session_path, class: 'settings', :method => :delete) %>
+        <div class="dropdown">
+          <a class="settings dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <i class="fa fa-cog"></i>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><%= link_to('Log Out', destroy_user_session_path, class: 'nav-link', :method => :delete) %></li>
+          </ul>
+        </div>
+        <% if false %>
+        <% end %>
         
         <% if current_user.business? %>
           <a href='/businesses/<%= current_user.business.id %>'><img class="profile-pic" src="<%= current_user.business.avatar %>" alt=""></a>

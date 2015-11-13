@@ -3,6 +3,7 @@
     <a href='<%= user_path(comment.user) unless comment.id.nil? %>'><img class="img-responsive avatar" src="<%= comment.user.avatar unless comment.id.nil? %>" alt=""></a>
   </div>
   <div class="col-xs-10">
+    <div class='sep'></div>
     <p class='comment_body'><%= comment.comment %></p>
     <p class="time_wrapper"><span class='time'><%= comment.created_at.strftime('%m/%d/%y %I:%M%P') unless comment.id.nil? %></span></p>
     <%=form_for Like.new, html: { class: 'new_comment_like'}, remote: true do |f| %>

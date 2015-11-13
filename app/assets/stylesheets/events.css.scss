@@ -33,10 +33,10 @@
   background: #ffffff none repeat scroll 0 0;
   color: #345064;
   float: left;
-  font-size: 20px;
+  font-size: 27px;
   margin: 15px;
   padding: 5px 20px;
-  width: 300px;
+  font-weight: 600;
 }
 .event_dis {
   background: #ffffff none repeat scroll 0 0;
@@ -130,5 +130,17 @@ and (max-width: 480px) {
   }
   .attend {
     margin: 4% 15px 15px 0;
+  }
+}
+
+.dropdown-menu{
+  top: 40px;
+  right: -30px;
+  width: 95px;
+  min-width: 0;
+  left: inherit;
+  .nav-link{
+    margin-left: 0 !important;
+    padding: 10px 20px;
   }
 }

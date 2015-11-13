@@ -5,6 +5,7 @@
     <div class="event_name"><%= event.name %></div>
     <div class="event_dis">
       <h2><%= event.date %></h2>
+      <span><%= event.time %></span>
       <span><%= event.location['street'].upcase %></span>
       <p><%= event.about.truncate(100) %></p>
       <span><%= link_to '+ Read More', event_path(event) %></span>

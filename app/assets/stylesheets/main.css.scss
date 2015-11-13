@@ -380,11 +380,22 @@ ul.side-nav {
 
 		.comments {
 			background-color:#dfeced;
-
+			
+			.comment:nth-child(1){
+				.sep{
+					display: none;
+				}
+			}
 			.comment {
 				margin-top:15px;
 				color:$blue;
 				margin-bottom:15px;
+				
+				.sep{
+					width: 80%;
+					border-top: 1px solid #fff;
+					margin-bottom: 10px;
+				}
 
 				a {
 					color:$lightBlue;

@@ -16,7 +16,7 @@ class Event < ActiveRecord::Base
   tracked 
   
   def date
-    self.start_time.strftime('%b %d')
+    self.start_time.strftime('%B %d, %Y')
   end
   
   def time
