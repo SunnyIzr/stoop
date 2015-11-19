@@ -1,0 +1,20 @@
+.business{
+  margin-bottom: 10px;
+  margin-top: 10px;
+  height: 200px;
+  position: relative;
+  .details{
+    position: absolute;
+    left: 10%;
+    top: 10%;
+    width: 100%;
+    span {
+      color: $blue;
+      letter-spacing: -1px;
+      font-size: 150%;
+      font-weight: bold;
+      background-color: #fff;
+      padding: 8px 15px 3px 10px;
+    }
+  }
+}

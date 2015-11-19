@@ -5,7 +5,6 @@
 //= require dropzone/dropzone
 //= require bootstrap-datetimepicker.min
 
-
 @import 'fonts-colors';
 @import 'general-tags';
 @import 'home-page';
@@ -14,6 +13,7 @@
 @import "main";
 @import 'chosen';
 @import 'events';
+@import 'businesses';
 
 
 input:focus{
