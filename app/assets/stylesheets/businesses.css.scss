@@ -3,11 +3,17 @@
   margin-top: 10px;
   height: 200px;
   position: relative;
-  .details{
-    position: absolute;
-    left: 10%;
-    top: 10%;
+  img {
+    height: 200px;
     width: 100%;
+  }
+  .details, .explore {
+    position: absolute;
+    width: 100%;
+    left: 10%;
+  }
+  .details{
+    top: 10%;
     span {
       color: $blue;
       letter-spacing: -1px;
@@ -16,5 +22,8 @@
       background-color: #fff;
       padding: 8px 15px 3px 10px;
     }
+  }
+  .explore {
+    bottom: 10%;
   }
 }

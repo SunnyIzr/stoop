@@ -6,10 +6,13 @@
         <% @businesses.each do |business| %>
           <div class='col-sm-6 business'>
             <a href='<%= business_path(business) %>'>
-              <img class="img-responsive" src="<%= business.avatar %>">
+              <img class="img-responsive" src="<%= business.cover %>">
               <div class='details'>
                 <span><%= business.name %></span>
               </div>
+              <div class="explore">
+                <span>Explore</span>
+              </div>  
             </a>
           </div>
         <% end %>
