@@ -1,6 +1,10 @@
+.business-grid {
+  margin-top: 20px;
+}
 .business{
   margin-bottom: 10px;
   margin-top: 10px;
+  margin-left: -8px;
   height: 200px;
   position: relative;
   img {
@@ -17,13 +21,18 @@
     span {
       color: $blue;
       letter-spacing: -1px;
-      font-size: 150%;
+      font-size: 170%;
       font-weight: bold;
       background-color: #fff;
       padding: 8px 15px 3px 10px;
     }
   }
   .explore {
-    bottom: 10%;
+    bottom: 7%;
+    span {
+      color: $orange;
+      background-color: #fff;
+      padding: 3px 8px 2px 8px;
+    }  
   }
 }
