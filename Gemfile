@@ -48,6 +48,12 @@ gem 'spring',        group: :development
 
 gem 'devise'
 
+
+#omniauth
+
+gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'
+
 gem 'acts_as_commentable'
 
 gem 'socialization'
