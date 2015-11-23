@@ -574,6 +574,18 @@ a.add-to-fav {
 			cursor: pointer;
     }
     .conversations{
+      .conversation.active{
+        img, .name {
+          cursor: default
+        }
+        border: none
+      }
+      .conversation.inactive{
+        display: none;
+      }
+      .conversation-options.inactive{
+        display: none
+      }
     	.conversation{
     		padding: 7px 10px 5px;
     		border-bottom: 1px solid $lightBlue;
@@ -587,6 +599,22 @@ a.add-to-fav {
     			margin-left: 7px;
     			display: inline-block;
     		}
+        textarea {
+          margin: 6px;
+          border: none;
+        }
+        textarea:active, textarea:focus{
+          outline: none;
+          border: none;
+        }
+        .submit-message-button {
+          width: 100%;
+          padding: 5px;
+          font-size: 130%;
+          background-color: #abcdcf;
+          border: none;
+          color: white;
+        }
     	}
     }
 	}
