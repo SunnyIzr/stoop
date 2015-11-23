@@ -39,6 +39,7 @@ gem 'spring',        group: :development
 
 # Use puma as the app server
 gem 'puma'
+gem 'rails_12factor'
 
 # chat implementation
 gem 'private_pub'
