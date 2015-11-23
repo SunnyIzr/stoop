@@ -24,7 +24,8 @@
           <div class="conversation inactive">
             <img class="img-responsive" src="">
             <p class='name'></p>
-            <textarea name="text" cols="26" rows="3" placeholder="Write here..."></textarea>
+            <textarea name="text" cols="26" rows="6" placeholder="Write here..."></textarea>
+            <button class="submit-message-button">SEND</button>
           </div>
           <div class="conversation-options">
             <% current_user.mailbox.conversations.each do |convo| %>

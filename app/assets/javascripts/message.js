@@ -2,6 +2,7 @@ var MessageEvents = {
   init: function(){
     this.chatListClick();
     this.conversationClick();
+    this.submitMessageButtonClicked();
   },
   chatListClick: function(){
     $('.chat-bar .top-bar').click(function(e){
@@ -17,6 +18,11 @@ var MessageEvents = {
       MessageView.hideConversations()
       MessageView.showConversation()
       MessageView.setConversationValues(name, imageSrc)
+    })
+  },
+  submitMessageButtonClicked: function(){
+    $(".submit-message-button").click(function(e){
+
     })
   }
 }

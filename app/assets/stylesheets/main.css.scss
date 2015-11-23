@@ -575,6 +575,9 @@ a.add-to-fav {
     }
     .conversations{
       .conversation.active{
+        img, .name {
+          cursor: default
+        }
         border: none
       }
       .conversation.inactive{
@@ -597,12 +600,20 @@ a.add-to-fav {
     			display: inline-block;
     		}
         textarea {
-          margin: 10px;
+          margin: 6px;
           border: none;
         }
         textarea:active, textarea:focus{
           outline: none;
           border: none;
+        }
+        .submit-message-button {
+          width: 100%;
+          padding: 5px;
+          font-size: 130%;
+          background-color: #abcdcf;
+          border: none;
+          color: white;
         }
     	}
     }
