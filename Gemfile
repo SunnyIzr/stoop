@@ -97,6 +97,7 @@ gem 'geocoder'
 gem 'yelp', require: 'yelp'
 
 group :test, :development do
+  gem "thin"
   gem 'rspec-mocks'
   gem 'rspec-rails'
   gem 'shoulda'
