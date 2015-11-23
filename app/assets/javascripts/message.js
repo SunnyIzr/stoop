@@ -8,26 +8,31 @@ var MessageEvents = {
   chatListClick: function(){
     $('.chat-bar .top-bar').click(function(e){
       e.preventDefault();
-      if (!$(".chat-box").hasClass("expanded") || $(".conversation.active").length > 0){
+      //if (!$(".chat-box").hasClass("expanded") || $(".conversation.active").length > 0){
         MessageView.toggleChatList();
-      }
+     // }
     })
   },
   conversationClick: function(){
     $('.conversation').click(function(e){
       var elementTargeted = $(e.currentTarget)
-      var userId = elementTargeted.closest(".conversation")[0].id
-      console.log(userId)
+      // nasty; won't scale well
+      var convoId = $(e.currentTarget).id
+      var closestConversation = elementTargeted.closest(".conversation")[0]
+      $(closestConversation).height("432px")
+      var userId = closestConversation.id
       var name = elementTargeted.find(".name")[0].innerHTML
       var imageSrc = elementTargeted.find("img")[0].getAttribute("src");
-      MessageView.hideConversations()
-      MessageView.showConversation()
-      MessageView.setConversationValues(name, imageSrc, userId)
+      MessageView.showConversationMessages()
+      var closestMessages = elementTargeted.find(".conversation-messages.active")[0]
+      $(closestMessages).height("383px")
+      //MessageView.hideConversations()
+      //MessageView.showConversation()
+      //MessageView.setConversationValues(name, imageSrc, userId, convoId)
     })
   },
   backButtonClick: function(){
     $(".back-button").click(function(e){
-      console.log("clicked back button")
       MessageView.hideConversation();
       MessageView.showConversations();
     })
@@ -78,6 +83,14 @@ var MessageView = {
   hideConversation: function(){
     $(".conversation.active").addClass("inactive")
     $(".conversation.active").removeClass("active")
+  },
+  showConversationMessages: function(){
+    $(".conversation-messages.inactive").addClass("active")
+    $(".conversation-messages.inactive").removeClass("inactive")
+  },
+  hideConversationMessages: function(){
+    $(".conversation-messages.active").addClass("inactive")
+    $(".conversation-messages.active").removeClass("active")
   },
   setConversationValues: function(name, imageSrc, userId){
     $(".conversation.active").attr("id", userId)

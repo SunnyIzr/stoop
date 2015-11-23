@@ -597,9 +597,17 @@ a.add-to-fav {
         display: none
       }
     	.conversation{
+        position: relative;
     		padding: 7px 10px 5px;
     		border-bottom: 1px solid $lightBlue;
     		cursor: pointer;
+        .conversation-messages.inactive{
+          display: none;
+        }
+        .new-message {
+          position: absolute;
+          bottom: 10px;
+        }
     		img{
     			display: inline-block;
     			width: 50px;
@@ -618,8 +626,7 @@ a.add-to-fav {
           border: none;
         }
         .submit-message-button {
-          width: 100%;
-          padding: 5px;
+          width: 95%;
           font-size: 130%;
           background-color: #abcdcf;
           border: none;

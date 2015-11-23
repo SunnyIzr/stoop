@@ -32,18 +32,19 @@
             <% current_user.mailbox.conversations.each do |convo| %>
               <div class="conversation">
                 <a href="#">
-                <img class="img-responsive" src="<%= (convo.participants - [current_user])[0].avatar %>">
-                <p class='name'><%= (convo.participants - [current_user])[0].name %></p>
-              </div>
-            <% end %>
-            <% current_user.building.users.each do |building_user| %>
-              <% if building_user != current_user %>
-                <div id="<%= building_user.id %>" class="conversation">
-                  <a href='#'>
-                  <img class='img-responsive' src='<%= building_user.avatar %>'>
-                  <p class='name'><%= building_user.name %></p>
+                  <img class="img-responsive" src="<%= (convo.participants - [current_user])[0].avatar %>">
+                  <p class='name'><%= (convo.participants - [current_user])[0].name %></p>
+                </a>
+                <div class="conversation-messages inactive">
+                  <% convo.receipts_for((convo.participants - [current_user])[0]).each do |receipt| %>
+                    <div> <%= receipt.message.body %> </div>
+                  <% end %>
+                  <div class="new-message">
+                    <textarea name="text" cols="26" rows="1" placeholder="Write here..."></textarea>
+                    <button class="submit-message-button">SEND</button>
+                  </div>
                 </div>
-                <% end %>
+              </div>
             <% end %>
           </div>
       </div>
