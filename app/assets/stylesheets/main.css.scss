@@ -574,6 +574,15 @@ a.add-to-fav {
 			cursor: pointer;
     }
     .conversations{
+      .conversation.active{
+        border: none
+      }
+      .conversation.inactive{
+        display: none;
+      }
+      .conversation-options.inactive{
+        display: none
+      }
     	.conversation{
     		padding: 7px 10px 5px;
     		border-bottom: 1px solid $lightBlue;
@@ -587,6 +596,14 @@ a.add-to-fav {
     			margin-left: 7px;
     			display: inline-block;
     		}
+        textarea {
+          margin: 10px;
+          border: none;
+        }
+        textarea:active, textarea:focus{
+          outline: none;
+          border: none;
+        }
     	}
     }
 	}
