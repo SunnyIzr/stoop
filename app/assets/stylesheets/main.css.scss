@@ -572,6 +572,16 @@ a.add-to-fav {
 			height: 41px;
 			background: $header;
 			cursor: pointer;
+      .back-button{
+        z-index: 1000;
+        float: left;
+      }
+      .back-button.inactive{
+        display: none;
+      }
+      .back-button.active{
+        display: initial;
+      }
     }
     .conversations{
       .conversation.active{

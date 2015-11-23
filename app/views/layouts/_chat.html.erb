@@ -18,6 +18,7 @@
       <div class="col-sm-4 col-sm-offset-8 chat-box">
 
         <div class='top-bar'>
+          <span class="back-button inactive"> Back </span>
           <i class="fa fa-circle-o"></i> Instant Chat
         </div>
         <div class='conversations'>
@@ -37,7 +38,7 @@
             <% end %>
             <% current_user.building.users.each do |building_user| %>
               <% if building_user != current_user %>
-                <div class="conversation">
+                <div id="<%= building_user.id %>" class="conversation">
                   <a href='#'>
                   <img class='img-responsive' src='<%= building_user.avatar %>'>
                   <p class='name'><%= building_user.name %></p>
@@ -48,4 +49,5 @@
       </div>
     </div>
   </div>
+  <%= subscribe_to "/messages/new" %>
 </div>
