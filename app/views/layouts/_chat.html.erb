@@ -14,22 +14,28 @@
           </div>
         </div>
       </div>
-      
+
       <div class="col-sm-4 col-sm-offset-8 chat-box">
+
         <div class='top-bar'>
           <i class="fa fa-circle-o"></i> Instant Chat
         </div>
         <div class='conversations'>
-          <% current_user.mailbox.conversations.limit(10).each do |convo| %>
-          <div class='conversation'>
-            <a href='#'>
-            <img class='img-responsive' src='<%= (convo.participants - [current_user])[0].avatar %>'>
-            <p class='name'><%= (convo.participants - [current_user])[0].name %></p>              
-          </div>
+          <% current_user.mailbox.conversations.each do |convo| %>
+            <div class="conversation">
+              <a href="#">
+              <img class="img-responsive" src="<%= (convo.participants - [current_user])[0].avatar %>">
+              <p class='name'><%= (convo.participants - [current_user])[0].name %></p>
+            </div>
           <% end %>
-        </div>
+          <% current_user.building.users.each do |building_user| %>
+            <div class="conversation">
+              <a href='#'>
+              <img class='img-responsive' src='<%= building_user.avatar %>'>
+              <p class='name'><%= building_user.name %></p>
+            </div>
+          <% end %>
       </div>
-      
     </div>
   </div>
 </div>
