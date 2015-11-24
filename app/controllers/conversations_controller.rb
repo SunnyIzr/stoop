@@ -29,7 +29,7 @@ class ConversationsController < ApplicationController
     receipts.each do |r|
       messages.push(r.message)
     end
-    render :json => {user: current_user, conversation: conversation, receipts: receipts, messages: messages}
+    render :json => {user: current_user, conversation: conversation, receipts: receipts, messages: messages.reverse()}
 #    @conversations = current_user.mailbox.conversations.paginate(page: params[:page], per_page: 5)
 #    @recipient = (@conversation.participants - [current_user]).first
 #    respond_to do |format|

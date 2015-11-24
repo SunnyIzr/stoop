@@ -80,18 +80,15 @@ var MessageEvents = {
     })
   },
   submitNewMessageButtonClicked: function(){
-    var that = this;
     $(".submit-message-button").click(function(e){
-      var userId = $(".conversation-new")[0].id
+      var convoId = $(".conversation-messages")[0].id
       var body = $("#new-message-text").val()
-      var name = $(".conversation-new").find(".name")[0].innerHTML
-      var avatar  = $(".conversation-new").find("img").attr("src")
-      $.post( "messages", {recipients: userId, message: {body: body}}, function( data ) {
-          var message = data[0];
-          $(".conversation-list")[0].insertAdjacentHTML('afterbegin', "<div class='conversation' id=" + message.conversation_id + "> <a href='#'><img class='img-responsive' src='" + avatar + "'><p class='name'>" + name + "</p></a></div>")
-          that.conversationClick();
-          Conversation.open(message.conversation_id, "newConversation")
+      var sender_status = "sent_by_user"
+      $.post( "messages", {convo_id: convoId, message: {body: body}}, function( data ) {
+        var message = data[0];
+        $('.conversation-messages-list').append("<div class='" + sender_status + "'>"+ body +"</div>");
       });
+      $("#new-message-text").val("")
     })
   }
 }
@@ -110,11 +107,14 @@ var Conversation = {
         $('.conversation-messages-list').prepend("<div class='" + sender_status + "'>"+ v.body +"</div>");
       });
       if (type == "conversations"){
+        // when opening an existing conversation do this
         MessageView.hideNewConversationButton()
         MessageView.hideConversations()
       } else if (type == "newConversation"){
+        // after creating a new conversation do this
         MessageView.hideNewConversation()
       }
+      $(".conversation-messages").attr("id", id)
       MessageView.showConversationMessages()
       MessageView.showBackButton()
     });
