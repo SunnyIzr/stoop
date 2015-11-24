@@ -583,6 +583,52 @@ a.add-to-fav {
         display: initial;
       }
     }
+    .submit-message-button, .new-conversation-button {
+      font-size: 130%;
+      background-color: #abcdcf;
+      border: none;
+      color: white;
+    }
+    .submit-message-button, .new-conversation-button {
+      width: 95%;
+    }
+    .new-conversation-button{
+      bottom: 0;
+      position: absolute;
+      width: 100%;
+      border-left: 2px solid #fff;
+      border-right: 2px solid #fff;
+    }
+    .conversation{
+      position: relative;
+      padding: 7px 10px 5px;
+      border-bottom: 1px solid $lightBlue;
+      cursor: pointer;
+      .conversation-messages.inactive{
+        display: none;
+      }
+      .new-message {
+        position: absolute;
+        bottom: 10px;
+      }
+      img{
+        display: inline-block;
+        width: 50px;
+        border-radius: 100%;
+      }
+      p{
+        margin-left: 7px;
+        display: inline-block;
+      }
+      textarea {
+        margin: 6px;
+        border: none;
+      }
+      textarea:active, textarea:focus{
+        outline: none;
+        border: none;
+      }
+    }
     .conversations{
       .conversation.active{
         img, .name {
@@ -596,43 +642,6 @@ a.add-to-fav {
       .conversation-options.inactive{
         display: none
       }
-    	.conversation{
-        position: relative;
-    		padding: 7px 10px 5px;
-    		border-bottom: 1px solid $lightBlue;
-    		cursor: pointer;
-        .conversation-messages.inactive{
-          display: none;
-        }
-        .new-message {
-          position: absolute;
-          bottom: 10px;
-        }
-    		img{
-    			display: inline-block;
-    			width: 50px;
-    			border-radius: 100%; 
-    		}
-    		p{
-    			margin-left: 7px;
-    			display: inline-block;
-    		}
-        textarea {
-          margin: 6px;
-          border: none;
-        }
-        textarea:active, textarea:focus{
-          outline: none;
-          border: none;
-        }
-        .submit-message-button {
-          width: 95%;
-          font-size: 130%;
-          background-color: #abcdcf;
-          border: none;
-          color: white;
-        }
-    	}
     }
 	}
 	.chat-box.expanded{

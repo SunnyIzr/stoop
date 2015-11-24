@@ -22,32 +22,44 @@
           <i class="fa fa-circle-o"></i> Instant Chat
         </div>
         <div class='conversations'>
-          <div class="conversation inactive">
+          <div class="conversation-new conversation hidden">
             <img class="img-responsive" src="">
             <p class='name'></p>
-            <textarea name="text" cols="26" rows="6" placeholder="Write here..."></textarea>
+            <textarea id="new-message-text" name="text" cols="26" rows="6" placeholder="Write here..."></textarea>
             <button class="submit-message-button">SEND</button>
           </div>
-          <div class="conversation-options">
+          <div class="conversation-messages hidden">
+            <div class="messages">
+            </div>
+            <div class="new-message">
+              <textarea name="text" cols="26" rows="1" placeholder="Write here..."></textarea>
+              <button class="submit-message-button">SEND</button>
+            </div>
+          </div>
+          <div class="conversation-list">
             <% current_user.mailbox.conversations.each do |convo| %>
-              <div class="conversation">
+              <div class="conversation" id="<%= convo.id %>">
                 <a href="#">
                   <img class="img-responsive" src="<%= (convo.participants - [current_user])[0].avatar %>">
                   <p class='name'><%= (convo.participants - [current_user])[0].name %></p>
                 </a>
-                <div class="conversation-messages inactive">
-                  <% convo.receipts_for((convo.participants - [current_user])[0]).each do |receipt| %>
-                    <div> <%= receipt.message.body %> </div>
-                  <% end %>
-                  <div class="new-message">
-                    <textarea name="text" cols="26" rows="1" placeholder="Write here..."></textarea>
-                    <button class="submit-message-button">SEND</button>
-                  </div>
-                </div>
               </div>
             <% end %>
           </div>
+          <div class="building-member-list hidden">
+            <% current_user.building.users.each do |user| %>
+              <%  if user != current_user %>
+                <div class="conversation building-member" id="<%= user.id %>">
+                  <a href="#">
+                    <img class="img-responsive" src="<%= user.avatar %>">
+                    <p class='name'><%= user.name %></p>
+                  </a>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
       </div>
+      <button class="new-conversation-button">NEW CONVERSATION</button>
     </div>
   </div>
   <%= subscribe_to "/messages/new" %>
