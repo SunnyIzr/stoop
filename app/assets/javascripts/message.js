@@ -3,6 +3,7 @@ var MessageEvents = {
     this.chatListClick();
     this.conversationClick();
     this.submitNewMessageButtonClicked();
+    this.submitNewConversationButton();
     this.newConversationButtonClick();
     this.backButtonClick();
   },
@@ -38,18 +39,8 @@ var MessageEvents = {
         MessageView.hideBuildingMemberList()
       } else {
         var convoId = closestConversation.id
-        //$.get("/conversations/" + convoId, function( data ) {
-        //  $.each(data.messages, function(k, v) {
-        //    $('.conversation-messages.messages').append('<div>'+ v.body +'</div>');
-        //  });
-        //});
+        Conversation.open(convoId, "conversations")
       }
-//      // nasty; won't scale well
-//      MessageView.showConversationMessages()
-//      var closestMessages = elementTargeted.find(".conversation-messages.active")[0]
-//      $(closestMessages).height("383px")
-      //MessageView.hideConversations()
-      //MessageView.showConversation()
     })
   },
   backButtonClick: function(){
@@ -61,13 +52,35 @@ var MessageEvents = {
       } else if (!$(".conversation-new").hasClass("hidden")){
         MessageView.hideNewConversation();
         MessageView.showBuildingMemberList();
+      } else if (!$(".conversation-messages").hasClass("hidden")){
+        MessageView.hideConversationMessages()
+        MessageView.showConversations();
+        MessageView.showNewConversationButton()
+        MessageView.cleanConversationMessages()
       } else {
         MessageView.hideConversation();
         MessageView.showConversations();
       }
     })
   },
+  submitNewConversationButton: function(){
+    var that = this;
+    $(".submit-new-conversation-button").click(function(e){
+      var userId = $(".conversation-new")[0].id
+      var body = $("#new-conversation-text").val()
+      var name = $(".conversation-new").find(".name")[0].innerHTML
+      var avatar  = $(".conversation-new").find("img").attr("src")
+      $.post( "messages", {recipients: userId, message: {body: body}}, function( data ) {
+          var message = data[0];
+          $(".conversation-list")[0].insertAdjacentHTML('afterbegin', "<div class='conversation' id=" + message.conversation_id + "> <a href='#'><img class='img-responsive' src='" + avatar + "'><p class='name'>" + name + "</p></a></div>")
+          that.conversationClick();
+          $("#new-conversation-text").val = ""
+          Conversation.open(message.conversation_id, "newConversation")
+      });
+    })
+  },
   submitNewMessageButtonClicked: function(){
+    var that = this;
     $(".submit-message-button").click(function(e){
       var userId = $(".conversation-new")[0].id
       var body = $("#new-message-text").val()
@@ -75,9 +88,36 @@ var MessageEvents = {
       var avatar  = $(".conversation-new").find("img").attr("src")
       $.post( "messages", {recipients: userId, message: {body: body}}, function( data ) {
           var message = data[0];
-          $(".conversation-list")[0].insertAdjacentHTML('beforeend', "<div class='conversation' id=" + message.conversation_id + "> <a href='#'><img class='img-responsive' src='" + avatar + "'><p class='name'>" + name + "</p></a></div>")
+          $(".conversation-list")[0].insertAdjacentHTML('afterbegin', "<div class='conversation' id=" + message.conversation_id + "> <a href='#'><img class='img-responsive' src='" + avatar + "'><p class='name'>" + name + "</p></a></div>")
+          that.conversationClick();
+          Conversation.open(message.conversation_id, "newConversation")
       });
     })
+  }
+}
+
+var Conversation = {
+  open: function(id, type){
+    $.get("/conversations/" + id, function( data ) {
+      var user = data.user;
+      $.each(data.messages, function(k, v) {
+        var sender_status;
+        if (v.sender_id == user.id){
+          sender_status = "sent_by_user"
+        } else {
+          sender_status = "received_by_user"
+        }
+        $('.conversation-messages-list').prepend("<div class='" + sender_status + "'>"+ v.body +"</div>");
+      });
+      if (type == "conversations"){
+        MessageView.hideNewConversationButton()
+        MessageView.hideConversations()
+      } else if (type == "newConversation"){
+        MessageView.hideNewConversation()
+      }
+      MessageView.showConversationMessages()
+      MessageView.showBackButton()
+    });
   }
 }
 
@@ -115,14 +155,14 @@ var MessageView = {
     $(".conversation.active").removeClass("active")
   },
   showConversationMessages: function(){
-    $(".conversation-messages.inactive").addClass("active")
-    $(".conversation-messages.inactive").removeClass("inactive")
+    $(".conversation-messages").removeClass("hidden")
   },
   hideConversationMessages: function(){
-    $(".conversation-messages.active").addClass("inactive")
-    $(".conversation-messages.active").removeClass("active")
+    $(".conversation-messages").addClass("hidden")
   },
-
+  cleanConversationMessages: function(){
+    $(".conversation-messages-list").empty();
+  },
   showNewConversation: function(){
     $(".conversation-new").removeClass("hidden")
   },

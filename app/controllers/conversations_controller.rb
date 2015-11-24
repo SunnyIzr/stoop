@@ -23,16 +23,23 @@ class ConversationsController < ApplicationController
   end
 
   def show
-    @conversations = current_user.mailbox.conversations.paginate(page: params[:page], per_page: 5)
-    @recipient = (@conversation.participants - [current_user]).first
-    respond_to do |format|
-      format.html
-      if params[:page].nil?
-        format.js
-      else
-        format.js {render 'show_conversations_preview'}
-      end
+    conversation = current_user.mailbox.conversations.includes(:messages).find(params[:id])
+    receipts = conversation.receipts_for(current_user)
+    messages = []
+    receipts.each do |r|
+      messages.push(r.message)
     end
+    render :json => {user: current_user, conversation: conversation, receipts: receipts, messages: messages}
+#    @conversations = current_user.mailbox.conversations.paginate(page: params[:page], per_page: 5)
+#    @recipient = (@conversation.participants - [current_user]).first
+#    respond_to do |format|
+#      format.html
+#      if params[:page].nil?
+#        format.js
+#      else
+#        format.js {render 'show_conversations_preview'}
+#      end
+#    end
   end
   
   def reply

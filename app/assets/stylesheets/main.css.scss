@@ -583,21 +583,11 @@ a.add-to-fav {
         display: initial;
       }
     }
-    .submit-message-button, .new-conversation-button {
+    .submit-message-button, .submit-new-conversation-button, .new-conversation-button {
+      width: 100%;
       font-size: 130%;
       background-color: #abcdcf;
-      border: none;
       color: white;
-    }
-    .submit-message-button, .new-conversation-button {
-      width: 95%;
-    }
-    .new-conversation-button{
-      bottom: 0;
-      position: absolute;
-      width: 100%;
-      border-left: 2px solid #fff;
-      border-right: 2px solid #fff;
     }
     .conversation{
       position: relative;
