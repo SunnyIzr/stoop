@@ -10,6 +10,7 @@ var StoopPrivatePub = {
       console.log("got message")
       console.log(data)
       console.log(channel)
+      MessageView.changeTopBarColor("green")
     });
   },
   subscribeToNewConversations: function(){
@@ -19,6 +20,14 @@ var StoopPrivatePub = {
       console.log("got conversation")
       console.log(data)
       console.log(channel)
+      var args = {
+        conversationId: data.conversation.id,
+        avatar: data.user.avatar  || "/assets/default-avatar.png",
+        name: data.user.name || ""
+      };
+      MessageView.addNewConversationToConversationList(args);
+      MessageEvents.conversationClick();
+      MessageView.changeTopBarColor("green");
     });
   }
 }
@@ -98,9 +107,14 @@ var MessageEvents = {
       var avatar  = $(".conversation-new").find("img").attr("src")
       $.post( "messages", {recipients: userId, message: {body: body}}, function( data ) {
           var message = data[0];
-          $(".conversation-list")[0].insertAdjacentHTML('afterbegin', "<div class='conversation' id=" + message.conversation_id + "> <a href='#'><img class='img-responsive' src='" + avatar + "'><p class='name'>" + name + "</p></a></div>")
+          var args = {
+            conversationId: message.conversation_id,
+            avatar: avatar,
+            name: name
+          };
+          MessageView.addNewConversationToConversationList(args);
           that.conversationClick();
-          $("#new-conversation-text").val = ""
+          $("#new-conversation-text").val = "";
           Conversation.open(message.conversation_id, "newConversation")
       });
     })
@@ -158,6 +172,9 @@ var MessageView = {
       this.showConversations();
     }
   },
+  changeTopBarColor: function(color){
+    $(".top-bar").css("background-color", color);
+  },
   hideBackButton: function(){
     $(".back-button").addClass("inactive")
     $(".back-button").removeClass("active")
@@ -211,5 +228,8 @@ var MessageView = {
   },
   showBuildingMemberList: function(){
     $(".building-member-list").removeClass("hidden")
+  },
+  addNewConversationToConversationList: function(args){
+    $(".conversation-list")[0].insertAdjacentHTML('afterbegin', "<div class='conversation' id=" + args.conversationId + "> <a href='#'><img class='img-responsive' src='" + args.avatar + "'><p class='name'>" + args.name + "</p></a></div>")
   }
 }

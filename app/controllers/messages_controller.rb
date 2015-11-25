@@ -10,15 +10,15 @@ class MessagesController < ApplicationController
       conversation = Mailboxer::Conversation.find(params["convo_id"])
       current_user.reply_to_conversation(conversation, params[:message][:body])
       other_participant = conversation.participants - [current_user]
-      message_route = "/conversations/new/#{other_participant.first.id}"
-      PrivatePub.publish_to message_route, :chat_message => "#{params[:message][:body]}"
+      message_route = "/messages/new/#{other_participant.first.id}"
+      PrivatePub.publish_to message_route, :chat_message => "#{params[:message][:body]}", :conversation_id => conversation.id
       render :json => conversation.messages
     else
       # if creating new conversation
       recipient = User.find(params['recipients'])
       conversation = current_user.send_message(recipient, params[:message][:body], "Subject").conversation
-      message_route = "/messages/new/#{recipient.id}"
-      PrivatePub.publish_to message_route, :chat_message => "#{params[:message][:body]}"
+      message_route = "/conversations/new/#{recipient.id}"
+      PrivatePub.publish_to message_route, :chat_message => "#{params[:message][:body]}", user: recipient, conversation: conversation
       render :json => conversation.messages
     end
     #redirect_to conversation_path(conversation)
