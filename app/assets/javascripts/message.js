@@ -10,7 +10,14 @@ var StoopPrivatePub = {
       console.log("got message")
       console.log(data)
       console.log(channel)
-      MessageView.changeTopBarColor("green")
+      var messagesElement = $(".conversation-messages")
+      if (!messagesElement.hasClass("hidden") && messagesElement.is("#" + data.conversation_id)){
+        var sender_status = "received_by_user";
+        var body = data.chat_message;
+        MessageView.addNewMessageToMessageList(sender_status, body)
+      } else {
+        MessageView.changeTopBarColor("green")
+      }
     });
   },
   subscribeToNewConversations: function(){
@@ -46,7 +53,7 @@ var MessageEvents = {
     $('.chat-bar .top-bar').click(function(e){
       e.preventDefault();
       if ($(".back-button").hasClass("inactive")){
-      //if (!$(".chat-box").hasClass("expanded") || $(".conversation.active").length > 0){
+        MessageView.changeTopBarColor("#345064");
         MessageView.toggleChatList();
       } else if ( !$(".conversation-list").hasClass("hidden") ){
         MessageView.hideBackButton()
@@ -126,7 +133,7 @@ var MessageEvents = {
       var sender_status = "sent_by_user"
       $.post( "messages", {convo_id: convoId, message: {body: body}}, function( data ) {
         var message = data[0];
-        $('.conversation-messages-list').append("<div class='" + sender_status + "'>"+ body +"</div>");
+        MessageView.addNewMessageToMessageList(sender_status, body)
       });
       $("#new-message-text").val("")
     })
@@ -231,5 +238,8 @@ var MessageView = {
   },
   addNewConversationToConversationList: function(args){
     $(".conversation-list")[0].insertAdjacentHTML('afterbegin', "<div class='conversation' id=" + args.conversationId + "> <a href='#'><img class='img-responsive' src='" + args.avatar + "'><p class='name'>" + args.name + "</p></a></div>")
+  },
+  addNewMessageToMessageList: function(sender_status, body){
+    $('.conversation-messages-list').append("<div class='" + sender_status + "'>"+ body +"</div>");
   }
 }
