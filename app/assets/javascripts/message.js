@@ -1,20 +1,20 @@
 var StoopPrivatePub = {
-  init: function(user_id){
-    this.subscribeToNewMessages(user_id),
-    this.subscribeToNewConversations(user_id)
+  init: function(){
+    this.subscribeToNewMessages(),
+    this.subscribeToNewConversations()
   },
-  subscribeToNewMessages: function(user_id){
-    var message_route = "/messages/new/" + user_id
-    console.log(message_route)
+  subscribeToNewMessages: function(){
+    var userId = $(".user-server-id").html()
+    var message_route = ("/messages/new/" + userId).replace(/\s/g, "");
     PrivatePub.subscribe(message_route, function(data, channel) {
       console.log("got message")
       console.log(data)
       console.log(channel)
     });
   },
-  subscribeToNewConversations: function(user_id){
-    var message_route = "/conversations/new/" + user_id
-    console.log(message_route)
+  subscribeToNewConversations: function(){
+    var userId = $(".user-server-id").html()
+    var message_route = ("/conversations/new/" + userId).replace(/\s/g, "");
     PrivatePub.subscribe(message_route, function(data, channel) {
       console.log("got conversation")
       console.log(data)
@@ -25,6 +25,7 @@ var StoopPrivatePub = {
 
 var MessageEvents = {
   init: function(){
+    StoopPrivatePub.init()
     this.chatListClick();
     this.conversationClick();
     this.submitNewMessageButtonClicked();

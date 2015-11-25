@@ -62,14 +62,9 @@
       <button class="new-conversation-button">NEW CONVERSATION</button>
       <%= subscribe_to "/messages/new/#{current_user.id}" %>
       <%= subscribe_to "/conversations/new/#{current_user.id}" %>
-      <% publish_to "/messages/new/#{current_user.id}" do %>
-        console.log("new message")
-        $(".top-bar").css("background-color", "green")
-      <% end %>
-      <% publish_to "/conversations/new/#{current_user.id}" do %>
-        console.log("new convesration")
-        $(".top-bar").css("background-color", "green")
-      <% end %>
     </div>
   </div>
+  <span class="user-server-id">
+    <%=current_user.id%>
+  </span>
 </div>

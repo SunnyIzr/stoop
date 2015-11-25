@@ -11,8 +11,6 @@ class MessagesController < ApplicationController
       current_user.reply_to_conversation(conversation, params[:message][:body])
       other_participant = conversation.participants - [current_user]
       message_route = "/conversations/new/#{other_participant.first.id}"
-      p "message route conversations"
-      p message_route
       PrivatePub.publish_to message_route, :chat_message => "#{params[:message][:body]}"
       render :json => conversation.messages
     else
@@ -20,8 +18,6 @@ class MessagesController < ApplicationController
       recipient = User.find(params['recipients'])
       conversation = current_user.send_message(recipient, params[:message][:body], "Subject").conversation
       message_route = "/messages/new/#{recipient.id}"
-      p "message route messages"
-      p message_route
       PrivatePub.publish_to message_route, :chat_message => "#{params[:message][:body]}"
       render :json => conversation.messages
     end
