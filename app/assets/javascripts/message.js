@@ -7,14 +7,12 @@ var StoopPrivatePub = {
     var userId = $(".user-server-id").html()
     var message_route = ("/messages/new/" + userId).replace(/\s/g, "");
     PrivatePub.subscribe(message_route, function(data, channel) {
-      console.log("got message")
-      console.log(data)
-      console.log(channel)
       var messagesElement = $(".conversation-messages")
       if (!messagesElement.hasClass("hidden") && messagesElement.is("#" + data.conversation_id)){
         var sender_status = "received_by_user";
         var body = data.chat_message;
         MessageView.addNewMessageToMessageList(sender_status, body)
+        MessageView.moveConversationToTopOfConversationList(data.conversation_id)
       } else {
         MessageView.changeTopBarColor("green")
       }
@@ -24,9 +22,6 @@ var StoopPrivatePub = {
     var userId = $(".user-server-id").html()
     var message_route = ("/conversations/new/" + userId).replace(/\s/g, "");
     PrivatePub.subscribe(message_route, function(data, channel) {
-      console.log("got conversation")
-      console.log(data)
-      console.log(channel)
       var args = {
         conversationId: data.conversation.id,
         avatar: data.user.avatar  || "/assets/default-avatar.png",
@@ -134,6 +129,7 @@ var MessageEvents = {
       $.post( "messages", {convo_id: convoId, message: {body: body}}, function( data ) {
         var message = data[0];
         MessageView.addNewMessageToMessageList(sender_status, body)
+        MessageView.moveConversationToTopOfConversationList(convoId)
       });
       $("#new-message-text").val("")
     })
@@ -238,6 +234,9 @@ var MessageView = {
   },
   addNewConversationToConversationList: function(args){
     $(".conversation-list")[0].insertAdjacentHTML('afterbegin', "<div class='conversation' id=" + args.conversationId + "> <a href='#'><img class='img-responsive' src='" + args.avatar + "'><p class='name'>" + args.name + "</p></a></div>")
+  },
+  moveConversationToTopOfConversationList: function(conversationId){
+    $(".conversation-list").find("#" + conversationId).prependTo($(".conversation-list"))
   },
   addNewMessageToMessageList: function(sender_status, body){
     $('.conversation-messages-list').append("<div class='" + sender_status + "'>"+ body +"</div>");

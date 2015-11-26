@@ -503,7 +503,7 @@ a.add-to-fav {
     width: 325px;
 		padding-left:0;
 		padding-right:0;
-		overflow: scroll;
+		overflow-y: scroll;
 		background: #fff;
 		 .top-bar{
     	color:$lightBlue;
@@ -588,6 +588,18 @@ a.add-to-fav {
       font-size: 130%;
       background-color: #abcdcf;
       color: white;
+    }
+    .conversation-messages-list{
+      .sent_by_user, .received_by_user {
+        border-radius: 30px;
+        text-align: center;
+      }
+      .sent_by_user{
+        background-color: lightblue;
+      }
+      .received_by_user{
+        background-color: lightgreen;
+      }
     }
     .conversation{
       position: relative;
