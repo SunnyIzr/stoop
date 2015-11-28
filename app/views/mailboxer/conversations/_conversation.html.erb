@@ -3,7 +3,7 @@
   <div class="col-xs-12 conversation-link conversation-id-<%=conversation.id%> <%= "recent-chat-active" if @conversation == conversation %>">
     <div class="row">
       <div class="col-xs-4">
-        <img class="img-responsive" src="<%= recipient.avatar %>" alt="<%= recipient.first_name %>">
+        <img class="img-responsive" src="<%= asset_path recipient.avatar %>" alt="<%= recipient.first_name %>">
       </div>
       <div class="col-xs-8">
         <h4 class="chat-name"><%= recipient.name %></h4>

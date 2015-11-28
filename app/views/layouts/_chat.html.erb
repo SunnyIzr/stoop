@@ -40,7 +40,7 @@
             <% current_user.mailbox.conversations.each do |convo| %>
               <div class="conversation" id="<%= convo.id %>">
                 <a href="#">
-                  <img class="img-responsive" src="<%= (convo.participants - [current_user])[0].avatar %>">
+                  <img class="img-responsive" src="<%= asset_path((convo.participants - [current_user])[0].avatar) %>">
                   <p class='name'><%= (convo.participants - [current_user])[0].name %></p>
                 </a>
               </div>
@@ -51,7 +51,7 @@
               <%  if user != current_user %>
                 <div class="conversation building-member" id="<%= user.id %>">
                   <a href="#">
-                    <img class="img-responsive" src="<%= user.avatar %>">
+                    <img class="img-responsive" src="<%= asset_path user.avatar %>">
                     <p class='name'><%= user.name %></p>
                   </a>
                 </div>

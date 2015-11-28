@@ -67,7 +67,7 @@
         <div class="row">
           <% @event.confirmed_guests.sample(8).each do |user| %>
           <div class="col-xs-3">
-            <a href='<%= user_path(user) %>'><img class="img-responsive" src="<%= user.avatar %>" alt=""></a>
+            <a href='<%= user_path(user) %>'><img class="img-responsive" src="<%= asset_path user.avatar %>" alt=""></a>
           </div>
           <% end %>
         </div>
@@ -78,7 +78,7 @@
         <div class="row">
           <% @event.attendees.sample(8).each do |user| %>
           <div class="col-xs-3">
-            <a href='<%= user_path(user) %>'><img class="img-responsive" src="<%= user.avatar %>" alt=""></a>
+            <a href='<%= user_path(user) %>'><img class="img-responsive" src="<%= asset_path user.avatar %>" alt=""></a>
           </div>
           <% end %>
         </div>
