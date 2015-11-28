@@ -503,7 +503,7 @@ a.add-to-fav {
     width: 325px;
 		padding-left:0;
 		padding-right:0;
-		overflow: scroll;
+		overflow-y: scroll;
 		background: #fff;
 		 .top-bar{
     	color:$lightBlue;
@@ -572,22 +572,78 @@ a.add-to-fav {
 			height: 41px;
 			background: $header;
 			cursor: pointer;
+      .back-button{
+        z-index: 1000;
+        float: left;
+      }
+      .back-button.inactive{
+        display: none;
+      }
+      .back-button.active{
+        display: initial;
+      }
+    }
+    .submit-message-button, .submit-new-conversation-button, .new-conversation-button {
+      width: 100%;
+      font-size: 130%;
+      background-color: #abcdcf;
+      color: white;
+    }
+    .conversation-messages-list{
+      .sent_by_user, .received_by_user {
+        border-radius: 30px;
+        text-align: center;
+      }
+      .sent_by_user{
+        background-color: lightblue;
+      }
+      .received_by_user{
+        background-color: lightgreen;
+      }
+    }
+    .conversation{
+      position: relative;
+      padding: 7px 10px 5px;
+      border-bottom: 1px solid $lightBlue;
+      cursor: pointer;
+      .conversation-messages.inactive{
+        display: none;
+      }
+      .new-message {
+        position: absolute;
+        bottom: 10px;
+      }
+      img{
+        display: inline-block;
+        width: 50px;
+        border-radius: 100%;
+      }
+      p{
+        margin-left: 7px;
+        display: inline-block;
+      }
+      textarea {
+        margin: 6px;
+        border: none;
+      }
+      textarea:active, textarea:focus{
+        outline: none;
+        border: none;
+      }
     }
     .conversations{
-    	.conversation{
-    		padding: 7px 10px 5px;
-    		border-bottom: 1px solid $lightBlue;
-    		cursor: pointer;
-    		img{
-    			display: inline-block;
-    			width: 50px;
-    			border-radius: 100%; 
-    		}
-    		p{
-    			margin-left: 7px;
-    			display: inline-block;
-    		}
-    	}
+      .conversation.active{
+        img, .name {
+          cursor: default
+        }
+        border: none
+      }
+      .conversation.inactive{
+        display: none;
+      }
+      .conversation-options.inactive{
+        display: none
+      }
     }
 	}
 	.chat-box.expanded{
@@ -953,4 +1009,9 @@ background-color:$midGreen;
 	.details{
 		opacity: 1.0;
 	}
+}
+
+.user-server-id{
+  position: absolute;
+  right: -50px;
 }

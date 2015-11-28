@@ -3,7 +3,7 @@
   <div class="post-area">
     <div class="row">
       <div class="col-sm-2 col-xs-3">
-        <img class="img-responsive avatar" src="<%= post.account.avatar unless post.id.nil? %>" alt="">
+        <img class="img-responsive avatar" src="<%= asset_path(post.account.avatar) unless post.id.nil? %>" alt="">
       </div>
       <div class="col-sm-10 col-xs-9">
         <h3 class="name"><%= link_to post.account.name, post.account.business? ? business_path(post.account) : user_path(post.account) unless post.id.nil? %></h3>

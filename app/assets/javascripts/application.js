@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.all
-
+//= require private_pub
 //= require bootstrap.min
 //= require smooth-scroll
 //= require jquery.turbolinks
