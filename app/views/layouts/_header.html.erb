@@ -30,9 +30,9 @@
         <% end %>
         
         <% if current_user.business? %>
-          <a href='/businesses/<%= current_user.business.id %>'><img class="profile-pic" src="<%= current_user.business.avatar %>" alt=""></a>
+          <a href='/businesses/<%= current_user.business.id %>'><img class="profile-pic" src="<%= asset_path current_user.business.avatar %>" alt=""></a>
         <% else %>
-          <a href='/users/<%= current_user.id %>'><img class="profile-pic" src="<%= current_user.avatar %>" alt=""></a>
+          <a href='/users/<%= current_user.id %>'><img class="profile-pic" src="<%= asset_path current_user.avatar %>" alt=""></a>
         <% end %>
       </div>
     </div>
