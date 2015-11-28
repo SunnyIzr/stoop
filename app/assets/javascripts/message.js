@@ -24,7 +24,7 @@ var StoopPrivatePub = {
     PrivatePub.subscribe(message_route, function(data, channel) {
       var args = {
         conversationId: data.conversation.id,
-        avatar: data.user.avatar  || "/assets/default-avatar.png",
+        avatar: data.user.avatar  || "default-avatar.png",
         name: data.user.name || ""
       };
       MessageView.addNewConversationToConversationList(args);
