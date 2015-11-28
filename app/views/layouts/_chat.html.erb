@@ -60,10 +60,8 @@
           </div>
       </div>
       <button class="new-conversation-button">NEW CONVERSATION</button>
-      <% content_for :bottom do %>
-        <%= subscribe_to "/messages/new/#{current_user.id}" %>
-        <%= subscribe_to "/conversations/new/#{current_user.id}" %>
-      <% end  %>
+      <%= subscribe_to "/messages/new/#{current_user.id}" %>
+      <%= subscribe_to "/conversations/new/#{current_user.id}" %>
     </div>
   </div>
   <span class="user-server-id">
