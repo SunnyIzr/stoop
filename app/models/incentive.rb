@@ -6,7 +6,7 @@ class Incentive < ActiveRecord::Base
   before_save :check_active_on_siblings
   
   has_attached_file :image,
-                :default_url => '/assets/default-cover.jpg',
+                :default_url => 'default-cover.jpg',
                 :storage => :s3,
                 :s3_credentials => Proc.new{|a| a.instance.s3_credentials }
 
