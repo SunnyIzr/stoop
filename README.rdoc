@@ -3,3 +3,7 @@
 - rake assets:precompile
 - heroku restart
 - make sure you migrated db changes
+
+**Local Server Start**
+- `rails s`
+- `rackup private_pub.ru -s puma -E production`

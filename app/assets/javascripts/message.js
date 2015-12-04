@@ -114,9 +114,9 @@ var MessageEvents = {
             avatar: avatar,
             name: name
           };
+          $("#new-conversation-text").val("");
           MessageView.addNewConversationToConversationList(args);
           that.conversationClick();
-          $("#new-conversation-text").val = "";
           Conversation.open(message.conversation_id, "newConversation")
       });
     })
