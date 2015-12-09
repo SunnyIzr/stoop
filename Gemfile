@@ -37,9 +37,12 @@ gem 'spring',        group: :development
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
-# Use unicorn as the app server
-# gem 'unicorn'
+# Use puma as the app server
+gem 'puma'
+gem 'rails_12factor'
 
+# chat implementation
+gem 'private_pub'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -47,6 +50,12 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'devise'
+
+
+#omniauth
+
+gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'
 
 gem 'acts_as_commentable'
 
@@ -88,6 +97,7 @@ gem 'geocoder'
 gem 'yelp', require: 'yelp'
 
 group :test, :development do
+  gem "thin"
   gem 'rspec-mocks'
   gem 'rspec-rails'
   gem 'shoulda'

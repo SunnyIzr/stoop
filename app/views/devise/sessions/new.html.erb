@@ -15,10 +15,10 @@
         <p class="checkbox-text">Remember Me</p>
       </label>
     <% end %>
-    <div class="row hide">
-      <div class="col-sm-6 social-login"> <a href="#"><img class="img-responsive" src="<%= asset_path 'login-fb.jpg' %>" alt="Log In With FaceBook"></a>
+    <div class="row">
+      <div class="col-sm-6 social-login"> <a href="<%= user_omniauth_authorize_path(:facebook) %>"><img class="img-responsive" src="<%= asset_path 'login-fb.jpg' %>" alt="Log In With FaceBook"></a>
       </div>
-      <div class="col-sm-6 social-login"> <a href="#"><img class="img-responsive" src="<%= asset_path 'login-google.jpg' %>" alt="Log In With Google"></a>
+      <div class="col-sm-6 social-login"> <a href="<%= user_omniauth_authorize_path(:google_oauth2) %>"><img class="img-responsive" src="<%= asset_path 'login-google.jpg' %>" alt="Log In With Google"></a>
       </div>
     </div>
     <!--NOTE: only call this on an error-->

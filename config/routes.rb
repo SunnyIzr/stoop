@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: "users/registrations" }
+  devise_for :users, controllers: { :omniauth_callbacks => "callbacks", registrations: "users/registrations" }
 
   authenticated :user do
     root to: 'users#feed', as: :authenticated_root

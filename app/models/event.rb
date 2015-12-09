@@ -6,7 +6,7 @@ class Event < ActiveRecord::Base
   serialize :location, Hash
   
     has_attached_file :cover,
-                  :default_url => '/assets/default-cover.jpg',
+                  :default_url => 'default-cover.jpg',
                   :storage => :s3,
                   :s3_credentials => Proc.new{|a| a.instance.s3_credentials }
   

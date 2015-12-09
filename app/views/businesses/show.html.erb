@@ -39,7 +39,7 @@
       
         <div class='img-wrapper change-profile-pic'>
           <div class='overlay'></div>
-          <img id='profile_pic' class="img-responsive profile-pic" data-user-id='<%= @business.id %>' src="<%= @business.avatar %>" alt="">
+          <img id='profile_pic' class="img-responsive profile-pic" data-user-id='<%= @business.id %>' src="<%= asset_path @business.avatar %>" alt="">
           <%= form_for @business, html: {id: 'new_profile_pic', class: 'dropzone new-profile-pic-form'} do |f| %>
             <%= f.file_field :image, class: 'hide' %>
           <% end %>
@@ -47,7 +47,7 @@
       
       <% else %>
       
-        <img class="img-responsive profile-pic" data-user-id='<%= @business.id %>' src="<%= @business.avatar %>" alt="">
+        <img class="img-responsive profile-pic" data-user-id='<%= @business.id %>' src="<%= asset_path @business.avatar %>" alt="">
         
       <% end %>
       
@@ -106,7 +106,7 @@
         <div class="row">
           <% @business.followers(User).sample(6).each do |user| %>
           <div class="col-xs-4">
-            <a href='<%= user_path(user) %>'><img class="img-responsive" src="<%= user.avatar %>" alt=""></a>
+            <a href='<%= user_path(user) %>'><img class="img-responsive" src="<%= asset_path user.avatar %>" alt=""></a>
           </div>
           <% end %>
         </div>
