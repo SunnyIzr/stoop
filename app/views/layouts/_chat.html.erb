@@ -18,8 +18,10 @@
       <div class="col-sm-4 col-sm-offset-8 chat-box">
 
         <div class='top-bar'>
-          <span class="back-button inactive"> Back </span>
-          <i class="fa fa-circle-o"></i> Instant Chat
+          <span class="back-button inactive"><i class="fa fa-chevron-circle-left"></i></span>
+          <div class='header'>Instant Chat</div>
+          <div class='recipient_name'></div>
+          <span class="close-button"><i class="fa fa-times"></i></span>
         </div>
         <div class='conversations'>
           <div class="conversation-new conversation hidden">
@@ -32,7 +34,7 @@
             <div class="conversation-messages-list">
             </div>
             <div class="new-message">
-              <textarea id="new-message-text" name="text" cols="26" rows="1" placeholder="Write here..."></textarea>
+              <input id="new-message-text" name="text" placeholder="Send a Message...">
               <button class="submit-message-button">SEND</button>
             </div>
           </div>

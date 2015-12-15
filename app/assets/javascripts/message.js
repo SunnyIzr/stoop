@@ -43,6 +43,7 @@ var MessageEvents = {
     this.submitNewConversationButton();
     this.newConversationButtonClick();
     this.backButtonClick();
+    this.submitNewMessageEnterButton()
   },
   chatListClick: function(){
     $('.chat-bar .top-bar').click(function(e){
@@ -52,6 +53,7 @@ var MessageEvents = {
         MessageView.toggleChatList();
       } else if ( !$(".conversation-list").hasClass("hidden") ){
         MessageView.hideBackButton()
+        MessageView.removeNameOnHead()
       }
     })
   },
@@ -133,6 +135,21 @@ var MessageEvents = {
       });
       $("#new-message-text").val("")
     })
+  },
+  submitNewMessageEnterButton: function(){
+    $('#new-message-text').keyup(function(e){
+      if ( e.which == 13 ){
+        var convoId = $(".conversation-messages")[0].id
+        var body = $("#new-message-text").val()
+        var sender_status = "sent_by_user"
+        $.post( "messages", {convo_id: convoId, message: {body: body}}, function( data ) {
+          var message = data[0];
+          MessageView.addNewMessageToMessageList(sender_status, body)
+          MessageView.moveConversationToTopOfConversationList(convoId)
+        });
+        $("#new-message-text").val("")
+      }
+    })
   }
 }
 
@@ -147,7 +164,7 @@ var Conversation = {
         } else {
           sender_status = "received_by_user"
         }
-        $('.conversation-messages-list').prepend("<div class='" + sender_status + "'>"+ v.body +"</div>");
+        $('.conversation-messages-list').prepend("<div class='msg-container'><div class='" + sender_status + "'>"+ v.body +"</div><div class='clear'></div></div>");
       });
       if (type == "conversations"){
         // when opening an existing conversation do this
@@ -157,9 +174,12 @@ var Conversation = {
         // after creating a new conversation do this
         MessageView.hideNewConversation()
       }
+      window.myData = data
       $(".conversation-messages").attr("id", id)
       MessageView.showConversationMessages()
       MessageView.showBackButton()
+      MessageView.addNameToHead(data.other_partcipant.first_name + ' ' + data.other_partcipant.last_name)
+      MessageView.scrolltoBottomOfChatBox();
     });
   }
 }
@@ -185,6 +205,14 @@ var MessageView = {
   showBackButton: function(){
     $(".back-button").addClass("active")
     $(".back-button").removeClass("inactive")
+  },
+  addNameToHead: function(name){
+    $('.chat-box').addClass('single-chat')
+    $('.recipient_name').html(name)
+  },
+  removeNameOnHead: function(){
+    $('.chat-box').removeClass('single-chat')
+    $('.recipient_name').html('')
   },
   hideConversations: function(){
     $(".conversation-list").addClass("hidden");
@@ -239,6 +267,9 @@ var MessageView = {
     $(".conversation-list").find("#" + conversationId).prependTo($(".conversation-list"))
   },
   addNewMessageToMessageList: function(sender_status, body){
-    $('.conversation-messages-list').append("<div class='" + sender_status + "'>"+ body +"</div>");
+    $('.conversation-messages-list').append("<div class='msg-container'><div class='" + sender_status + "'>"+ body +"</div><div class='clear'></div></div>");
+  },
+  scrolltoBottomOfChatBox: function(){
+    $(".chat-box").scrollTop($(".chat-box")[0].scrollHeight);
   }
 }
