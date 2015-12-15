@@ -1,10 +1,10 @@
 development:
   server: "http://localhost:9292/faye"
-  secret_token: "secret"
+  secret_token: ENV['FAYE_SECRET_TOKEN']
 test:
   server: "http://localhost:9292/faye"
-  secret_token: "secret"
+  secret_token: ENV['FAYE_SECRET_TOKEN']
 production:
-  server: "https://stoop-faye.herokuapp.com/faye"
-  secret_token: "caac912706e97fea4864b8bc7d26346cce11bed06b37027cf66e5db56c853740"
+  server: ENV['FAYE_ENDPOINT']
+  secret_token: ENV['FAYE_SECRET_TOKEN']
   signature_expiration: 3600 # one day
