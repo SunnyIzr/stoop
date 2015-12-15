@@ -268,6 +268,7 @@ var MessageView = {
   },
   addNewMessageToMessageList: function(sender_status, body){
     $('.conversation-messages-list').append("<div class='msg-container'><div class='" + sender_status + "'>"+ body +"</div><div class='clear'></div></div>");
+    MessageView.scrolltoBottomOfChatBox();
   },
   scrolltoBottomOfChatBox: function(){
     $(".chat-box").scrollTop($(".chat-box")[0].scrollHeight);
