@@ -1,0 +1,171 @@
+
+
+.side-bar-chat {
+  height: 300px;
+  overflow-y: scroll;
+  .chat-conversations{
+  }
+  .col-xs-12 {
+    margin-bottom:5px;
+    background-color:white;
+    padding:10px;
+
+    .chat-name {
+      color:$header;
+      font-size:120%;
+    }
+    .device {
+      color:$orange;
+
+      .fa {
+        
+      }
+    }
+  }
+}
+
+.msg-text-area {
+  width:100%;
+  background-color:white;
+  height:100px;
+  border:none;
+  padding:10px 20px;
+  color:$header;
+  font-size:20px;
+  margin-bottom:0px;
+
+  ::-webkit-input-placeholder {
+     color:$header;
+  }
+
+  :-moz-placeholder { /* Firefox 18- */
+     color:$header;  
+  }
+
+  ::-moz-placeholder {  /* Firefox 19+ */
+     color:$header;  
+  }
+
+  :-ms-input-placeholder {  
+     color:$header;  
+  }
+}
+
+.msg-control-bar {
+  background-color:#e4f0f0;
+  height:45px;
+  line-height:45px;
+  margin-top:0px;
+  padding:0px 20px;
+  color:$midGreen;
+
+  .fa {
+    font-size:22px;
+    margin-right:10px;
+  }
+  .post {
+    border:none;
+    background-color:transparent;
+    font-size:18px;
+    float:right;
+    margin-right:15px;
+  }
+  .post:focus{
+    outline: 0;
+  }
+}
+
+.inbox-area{
+  background-color:white;
+    padding:0px;
+    color:$blue;
+    margin-top:40px;
+
+    a {
+      color:$lightBlue;
+    }
+
+    .name {
+      color:$midGreen;
+    }
+    .time {
+      font-size:70%;
+      color:$midGreen;
+    }
+    h3 {
+      margin-top:0px;
+      color:$midGreen;
+    }
+    p{
+    color:$midGreen;
+    }
+}
+
+
+.inbox-person{
+  background-color:white;
+    padding:0px;
+    color:$blue;
+    margin-top:40px;
+
+    a {
+      color:$lightBlue;
+    }
+
+    .name {
+      color:#345064;
+    }
+    .time {
+      font-size:70%;
+      color:#345064;
+    }
+    h3 {
+      margin-top:0px;
+      color:#345064;
+    }
+    p{
+    color:#345064;
+    }
+}
+.msg-top{
+  margin:0px;
+  padding:0;
+}
+.new-msg{
+  margin:0px;
+  padding:5px 0px;
+  background-color:#dfeced;
+  font-size:20px;
+  color:$midGreen;
+  text-align:center;
+}
+.new-msg:hover{
+  color:$midGreen;
+  text-decoration: none;
+}
+
+ .msg-bg{
+background-color: #dfeced;padding:5px 0px;}
+
+.chat{
+color:$blue;
+}
+
+.recent-chat:hover{
+background-color: #dfeced;
+}
+
+.recent-chat:active{
+background-color:$midGreen;
+}
+
+  .recent-chat-active  {
+  background-color: $midGreen !important; }
+  
+  .msg-search-field {
+  background-color: #dfeced;
+  border: medium none;
+  height: 28px;
+  padding: 0 10px;
+  width: 100%;
+}

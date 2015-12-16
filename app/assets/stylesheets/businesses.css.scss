@@ -36,3 +36,84 @@
     }  
   }
 }
+
+
+
+//Incentives Styling
+.table-container{
+  background: #fff;
+  min-height: 600px;
+  a.back-link{
+    padding-top: 10px;
+    display: block;
+  }
+  h3{
+    text-align: center;
+    padding-bottom: 25px;
+    color: $blue;
+  }
+  .editable-input{
+    width: auto;
+  }
+  .col-sm-8 h3,
+  .col-sm-4 h3{
+    text-align: left;
+  }
+  .col-sm-4{
+    min-height: 600px;
+    border-right: 1px solid $lightBlue;
+  }
+  .btn-primary{
+    border-radius: 0;
+    border: none;
+    background: $orange;
+  }
+}
+#newIncentive{
+  .form-control{
+    border-radius: 0;
+  }
+  .btn-primary{
+    border-radius: 0;
+    background: $orange;
+    border: none;
+  }
+}
+
+//Small Business Listing
+.business{
+  margin-bottom: 10px;
+  margin-top: 10px;
+  height: 200px;
+  position: relative;
+  .overlay{
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: $blue;
+    opacity: 0;
+  }
+  .details{
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    color: #fff;
+    opacity: 1.0;
+  }
+}
+.business:hover{
+  .overlay{
+    opacity: 0.75;
+  }
+  .details{
+    opacity: 1.0;
+  }
+}
+
+.user-server-id{
+  position: absolute;
+  right: -50px;
+}
