@@ -115,16 +115,27 @@ class User < ActiveRecord::Base
     res['location']
   end
   
-  def self.from_omniauth(auth)
-      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-        user.provider = auth.provider
-        user.uid = auth.uid
-        user.email = auth.info.email
-        user.first_name = auth.info.first_name
-        user.last_name = auth.info.last_name
-        user.gender = auth.info.gender
-        user.avatar = get_img_url(auth.info.image)
-        user.password = Devise.friendly_token[0,20]
-      end
+  def self.from_fb_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.email = auth.info.email
+      user.first_name = auth.info.first_name
+      user.last_name = auth.info.last_name
+      user.gender = auth.info.gender
+      user.avatar = get_img_url(auth.info.image)
+      user.password = Devise.friendly_token[0,20]
+    end
+  end
+  def self.from_google_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.email = auth.info.email
+      user.first_name = auth.info.first_name
+      user.last_name = auth.info.last_name
+      user.avatar = auth.info.image
+      user.password = Devise.friendly_token[0,20]
+    end
   end
 end

@@ -1,7 +1,7 @@
 class CallbacksController < Devise::OmniauthCallbacksController
 
   def facebook
-    omniauth_user = User.from_omniauth(request.env["omniauth.auth"])
+    omniauth_user = User.from_fb_omniauth(request.env["omniauth.auth"])
     if omniauth_user.id.nil?
       @user = retrieve_and_update_existing_user_by_email(omniauth_user)
     else
@@ -12,7 +12,7 @@ class CallbacksController < Devise::OmniauthCallbacksController
   end
 
   def google_oauth2
-    omniauth_user = User.from_omniauth(request.env["omniauth.auth"])
+    omniauth_user = User.from_google_omniauth(request.env["omniauth.auth"])
     if omniauth_user.id.nil?
       @user = retrieve_and_update_existing_user_by_email(omniauth_user)
     else
