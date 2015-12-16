@@ -19,7 +19,7 @@
 
         <div class='top-bar'>
           <span class="back-button inactive"><i class="fa fa-chevron-circle-left"></i></span>
-          <div class='header'>Instant Chat</div>
+          <div class='header'>Instant Chat <span class='newMessages'>(<span id='newMsgs'></span>)</span></div>
           <div class='recipient_name'></div>
           <span class="close-button"><i class="fa fa-times"></i></span>
         </div>
@@ -45,7 +45,7 @@
               <div class="conversation conversation-single" id="<%= convo.id %>">
                 <a href="#">
                   <img class="img-responsive" src="<%= asset_path((convo.participants - [current_user])[0].avatar) %>">
-                  <p class='name'><%= (convo.participants - [current_user])[0].name %></p>
+                  <p class='name'><%= (convo.participants - [current_user])[0].name %> <span class='newMessages'>(<span id='newConvoMsgs'>1</span>)</span></p>
                 </a>
               </div>
             <% end %>

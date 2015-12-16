@@ -69,6 +69,17 @@
       }
     }
   }
+  
+  .chat-box.new-msg-notification{
+    .top-bar{
+      .header{
+        color: #fff;
+        .newMessages{
+          display: inline;
+        }
+      }
+    }
+  }
 
   .chat-box {
     height: 500px;
@@ -94,6 +105,9 @@
       width: 310px;
       .header{
         font-size: 100%;
+        .newMessages{
+          display: none;
+        }
       }
       .recipient_name{
         display: none;
@@ -212,6 +226,9 @@
         position: absolute;
         bottom: 10px;
       }
+      .newMessages{
+        display: none;
+      }
       img{
         display: inline-block;
         width: 50px;
@@ -228,6 +245,12 @@
       textarea:active, textarea:focus{
         outline: none;
         border: none;
+      }
+    }
+    .conversation.new-msg-notification{
+      background: #DEF4F6;
+      .newMessages{
+        display: inline;
       }
     }
     .conversations{
@@ -269,3 +292,5 @@
     }
   }
 }
+
+

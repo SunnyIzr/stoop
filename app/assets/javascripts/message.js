@@ -7,6 +7,8 @@ var StoopPrivatePub = {
     var userId = $(".user-server-id").html()
     var message_route = ("/messages/new/" + userId).replace(/\s/g, "");
     PrivatePub.subscribe(message_route, function(data, channel) {
+      window.myData = data
+      alert('new')
       var messagesElement = $(".conversation-messages")
       if (!messagesElement.hasClass("hidden") && messagesElement.is("#" + data.conversation_id)){
         var sender_status = "received_by_user";
@@ -15,6 +17,7 @@ var StoopPrivatePub = {
         MessageView.moveConversationToTopOfConversationList(data.conversation_id)
       } else {
         MessageView.changeTopBarColor("green")
+        MessageView.highlightNotifications()
       }
     });
   },
@@ -30,6 +33,7 @@ var StoopPrivatePub = {
       MessageView.addNewConversationToConversationList(args);
       MessageEvents.conversationClick();
       MessageView.changeTopBarColor("green");
+      MessageView.highlightNotifications()
     });
   }
 }
@@ -52,6 +56,7 @@ var MessageEvents = {
       e.preventDefault();
       if ($(".back-button").hasClass("inactive")){
         MessageView.changeTopBarColor("#345064");
+        MessageView.deHighlightNotifications()
         MessageView.toggleChatList();
       } else if ( !$(".conversation-list").hasClass("hidden") ){
         MessageView.hideBackButton()
@@ -236,6 +241,19 @@ var MessageView = {
   },
   changeTopBarColor: function(color){
     $(".top-bar").css("background-color", color);
+  },
+  highlightNotifications: function(){
+    $('.chat-box').addClass('new-msg-notification')
+    if ( $('#newMsgs').html() == '' ){
+      currentNumber = 0
+    } else {
+      currentNumber = parseInt($('#newMsgs').html())
+    }
+    $('#newMsgs').html(currentNumber += 1)
+  },
+  deHighlightNotifications: function(){
+    $('.chat-box').removeClass('new-msg-notification')
+    $('#newMsgs').html('')
   },
   hideBackButton: function(){
     $(".back-button").addClass("inactive")
