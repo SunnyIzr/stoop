@@ -17,6 +17,7 @@ var StoopPrivatePub = {
         MessageView.changeTopBarColor("green")
         MessageView.highlightNotifications()
         MessageView.highlightConvoNotification(data.conversation_id)
+        MessageView.moveConversationToTopOfConversationList(data.conversation_id)
       }
     });
   },
@@ -34,6 +35,7 @@ var StoopPrivatePub = {
       MessageView.changeTopBarColor("green");
       MessageView.highlightNotifications()
       MessageView.highlightConvoNotification(data.conversation.id)
+      MessageView.moveConversationToTopOfConversationList(data.conversation.id)
     });
   }
 }
