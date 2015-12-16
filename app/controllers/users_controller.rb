@@ -73,6 +73,16 @@ class UsersController < ApplicationController
     render json: User.where('lower(first_name) LIKE ? OR lower(last_name) LIKE ?', "%#{ term }%", "%#{ term }%").map{ |user| {id: user.id, name: user.name, avatar: user.avatar} }
   end
   
+      
+  def get_convo
+    @user = current_user
+    @cpty = User.find(params['cpty_id'])
+    @conversation = @user.last_conversation(@cpty)
+    respond_to do |format|
+      format.js { render json: {conversation: @conversation, cpty: @cpty, avatar: @cpty.avatar } }
+    end
+  end
+  
   private
   def user_params
     params.require(:user).permit(:email,:building_id,:neighborhood_id,:first_name,:last_name,:gender,:after_five_pm,:date_of_birth,:profession,:about,:contact,:avatar,:cover,interests: [])

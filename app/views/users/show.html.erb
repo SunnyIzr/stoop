@@ -71,7 +71,7 @@
               <%= f.submit current_user.follows?(@user) ? 'Unfollow' : 'Follow', class: 'follow-btn' %>
             <% end %>
           </li>
-          <li><a href='#' data-toggle='modal' data-target='#newMessage'>Message</a></li>
+          <li><a href='#' class='newMessage' data-user-id='<%= @user.id %>'>Message</a></li>
         </ul>  
       </div>
       <% end %>

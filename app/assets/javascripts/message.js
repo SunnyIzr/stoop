@@ -44,6 +44,8 @@ var MessageEvents = {
     this.newConversationButtonClick();
     this.backButtonClick();
     this.submitNewMessageEnterButton()
+    this.newMessage();
+    this.submitNewConversationEnterButton();
   },
   chatListClick: function(){
     $('.chat-bar .top-bar').click(function(e){
@@ -66,7 +68,7 @@ var MessageEvents = {
     })
   },
   conversationClick: function(){
-    $('.conversation').click(function(e){
+    $('.conversation-single').click(function(e){
       var elementTargeted = $(e.currentTarget)
       var closestConversation = elementTargeted.closest(".conversation")[0]
       if (elementTargeted.hasClass("building-member")){
@@ -84,22 +86,11 @@ var MessageEvents = {
   },
   backButtonClick: function(){
     $(".back-button").click(function(e){
-      if ( !$(".building-member-list").hasClass("hidden") ){
-        MessageView.hideBuildingMemberList();
-        MessageView.showConversations();
-        MessageView.showNewConversationButton();
-      } else if (!$(".conversation-new").hasClass("hidden")){
-        MessageView.hideNewConversation();
-        MessageView.showBuildingMemberList();
-      } else if (!$(".conversation-messages").hasClass("hidden")){
-        MessageView.hideConversationMessages()
-        MessageView.showConversations();
-        MessageView.showNewConversationButton()
-        MessageView.cleanConversationMessages()
-      } else {
-        MessageView.hideConversation();
-        MessageView.showConversations();
-      }
+      MessageView.hideConversationMessages()
+      MessageView.showConversations();
+      MessageView.hideNewConversation();
+      MessageView.showNewConversationButton()
+      MessageView.cleanConversationMessages()
     })
   },
   submitNewConversationButton: function(){
@@ -109,7 +100,7 @@ var MessageEvents = {
       var body = $("#new-conversation-text").val()
       var name = $(".conversation-new").find(".name")[0].innerHTML
       var avatar  = $(".conversation-new").find("img").attr("src")
-      $.post( "messages", {recipients: userId, message: {body: body}}, function( data ) {
+      $.post( "/messages", {recipients: userId, message: {body: body}}, function( data ) {
           var message = data[0];
           var args = {
             conversationId: message.conversation_id,
@@ -128,7 +119,7 @@ var MessageEvents = {
       var convoId = $(".conversation-messages")[0].id
       var body = $("#new-message-text").val()
       var sender_status = "sent_by_user"
-      $.post( "messages", {convo_id: convoId, message: {body: body}}, function( data ) {
+      $.post( "/messages", {convo_id: convoId, message: {body: body}}, function( data ) {
         var message = data[0];
         MessageView.addNewMessageToMessageList(sender_status, body)
         MessageView.moveConversationToTopOfConversationList(convoId)
@@ -142,7 +133,7 @@ var MessageEvents = {
         var convoId = $(".conversation-messages")[0].id
         var body = $("#new-message-text").val()
         var sender_status = "sent_by_user"
-        $.post( "messages", {convo_id: convoId, message: {body: body}}, function( data ) {
+        $.post( "/messages", {convo_id: convoId, message: {body: body}}, function( data ) {
           var message = data[0];
           MessageView.addNewMessageToMessageList(sender_status, body)
           MessageView.moveConversationToTopOfConversationList(convoId)
@@ -150,10 +141,53 @@ var MessageEvents = {
         $("#new-message-text").val("")
       }
     })
+  },
+  submitNewConversationEnterButton: function(){
+    var that = this
+    $('#new-conversation-text').keyup(function(e){
+      if ( e.which == 13 ){
+        var userId = $(".conversation-new")[0].id
+        var body = $("#new-conversation-text").val()
+        var name = $(".conversation-new").find(".name")[0].innerHTML
+        var avatar  = $(".conversation-new").find("img").attr("src")
+        $.post( "/messages", {recipients: userId, message: {body: body}}, function( data ) {
+            var message = data[0];
+            var args = {
+              conversationId: message.conversation_id,
+              avatar: avatar,
+              name: name
+            };
+            MessageView.addNewConversationToConversationList(args);
+            that.conversationClick();
+            $("#new-conversation-text").val = "";
+            Conversation.open(message.conversation_id, "newConversation")
+        });
+      }
+    })
+  },
+  newMessage: function(){
+    $('.newMessage').click(function(e){
+      e.preventDefault();
+      Conversation.openNew($(this).data('user-id'))
+    })
   }
 }
 
 var Conversation = {
+  openNew: function(userId){
+    $.getJSON('/get-conversation/' + userId,function(res){
+      if ( res.conversation == null ){
+        MessageView.hideConversations()
+        MessageView.setNewConversationValues(res.cpty.first_name + ' ' + res.cpty.last_name, res.avatar, res.cpty.id)
+        MessageView.showNewConversation()
+        MessageView.showBackButton()
+        MessageView.toggleChatList();
+      } else {
+        convoId = res.conversation.id
+        Conversation.open(convoId,'conversationsOpen')
+      }
+    })
+  },
   open: function(id, type){
     $.get("/conversations/" + id, function( data ) {
       var user = data.user;
@@ -166,7 +200,12 @@ var Conversation = {
         }
         $('.conversation-messages-list').prepend("<div class='msg-container'><div class='" + sender_status + "'>"+ v.body +"</div><div class='clear'></div></div>");
       });
-      if (type == "conversations"){
+      if (type == "conversationsOpen"){
+        // when opening an existing conversation do this
+        MessageView.hideNewConversationButton()
+        MessageView.hideConversations()
+        MessageView.toggleChatList();
+      } else if (type == "conversations"){
         // when opening an existing conversation do this
         MessageView.hideNewConversationButton()
         MessageView.hideConversations()

@@ -83,6 +83,10 @@ class User < ActiveRecord::Base
     bool ? 1 : 0
   end
   
+  def last_conversation(counterparty)
+    self.mailbox.conversations.select{ |convo| convo.participants.include?(counterparty )}.last
+  end
+  
   def missing_profile_elements
     missing = []
     missing << 'about' if self.about.to_s.empty?

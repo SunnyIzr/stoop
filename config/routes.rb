@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     get :autocomplete_user_first_name, on: :collection
   end
   get '/users/:id/verify' => 'users#verify'
+  get '/get-conversation/:cpty_id' => 'users#get_convo'
   
   #Business Routes
   post '/yelp/search' => 'yelp#search'

@@ -23,4 +23,5 @@ class MessagesController < ApplicationController
     end
     #redirect_to conversation_path(conversation)
   end
+
 end

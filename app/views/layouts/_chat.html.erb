@@ -27,8 +27,10 @@
           <div class="conversation-new conversation hidden">
             <img class="img-responsive" src="">
             <p class='name'></p>
-            <textarea id="new-conversation-text" name="text" cols="26" rows="6" placeholder="Write here..."></textarea>
-            <button class="submit-new-conversation-button">SEND</button>
+            <div class='new-conversation'>
+              <input id="new-conversation-text" name="text" placeholder="Send a Message..." autocomplete='off'>
+              <button class="submit-new-conversation-button">SEND</button>
+            </div>
           </div>
           <div class="conversation-messages hidden">
             <div class="conversation-messages-list">
@@ -40,7 +42,7 @@
           </div>
           <div class="conversation-list">
             <% current_user.mailbox.conversations.each do |convo| %>
-              <div class="conversation" id="<%= convo.id %>">
+              <div class="conversation conversation-single" id="<%= convo.id %>">
                 <a href="#">
                   <img class="img-responsive" src="<%= asset_path((convo.participants - [current_user])[0].avatar) %>">
                   <p class='name'><%= (convo.participants - [current_user])[0].name %></p>
@@ -48,6 +50,7 @@
               </div>
             <% end %>
           </div>
+          <% if false %>
           <div class="building-member-list hidden">
             <% current_user.building.users.each do |user| %>
               <%  if user != current_user %>
@@ -60,8 +63,9 @@
               <% end %>
             <% end %>
           </div>
+          <% end %>
       </div>
-      <button class="new-conversation-button">NEW CONVERSATION</button>
+      <button class="hide new-conversation-button">NEW CONVERSATION</button>
       <%= subscribe_to "/messages/new/#{current_user.id}" %>
       <%= subscribe_to "/conversations/new/#{current_user.id}" %>
     </div>

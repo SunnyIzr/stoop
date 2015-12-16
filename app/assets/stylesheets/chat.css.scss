@@ -183,6 +183,23 @@
         display: none;
       }
     }
+    .new-conversation{
+      position: fixed;
+      bottom: 0;
+      width: 310px;
+      margin-left: -10px;
+      input{
+        width: 100%;
+        margin-bottom: -14px; 
+        height: 43px;
+        font-size: 13px;
+        padding: 0 10px;
+        
+      }
+      button.submit-new-conversation-button{
+        display: none;
+      }
+    }
     .conversation{
       position: relative;
       padding: 7px 10px 5px;
