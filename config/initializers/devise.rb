@@ -268,6 +268,6 @@ Devise.setup do |config|
   #Add your ID and secret here
   #ID first, secret second
   config.omniauth :google_oauth2, ENV["OAUTH_GOOGLE_CLIENT_ID"], ENV["OAUTH_GOOGLE_CLIENT_SECRET"]
-  config.omniauth :facebook, ENV["OAUTH_FACEBOOK_CLIENT_ID"], ENV["OAUTH_FACEBOOK_CLIENT_SECRET"]
+  config.omniauth :facebook, ENV["OAUTH_FACEBOOK_CLIENT_ID"], ENV["OAUTH_FACEBOOK_CLIENT_SECRET"], scope: 'email', info_fields: 'email,name,first_name,last_name,gender,birthday,cover,interested_in'
 
 end
