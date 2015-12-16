@@ -132,3 +132,55 @@
 	font-weight:bold;
 	font-size:115%;
 }
+
+.building-prompt{
+	background: #abccce;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+	img{
+		width: 400px;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		top: 10%;
+	}
+	.main-content{
+		position: absolute;
+		top: 30%;
+		left: 50%;
+		transform: translateX(-50%);
+
+		h1,h2{
+			text-align: center;
+			font-weight: 200;
+			color: $header;
+		}
+		h2{
+			font-size: 20px;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

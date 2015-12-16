@@ -7,7 +7,11 @@ class UsersController < ApplicationController
       @users = User.where(verified: false).sort
       render 'admin/unverified_users'
     else
-      @posts = Post.where(neighborhood_id: current_user.neighborhood.id).paginate(page: params[:page], per_page: 5).order('created_at DESC')  
+      if current_user.building.nil?
+        render 'building_prompt'
+      else
+        @posts = Post.where(neighborhood_id: current_user.neighborhood.id).paginate(page: params[:page], per_page: 5).order('created_at DESC')  
+      end
     end
   end
   

@@ -7,7 +7,6 @@ class CallbacksController < Devise::OmniauthCallbacksController
     else
       @user = omniauth_user
       #TODO- Morgan: need to request building before this moment
-      @user.update(building_id: 1)
     end
     sign_in_and_redirect @user
   end
@@ -19,7 +18,6 @@ class CallbacksController < Devise::OmniauthCallbacksController
     else
       @user = omniauth_user
       #TODO- Morgan: need to request building before this moment
-      @user.update(building_id: 1)
     end
     sign_in_and_redirect @user
   end

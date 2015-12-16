@@ -15,6 +15,16 @@ module SignupHelper
     s.html_safe
   end
   
+  def unhidden_building_options
+    s = '<option disabled selected="selected">Building</option>'
+    Building.all.each do |building|
+      s << "<option class='building neighborhood-#{building.neighborhood.id}' value='#{building.id}'>#{building.name}</option>"
+    end
+    s.html_safe
+  end
+  
+  
+  
   def state_options
     states = Array[ 
                 "Alaska",
