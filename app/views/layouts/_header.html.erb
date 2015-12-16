@@ -4,7 +4,7 @@
       <div class="col-sm-2">
         <a href='/'><img class="img-responsive logo" src="<%= asset_path 'header-logo.jpg' %>" alt=""></a>
       </div>
-      <div class="col-sm-6 search-column">
+      <div class="col-sm-6 search-column hidden-xs">
         <%= autocomplete_field_tag :search, params[:search], autocomplete_user_first_name_users_path, {class: "search-query search-field empty", placeholder: "&#xF002; ".html_safe, type: "search"} %> 
         <div class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-1" tabindex="0" style="width: 555px; top: 40px; left: 15px; display:none;">
           <h5>USERS</h5>
@@ -30,9 +30,9 @@
         <% end %>
         
         <% if current_user.business? %>
-          <a href='/businesses/<%= current_user.business.id %>'><img class="profile-pic" src="<%= asset_path current_user.business.avatar %>" alt=""></a>
+          <a class='mini-profile-pic' href='/businesses/<%= current_user.business.id %>'><img class="profile-pic" src="<%= asset_path current_user.business.avatar %>" alt=""></a>
         <% else %>
-          <a href='/users/<%= current_user.id %>'><img class="profile-pic" src="<%= asset_path current_user.avatar %>" alt=""></a>
+          <a class='mini-profile-pic' href='/users/<%= current_user.id %>'><img class="profile-pic" src="<%= asset_path current_user.avatar %>" alt=""></a>
         <% end %>
       </div>
     </div>

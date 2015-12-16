@@ -81,3 +81,27 @@ header.inner {
 }
 
 
+@media (max-width:768px) {
+	header.inner{
+		.logo{
+			max-width: 75px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.nav-column{
+			position: absolute;
+			left:0;
+			top: 0;
+			width: 100%;
+			a.mini-profile-pic{
+				margin: 0;
+		    left: 17px;
+		    position: absolute;
+		    top: -8px;
+				img{
+					margin: 0;
+				}
+			}
+		}
+	}
+}

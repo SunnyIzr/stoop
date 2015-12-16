@@ -100,12 +100,17 @@ ul.side-nav {
   }
 }
 
-
-
 .search-field {
   height:40px;
   border:none;
   background-color:white;
   padding:0px 10px;
   width:100%;
+}
+
+@media (max-width:768px) {
+  ul.feed-side-nav{
+    position: static;
+    margin-bottom: 18px;
+  }
 }

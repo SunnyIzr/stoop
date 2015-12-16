@@ -251,6 +251,16 @@
   }
 }
 
+@media (max-width:600px) {
+  .after-profile{
+    .post-area{
+      .avatar{
+        
+      }
+    }
+  }
+}
+
 a.add-to-fav {
   background-color:$blue;
   color:#83a3ab;
@@ -397,5 +407,14 @@ a.add-to-fav {
 .building-neighborhood-bar.created{
   a:nth-child(3){
     color: white;
+  }
+}
+
+@media (max-width:768px) {
+  .building-neighborhood-bar{
+    font-size: 100%;
+    a{
+      padding: 0;
+    }
   }
 }
