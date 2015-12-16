@@ -7,8 +7,6 @@ var StoopPrivatePub = {
     var userId = $(".user-server-id").html()
     var message_route = ("/messages/new/" + userId).replace(/\s/g, "");
     PrivatePub.subscribe(message_route, function(data, channel) {
-      window.myData = data
-      alert('new')
       var messagesElement = $(".conversation-messages")
       if (!messagesElement.hasClass("hidden") && messagesElement.is("#" + data.conversation_id)){
         var sender_status = "received_by_user";
@@ -18,6 +16,7 @@ var StoopPrivatePub = {
       } else {
         MessageView.changeTopBarColor("green")
         MessageView.highlightNotifications()
+        MessageView.highlightConvoNotification(data.conversation_id)
       }
     });
   },
@@ -34,6 +33,7 @@ var StoopPrivatePub = {
       MessageEvents.conversationClick();
       MessageView.changeTopBarColor("green");
       MessageView.highlightNotifications()
+      MessageView.highlightConvoNotification(data.conversation.id)
     });
   }
 }
@@ -74,6 +74,7 @@ var MessageEvents = {
   },
   conversationClick: function(){
     $('.conversation-single').click(function(e){
+      MessageView.deHighlightConvoNotification(this.id)
       var elementTargeted = $(e.currentTarget)
       var closestConversation = elementTargeted.closest(".conversation")[0]
       if (elementTargeted.hasClass("building-member")){
@@ -218,7 +219,6 @@ var Conversation = {
         // after creating a new conversation do this
         MessageView.hideNewConversation()
       }
-      window.myData = data
       $(".conversation-messages").attr("id", id)
       MessageView.showConversationMessages()
       MessageView.showBackButton()
@@ -254,6 +254,19 @@ var MessageView = {
   deHighlightNotifications: function(){
     $('.chat-box').removeClass('new-msg-notification')
     $('#newMsgs').html('')
+  },
+  highlightConvoNotification: function(convoId){
+    $('#' + convoId).addClass('new-msg-notification')
+    if ( $('#' + convoId + ' .newConvoMsgs').html() == '' ){
+      currentNumber = 0
+    } else {
+      currentNumber = parseInt($('#' + convoId + ' .newConvoMsgs').html())
+    }
+    $('#' + convoId + ' .newConvoMsgs').html(currentNumber += 1)
+  },
+  deHighlightConvoNotification: function(convoId){
+    $('#' + convoId).removeClass('new-msg-notification')
+    $('#' + convoId + ' .newConvoMsgs').html('')
   },
   hideBackButton: function(){
     $(".back-button").addClass("inactive")

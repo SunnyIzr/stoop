@@ -45,7 +45,7 @@
               <div class="conversation conversation-single" id="<%= convo.id %>">
                 <a href="#">
                   <img class="img-responsive" src="<%= asset_path((convo.participants - [current_user])[0].avatar) %>">
-                  <p class='name'><%= (convo.participants - [current_user])[0].name %> <span class='newMessages'>(<span id='newConvoMsgs'>1</span>)</span></p>
+                  <p class='name'><%= (convo.participants - [current_user])[0].name %> <span class='newMessages'>(<span class='newConvoMsgs'></span>)</span></p>
                 </a>
               </div>
             <% end %>
