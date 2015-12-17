@@ -294,3 +294,18 @@
 }
 
 
+@media (max-width:768px) {
+  .chat-bar{
+    .chat-box{
+      right: 0;
+      width: 100%;
+      .top-bar{
+        width: 100%;
+      }
+      .new-message input{
+        width: 100%;
+      }
+    }
+  }
+}
+

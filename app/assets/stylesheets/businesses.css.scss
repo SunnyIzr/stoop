@@ -117,3 +117,34 @@
   position: absolute;
   right: -50px;
 }
+
+
+@media (max-width:768px) {
+  .business {
+    img{
+      margin-left: 10px;
+    }
+    .details{
+      left: 0;
+      span{
+        font-size: 151%;
+        padding: 8px 15px 8px 10px;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -33,7 +33,7 @@
       <% end %>
       
     </div>
-    <div class="col-xs-3">
+    <div class="col-sm-3 col-xs-12 profile-img-wrapper">
       
       <% if @editable %>
       
@@ -52,10 +52,10 @@
       <% end %>
       
     </div>
-    <div class="col-xs-9">
+    <div class="col-sm-9 col-xs-12">
       <p class='name-section'><span>&nbsp;<a data-type="text" data-cols='30' class='<%= @editable ? "inline-field" : "uneditable" %>' data-url="/businesses/<%= @business.id %>" data-object="business" data-attribute="name" data-placeholder="Name"><%= @business.name %></a>&nbsp;</span></p>
       
-      <p><a data-type="textarea" data-cols='30' class='<%= @editable ? "inline-field" : "uneditable" %> about-section' data-url="/businesses/<%= @business.id %>" data-object="business" data-attribute="about" data-placeholder="About"><%= @business.about %></a></p>
+      <p><a data-type="textarea" data-cols='30' class='<%= @editable ? "inline-field" : "uneditable" %> about-section hidden-xs' data-url="/businesses/<%= @business.id %>" data-object="business" data-attribute="about" data-placeholder="About"><%= @business.about %></a></p>
       
     </div>
   </div>
@@ -118,11 +118,11 @@
           <p><a data-type="select" class='<%= @editable ? "inline-industry" : "" %>' data-url="/businesses/<%= @business.id %>" data-object="business" data-value='<%= @business.industry %>'data-attribute="industry" data-placeholder="industry"><%= @business.industry %></a></p>
         <% end %>
 
-        <h3>Hours of Operation</h3>
-        <p>11am-10pm mon-sun</p>
+        <h3 class='hide'>Hours of Operation</h3>
+        <p class='hide'>11am-10pm mon-sun</p>
 
-        <h3>Contact</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        <h3 class='hide'>Contact</h3>
+        <p class='hide'>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
         quis nostrud exercitation ullamco</p>  
       </div>

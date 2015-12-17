@@ -17,11 +17,11 @@
       <% end %>
       
     </div>
-    <div class="col-xs-3">
+    <div class="col-sm-3 col-xs-12 profile-img-wrapper">
       
       <% if @editable %>
       
-        <div class='img-wrapper change-profile-pic'>
+        <div class='img-wrapper change-profile-pic profile-pic'>
           <div class='overlay'></div>
           <img id='profile_pic' class="img-responsive profile-pic" data-user-id='<%= @user.id %>' src="<%= asset_path @user.avatar %>" alt="">
           <%= form_for @user, html: {id: 'new_profile_pic', class: 'dropzone new-profile-pic-form'} do |f| %>
@@ -36,30 +36,18 @@
       <% end %>
       
     </div>
-    <div class="col-xs-9">
+    <div class="col-sm-9 col-xs-12">
       
       <p class='name-section'><span>&nbsp;<a data-type="text" data-cols='30' class='<%= @editable ? "inline-field" : "uneditable" %> first-name' data-url="/users/<%= @user.id %>" data-object="user" data-attribute="first_name" data-placeholder="First Name"><%= @user.first_name %></a> <a data-type="text" data-cols='30' class='<%= @editable ? "inline-field" : "uneditable" %> last-name' data-url="/users/<%= @user.id %>" data-object="user" data-attribute="last_name" data-placeholder="Last Name"><%= @user.last_name %></a>&nbsp;</span></p>
       
-      <p><a data-type="textarea" data-cols='30' class='<%= @editable ? "inline-field" : "uneditable" %> about-section' data-url="/users/<%= @user.id %>" data-object="user" data-attribute="about" data-placeholder="First Name"><%= @user.about %></a></p>
+      <p><a data-type="textarea" data-cols='30' class='<%= @editable ? "inline-field" : "uneditable" %> about-section hidden-xs' data-url="/users/<%= @user.id %>" data-object="user" data-attribute="about" data-placeholder="First Name"><%= @user.about %></a></p>
     </div>
   </div>
 </div>
 
 <div class="container after-profile">
   <div class="row"> 
-    <div class="col-sm-8">
-      <div class='posts'>
-        <% @posts.each do |post| %>
-        
-        <%= render partial: 'posts/post', locals: {post: post } %>
-        
-        <% end %>
-      </div>
-      <div id="infinite-scrolling">
-        <%= will_paginate @posts %>
-      </div>
-    </div>
-    <div class="col-sm-4 side-bar-margin">
+    <div class="col-sm-4 col-sm-push-8 col-xs-12 side-bar-margin">
       
       <% unless current_user.business? || @editable %>
       <div class='side-nav'>
@@ -159,6 +147,19 @@
       </div>
 
     </div>
+    <div class="col-sm-8 col-sm-pull-4 col-xs-12">
+      <div class='posts'>
+        <% @posts.each do |post| %>
+        
+        <%= render partial: 'posts/post', locals: {post: post } %>
+        
+        <% end %>
+      </div>
+      <div id="infinite-scrolling">
+        <%= will_paginate @posts %>
+      </div>
+    </div>
+
   </div>
 </div>
 

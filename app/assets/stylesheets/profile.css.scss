@@ -97,8 +97,8 @@
       opacity: 1.0;
     }
   }
-  .change-profile-pic{
-    left: -15px;
+  .profile-pic{
+    margin-left: -15px;
   }
   p {
     margin-top:10px;
@@ -415,6 +415,33 @@ a.add-to-fav {
     font-size: 100%;
     a{
       padding: 0;
+    }
+  }
+  .profile{
+    .cover-img-wrapper{
+      height: auto;
+    }
+    .profile-pic{
+      max-width: 150px;
+      margin-left: auto;
+      margin-right: auto;
+      
+    }
+    .profile-img-wrapper{
+      margin-top: -50px;
+    }
+    .name-section{
+      margin-top: -22px;
+      margin-bottom: -29px;
+      span{
+        font-size: 25px;
+        padding: 0;
+      }
+      a{
+        font-size: 25px;
+        display: block;
+        text-align: center;
+      }
     }
   }
 }

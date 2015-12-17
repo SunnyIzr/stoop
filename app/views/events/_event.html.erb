@@ -7,7 +7,7 @@
       <h2><%= event.date %></h2>
       <span><%= event.time %></span>
       <span><%= event.location['street'].upcase %></span>
-      <p><%= event.about.truncate(100) %></p>
+      <p class='hidden-xs'><%= event.about.truncate(100) %></p>
       <span><%= link_to '+ Read More', event_path(event) %></span>
     </div>
     <div class="attend hide">Attend</div>

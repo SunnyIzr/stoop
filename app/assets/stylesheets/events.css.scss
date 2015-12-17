@@ -107,40 +107,71 @@
 .info-box2 img {
   margin: 15px 0px; 
 }
-@media only screen 
-and (min-width: 320px) 
-and (max-width: 480px) {
-  .event_name {
-    background: #ffffff none repeat scroll 0 0;
-    color: #345064;
-    float: left;
-    font-size: 25px;
-    margin: 15px;
-    padding: 5px 0 5px 20px;
-    width: 88%;
+
+
+// @media only screen 
+// and (min-width: 320px) 
+// and (max-width: 480px) {
+//   .event_name {
+//     background: #ffffff none repeat scroll 0 0;
+//     color: #345064;
+//     float: left;
+//     font-size: 25px;
+//     margin: 15px;
+//     padding: 5px 0 5px 20px;
+//     width: 88%;
+//   }
+//   .event_dis {
+//     background: #ffffff none repeat scroll 0 0;
+//     clear: both;
+//     float: left;
+//     font-size: 30px;
+//     margin: 0 0 15px 15px;
+//     padding: 5px 0 0 20px;
+//     width: 88%;
+//   }
+//   .attend {
+//     margin: 4% 15px 15px 0;
+//   }
+// }
+
+// .dropdown-menu{
+//   top: 40px;
+//   right: -30px;
+//   width: 95px;
+//   min-width: 0;
+//   left: inherit;
+//   .nav-link{
+//     margin-left: 0 !important;
+//     padding: 10px 20px;
+//   }
+// }
+
+@media (max-width:768px) {
+  .event{
+    height: auto;
+  }
+  .event_name{
+    font-size: 14px;
+    padding: 5px 10px;
+    text-align: center;
+    float: none;
   }
   .event_dis {
-    background: #ffffff none repeat scroll 0 0;
-    clear: both;
-    float: left;
-    font-size: 30px;
-    margin: 0 0 15px 15px;
-    padding: 5px 0 0 20px;
-    width: 88%;
-  }
-  .attend {
-    margin: 4% 15px 15px 0;
+    float: none;
+    width: auto;
+    margin: 0 15px;
+    h2{
+      font-size: 16px;
+      float: none;
+    }
+    span{
+      float: none;
+      display: block 
+    }
   }
 }
 
-.dropdown-menu{
-  top: 40px;
-  right: -30px;
-  width: 95px;
-  min-width: 0;
-  left: inherit;
-  .nav-link{
-    margin-left: 0 !important;
-    padding: 10px 20px;
-  }
-}
+
+
+
