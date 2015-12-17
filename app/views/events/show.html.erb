@@ -24,7 +24,32 @@
 
 <div class="container after-profile">
   <div class="row">
-    <div class="col-sm-8">
+    <div class="col-sm-4 col-sm-push-8 col-xs-12 side-bar-margin">
+      
+      <div class='side-nav'>
+        
+        <ul class="side-nav">
+          <li>
+            <%=form_for Invite.new, html: { class: 'new_follow' } do |f| %>
+              <%= f.hidden_field :event_id, value: @event.id, class: 'followable_id' %>
+              <%= f.hidden_field :attendee_id, value: current_user.id, class: 'followable_id' %>
+              <%= f.hidden_field :accepted, value: !@event.confirmed_guests.include?(current_user), class: 'followable_id' %>
+              <%= f.submit @event.confirmed_guests.include?(current_user) ? 'Decline' : 'Attend', class: 'follow-btn' %>
+            <% end %>
+          </li>
+          <% if @editable %>
+          <li><a href='#' data-toggle='modal' data-target='#inviteNeighbors'>Invite Neighbors</a></li>
+          <% end %>
+      </ul>
+        
+      </div>
+      
+      <div id="map-container">
+        <div id="map-canvas" data-lat='<%= @coords[0] %>' data-lng='<%= @coords[1] %>'></div>
+      </div>
+      
+    </div>
+    <div class="col-sm-8 col-sm-pull-4 col-xs-12">
             
       <div class="info-box events-info">
         <h3>Hosting</h3>
@@ -85,31 +110,6 @@
       </div>
       
 
-    </div>
-    <div class="col-sm-4 side-bar-margin">
-      
-      <div class='side-nav'>
-        
-        <ul class="side-nav">
-          <li>
-            <%=form_for Invite.new, html: { class: 'new_follow' } do |f| %>
-              <%= f.hidden_field :event_id, value: @event.id, class: 'followable_id' %>
-              <%= f.hidden_field :attendee_id, value: current_user.id, class: 'followable_id' %>
-              <%= f.hidden_field :accepted, value: !@event.confirmed_guests.include?(current_user), class: 'followable_id' %>
-              <%= f.submit @event.confirmed_guests.include?(current_user) ? 'Decline' : 'Attend', class: 'follow-btn' %>
-            <% end %>
-          </li>
-          <% if @editable %>
-          <li><a href='#' data-toggle='modal' data-target='#inviteNeighbors'>Invite Neighbors</a></li>
-          <% end %>
-      </ul>
-        
-      </div>
-      
-      <div id="map-container">
-        <div id="map-canvas" data-lat='<%= @coords[0] %>' data-lng='<%= @coords[1] %>'></div>
-      </div>
-      
     </div>
   </div>
 </div>

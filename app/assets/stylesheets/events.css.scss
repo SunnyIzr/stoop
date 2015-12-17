@@ -151,6 +151,9 @@
   .event{
     height: auto;
   }
+  .event-content{
+    z-index: 0;
+  }
   .event_name{
     font-size: 14px;
     padding: 5px 10px;
@@ -169,6 +172,10 @@
       float: none;
       display: block 
     }
+  }
+  
+  .side-nav{
+    margin-bottom: 0;
   }
 }
 
