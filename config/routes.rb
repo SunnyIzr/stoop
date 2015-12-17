@@ -61,6 +61,10 @@ Rails.application.routes.draw do
   resources :incentives, only: [:index,:show,:create,:update]
   resources :discount_codes, only: [:index,:show,:create,:update]
   
+  #Notification Routes
+  resources :notification, only: [:create]
+  post '/notifications/read' => 'notifications#read'
+  
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
