@@ -34,6 +34,14 @@
         <% else %>
           <a class='mini-profile-pic' href='/users/<%= current_user.id %>'><img class="profile-pic" src="<%= asset_path current_user.avatar %>" alt=""></a>
         <% end %>
+        
+        <div class="dropdown">
+          <a class="notifications dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <i class="fa fa-bell"></i>
+          </a>
+          <ul class="notification-dropdown dropdown-menu" aria-labelledby="dropdownMenu1">
+          </ul>
+        </div>
       </div>
     </div>
   </div>  

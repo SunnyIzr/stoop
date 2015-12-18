@@ -13,6 +13,7 @@ class LikesController < ApplicationController
       end      
     else
       user.like!(object)
+      # Notification.create(category: 'post_like')
       @data = object.data(current_user)
       respond_to do |format|
         format.json { render json: @data}

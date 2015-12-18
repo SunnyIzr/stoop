@@ -6,4 +6,6 @@ class Notification < ActiveRecord::Base
     self.update!(read: true)
   end
   
+  # Types: comment, post_like, comment_like
+  
 end

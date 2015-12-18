@@ -50,16 +50,31 @@ header.inner {
 	.nav-column {
 		margin-top:5px;
 
-		img, a {
+		img, a.mini-profile-pic, a.settings, a.notifications {
 			float:right;
 			margin-left:30px;
 			height:40px;
 			color: $lightBlue;
 		
 		}
+		a.mini-profile-pic{
+			margin-left: 3px;
+		}
 		.settings{
-			font-size: 42px;
+			font-size: 35px;
 			line-height: 42px;
+		}
+		.notifications{
+			font-size: 27px;
+			line-height: 40px;
+		}
+		.dropdown{
+			.notification-dropdown{
+				width: 300px;
+		    top: 55px;
+		    left: -55px;
+		    box-shadow: none;
+			}
 		}
 	}
 	.profile-pic{
