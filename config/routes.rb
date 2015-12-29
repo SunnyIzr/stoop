@@ -63,7 +63,9 @@ Rails.application.routes.draw do
   
   #Notification Routes
   resources :notification, only: [:create]
+  post '/notifications/read-chat' => 'notifications#read_chats'
   post '/notifications/read' => 'notifications#read'
+  get '/unread-chat' => 'notifications#unread_chat'
   
   
   # The priority is based upon order of creation: first created -> highest priority.

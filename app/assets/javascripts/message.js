@@ -41,6 +41,20 @@ var StoopPrivatePub = {
   }
 }
 
+var Notifications = {
+  read: function(convoId){
+    $.post('/notifications/read-chat',{convo_id: convoId},function(res){
+      console.log(res)
+      Notifications.update();
+    })
+  },
+  update: function(){
+    $.getJSON('/unread-chat',function(res){
+      $('#newMsgs').html(res.length)
+    })
+  }
+}
+
 var MessageEvents = {
   init: function(){
     StoopPrivatePub.init()
@@ -78,6 +92,7 @@ var MessageEvents = {
   conversationClick: function(){
     $('.conversation-single').click(function(e){
       MessageView.deHighlightConvoNotification(this.id)
+      Notifications.read(this.id)
       var elementTargeted = $(e.currentTarget)
       var closestConversation = elementTargeted.closest(".conversation")[0]
       if (elementTargeted.hasClass("building-member")){
@@ -268,8 +283,8 @@ var MessageView = {
     $('#' + convoId + ' .newConvoMsgs').html(currentNumber += 1)
   },
   deHighlightConvoNotification: function(convoId){
-    // $('#' + convoId).removeClass('new-msg-notification')
-    // $('#' + convoId + ' .newConvoMsgs').html('')
+    $('#' + convoId).removeClass('new-msg-notification')
+    $('#' + convoId + ' .newConvoMsgs').html('')
   },
   hideBackButton: function(){
     $(".back-button").addClass("inactive")

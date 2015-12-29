@@ -26,6 +26,22 @@ class NotificationsController < ApplicationController
     end
   end
   
+  def read_chats
+    convo = Mailboxer::Conversation.find(params[:convo_id].to_i)
+    sender = (convo.participants - [current_user]).first
+    notis = current_user.unread_chat_notifications.select{|n| n.sender == sender }
+    notis.each{ |noti| noti.read! }
+    respond_to do |format|
+      format.json{ render json: true}
+    end
+  end
+  
+  def unread_chat
+    respond_to do |format|
+      format.json{render json: current_user.unread_chat_notifications.to_json}
+    end    
+  end
+  
   private
   def notification_params
     params.require(:notification).permit(:category,:user_id)
