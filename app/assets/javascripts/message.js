@@ -273,7 +273,7 @@ var MessageView = {
     $('#newMsgs').html(currentNumber += 1)
   },
   deHighlightNotifications: function(){
-    $('.chat-box').removeClass('new-msg-notification')
+    // $('.chat-box').removeClass('new-msg-notification')
     // $('#newMsgs').html('')
   },
   highlightConvoNotification: function(convoId){
