@@ -15,6 +15,10 @@ class Notification < ActiveRecord::Base
       'liked your post'
     elsif self.category == 'comment_like'
       'liked your comment'
+    elsif self.category == 'event_invite'
+      'invited you to their event'
+    elsif self.category == 'follow'
+      'is following you'
     end
         
   end

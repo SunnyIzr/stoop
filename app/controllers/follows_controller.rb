@@ -12,6 +12,9 @@ class FollowsController < ApplicationController
       end
     else
       @user.follow!(@object)
+      if ( follow_params[:followable_type] == 'User' )
+        Notification.create(category: 'follow', sender: current_user, user: @object)
+      end
       respond_to do |format|
         format.json {render json: true}
         format.html { redirect_to user_path(@object) }

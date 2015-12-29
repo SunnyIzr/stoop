@@ -5,6 +5,7 @@ class InvitesController < ApplicationController
     invite = Invite.where(attendee_id: invite_params[:attendee_id],event_id: invite_params[:event_id]).first
     if invite.nil?
       @invite = Invite.new(invite_params)
+      Notification.create(category: 'event_invite', sender: current_user, user_id: invite_params[:attendee_id])
     else
       @invite = invite
       @invite.update(invite_params)
@@ -25,6 +26,7 @@ class InvitesController < ApplicationController
     @event = Event.find(params[:event_id])
     params[:attendees].each do |attendee_id|
       Invite.create(event_id: @event.id, attendee_id: attendee_id)
+      Notification.create(category: 'event_invite', sender: current_user, user_id: attendee_id)
     end
     redirect_to @event
   end
