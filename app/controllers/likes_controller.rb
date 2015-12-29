@@ -13,7 +13,11 @@ class LikesController < ApplicationController
       end      
     else
       user.like!(object)
-      # Notification.create(category: 'post_like')
+      if like_params[:likeable_type] == 'Post'
+        Notification.create(category: 'post_like',user: object.account ,sender: user)
+      elsif like_params[:likeable_type] == 'Comment'
+        Notification.create(category: 'comment_like',user: object.user ,sender: user)
+      end
       @data = object.data(current_user)
       respond_to do |format|
         format.json { render json: @data}
