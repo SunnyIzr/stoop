@@ -13,6 +13,7 @@ var StoopPrivatePub = {
         var body = data.chat_message;
         MessageView.addNewMessageToMessageList(sender_status, body)
         MessageView.moveConversationToTopOfConversationList(data.conversation_id)
+        Notfications.read(data.conversation_id)
       } else {
         MessageView.changeTopBarColor("green")
         MessageView.highlightNotifications()
@@ -51,6 +52,9 @@ var Notifications = {
   update: function(){
     $.getJSON('/unread-chat',function(res){
       $('#newMsgs').html(res.length)
+      if ( res.length == 0 ){
+        $('.chat-box').removeClass('new-msg-notification')
+      }
     })
   }
 }
@@ -270,7 +274,7 @@ var MessageView = {
     $('#newMsgs').html(currentNumber += 1)
   },
   deHighlightNotifications: function(){
-    // $('.chat-box').removeClass('new-msg-notification')
+    $('.chat-box').removeClass('new-msg-notification')
     // $('#newMsgs').html('')
   },
   highlightConvoNotification: function(convoId){

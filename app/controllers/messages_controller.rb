@@ -20,6 +20,7 @@ class MessagesController < ApplicationController
       conversation = current_user.send_message(recipient, params[:message][:body], "Subject").conversation
       message_route = "/conversations/new/#{recipient.id}"
       PrivatePub.publish_to message_route, :chat_message => "#{params[:message][:body]}", user: recipient, conversation: conversation
+      Notification.create(category: 'chat',user: recipient ,sender: current_user)
       render :json => conversation.messages
     end
     #redirect_to conversation_path(conversation)
