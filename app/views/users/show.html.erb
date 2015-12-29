@@ -23,7 +23,7 @@
       
         <div class='img-wrapper change-profile-pic profile-pic'>
           <div class='overlay'></div>
-          <img id='profile_pic' class="img-responsive profile-pic" data-user-id='<%= @user.id %>' src="<%= asset_path @user.avatar %>" alt="">
+          <img id='profile_pic' class="img-responsive editable-profile-pic profile-pic" data-user-id='<%= @user.id %>' src="<%= asset_path @user.avatar %>" alt="">
           <%= form_for @user, html: {id: 'new_profile_pic', class: 'dropzone new-profile-pic-form'} do |f| %>
             <%= f.file_field :image, class: 'hide' %>
           <% end %>
