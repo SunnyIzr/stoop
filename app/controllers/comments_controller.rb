@@ -5,9 +5,9 @@ class CommentsController < ApplicationController
     comment = Comment.create(comment_params)
     comment.user = current_user
     if comment.save
-      # if comment.user != comment.commentable.account
-      #   Notification.create(category: 'comment',user: comment.commentable.account, sender: comment.account)
-      # end
+      if comment.user != comment.commentable.account
+        Notification.create(category: 'comment',user: comment.commentable.account, sender: comment.user)
+      end
       @data = comment.data(current_user)
       respond_to do |format|
         format.json { render json: @data}

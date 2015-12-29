@@ -70,10 +70,31 @@ header.inner {
 		}
 		.dropdown{
 			.notification-dropdown{
-				width: 300px;
+				width: 400px;
 		    top: 55px;
 		    left: -55px;
 		    box-shadow: none;
+		    h5{
+		    	margin: 0;
+		    	padding: 10px 15px;
+    			border-bottom: 1px solid $blue;
+		    }
+		    li{
+		    	padding: 18px 15px;
+    			height: 63px;
+    			border-bottom: 1px solid #abccce;
+    			img{
+    				margin-top: -9px;
+    			}
+		    }
+		    li:nth-last-child(1){
+		    	border-bottom: none;
+		    }
+		    a{
+		    	display: inline;
+		    	padding: 0;
+		    	color: $midGreen;
+		    }
 			}
 		}
 	}

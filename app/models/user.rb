@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   acts_as_followable
   acts_as_messageable
   
+  has_many :notifications
   
   has_many :businesses, dependent: :destroy
   accepts_nested_attributes_for :businesses
