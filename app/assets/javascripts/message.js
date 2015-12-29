@@ -18,6 +18,7 @@ var StoopPrivatePub = {
         MessageView.highlightNotifications()
         MessageView.highlightConvoNotification(data.conversation_id)
         MessageView.moveConversationToTopOfConversationList(data.conversation_id)
+        // Create Notification
       }
     });
   },
@@ -254,8 +255,8 @@ var MessageView = {
     $('#newMsgs').html(currentNumber += 1)
   },
   deHighlightNotifications: function(){
-    $('.chat-box').removeClass('new-msg-notification')
-    $('#newMsgs').html('')
+    // $('.chat-box').removeClass('new-msg-notification')
+    // $('#newMsgs').html('')
   },
   highlightConvoNotification: function(convoId){
     $('#' + convoId).addClass('new-msg-notification')
@@ -267,8 +268,8 @@ var MessageView = {
     $('#' + convoId + ' .newConvoMsgs').html(currentNumber += 1)
   },
   deHighlightConvoNotification: function(convoId){
-    $('#' + convoId).removeClass('new-msg-notification')
-    $('#' + convoId + ' .newConvoMsgs').html('')
+    // $('#' + convoId).removeClass('new-msg-notification')
+    // $('#' + convoId + ' .newConvoMsgs').html('')
   },
   hideBackButton: function(){
     $(".back-button").addClass("inactive")

@@ -41,7 +41,7 @@
           </a>
           <ul class="notification-dropdown dropdown-menu" aria-labelledby="dropdownMenu1">
             <h5>Notifications</h5>
-            <% current_user.notifications.reverse.each do | noti| %>
+            <% current_user.non_chat_notifications.reverse.each do | noti| %>
             <li><%= noti.html %></li>
             <% end %>
           </ul>

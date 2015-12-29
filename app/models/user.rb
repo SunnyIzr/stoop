@@ -116,6 +116,14 @@ class User < ActiveRecord::Base
     res['location']
   end
   
+  def non_chat_notifications
+    Notification.where("user_id = ? AND category != ?", self.id , 'chat')
+  end
+  
+  def unread_chat_notifications
+    Notification.where("user_id = ? AND category = ? AND read = ?", self.id , 'chat', false)
+  end
+  
   def self.from_fb_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider

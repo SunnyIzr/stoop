@@ -15,11 +15,11 @@
         </div>
       </div>
 
-      <div class="col-sm-4 col-sm-offset-8 col-xs-12 chat-box">
+      <div class="col-sm-4 col-sm-offset-8 col-xs-12 chat-box <%= 'new-msg-notification' if current_user.unread_chat_notifications.size > 0 %>">
 
         <div class='top-bar'>
           <span class="back-button inactive"><i class="fa fa-chevron-circle-left"></i></span>
-          <div class='header'>Instant Chat <span class='newMessages'>(<span id='newMsgs'></span>)</span></div>
+          <div class='header'>Instant Chat <span class='newMessages'>(<span id='newMsgs'><%= current_user.unread_chat_notifications.size %></span>)</span></div>
           <div class='recipient_name'></div>
           <span class="close-button"><i class="fa fa-times"></i></span>
         </div>
@@ -42,10 +42,10 @@
           </div>
           <div class="conversation-list">
             <% current_user.mailbox.conversations.each do |convo| %>
-              <div class="conversation conversation-single" id="<%= convo.id %>">
+              <div class="conversation conversation-single <%= 'new-msg-notification' if current_user.unread_chat_notifications.pluck(:sender_id).include?((convo.participants - [current_user])[0].id) %>" id="<%= convo.id %>">
                 <a href="#">
                   <img class="img-responsive" src="<%= asset_path((convo.participants - [current_user])[0].avatar) %>">
-                  <p class='name'><%= (convo.participants - [current_user])[0].name %> <span class='newMessages'>(<span class='newConvoMsgs'></span>)</span></p>
+                  <p class='name'><%= (convo.participants - [current_user])[0].name %> <span class='newMessages'>(<span class='newConvoMsgs'><%=current_user.unread_chat_notifications.pluck(:sender_id).count((convo.participants - [current_user])[0].id)%></span>)</span></p>
                 </a>
               </div>
             <% end %>

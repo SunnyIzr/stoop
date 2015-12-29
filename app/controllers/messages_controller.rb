@@ -12,6 +12,7 @@ class MessagesController < ApplicationController
       other_participant = conversation.participants - [current_user]
       message_route = "/messages/new/#{other_participant.first.id}"
       PrivatePub.publish_to message_route, :chat_message => "#{params[:message][:body]}", :conversation_id => conversation.id
+      Notification.create(category: 'chat',user: other_participant.first ,sender: current_user)
       render :json => conversation.messages
     else
       # if creating new conversation
