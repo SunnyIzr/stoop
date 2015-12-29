@@ -13,13 +13,12 @@ var StoopPrivatePub = {
         var body = data.chat_message;
         MessageView.addNewMessageToMessageList(sender_status, body)
         MessageView.moveConversationToTopOfConversationList(data.conversation_id)
-        Notfications.read(data.conversation_id)
+        Notifications.read(data.conversation_id)
       } else {
         MessageView.changeTopBarColor("green")
         MessageView.highlightNotifications()
         MessageView.highlightConvoNotification(data.conversation_id)
         MessageView.moveConversationToTopOfConversationList(data.conversation_id)
-        // Create Notification
       }
     });
   },
