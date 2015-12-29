@@ -26,6 +26,21 @@ class NotificationsController < ApplicationController
     end
   end
   
+  def read_all
+    current_user.unread_notifications.each do |noti|
+      noti.read!
+    end
+    if current_user.unread_notifications.empty?
+      respond_to do |format|
+        format.json{ render json: true }
+      end
+    else
+      respond_to do |format|
+        format.json{ render nothing: true }
+      end
+    end
+  end
+  
   def read_chats
     convo = Mailboxer::Conversation.find(params[:convo_id].to_i)
     sender = (convo.participants - [current_user]).first

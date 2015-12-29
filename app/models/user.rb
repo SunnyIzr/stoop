@@ -120,6 +120,10 @@ class User < ActiveRecord::Base
     Notification.where("user_id = ? AND category != ?", self.id , 'chat')
   end
   
+  def unread_notifications
+    Notification.where("user_id = ? AND category != ? AND read = ?", self.id , 'chat', false)
+  end
+  
   def unread_chat_notifications
     Notification.where("user_id = ? AND category = ? AND read = ?", self.id , 'chat', false)
   end

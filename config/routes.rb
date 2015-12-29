@@ -63,6 +63,7 @@ Rails.application.routes.draw do
   
   #Notification Routes
   resources :notification, only: [:create]
+  post '/notifications/read-all' => 'notifications#read_all'
   post '/notifications/read-chat' => 'notifications#read_chats'
   post '/notifications/read' => 'notifications#read'
   get '/unread-chat' => 'notifications#unread_chat'

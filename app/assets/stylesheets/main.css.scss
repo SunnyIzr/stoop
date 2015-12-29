@@ -68,6 +68,24 @@ header.inner {
 			font-size: 27px;
 			line-height: 40px;
 		}
+		span.notificationCount{
+			font-size: 12px;
+	    background: #fff;
+	    border-radius: 100%;
+	    width: 20px;
+	    height: 20px;
+	    text-align: center;
+	    line-height: 21px;
+	    position: absolute;
+	    margin-left: -15px;
+	    margin-top: -1px;
+	    display: none;
+		}
+		.unread-notifications{
+			span.notificationCount{
+				display: inline-block;
+			}
+		}
 		.dropdown{
 			.notification-dropdown{
 				width: 400px;
@@ -86,6 +104,9 @@ header.inner {
     			img{
     				margin-top: -9px;
     			}
+		    }
+		    li.unread{
+		    	background: rgba(100, 196, 202, 0.12);
 		    }
 		    li:nth-last-child(1){
 		    	border-bottom: none;

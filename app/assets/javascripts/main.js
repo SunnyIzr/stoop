@@ -6,6 +6,7 @@ $(document).ready(function(){
   MessageEvents.init();
   Signup.init();
   ProfileEvents.init();
+  Notifications.readAllEvent();
   
   $('.editable').editable()
   

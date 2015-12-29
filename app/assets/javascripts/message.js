@@ -41,22 +41,6 @@ var StoopPrivatePub = {
   }
 }
 
-var Notifications = {
-  read: function(convoId){
-    $.post('/notifications/read-chat',{convo_id: convoId},function(res){
-      console.log(res)
-      Notifications.update();
-    })
-  },
-  update: function(){
-    $.getJSON('/unread-chat',function(res){
-      $('#newMsgs').html(res.length)
-      if ( res.length == 0 ){
-        $('.chat-box').removeClass('new-msg-notification')
-      }
-    })
-  }
-}
 
 var MessageEvents = {
   init: function(){
