@@ -104,12 +104,20 @@
 
 
 .intro, .intro-neighborhood {
-	background-image:asset-data-url("home-bg-top.jpg");
+
 	background-size:100%;
 	height:auto;
 	background-repeat:no-repeat;
 	background-attachment:fixed;
 
+	video{
+		display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -10;
+	}
 	.container {
 		padding-top:35px;
 	}
