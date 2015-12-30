@@ -4,7 +4,7 @@
 
     <div class="row">
       <div class="col-xs-6">
-        <img class="img-responsive logo" src="<%= asset_path 'stoop-logo.png' %>" alt="Stoop">
+        <a href='/'><img class="img-responsive logo" src="<%= asset_path 'stoop-logo.png' %>" alt="Stoop"></a>
       </div>
       <div class="col-xs-6">
         <%= link_to 'Login', new_user_session_path, class: 'login' %>
@@ -13,22 +13,24 @@
 
     <div class="row cta">
       <h1>Become A Part of Your<br> Neighborhood</h1>
-      <a href="#" class="cta-btn">How It Works</a>
+      <a href="#" class="how-it-works-btn cta-btn">How It Works</a>
     </div>
 
     <div class="row cta-form">
+      <%= form_tag('/users/sign_up', method: 'get') do %>
       <div class="col-sm-3">
-        <input class="cst-input" type="text" placeholder="FULL NAME">
+        <%= text_field_tag :first_name, nil, class: 'cst-input', placeholder: 'FIRST NAME' %>
       </div>
       <div class="col-sm-3">
-        <input class="cst-input" type="text" placeholder="EMAIL">
+        <%= text_field_tag :last_name, nil, class: 'cst-input', placeholder: 'LAST NAME' %>
       </div>
       <div class="col-sm-3">
-        <input class="cst-input" type="text" placeholder="NEIGHBORHOOD">
+        <%= text_field_tag :email, nil, class: 'cst-input', placeholder: 'EMAIL' %>
       </div>
       <div class="col-sm-3">
-        <button class="cta-submit" type="submit">Sign Up</button>
+        <%= submit_tag 'Sign Up', class: 'cta-submit' %>
       </div>
+      <% end %>
     </div>
 
   </div>
@@ -63,8 +65,8 @@
 
 <div class="neighborhood-bar">
   <div class="container-fluid">
-    <div class="row">
-      <img class="img-responsive" src="<%= asset_path 'need-replaced.jpg' %>">
+    <div class="row neighborhood-list">
+      <a href='/financial-district'><img class="img-responsive" src="<%= asset_path 'public/fidi.jpg' %>"></a><a href='#'><img class="img-responsive" src="<%= asset_path 'public/wvill.jpg' %>"></a><a href='#'><img class="img-responsive" src="<%= asset_path 'public/soho.jpg' %>"></a>
     </div>
   </div>
 </div>  
@@ -143,22 +145,24 @@
             <h4>Become A Member Now!</h4>
           </div>
         </div>
+        <%= form_tag('/users/sign_up', method: 'get') do %>
         <div class="row cta-form2">
           <div class="col-xs-6">
-            <input class="custom-input" type="text" placeholder="Full Name">
+            <%= text_field_tag :first_name, nil, class: 'custom-input', placeholder: 'First Name' %>
           </div>
           <div class="col-xs-6">
-            <input class="custom-input" type="text" placeholder="Email">
+            <%= text_field_tag :last_name, nil, class: 'custom-input', placeholder: 'Last Name' %>
           </div>
         </div>
         <div class="row cta-form2">
           <div class="col-xs-6">
-            <input class="custom-input" type="text" placeholder="Neighborhood">
+            <%= text_field_tag :email, nil, class: 'custom-input', placeholder: 'Email' %>
           </div>
           <div class="col-xs-6">
-            <button class="custom-cta-button" type="submit">Sign Up</button>
+            <%= submit_tag 'Sign Up', class: 'custom-cta-button' %>
           </div>
         </div>
+        <% end %>
       </div>
     </div>
   </div>
@@ -181,3 +185,12 @@
 </script> Mdrn Group, Inc. All Rights Reserved</p>
 
 </footer>
+
+<script>
+$(document).ready(function(){
+  $('a.how-it-works-btn').click(function(e){
+    e.preventDefault();
+    $('html, body').animate({scrollTop: $('.how-it-works').offset().top},250)
+  })
+})
+</script>

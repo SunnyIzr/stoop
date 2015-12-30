@@ -4,7 +4,7 @@
 
     <div class="row">
       <div class="col-xs-6">
-        <img class="img-responsive logo" src="<%= asset_path 'stoop-logo.png' %>" alt="Stoop">
+        <a href='/'><img class="img-responsive logo" src="<%= asset_path 'stoop-logo.png' %>" alt="Stoop"></a>
       </div>
       <div class="col-xs-6">
         <%= link_to 'Login', new_user_session_path, class: 'login' %>
@@ -14,22 +14,24 @@
     <div class="row cta">
       <h1>FINANCIAL DISTRICT</h1>
       <h2>Subhead</h2>
-      <a href="#" class="cta-btn">How It Works</a>
+      <a href="#" class="cta-btn" style='opacity: 0.0; z-index:-10;'>How It Works</a>
     </div>
 
     <div class="row cta-form">
+      <%= form_tag('/users/sign_up', method: 'get') do %>
       <div class="col-sm-3">
-        <input class="cst-input" type="text" placeholder="FULL NAME">
+        <%= text_field_tag :first_name, nil, class: 'cst-input', placeholder: 'FIRST NAME' %>
       </div>
       <div class="col-sm-3">
-        <input class="cst-input" type="text" placeholder="EMAIL">
+        <%= text_field_tag :last_name, nil, class: 'cst-input', placeholder: 'LAST NAME' %>
       </div>
       <div class="col-sm-3">
-        <input class="cst-input" type="text" placeholder="NEIGHBORHOOD">
+        <%= text_field_tag :email, nil, class: 'cst-input', placeholder: 'EMAIL' %>
       </div>
       <div class="col-sm-3">
-        <button class="cta-submit" type="submit">Sign Up</button>
+        <%= submit_tag 'Sign Up', class: 'cta-submit' %>
       </div>
+      <% end %>
     </div>
 
   </div>

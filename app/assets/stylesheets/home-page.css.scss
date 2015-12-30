@@ -238,7 +238,13 @@
 }
 
 .neighborhood-bar {
-
+	.neighborhood-list{
+		a{
+			display: inline-block;
+			width: 33.33%;
+			margin-bottom: -5px;
+		}
+	}
 }
 
 .fidi-neighborhood {
