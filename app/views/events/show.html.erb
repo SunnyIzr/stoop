@@ -5,7 +5,7 @@
       <% if @editable %>
           
           <div class='overlay'></div>
-          <img id='cover_pic' class="img-responsive cover-pic" data-user-id='<%= @event.id %>' src="<%= @event.cover %>" alt="">
+          <img id='cover_pic' class="img-responsive cover-pic" data-user-id='<%= @event.id %>' src="<%= asset_path @event.cover %>" alt="">
           <%= form_for @event, html: {id: 'new_event_cover_pic', class: 'dropzone new-cover-pic-form'} do |f| %>
             <%= f.file_field :cover, class: 'hide' %>
           <% end %>
@@ -64,14 +64,14 @@
 
         <h3>Date</h3>
         <% if @editable %>
-        <p><a data-type="date" data-cols='30' class='<%= @editable ? "inline-date" : "uneditable" %>' data-url="/events/update_time/<%= @event.id %>" data-object="event" data-attribute="start_time" data-placeholder="Start Time"><%= @event.start_time.strftime('%b %d, %Y') %></a></p>
+        <p><a data-type="date" data-cols='30' class='<%= @editable ? "inline-date" : "uneditable" %>' data-url="/events/update_time/<%= @event.id %>" data-object="event" data-attribute="start_time" data-placeholder="Start Time"><%= @event.start_time.nil? ? nil :  @event.start_time.strftime('%b %d, %Y') %></a></p>
         <% else %>
           <p><%= @event.date %></p>
         <% end %>
         
         <h3>Time</h3>
         <% if @editable %>
-        <p><a data-type="text" class='<%= @editable ? "inline-date" : "uneditable" %>' data-url="/events/update_time/<%= @event.id %>" data-object="event" data-attribute="hour" data-placeholder="Hour"><%= @event.start_time.strftime('%I') %></a>:<a data-type="text" class='<%= @editable ? "inline-date" : "uneditable" %>' data-url="/events/update_time/<%= @event.id %>" data-object="event" data-attribute="min" data-placeholder="Minute"><%= @event.start_time.min %></a> <a data-type="select" class='<%= @editable ? "inline-meridian" : "uneditable" %>' data-value='<%= @event.start_time.strftime('%P') %>'data-url="/events/update_time/<%= @event.id %>" data-object="event" data-attribute="meridian" data-placeholder="Meridian"></a></p>
+        <p><a data-type="text" class='<%= @editable ? "inline-date" : "uneditable" %>' data-url="/events/update_time/<%= @event.id %>" data-object="event" data-attribute="hour" data-placeholder="Hour"><%= @event.start_time.nil? ? nil :  @event.start_time.strftime('%I') %></a>:<a data-type="text" class='<%= @editable ? "inline-date" : "uneditable" %>' data-url="/events/update_time/<%= @event.id %>" data-object="event" data-attribute="min" data-placeholder="Minute"><%= @event.start_time.nil? ? nil :  @event.start_time.min %></a> <a data-type="select" class='<%= @editable ? "inline-meridian" : "uneditable" %>' data-value='<%= @event.start_time.nil? ? nil :  @event.start_time.strftime('%P') %>'data-url="/events/update_time/<%= @event.id %>" data-object="event" data-attribute="meridian" data-placeholder="Meridian"></a></p>
         <% else %>
           <p><%= @event.time %></p>
         <% end %>

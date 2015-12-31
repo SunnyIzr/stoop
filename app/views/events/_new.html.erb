@@ -4,7 +4,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">New Incentive</h4>
+        <h4 class="modal-title" id="myModalLabel">New Event</h4>
       </div>
       <div class="modal-body">
         <%= form_for Event.new do |f| %>
@@ -23,9 +23,11 @@
           <div class='form-group'>
             <%= f.text_area :about, rows: 10, placeholder: "Details on Your Event", class: 'form-control' %>
           </div>
+          <% if false %>
           <div class='form-group'>
             <%= f.datetime_select :start_time, placeholder: "Start Time", class: 'form-control' %>
           </div>
+          <% end %>
           <div class='form-group'>
             <%= f.submit 'Create', class: 'form-control btn btn-primary' %>
           </div>
