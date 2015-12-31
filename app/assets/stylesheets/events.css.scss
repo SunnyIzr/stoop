@@ -108,6 +108,26 @@
   margin: 15px 0px; 
 }
 
+#newEvent{
+  .modal-backdrop{
+    background-color: #fff;
+  }
+  .modal-backdrop.in{
+    opacity: 0.75;
+  }
+  .modal-content{
+    box-shadow: none;
+    border-radius: 0;
+    input,select,textarea{
+      border-radius: 0 !important;
+    }
+    .btn-primary{
+      background: #abcdcf;
+      border-color: #abcdcf;
+    }
+  }
+}
+
 
 // @media only screen 
 // and (min-width: 320px) 
