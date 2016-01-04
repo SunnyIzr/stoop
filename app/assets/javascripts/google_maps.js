@@ -11,6 +11,7 @@ var GoogleMaps = {
     var mapOptions = {
       center: new google.maps.LatLng(lat, lng),
       zoom: 16,
+      scrollwheel:  false,
       mapTypeId: google.maps.MapTypeId.NORMAL,
       panControl: true,
       scaleControl: false,

@@ -8,8 +8,8 @@
     <div class="col-sm-8 col-sm-pull-4 col-xs-12">
       <div class="row">
         <div class="col-xs-12 building-neighborhood-bar neighborhood">
-          <a href="feed/building" class='loadScript' style="border-right:2px solid white; padding-right:20px;">My Building</a>
-          <a href="/feed/neighborhood" class="loadScript" style="padding-left:20px;">My Neighborhood</a>
+          <a href="feed/building" class='loadScript newPostLoad' style="border-right:2px solid white; padding-right:20px;">My Building</a>
+          <a href="/feed/neighborhood" class="loadScript newPostLoad" style="padding-left:20px;">My Neighborhood</a>
           <!--NOTE: I recommend toggling the class "active" on/off with jquery-->
         </div>
         
@@ -55,5 +55,11 @@
 <script>
   window.searchMap = null
   GoogleMaps.init()
+  navigator.geolocation.getCurrentPosition(function(pos){
+    window.geoCoords = pos
+  })
+  
+  
+  
 </script>
 

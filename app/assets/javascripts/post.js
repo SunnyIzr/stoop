@@ -36,9 +36,7 @@ var PostEvents = {
       if ( $('#search-map-container').hasClass('hide') ){
         $('#search-map-container').removeClass('hide')
         if ( searchMap == null ){
-          navigator.geolocation.getCurrentPosition(function(pos){
-            GooglePlaces.init(pos.coords.latitude,pos.coords.longitude)
-          })
+          GooglePlaces.init(geoCoords.coords.latitude,geoCoords.coords.longitude)
         }
       } else {
         $('#search-map-container').addClass('hide')

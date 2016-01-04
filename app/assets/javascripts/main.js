@@ -12,8 +12,16 @@ $(document).ready(function(){
   
   $(document).on('click', 'a.loadScript', function(e){
     e.preventDefault();
+    if ( $(this).hasClass('newPostLoad') ){
+      loadMaps = true 
+    } else {
+      loadMaps = false
+    }
     $.getScript(this.href,function(res){
       res
+      if (loadMaps==true){
+        GoogleMaps.init()
+      }
     })
   })
   
