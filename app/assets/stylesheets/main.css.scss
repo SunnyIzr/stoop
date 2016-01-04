@@ -64,6 +64,27 @@ header.inner {
 			font-size: 35px;
 			line-height: 42px;
 		}
+		.settings-menu{
+			.dropdown-menu{
+				right: -8px;
+		    left: inherit;
+		    top: 40px;
+		    box-shadow: none;
+		    border-radius: 0;
+		    padding: 0;
+		    li{
+		    	a{
+		    		border-bottom: 1px solid $lightBlue;
+    				padding: 11px 15px;
+		    	}
+		    }
+		    li:nth-last-child(1){
+		    	a{
+		    		border: none;
+		    	}
+		    }
+			}
+		}
 		.notifications{
 			font-size: 27px;
 			line-height: 40px;
@@ -125,6 +146,26 @@ header.inner {
 		border-radius: 100%;
 		border: 3px solid $lightBlue;
 	}
+}
+
+#accountSettings{
+  .modal-backdrop{
+    background-color: #fff;
+  }
+  .modal-backdrop.in{
+    opacity: 0.75;
+  }
+  .modal-content{
+    box-shadow: none;
+    border-radius: 0;
+    input,select,textarea{
+      border-radius: 0 !important;
+    }
+    .btn-primary{
+      background: #abcdcf;
+      border-color: #abcdcf;
+    }
+  }
 }
 
 
