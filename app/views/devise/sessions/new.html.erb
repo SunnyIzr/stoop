@@ -1,7 +1,7 @@
 <body class='focus-page'>
   
   <div class="container">
-    <img class="img-responsive logo" src="<%= asset_path 'alt-logo.jpg' %>" alt="Logo">
+    <img class="img-responsive logo" src="<%= asset_path 'logos/alt-logo-beta.jpg' %>" alt="Logo">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <%= f.email_field :email, autofocus: true, class: 'custom', placeholder: 'Email' %>
       <%= f.password_field :password, autofocus: true, class: 'custom', placeholder: 'Password' %>
