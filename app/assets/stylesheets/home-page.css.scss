@@ -1,3 +1,7 @@
+html{
+	overflow-x:hidden;
+}
+
 .intro-neighborhood {
 	background-image:asset-data-url("city.jpg") !important;
 
@@ -244,6 +248,27 @@
 		margin-bottom:20px;
 	}
 }
+@media (max-width:767px) {
+	.how-it-works{
+		.img-responsive{
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.box{
+			text-align: center;
+			.img-responsive{
+				width: 75%;
+				margin: -40px auto 0;
+				max-width: 300px;
+			}
+		}
+		.col-sm-4:nth-child(1){
+			.img-responsive{
+				margin-top: 0;
+			}
+		}
+	}
+}
 
 .neighborhood-bar {
 	.neighborhood-list{
@@ -253,6 +278,24 @@
 			margin-bottom: -5px;
 		}
 	}
+}
+
+
+@media (max-width:675px) {
+	.neighborhood-bar{
+		.neighborhood-list{
+			a{
+				width: 100%;
+		    margin-bottom: -5px;
+		    max-height: 200px;
+		    overflow: hidden;
+		    .img-responsive{
+		    	margin-top: -20%;
+		    }
+			}
+		}
+	}
+	
 }
 
 .fidi-neighborhood {
