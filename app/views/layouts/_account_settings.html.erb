@@ -25,10 +25,12 @@
             <td><a id="inline-title-<%=current_user.id%>" data-type="password" class='inline-field' data-url="/users/<%=current_user.id%>" data-object="user" data-attribute="password" data-placeholder="Password">*****</a></td>
           </tr>
           <% end %>
+          <% unless current_user.building.nil? %>
           <tr>
             <th>Building</th>
             <td><%=current_user.building.name%></td>
           </tr>
+          <% end %>
           <tr>
             <th>Status</th>
             <td><%= current_user.verified ? 'Verified' : 'Not Verified' %></td>
