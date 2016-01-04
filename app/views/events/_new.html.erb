@@ -23,11 +23,9 @@
           <div class='form-group'>
             <%= f.text_area :about, rows: 10, placeholder: "Details on Your Event", class: 'form-control' %>
           </div>
-          <% if false %>
           <div class='form-group'>
             <%= f.datetime_select :start_time, placeholder: "Start Time", class: 'form-control' %>
           </div>
-          <% end %>
           <div class='form-group'>
             <%= f.submit 'Create', class: 'form-control btn btn-primary' %>
           </div>
