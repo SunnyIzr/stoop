@@ -80,6 +80,16 @@
   }
 }
 
+@media (max-width:600px) {
+  .table-container{
+    .table{
+      min-width: 600px;
+      overflow-x: scroll;
+    }
+    
+  }
+}
+
 //Small Business Listing
 .business{
   margin-bottom: 10px;
