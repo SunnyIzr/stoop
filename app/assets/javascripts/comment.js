@@ -51,12 +51,14 @@ var Comment = {
     Post.refresh(comment.post)
   },
   addCommentField: function($commentBar,postId){
-    $el = $('.comment_field.hide').clone()
-    $el.removeClass('hide')
-    
-    $el.find('input[name="comment[commentable_id]"]').val(postId)
-    
-    $commentBar.append($el)
-    $el.find('.new_comment_body').focus()
+    if ( $('.post-id-' + postId + ' .comment_field').size() == 0 ){
+      $el = $('.comment_field.hide').clone()
+      $el.removeClass('hide')
+      
+      $el.find('input[name="comment[commentable_id]"]').val(postId)
+      
+      $commentBar.append($el)
+      $el.find('.new_comment_body').focus()
+    }
   }
 }
