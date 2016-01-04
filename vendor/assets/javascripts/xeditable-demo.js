@@ -128,6 +128,25 @@ $(function(){
         }
     });
     
+    $('.inline-building').editable({
+        mode: 'inline',
+        pk: 1,
+        source: [
+            {value: 'cash', text: 'Cash'},
+            {value: 'percent', text: 'Percent'}
+        ],
+        display: function(value, sourceData) {
+            var colors = {0: "blue", 1: "green"},
+                elem = $.grep(sourceData, function(o){return o.value == value;});
+
+            if(elem.length) {
+                $(this).text(elem[0].text).css("color", colors[value]);
+            } else {
+                $(this).empty();
+            }
+        }
+    });
+    
     $('.inline-industry').editable({
         mode: 'inline',
         pk: 1,

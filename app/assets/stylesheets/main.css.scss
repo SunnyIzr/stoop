@@ -158,8 +158,12 @@ header.inner {
   .modal-content{
     box-shadow: none;
     border-radius: 0;
+    font-size: 13px;
     input,select,textarea{
       border-radius: 0 !important;
+    }
+    .editable-input{
+    	width: auto;
     }
     .btn-primary{
       background: #abcdcf;

@@ -1,0 +1,40 @@
+<div class="modal fade" id="accountSettings" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><center>Account</center></h4>
+      </div>
+      <div class="modal-body">
+        <table class='table'>
+          <tr>
+            <th width='20%'>First Name</th>
+            <td><a id="inline-title-<%= current_user.id %>" data-type="text" class='inline-field' data-url="/users/<%=current_user.id%>" data-object="user" data-attribute="first_name" data-placeholder="First Name"><%= current_user.first_name %></a></td>
+          </tr>
+          <tr>
+            <th>Last Name</th>
+            <td><a id="inline-title-<%= current_user.id %>" data-type="text" class='inline-field' data-url="/users/<%=current_user.id%>" data-object="user" data-attribute="last_name" data-placeholder="Last Name"><%= current_user.last_name %></a></td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td><a id="inline-title-<%= current_user.id %>" data-type="text" class='inline-field' data-url="/users/<%=current_user.id%>" data-object="user" data-attribute="email" data-placeholder="Email"><%= current_user.email %></a></td>
+          </tr>
+          <% if current_user.provider.nil? %>
+          <tr>
+            <th>Password</th>
+            <td><a id="inline-title-<%=current_user.id%>" data-type="password" class='inline-field' data-url="/users/<%=current_user.id%>" data-object="user" data-attribute="password" data-placeholder="Password">*****</a></td>
+          </tr>
+          <% end %>
+          <tr>
+            <th>Building</th>
+            <td><%=current_user.building.name%></td>
+          </tr>
+          <tr>
+            <th>Status</th>
+            <td><%= current_user.verified ? 'Verified' : 'Not Verified' %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -23,7 +23,7 @@
             <i class="fa fa-cog"></i>
           </a>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><a href='#' class='nav-link' data-toggle='modal' data-target='#accountSettings'>Settings</a></li>
+            <li><a href='#' class='nav-link' data-toggle='modal' data-target='#accountSettings'>Account</a></li>
             <li><%= link_to('Log Out', destroy_user_session_path, class: 'nav-link', :method => :delete) %></li>
           </ul>
         </div>
@@ -54,16 +54,3 @@
 
 
 
-<div class="modal fade" id="accountSettings" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><center>Account Settings</center></h4>
-      </div>
-      <div class="modal-body">
-        <h1>Yolo!</h1>
-      </div>
-    </div>
-  </div>
-</div>
