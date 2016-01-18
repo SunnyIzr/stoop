@@ -30,16 +30,13 @@ module SignupHelper
                 "Alaska",
                 "Alabama",
                 "Arkansas",
-                "American Samoa",
                 "Arizona",
                 "California",
                 "Colorado",
                 "Connecticut",
-                "District of Columbia",
                 "Delaware",
                 "Florida",
                 "Georgia",
-                "Guam",
                 "Hawaii",
                 "Iowa",
                 "Idaho",
@@ -68,7 +65,6 @@ module SignupHelper
                 "Oklahoma",
                 "Oregon",
                 "Pennsylvania",
-                "Puerto Rico",
                 "Rhode Island",
                 "South Carolina",
                 "South Dakota",
@@ -76,15 +72,27 @@ module SignupHelper
                 "Texas",
                 "Utah",
                 "Virginia",
-                "Virgin Islands",
                 "Vermont",
                 "Washington",
                 "Wisconsin",
                 "West Virginia",
                 "Wyoming" ]
-    s = ''
+    s = '<option disabled selected="selected">State</option>'
     states.each do |state|
-        s << "<option>#{state}</option>"
+      s << "<option value='#{state}'>#{state}</option>"
+    end
+    s.html_safe
+  end
+  
+  def industry_options
+    industries = [{value: 'restaurant/bar', text: 'Restaurant/Bar'},
+            {value: 'retail', text: 'Retail'},
+            {value: 'nightclub', text: 'Nightclub'},
+            {value: 'beauty/grooming', text: 'Beauty/Grooming'},
+            {value: 'hotel', text: 'Hotel'}]
+    s = '<option disabled selected="selected">Industry</option>'
+    industries.each do |industry|
+      s << "<option value='#{industry[:value]}'>#{industry[:text]}</option>"
     end
     s.html_safe
   end

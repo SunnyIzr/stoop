@@ -67,19 +67,20 @@
       
       <div class="column-left">
         <%= business_form.text_field :name, placeholder: 'Business Name' %>
-        <%= business_form.text_field :industry, placeholder: 'Industry' %>
+        <%= business_form.select 'industry', industry_options, {}, {style: 'margin-top: 50px;', class: 'form-control chosen-it'} %>
         <%= f.email_field :email, placeholder: 'Email' %>
         <%= f.password_field :password, placeholder: 'Password' %>
         <%= f.password_field :password_confirmation, placeholder: 'Confirm Password' %>
+        <%= business_form.select :neighborhood_id, neighborhood_options, {}, {style: 'margin-top: 50px;', class: 'form-control chosen-it'} %>
       </div>
 
       <div class="column-right">
         <div class='form-group'>
-          <%= business_form.select :neighborhood_id, neighborhood_options, {}, {style: 'margin-top: 50px;', class: 'form-control chosen-it'} %>
           <%= text_field_tag 'contact[address1]', nil, placeholder: 'Address1' %>
           <%= text_field_tag 'contact[address2]', nil, placeholder: 'Address2' %>
           <%= text_field_tag 'contact[city]', nil, placeholder: 'City' %>
-          <%= text_field_tag 'contact[phone]', nil, placeholder: 'Phone' %>
+          <%= select_tag 'contact[state]', state_options,  {style: 'margin-top: 50px;', class: 'form-control chosen-it'} %>
+          <%= text_field_tag 'contact[phone]', nil, placeholder: 'Phone Number' %>
         </div>
 
         <!--NOTE: only call this on an error-->

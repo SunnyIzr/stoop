@@ -239,7 +239,6 @@ $(function(){
             {value: "Delaware", text: "DE"},
             {value: "Florida", text: "FL"},
             {value: "Georgia", text: "GA"},
-            {value: "Guam", text: "GU"},
             {value: "Hawaii", text: "HI"},
             {value: "Iowa", text: "IA"},
             {value: "Idaho", text: "ID"},

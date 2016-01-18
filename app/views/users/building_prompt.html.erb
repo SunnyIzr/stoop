@@ -3,6 +3,20 @@
     
     <div class='building-prompt'>
       <img class="img-responsive logo" src="<%= asset_path 'logos/alt-logo-beta.jpg' %>" alt="">
+      
+      <% if current_user.business? %>
+      <div class='main-content' style='width: 555px;'>
+        <h1>Hello <%= current_user.first_name %>,</h1>
+        <h2>Please Claim Your Business:</h2>
+        <%= autocomplete_field_tag :search, current_user.business.name , autocomplete_user_first_name_users_path, {class: "yelp-search-query search-query search-field empty", placeholder: "&#xF002; ".html_safe, type: "search"} %> 
+        <div class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-1" tabindex="0" style="width: 555px; top: 40px; left: 15px; display:none; position: static;">
+          <ul class='yelpBizList' style='padding: 0;'>
+          </ul>
+        </div>
+      </div>
+      
+      
+      <% else %>
       <div class='main-content'>
         <h1>Hello <%= current_user.first_name %>,</h1>
         <h2>Please Select Your Building:</h2>
@@ -11,7 +25,49 @@
         <%= f.submit "Submit", class: 'btn btn-primary login' %>
         <% end %>
       </div>
+      <% end %>
+      
+      
     </div>
   </div>
 </div>
 
+
+
+<script>
+SearchAutocomplete = {
+  init: function(){
+    SearchAutocomplete.showHideResultsBox()
+    $('.yelp-search-query').keyup(function(e){
+      SearchAutocomplete.showHideResultsBox()
+    })
+  },
+  showHideResultsBox: function(){
+    term = $('.yelp-search-query').val()
+    if ( term.length > 2 ){
+      $('.ui-autocomplete').show();
+      SearchAutocomplete.getYelpBusinesses(term)
+    } else {
+      $('.ui-autocomplete').hide();
+    }
+  },
+  getUsers: function(){
+    $.post('/users/search', {term: term}, function(res){
+      SearchAutocomplete.renderUsers(res)
+    })
+  },
+  getYelpBusinesses: function(){
+    $.post('/yelp/search',{term: term},function(res){
+      SearchAutocomplete.renderYelpBusinesses(res)
+    })
+  },
+  renderYelpBusinesses: function(businesses){
+    $('.yelpBizList').html('')
+    $(businesses).each(function(index,business){
+      $el = $('<li class="ui-menu-item"><a href="#"><span>' + business['name'] + '</span></a></li>')
+      $('.yelpBizList').append($el)
+    })
+  }
+}
+SearchAutocomplete.init()
+</script>
