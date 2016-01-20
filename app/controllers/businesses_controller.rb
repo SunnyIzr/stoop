@@ -20,6 +20,11 @@ class BusinessesController < ApplicationController
     @business = Business.find(params[:id])
     if @business.user == current_user
       if @business.update!(business_params)
+        if !business_params[:yelp_id].nil?
+          p '*'*1000
+          p 'RUNNING YELP PERSIST'
+          @business.persist_yelp_data
+        end
         respond_to do |format|
           format.json{ render json: @business }
           format.html{ redirect_to @business }
@@ -44,6 +49,6 @@ class BusinessesController < ApplicationController
   
   private
   def business_params
-    params.require(:business).permit(:name,:neighborhood_id,:contact,:established,:industry,:about,:avatar,:cover)
+    params.require(:business).permit(:name,:neighborhood_id,:contact,:established,:industry,:about,:avatar,:cover,:yelp_id)
   end
 end

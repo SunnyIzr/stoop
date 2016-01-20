@@ -26,7 +26,7 @@ class Business < ActiveRecord::Base
   validates_attachment_content_type :cover, :content_type => /\Aimage\/.*\Z/   
   
   def coords
-    Geocoder.coordinates(self.contact[:street]+', '+self.contact[:city]+', '+self.contact[:state]+', US')
+    Geocoder.coordinates(self.contact[:street].to_s+', '+self.contact[:city]+', '+self.contact[:state]+', US')
   end
   
   def business?
@@ -43,6 +43,17 @@ class Business < ActiveRecord::Base
   
   def mailboxer_email(object)
     nil
+  end
+  
+  def get_yelp_matches
+    YelpApi.search_by_coords(self.name,self.coords).businesses[0..4]
+  end
+  
+  def persist_yelp_data
+    yelp_biz = YelpApi.business(self.yelp_id)
+    self.name = yelp_biz.name
+    self.avatar = YelpApi.large_img(yelp_biz)
+    self.save
   end
   
   def s3_credentials

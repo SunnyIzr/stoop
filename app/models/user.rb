@@ -65,7 +65,7 @@ class User < ActiveRecord::Base
   end
   
   def neighborhood
-    self.building.neighborhood
+    self.business? ? self.business.neighborhood : self.building.neighborhood
   end
   
   def pending_invitations

@@ -21,7 +21,7 @@
       <% if @editable %>
           
           <div class='overlay'></div>
-          <img id='cover_pic' class="img-responsive cover-pic" data-user-id='<%= @business.id %>' src="<%= @business.cover %>" alt="">
+          <img id='cover_pic' class="img-responsive cover-pic" data-user-id='<%= @business.id %>' src="<%= asset_path @business.cover %>" alt="">
           <%= form_for @business, html: {id: 'new_cover_pic', class: 'dropzone new-cover-pic-form'} do |f| %>
             <%= f.file_field :image, class: 'hide' %>
           <% end %>

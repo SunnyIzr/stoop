@@ -11,4 +11,13 @@ module YelpApi
   def business(id)
     Yelp.client.business(id)
   end
+  
+  def original_img(biz)
+    biz.image_url.gsub('ms.jpg','o.jpg')
+  end
+  
+  def large_img(biz)
+    biz.image_url.gsub('ms.jpg','348s.jpg')
+  end
+  
 end

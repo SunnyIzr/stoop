@@ -36,17 +36,19 @@
           <a class='mini-profile-pic' href='/users/<%= current_user.id %>'><img class="profile-pic" src="<%= asset_path current_user.avatar %>" alt=""></a>
         <% end %>
         
-        <div class="dropdown">
-          <a class="notifications dropdown-toggle <%= 'unread-notifications' if current_user.unread_notifications.size > 0 %>" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            <i class="fa fa-bell"></i><span class='notificationCount'><%= current_user.unread_notifications.size %></span>
-          </a>
-          <ul class="notification-dropdown dropdown-menu" aria-labelledby="dropdownMenu1">
-            <h5>Notifications</h5>
-            <% current_user.non_chat_notifications.reverse.each do | noti| %>
-            <li class="<%= 'unread' unless noti.read %>"><%= noti.html %></li>
-            <% end %>
-          </ul>
-        </div>
+        <% unless current_user.business? %>
+          <div class="dropdown">
+            <a class="notifications dropdown-toggle <%= 'unread-notifications' if current_user.unread_notifications.size > 0 %>" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <i class="fa fa-bell"></i><span class='notificationCount'><%= current_user.unread_notifications.size %></span>
+            </a>
+            <ul class="notification-dropdown dropdown-menu" aria-labelledby="dropdownMenu1">
+              <h5>Notifications</h5>
+              <% current_user.non_chat_notifications.reverse.each do | noti| %>
+              <li class="<%= 'unread' unless noti.read %>"><%= noti.html %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>  
