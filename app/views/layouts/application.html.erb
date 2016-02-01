@@ -33,5 +33,22 @@
 
   </div>
     
+  <% unless current_user.verified %>  
+   <script>
+   setTimeout(function(){
+      $.notify({
+        // options
+        message: 'Your account is unverified. Please take steps to verify your account.' 
+      },{
+        // settings
+        type: 'danger',
+        placement: {
+          from: 'top',
+          align: 'center'
+        }
+      });
+   },2000)
+   </script> 
+  <% end %>
 </body>
 </html>
