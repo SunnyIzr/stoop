@@ -136,10 +136,13 @@ html.public-facing{
 		color:white;
 		font-weight:bold;
 		font-size: 14px;
+		color: #365165;
+		border-color: #365165;
 
 		&:hover {
 			color:white;
 			text-decoration:none;
+			color: #365165;
 		}
 	}
 
@@ -149,6 +152,7 @@ html.public-facing{
 
 		h1 {
 			color:white;
+			color: #365165;
 			font-size:350%;
 			text-transform:uppercase;
 		}
