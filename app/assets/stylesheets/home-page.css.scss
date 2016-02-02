@@ -113,7 +113,14 @@ html.public-facing{
 	height:auto;
 	background-repeat:no-repeat;
 	background-attachment:fixed;
-
+	.underlay{
+		background: rgba(181, 181, 181, 0.75);
+		position: absolute;
+		width: 100%;
+		top: 0;
+		left: 0;
+		height: 100px;
+	}
 	video{
 		display: block;
     position: absolute;
@@ -123,7 +130,7 @@ html.public-facing{
     z-index: -10;
 	}
 	.container {
-		padding-top:35px;
+		padding-top:19px;
 	}
 	.logo{
 		max-width: 120px;
@@ -136,13 +143,13 @@ html.public-facing{
 		color:white;
 		font-weight:bold;
 		font-size: 14px;
-		color: #365165;
-		border-color: #365165;
+		// color: #365165;
+		// border-color: #365165;
 
 		&:hover {
 			color:white;
 			text-decoration:none;
-			color: #365165;
+			// color: #365165;
 		}
 	}
 
