@@ -21,6 +21,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
     
     resource.save
+    UserNotifier.send_signup_email(resource).deliver
     yield resource if block_given?
     if resource.persisted?
       if resource.active_for_authentication?
