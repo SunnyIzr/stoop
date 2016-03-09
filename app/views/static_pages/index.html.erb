@@ -145,7 +145,22 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-4">
-        <img class="img-responsive" src="<%= asset_path 'person.jpg' %>">
+        <div id="all-access-img-carousel" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <img class="img-responsive" src="<%= asset_path 'headshots/david.jpg' %>">
+            </div>
+            <div class="item">
+              <img class="img-responsive" src="<%= asset_path 'headshots/eyal.jpg' %>">
+            </div>
+            <div class="item">
+              <img class="img-responsive" src="<%= asset_path 'headshots/felicia.jpg' %>">
+            </div>
+            <div class="item">
+              <img class="img-responsive" src="<%= asset_path 'headshots/maria.jpg' %>">
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col-sm-8">
         <div class="row">
