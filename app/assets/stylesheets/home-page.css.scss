@@ -114,7 +114,7 @@ html.public-facing{
 	background-repeat:no-repeat;
 	background-attachment:fixed;
 	.underlay{
-		background: rgba(181, 181, 181, 0.75);
+		background: rgba(0, 0, 0, 0.2);
 		position: absolute;
 		width: 100%;
 		top: 0;
@@ -288,11 +288,15 @@ html.public-facing{
 }
 
 .neighborhood-bar {
+	.container-fluid {
+		margin-right: -3px;
+	}
 	.neighborhood-list{
 		a{
 			display: inline-block;
-			width: 33.16%;
+			width: 33.33%;
 			margin-bottom: -5px;
+			margin-right: -5px;
 		}
 	}
 }
