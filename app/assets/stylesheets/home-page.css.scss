@@ -120,6 +120,9 @@ html.public-facing{
 		top: 0;
 		left: 0;
 		height: 100px;
+		@media (max-width: 768px) {
+			height: 78px;
+		}
 	}
 	video{
 		display: block;
@@ -143,6 +146,9 @@ html.public-facing{
 		color:white;
 		font-weight:bold;
 		font-size: 14px;
+		@media (max-width: 768px) {
+			margin-top: 12px;
+		}
 		// color: #365165;
 		// border-color: #365165;
 
@@ -285,7 +291,7 @@ html.public-facing{
 	.neighborhood-list{
 		a{
 			display: inline-block;
-			width: 33.33%;
+			width: 33.16%;
 			margin-bottom: -5px;
 		}
 	}
@@ -306,7 +312,7 @@ html.public-facing{
 			}
 		}
 	}
-	
+
 }
 
 .fidi-neighborhood {
@@ -348,7 +354,7 @@ html.public-facing{
 		p {
 			padding:0px;
 			margin:0px;
-			
+
 		}
 	}
 
@@ -366,7 +372,7 @@ html.public-facing{
 		p {
 			padding:0px;
 			margin:0px;
-			
+
 		}
 	}
 }
@@ -402,15 +408,15 @@ html.public-facing{
 			}
 
 			:-moz-placeholder { /* Firefox 18- */
-			   color:white;  
+			   color:white;
 			}
 
 			::-moz-placeholder {  /* Firefox 19+ */
-			   color:white;  
+			   color:white;
 			}
 
-			:-ms-input-placeholder {  
-			   color:white;  
+			:-ms-input-placeholder {
+			   color:white;
 			}
 			.custom-cta-button {
 				padding:10px;
