@@ -438,3 +438,11 @@ footer{
 		font-size: 10px;
 	}
 }
+
+@media (max-width: 768px) {
+	.mobile-header-img {
+		background-image: asset-data-url("Stoop_Mobile_Headline.jpg");
+		background-size: cover;
+		height: 500px;
+	}
+}
