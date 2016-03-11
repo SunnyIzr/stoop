@@ -171,18 +171,18 @@
         </div>
         <%= form_tag('/users/sign_up', method: 'get') do %>
         <div class="row cta-form2">
-          <div class="col-xs-6">
+          <div class="col-xs-12 col-sm-6">
             <%= text_field_tag :first_name, nil, class: 'custom-input', placeholder: 'First Name' %>
           </div>
-          <div class="col-xs-6">
+          <div class="col-xs-12 col-sm-6">
             <%= text_field_tag :last_name, nil, class: 'custom-input', placeholder: 'Last Name' %>
           </div>
         </div>
         <div class="row cta-form2">
-          <div class="col-xs-6">
+          <div class="col-xs-12 col-sm-6">
             <%= text_field_tag :email, nil, class: 'custom-input', placeholder: 'Email' %>
           </div>
-          <div class="col-xs-6">
+          <div class="col-xs-12 col-sm-6">
             <%= submit_tag 'Sign Up', class: 'custom-cta-button' %>
           </div>
         </div>
