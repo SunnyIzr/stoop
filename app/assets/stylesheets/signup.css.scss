@@ -26,6 +26,7 @@
 		margin-bottom: 0;
 	}
 	.chosen-container{
+		height: 40px;
 		width: 100% !important;
     padding: 10px;
     background-color: #91a0ab;
@@ -54,21 +55,21 @@
 	}
 
 	:-moz-placeholder { /* Firefox 18- */
-	   color:white; 
+	   color:white;
 	   font-size:120%;
-	   font-weight:bold; 
+	   font-weight:bold;
 	}
 
 	::-moz-placeholder {  /* Firefox 19+ */
 	   color:white;
 	   font-size:120%;
-	   font-weight:bold;  
+	   font-weight:bold;
 	}
 
-	:-ms-input-placeholder {  
+	:-ms-input-placeholder {
 	   color:white;
 	   font-size:120%;
-	   font-weight:bold;  
+	   font-weight:bold;
 	}
 
 	[type="radio"] {
