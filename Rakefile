@@ -31,7 +31,7 @@ task 'db:seed_posts' => :environment do
     Faker::Config.locale = 'en-US'
     p = Post.new
     p.body = Faker::Company.catch_phrase
-    p.user = User.all.sample
+    p.account = User.all.sample
     p.save
     puts "Post#{i+1} of 100 complete!"
   end
@@ -42,7 +42,7 @@ task 'db:seed_events' => :environment do
   puts "Now seeding database with 10 events..."
   topics = %w[animals cars nature cities]
   10.times do |i|
-    n = [*0..39].sample
+    n = [*0...User.all.length].sample
     Faker::Config.locale = 'en-US'
     e = Event.new
     e.creator_id = User.all[n].id
@@ -60,25 +60,25 @@ task 'db:seed_events' => :environment do
   end
 end
 
-desc 'Seed Posts with Image' 
-task 'db:seed_post_images' => :environment do   
-  puts "Now seeding posts with random images..."   
-  topics = %w[animals cars nature cities]   
-  suckr = ImageSuckr::GoogleSuckr.new   
-  Post.all.each_with_index do |post,i|     
+desc 'Seed Posts with Image'
+task 'db:seed_post_images' => :environment do
+  puts "Now seeding posts with random images..."
+  topics = %w[animals cars nature cities]
+  suckr = ImageSuckr::GoogleSuckr.new
+  Post.all.each_with_index do |post,i|
     if [true,false].sample
-      post.image = suckr.get_image_url({'q' => topics.sample })       
-      post.save       
-      puts "Post#{i+1} of #{Post.all.size} complete!"     
-   end   
-  end 
+      post.image = suckr.get_image_url({'q' => topics.sample })
+      post.save
+      puts "Post#{i+1} of #{Post.all.size} complete!"
+   end
+  end
 end
 
 desc 'Seed Posts with Random Comments and Likes'
 task 'db:seed_comments_likes' => :environment do
   puts "Now seeding posts with comments and likes..."
   Post.all.each_with_index do |post,i|
-    users = User.all - [post.user]
+    users = User.all - [post.account]
     [*0..10].sample.times do |i|
       post.comments.create(user: users.sample, comment: Faker::Lorem.sentence(1))
     end
@@ -108,11 +108,11 @@ task 'db:seed_buildings_neighborhoods' => :environment do
   fidi = Neighborhood.create(name: 'Financial District')
   Building.create(name: '15 William Street', neighborhood: fidi)
   Building.create(name: '50 West Street', neighborhood: fidi)
-  
+
   soho = Neighborhood.create(name: 'SoHo')
   Building.create(name: '150 Thompson Street', neighborhood: soho)
   Building.create(name: '35 Bond Street', neighborhood: soho)
-  
+
   User.all.each do |user|
     user.update!(building: Building.all.sample)
   end
@@ -124,10 +124,10 @@ task 'db:seed_follows' => :environment do
   User.all.each_with_index do |user, i|
     users = User.all - [user]
     [*6..15].each{ |n| user.follow!(users.sample) }
-    
+
     puts "User#{i+1} of #{User.all.size} complete!"
   end
-  
+
 end
 
 desc 'Seed Comment Likes'
