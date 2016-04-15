@@ -12,33 +12,33 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
-  
-  
+
+
+
   <div class="inner-page">
-    
+
     <%= render partial: 'layouts/header' %>
-        
+
     <% if current_page?(authenticated_root_path) %>
-    
+
     <% end %>
-        
+
     <%= yield %>
-    
-    
+
+
 
     <%= render partial: 'layouts/chat' %>
-    
+
     <%= render partial: 'layouts/account_settings' %>
 
   </div>
-    
-  <% unless current_user.verified %>  
+
+  <% unless current_user.verified %>
    <script>
    setTimeout(function(){
       $.notify({
         // options
-        message: 'Your account is unverified. Please take steps to verify your account.' 
+        message: 'Your account is unverified. Please take steps to verify your account.'
       },{
         // settings
         type: 'danger',
@@ -48,7 +48,23 @@
         }
       });
    },2000)
-   </script> 
+   </script>
   <% end %>
+  <% if !!flash[:business_assigned] %>
+    <script>
+      setTimeout(function() {
+        $.notify({
+          message: "Your business info has successfully been submitted"
+        },{
+          type: 'success',
+          placement: {
+            from: 'top',
+            align: 'center'
+          }
+        })
+      }, 2000)
+    </script>
+  <% end %>
+
 </body>
 </html>

@@ -5,7 +5,7 @@
 
   <div class="container">
 
-    
+
     <div class="type-of-business">
       <span style="font-weight:bold;">Account Type:</span>
       <label>
@@ -17,17 +17,17 @@
         <span style="font-weight:normal;">Business</span>
       </label>
     </div>
-    
-    
+
+
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'newUser' }) do |f| %>
-      
+
       <div class="column-left">
 
-        <%= f.text_field :first_name, placeholder: 'First Name', value: params['first_name'], autofocus: true %>
-        <%= f.text_field :last_name, placeholder: 'Last Name', value: params['last_name'] %>
-        <%= f.email_field :email, placeholder: 'Email', value: params['email'] %>
-        <%= f.password_field :password, placeholder: 'Password' %>
-        <%= f.password_field :password_confirmation, placeholder: 'Confirm Password' %>
+        <%= f.text_field :first_name, placeholder: 'First Name', value: params['first_name'], autofocus: true, class: "chosen-container" %>
+        <%= f.text_field :last_name, placeholder: 'Last Name', value: params['last_name'], class: "chosen-container" %>
+        <%= f.email_field :email, placeholder: 'Email', value: params['email'], class: "chosen-container" %>
+        <%= f.password_field :password, placeholder: 'Password', class: "chosen-container" %>
+        <%= f.password_field :password_confirmation, placeholder: 'Confirm Password', class: "chosen-container" %>
       </div>
 
       <div class="column-right">
@@ -37,7 +37,7 @@
         <div class='form-group'>
           <%= f.select :building_id, building_options, {}, { class: 'form-control chosen-it'} %>
         </div>
-        <%= text_field_tag 'contact[phone]', nil, placeholder: 'Phone Number' %>
+        <%= text_field_tag 'contact[phone]', nil, placeholder: 'Phone Number', class: "chosen-container" %>
 
         <!--NOTE: only call this on an error-->
         <div id="warning hide">
@@ -52,19 +52,19 @@
         </div>
 
       </div>
-    
+
 
       <div class="clear-floats"></div>
 
       <div class="container container-submit">
         <button class="submit-button">SIGN UP</button>
       </div>
-    
+
     <% end %>
-    
+
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'hide newBusiness' }) do |f| %>
       <%= f.fields_for :businesses do |business_form| %>
-      
+
       <div class="column-left">
         <%= business_form.text_field :name, placeholder: 'Business Name' %>
         <%= business_form.select 'industry', industry_options, {}, {style: 'margin-top: 50px;', class: 'form-control chosen-it'} %>
@@ -76,18 +76,18 @@
 
       <div class="column-right">
         <div class='form-group'>
-          <%= text_field_tag 'contact[street]', nil, placeholder: 'Address1' %>
-          <%= text_field_tag 'contact[street2]', nil, placeholder: 'Address2' %>
+          <%= text_field_tag 'contact[street]', nil, placeholder: 'Main Address' %>
+          <%= text_field_tag 'contact[street2]', nil, placeholder: 'Secondary Address' %>
           <%= text_field_tag 'contact[city]', nil, placeholder: 'City' %>
           <%= select_tag 'contact[state]', state_options,  {style: 'margin-top: 50px;', class: 'form-control chosen-it'} %>
           <%= text_field_tag 'contact[phone]', nil, placeholder: 'Phone Number' %>
         </div>
 
         <!--NOTE: only call this on an error-->
-        
+
 
       </div>
-    
+
 
       <div class="clear-floats"></div>
 
@@ -99,5 +99,5 @@
     <% end %>
 
   </div>
-  
+
 </body>

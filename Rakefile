@@ -31,7 +31,7 @@ task 'db:seed_posts' => :environment do
     Faker::Config.locale = 'en-US'
     p = Post.new
     p.body = Faker::Company.catch_phrase
-    p.user = User.all.sample
+    p.account = User.all.sample
     p.save
     puts "Post#{i+1} of 100 complete!"
   end
@@ -42,7 +42,7 @@ task 'db:seed_events' => :environment do
   puts "Now seeding database with 10 events..."
   topics = %w[animals cars nature cities]
   10.times do |i|
-    n = [*0..39].sample
+    n = [*0...User.all.length].sample
     Faker::Config.locale = 'en-US'
     e = Event.new
     e.creator_id = User.all[n].id
@@ -60,25 +60,25 @@ task 'db:seed_events' => :environment do
   end
 end
 
-desc 'Seed Posts with Image' 
-task 'db:seed_post_images' => :environment do   
-  puts "Now seeding posts with random images..."   
-  topics = %w[animals cars nature cities]   
-  suckr = ImageSuckr::GoogleSuckr.new   
-  Post.all.each_with_index do |post,i|     
+desc 'Seed Posts with Image'
+task 'db:seed_post_images' => :environment do
+  puts "Now seeding posts with random images..."
+  topics = %w[animals cars nature cities]
+  suckr = ImageSuckr::GoogleSuckr.new
+  Post.all.each_with_index do |post,i|
     if [true,false].sample
-      post.image = suckr.get_image_url({'q' => topics.sample })       
-      post.save       
-      puts "Post#{i+1} of #{Post.all.size} complete!"     
-   end   
-  end 
+      post.image = suckr.get_image_url({'q' => topics.sample })
+      post.save
+      puts "Post#{i+1} of #{Post.all.size} complete!"
+   end
+  end
 end
 
 desc 'Seed Posts with Random Comments and Likes'
 task 'db:seed_comments_likes' => :environment do
   puts "Now seeding posts with comments and likes..."
   Post.all.each_with_index do |post,i|
-    users = User.all - [post.user]
+    users = User.all - [post.account]
     [*0..10].sample.times do |i|
       post.comments.create(user: users.sample, comment: Faker::Lorem.sentence(1))
     end
@@ -108,11 +108,11 @@ task 'db:seed_buildings_neighborhoods' => :environment do
   fidi = Neighborhood.create(name: 'Financial District')
   Building.create(name: '15 William Street', neighborhood: fidi)
   Building.create(name: '50 West Street', neighborhood: fidi)
-  
+
   soho = Neighborhood.create(name: 'SoHo')
   Building.create(name: '150 Thompson Street', neighborhood: soho)
   Building.create(name: '35 Bond Street', neighborhood: soho)
-  
+
   User.all.each do |user|
     user.update!(building: Building.all.sample)
   end
@@ -124,10 +124,10 @@ task 'db:seed_follows' => :environment do
   User.all.each_with_index do |user, i|
     users = User.all - [user]
     [*6..15].each{ |n| user.follow!(users.sample) }
-    
+
     puts "User#{i+1} of #{User.all.size} complete!"
   end
-  
+
 end
 
 desc 'Seed Comment Likes'
@@ -141,12 +141,12 @@ end
 
 desc 'Seed Businesses'
 task 'db:businesses' => :environment do
-  Business.create(name: 'Ulysses NYC',neighborhood: Neighborhood.all[0] ,contact: { street: '95 Pearl Street', city: 'New York', state: 'NY', phone: '2124820400', website: 'http://www.ulyssesnyc.com/'}, user: User.all[-1] , established: Date.new(2001,2,15), industry: 'Restaurant/Bar', avatar: 'https://scontent-iad3-1.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/1910192_23119486423_6266_n.jpg?oh=da0a1401d68a7c70544567d44c87deae&oe=5661DB6A' , cover:'http://guestofaguest.com/wp-content/uploads/2013/11/01-stonestreet_v3_460x285.jpg')
-  Business.create(name: 'Cipriani Wall Street',neighborhood: Neighborhood.all[0] ,contact: { street: '55 Wall Street', city: 'New York', state: 'NY', phone: '21269940999', website: 'http://www.cipriani.com'}, user: User.all[-2] , established: Date.new(2001,2,15), industry: 'Restaurant' , avatar: 'https://scontent-iad3-1.xx.fbcdn.net/hphotos-xtp1/v/t1.0-9/11406784_889867234413077_5895602547016594819_n.jpg?oh=24eb99f79f381fdd2157573e5fb1dca4&oe=5661D9F5', cover: 'https://scontent-iad3-1.xx.fbcdn.net/hphotos-xta1/t31.0-8/1519650_889867514413049_851333459850627548_o.jpg' )
-  Business.create(name: 'Stone Street Tavern',neighborhood: Neighborhood.all[0] ,contact: { street: '52 Stone Street', city: 'New York', state: 'NY', phone: '2127855658', website: 'http://www.stonestreettavernnyc.com'}, user: User.all[-3] , established: Date.new(2001,2,15), industry: 'Restaurant' , avatar: 'https://scontent-iad3-1.xx.fbcdn.net/hphotos-ash2/t31.0-8/1912014_10152489993342639_6433290640296906989_o.jpg' , cover: 'http://s3-media3.fl.yelpcdn.com/bphoto/ZZWPIMMAWzGH65hAbuBugw/o.jpg' )
-  Business.create(name: 'Balthazar',neighborhood: Neighborhood.all[1] ,contact: { street: '80 Spring Street', city: 'New York', state: 'NY', phone: '2129651414', website: 'http://www.balthazarny.com'}, user: User.all[-4] , established: Date.new(2001,2,15), industry: 'Restaurant' , avatar: 'https://s-media-cache-ak0.pinimg.com/736x/f3/25/f7/f325f789896e9b5db6b3214588ce427a.jpg', cover: 'http://www.nolitahearts.com/wp-content/uploads/2015/01/balthazar-restaurant-nolita.jpg')
-  Business.create(name: 'SoHo Cigar Bar',neighborhood: Neighborhood.all[1] ,contact: { street: '32 Watts Street', city: 'New York', state: 'NY', phone: '2129411781', website: 'http://www.sohocigarbar.com'}, user: User.all[-5] , established: Date.new(2001,2,15), industry: 'Bar', avatar: 'https://scontent-iad3-1.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/11148507_1015594728465769_3345374380004370865_n.jpg?oh=7a2c98881cb11179b25d1b209fa8fed5&oe=56A70AC8', cover: 'http://static1.squarespace.com/static/54ac275ee4b0a61122e8ea07/54d8e917e4b00cfd8b1760f3/54d8ec3be4b0e669a5507b53/1423502396777/Bar.jpg')
-  Business.create(name: 'Owen',neighborhood: Neighborhood.all[1] ,contact: { street: '809 Washington Street', city: 'New York', state: 'NY', phone: '2125249770', website: 'http://www.owennyc.com'}, user: User.all[-6] , established: Date.new(2001,2,15), industry: 'Retail' , avatar: 'https://scontent-iad3-1.xx.fbcdn.net/hphotos-xpf1/v/t1.0-9/11168577_855059877896881_3419238358207629570_n.jpg?oh=f11d8c443ecd31f8c22f2c3ac1adde7c&oe=56A28E15', cover: 'https://s-media-cache-ak0.pinimg.com/736x/9a/44/ed/9a44edf04045a38a3a1da286f7b5bf17.jpg')
+  Business.create(name: 'Ulysses NYC',neighborhood: Neighborhood.all[0] ,contact: { street: '95 Pearl Street', city: 'New York', state: 'NY', phone: '2124820400', website: 'http://www.ulyssesnyc.com/'}, user: User.all[-1] , established: Date.new(2001,2,15), industry: 'Restaurant/Bar', avatar: Faker::Avatar.image.gsub("http", "https"), cover:'http://guestofaguest.com/wp-content/uploads/2013/11/01-stonestreet_v3_460x285.jpg')
+  Business.create(name: 'Cipriani Wall Street',neighborhood: Neighborhood.all[0] ,contact: { street: '55 Wall Street', city: 'New York', state: 'NY', phone: '21269940999', website: 'http://www.cipriani.com'}, user: User.all[-2] , established: Date.new(2001,2,15), industry: 'Restaurant' , avatar: Faker::Avatar.image.gsub("http", "https"), cover: 'https://scontent-iad3-1.xx.fbcdn.net/hphotos-xta1/t31.0-8/1519650_889867514413049_851333459850627548_o.jpg' )
+  Business.create(name: 'Stone Street Tavern',neighborhood: Neighborhood.all[0] ,contact: { street: '52 Stone Street', city: 'New York', state: 'NY', phone: '2127855658', website: 'http://www.stonestreettavernnyc.com'}, user: User.all[-3] , established: Date.new(2001,2,15), industry: 'Restaurant' , avatar: Faker::Avatar.image.gsub("http", "https"), cover: 'http://s3-media3.fl.yelpcdn.com/bphoto/ZZWPIMMAWzGH65hAbuBugw/o.jpg' )
+  Business.create(name: 'Balthazar',neighborhood: Neighborhood.all[1] ,contact: { street: '80 Spring Street', city: 'New York', state: 'NY', phone: '2129651414', website: 'http://www.balthazarny.com'}, user: User.all[-4] , established: Date.new(2001,2,15), industry: 'Restaurant' , avatar: Faker::Avatar.image.gsub("http", "https"), cover: 'http://www.nolitahearts.com/wp-content/uploads/2015/01/balthazar-restaurant-nolita.jpg')
+  Business.create(name: 'SoHo Cigar Bar',neighborhood: Neighborhood.all[1] ,contact: { street: '32 Watts Street', city: 'New York', state: 'NY', phone: '2129411781', website: 'http://www.sohocigarbar.com'}, user: User.all[-5] , established: Date.new(2001,2,15), industry: 'Bar', avatar: Faker::Avatar.image.gsub("http", "https"), cover: 'http://static1.squarespace.com/static/54ac275ee4b0a61122e8ea07/54d8e917e4b00cfd8b1760f3/54d8ec3be4b0e669a5507b53/1423502396777/Bar.jpg')
+  Business.create(name: 'Owen',neighborhood: Neighborhood.all[1] ,contact: { street: '809 Washington Street', city: 'New York', state: 'NY', phone: '2125249770', website: 'http://www.owennyc.com'}, user: User.all[-6] , established: Date.new(2001,2,15), industry: 'Retail' , avatar: Faker::Avatar.image.gsub("http", "https"), cover: 'https://s-media-cache-ak0.pinimg.com/736x/9a/44/ed/9a44edf04045a38a3a1da286f7b5bf17.jpg')
 end
 
 
