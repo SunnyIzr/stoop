@@ -7,9 +7,12 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    super
+    unless current_user.verified
+      flash[:user_unverified] = 'Your account is unverified. Please take steps to verify your account.'
+    end
+  end
 
   # DELETE /resource/sign_out
   # def destroy
