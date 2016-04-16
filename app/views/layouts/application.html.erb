@@ -33,7 +33,7 @@
 
   </div>
 
-  <% unless current_user.verified %>
+  <% if flash[:user_unverified] %>
    <script>
    setTimeout(function(){
       $.notify({
