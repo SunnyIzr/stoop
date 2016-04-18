@@ -19,6 +19,7 @@
 @import 'businesses';
 @import 'chat';
 @import 'animate';
+@import 'password';
 
 
 input:focus{
@@ -113,16 +114,16 @@ a.uneditable:hover{
    border-width: 7px;
    margin-bottom: 30px;
  }
- 
+
  .map-container.first-item{
   margin-top: 0;
  }
- 
+
  .map-canvas {
    height: 174px;
    width: 100%;
  }
- 
+
  .clickable-row{
   cursor: pointer;
  }
