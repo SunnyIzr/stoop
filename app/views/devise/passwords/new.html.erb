@@ -1,16 +1,30 @@
-<h2>Forgot your password?</h2>
+<body class="password-page">
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+  <div class="container">
+    <img class="img-responsive logo" src="<%= asset_path 'logos/signup-logo-beta.jpg' %>" alt="Logo" />
+    <h2>Forgot your password?</h2>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= devise_error_messages! %>
+
+      <%= f.email_field :email, placeholder: 'Enter Email Address', autofocus: true %>
+
+      <%= f.submit "Reset Password", class: 'reset-button' %>
+
+    <% end %>
+
+    <div class="row">
+      <div class="col-sm-6 social-login">
+        <a href="<%= user_omniauth_authorize_path(:facebook) %>">
+          <img class="img-responsive" src="<%= asset_path 'login-fb.jpg' %>" alt="Log In With FaceBook">
+        </a>
+      </div>
+      <div class="col-sm-6 social-login">
+        <a href="<%= user_omniauth_authorize_path(:google_oauth2) %>">
+          <img class="img-responsive" src="<%= asset_path 'login-google.jpg' %>" alt="Log In With Google">
+        </a>
+      </div>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</body>
