@@ -45,8 +45,13 @@
       font-weight: 800;
     }
   }
+  .profile-img-wrapper{
+    overflow: hidden;
+    height: 0;
+    padding-bottom: 25%;
+    margin-top: -10%;
+  }
   .profile-pic {
-    margin-top:-100px;
   }
   a.uneditable{
     color: $blue; 
@@ -120,6 +125,20 @@
     padding:20px;
     color:$blue;
     margin-top:40px;
+    .avatar_container{
+      height: 0;
+      padding: 0;
+      padding-bottom: 20%;
+      margin-left: 2%;
+      width: 20%;
+      overflow: hidden;
+    }
+    .avatar_container.col-sm-2{
+      width: 14%;
+      padding-bottom: 14%;
+      margin-left: 1%;
+      
+    }
 
     a {
       color:$lightBlue;
@@ -139,7 +158,17 @@
 
   .after-post-area {
     padding:0px 15px;
-
+    span.user_name{
+      display: block;
+      text-align: center;
+      margin-top: -35px;
+      color: #365165;
+      font-size: 11px;
+      opacity: 1.0;
+      left: 0;
+      position: absolute;
+      bottom: 0;
+    }
     .comment-bar {
       background-color:$midGreen;
       color:white;
@@ -211,10 +240,19 @@
         }
       }
       .comment {
+        position: relative;
         margin-top:15px;
         color:$blue;
         margin-bottom:15px;
-        
+        .avatar_container{
+          height: 0;
+          padding: 0;
+          padding-bottom: 13%;
+          margin-left: 2%;
+          width: 13%;
+          overflow: hidden;
+          margin-bottom: 18px;
+        }
         .sep{
           width: 80%;
           border-top: 1px solid #fff;
@@ -312,6 +350,18 @@ a.add-to-fav {
   img {
     margin:15px 0px;
   }
+  span{
+    font-size: 11px;
+    color: #365165;
+    display: block;
+    text-align: center;
+    margin-top: -11px;
+  }
+  a:hover{
+    span{
+      text-decoration: none;
+    }
+  }
 }
 
 
@@ -344,11 +394,18 @@ a.add-to-fav {
     text-align: left;
      width: 80%;
     margin-left: 20%;
+    li{
+      font-size: 14px;
+    }
+  }
+  p{
+    font-size: 14px;
   }
   a {
     color:$orange;
     text-decoration:none !important;
     font-weight:bold;
+    font-size: 14px;
 
     &:hover {
       color:$lightBlue;
@@ -430,8 +487,10 @@ a.add-to-fav {
       margin-right: auto;
       
     }
+    
     .profile-img-wrapper{
       margin-top: -50px;
+      height: 150px;
     }
     .name-section{
       margin-top: -22px;

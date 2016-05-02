@@ -33,7 +33,9 @@
         <% if current_user.business? %>
           <a class='mini-profile-pic' href='/businesses/<%= current_user.business.id %>'><img class="profile-pic" src="<%= asset_path current_user.business.avatar %>" alt=""></a>
         <% else %>
-          <a class='mini-profile-pic' href='/users/<%= current_user.id %>'><img class="profile-pic" src="<%= asset_path current_user.avatar %>" alt=""></a>
+          <div class='mini-profile-pic'>
+            <a href='/users/<%= current_user.id %>'><img class="profile-pic" src="<%= asset_path current_user.avatar %>" alt=""></a>
+          </div>
         <% end %>
         
         <% unless current_user.business? %>

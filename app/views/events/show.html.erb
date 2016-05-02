@@ -30,11 +30,15 @@
         
         <ul class="side-nav">
           <li>
+            <% if @future_event %>
             <%=form_for Invite.new, html: { class: 'new_follow' } do |f| %>
               <%= f.hidden_field :event_id, value: @event.id, class: 'followable_id' %>
               <%= f.hidden_field :attendee_id, value: current_user.id, class: 'followable_id' %>
               <%= f.hidden_field :accepted, value: !@event.confirmed_guests.include?(current_user), class: 'followable_id' %>
               <%= f.submit @event.confirmed_guests.include?(current_user) ? 'Decline' : 'Attend', class: 'follow-btn' %>
+            <% end %>
+            <% else %>
+            <p style='text-align:center'> This event has already occured </p>
             <% end %>
           </li>
           <% if @editable %>
@@ -101,7 +105,7 @@
       <div class="info-box">
         <h3>Invited</h3>
         <div class="row">
-          <% @event.attendees.sample(8).each do |user| %>
+          <% @unconfirmed_guests.sample(8).each do |user| %>
           <div class="col-xs-3">
             <a href='<%= user_path(user) %>'><img class="img-responsive" src="<%= asset_path user.avatar %>" alt=""></a>
           </div>
@@ -124,8 +128,8 @@
       </div>
       <div class="modal-body">
         <%= form_tag('/invites/create-bulk') do -%>
-        <%= hidden_field_tag 'event_id', @event.id %>
-        <%= select_tag 'attendees', recipients_options, multiple: true, class: 'form-control chosen-it' %>
+        <%= hidden_field_tag 'invite[event_id]', @event.id %>
+        <%= select_tag 'invite[attendees]', recipients_options, multiple: true, class: 'form-control chosen-it' %>
         <%= submit_tag('Invite') %>
         <% end -%>
       </div>

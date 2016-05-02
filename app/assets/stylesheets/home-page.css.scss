@@ -1,5 +1,8 @@
 html.public-facing{
 	overflow-x:hidden;
+	p{
+		font-size: 12px;
+	}
 }
 
 .intro-neighborhood {
@@ -250,7 +253,12 @@ html.public-facing{
 	margin-top:60px;
 	padding-top:30px;
 	padding-bottom:30px;
-
+	
+	h4{
+		font-size: 14px;
+		font-weight: 500;
+	}
+	
 	h2 {
 		color:$blue;
 	}
@@ -324,6 +332,7 @@ html.public-facing{
 			padding:0px;
 			margin:0px;
 			text-transform:uppercase;
+			font-weight: 800;
 		}
 	}
 	.info {

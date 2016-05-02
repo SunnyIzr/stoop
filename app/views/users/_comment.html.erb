@@ -1,7 +1,10 @@
 <div class='row comment <%= comment.id.nil? ? "hide" : "comment-id-#{comment.id}" %>'>
-  <div class="col-xs-2">
-    <a href='<%= user_path(comment.user) unless comment.id.nil? %>'><img class="img-responsive avatar" src="<%= asset_path(comment.user.avatar) unless comment.id.nil? %>" alt=""></a>
+  <div class="col-xs-2 avatar_container">
+    <a href='<%= user_path(comment.user) unless comment.id.nil? %>'>
+      <img class="img-responsive avatar" src="<%= asset_path(comment.user.avatar) unless comment.id.nil? %>" alt="">
+    </a>
   </div>
+  <span class='user_name col-xs-2'><%= comment.user.first_name unless comment.id.nil? %></span>
   <div class="col-xs-10">
     <div class='sep'></div>
     <p class='comment_body'><%= comment.comment %></p>

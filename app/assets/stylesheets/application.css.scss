@@ -21,6 +21,10 @@
 @import 'animate';
 
 
+textarea{
+  resize: none !important;
+}
+
 input:focus{
   outline-color: #fff !important;
 }
@@ -60,11 +64,22 @@ input:focus{
 a.uneditable,
 a.uneditable:hover{
   text-decoration: none;
-  color: $midGreen
+  color: #365165;
 }
 
 .editable-click, a.editable-click{
   color: $blue;
+}
+
+.editable-input textarea{
+  resize: none;
+  box-shadow: none;
+}
+
+.editable-input textarea:focus{
+  outline: none;
+  border-color: #ccc;
+  box-shadow: none;
 }
 
 

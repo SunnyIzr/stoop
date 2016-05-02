@@ -17,7 +17,9 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @coords = @event.coords
+    @future_event = Time.now < @event.start_time
     @editable = @event.creator == current_user
+    @unconfirmed_guests = @event.attendees - @event.confirmed_guests
   end
   
   def create

@@ -16,7 +16,7 @@ class Notification < ActiveRecord::Base
     elsif self.category == 'comment_like'
       'liked your comment'
     elsif self.category == 'event_invite'
-      'invited you to their event'
+      'invited you to their <a href="/events/' + self.event_id.to_s + '">event</a>'
     elsif self.category == 'follow'
       'is following you'
     end
@@ -24,7 +24,7 @@ class Notification < ActiveRecord::Base
   end
   
   def html
-    string = '<img src="' + self.sender.avatar.to_s + '"><a href="/users/"' + self.sender.id.to_s + '">' + self.sender.name + '</a> ' + self.desc
+    string = '<div class="avatar_container"><img src="' + self.sender.avatar.to_s + '"></div><a href="/users/"' + self.sender.id.to_s + '">' + self.sender.name + '</a> ' + self.desc
     string.html_safe
   end
   

@@ -1,16 +1,18 @@
 <div class="col-xs-12 col-sm-12 event">
-  <img src='<%= event.cover %>'>
-  <div class='event-content'>
-  
-    <div class="event_name"><%= event.name %></div>
-    <div class="event_dis">
-      <h2><%= event.date %></h2>
-      <span><%= event.time %></span>
-      <span><%= event.location['street'].upcase %></span>
-      <p class='hidden-xs'><%= event.about.truncate(100) %></p>
-      <span><%= link_to '+ Read More', event_path(event) %></span>
+  <a href='<%= event_path(event) %>'>
+    <img src='<%= event.cover %>'>
+    <div class='event-content'>
+    
+      <div class="event_name"><%= event.name %></div>
+      <div class="event_dis">
+        <h2><%= event.date %></h2>
+        <span><%= event.time %></span>
+        <span><%= event.location['street'].upcase %></span>
+        <p class='hidden-xs'><%= event.about.truncate(100) %></p>
+        <span>+ Read More</span>
+      </div>
+      <div class="attend hide">Attend</div>
+    
     </div>
-    <div class="attend hide">Attend</div>
-  
-  </div>
+  </a>
 </div>
