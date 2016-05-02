@@ -7,21 +7,22 @@
   color:$header;
   font-size:20px;
   margin-bottom:0px;
+  resize: none;
 
   ::-webkit-input-placeholder {
      color:$header;
   }
 
   :-moz-placeholder { /* Firefox 18- */
-     color:$header;  
+     color:$header;
   }
 
   ::-moz-placeholder {  /* Firefox 19+ */
-     color:$header;  
+     color:$header;
   }
 
-  :-ms-input-placeholder {  
-     color:$header;  
+  :-ms-input-placeholder {
+     color:$header;
   }
 }
 .text-area:focus{
@@ -35,11 +36,11 @@
   margin-top:-5px;
   padding:0px 20px;
   color:$midGreen;
-  
+
   a{
     color:$midGreen;
   }
-  
+
   a.active{
     color: $blue;
   }
@@ -62,7 +63,7 @@
 
 
 ul.feed-side-nav{
-  
+
   position: fixed;
   max-width: 360px;
   width: 100%;

@@ -51,6 +51,7 @@ gem 'private_pub'
 
 gem 'devise'
 
+gem 'pry'
 
 #omniauth
 

@@ -263,6 +263,7 @@ ActiveRecord::Schema.define(version: 20160430231011) do
     t.string   "cover_content_type"
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
+    t.boolean  "business_acct",          default: false
     t.text     "interests"
     t.boolean  "admin",                  default: false
     t.boolean  "verified",               default: false

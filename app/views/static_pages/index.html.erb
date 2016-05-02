@@ -1,6 +1,6 @@
 <div class="intro">
 
-  <div class="container">
+  <div class="container mobile-header-img">
     <div class='underlay'>
     </div>
     <video class='hidden-xs' autoplay loop poster="">
@@ -71,10 +71,18 @@
 <div class="neighborhood-bar">
   <div class="container-fluid">
     <div class="row neighborhood-list">
-      <a href='/financial-district'><img class="img-responsive" src="<%= asset_path 'public/fidi.jpg' %>"></a><a href='#'><img class="img-responsive" src="<%= asset_path 'public/wvill.jpg' %>"></a><a href='#'><img class="img-responsive" src="<%= asset_path 'public/soho.jpg' %>"></a>
+      <a href='#'>
+        <img class="img-responsive" src="<%= asset_path 'public/wvill.jpg' %>">
+      </a>
+      <a href='/financial-district'>
+        <img class="img-responsive" src="<%= asset_path 'public/fidi.jpg' %>">
+      </a>
+      <a href='#'>
+        <img class="img-responsive" src="<%= asset_path 'public/soho.jpg' %>">
+      </a>
     </div>
   </div>
-</div>  
+</div>
 
 <div class="fidi-neighborhood">
   <div class="container">
@@ -137,7 +145,22 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-4">
-        <img class="img-responsive" src="<%= asset_path 'person.jpg' %>">
+        <div id="all-access-img-carousel" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <img class="img-responsive" src="<%= asset_path 'headshots/david.jpg' %>">
+            </div>
+            <div class="item">
+              <img class="img-responsive" src="<%= asset_path 'headshots/eyal.jpg' %>">
+            </div>
+            <div class="item">
+              <img class="img-responsive" src="<%= asset_path 'headshots/felicia.jpg' %>">
+            </div>
+            <div class="item">
+              <img class="img-responsive" src="<%= asset_path 'headshots/maria.jpg' %>">
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col-sm-8">
         <div class="row">
@@ -148,18 +171,18 @@
         </div>
         <%= form_tag('/users/sign_up', method: 'get') do %>
         <div class="row cta-form2">
-          <div class="col-xs-6">
+          <div class="col-xs-12 col-sm-6">
             <%= text_field_tag :first_name, nil, class: 'custom-input', placeholder: 'First Name' %>
           </div>
-          <div class="col-xs-6">
+          <div class="col-xs-12 col-sm-6">
             <%= text_field_tag :last_name, nil, class: 'custom-input', placeholder: 'Last Name' %>
           </div>
         </div>
         <div class="row cta-form2">
-          <div class="col-xs-6">
+          <div class="col-xs-12 col-sm-6">
             <%= text_field_tag :email, nil, class: 'custom-input', placeholder: 'Email' %>
           </div>
-          <div class="col-xs-6">
+          <div class="col-xs-12 col-sm-6">
             <%= submit_tag 'Sign Up', class: 'custom-cta-button' %>
           </div>
         </div>

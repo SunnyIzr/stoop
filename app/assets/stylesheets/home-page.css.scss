@@ -117,12 +117,15 @@ html.public-facing{
 	background-repeat:no-repeat;
 	background-attachment:fixed;
 	.underlay{
-		background: rgba(181, 181, 181, 0.75);
+		background: rgba(0, 0, 0, 0.2);
 		position: absolute;
 		width: 100%;
 		top: 0;
 		left: 0;
 		height: 100px;
+		@media (max-width: 768px) {
+			height: 78px;
+		}
 	}
 	video{
 		display: block;
@@ -146,6 +149,9 @@ html.public-facing{
 		color:white;
 		font-weight:bold;
 		font-size: 14px;
+		@media (max-width: 768px) {
+			margin-top: 12px;
+		}
 		// color: #365165;
 		// border-color: #365165;
 
@@ -290,11 +296,15 @@ html.public-facing{
 }
 
 .neighborhood-bar {
+	.container-fluid {
+		margin-right: -3px;
+	}
 	.neighborhood-list{
 		a{
 			display: inline-block;
 			width: 33.33%;
 			margin-bottom: -5px;
+			margin-right: -5px;
 		}
 	}
 }
@@ -314,7 +324,7 @@ html.public-facing{
 			}
 		}
 	}
-	
+
 }
 
 .fidi-neighborhood {
@@ -333,6 +343,11 @@ html.public-facing{
 			margin:0px;
 			text-transform:uppercase;
 			font-weight: 800;
+		}
+	}
+	@media (max-width: 768px) {
+		.info {
+			text-align: center;
 		}
 	}
 	.info {
@@ -357,7 +372,7 @@ html.public-facing{
 		p {
 			padding:0px;
 			margin:0px;
-			
+
 		}
 	}
 
@@ -375,7 +390,7 @@ html.public-facing{
 		p {
 			padding:0px;
 			margin:0px;
-			
+
 		}
 	}
 }
@@ -395,7 +410,7 @@ html.public-facing{
 		font-size:200%;
 	}
 	.cta-form2 {
-		.col-xs-6 {
+		.col-sm-6, .col-xs-12 {
 			margin-top:25px;
 
 			.custom-input {
@@ -411,15 +426,15 @@ html.public-facing{
 			}
 
 			:-moz-placeholder { /* Firefox 18- */
-			   color:white;  
+			   color:white;
 			}
 
 			::-moz-placeholder {  /* Firefox 19+ */
-			   color:white;  
+			   color:white;
 			}
 
-			:-ms-input-placeholder {  
-			   color:white;  
+			:-ms-input-placeholder {
+			   color:white;
 			}
 			.custom-cta-button {
 				padding:10px;
@@ -435,5 +450,13 @@ html.public-facing{
 footer{
 	p{
 		font-size: 10px;
+	}
+}
+
+@media (max-width: 768px) {
+	.mobile-header-img {
+		background-image: asset-data-url("Stoop_Mobile_Headline.jpg");
+		background-size: cover;
+		height: 500px;
 	}
 }
