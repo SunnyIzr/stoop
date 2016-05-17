@@ -275,6 +275,7 @@ html.public-facing{
 }
 @media (max-width:767px) {
 	.how-it-works{
+		margin-top: 0;
 		.img-responsive{
 			margin-left: auto;
 			margin-right: auto;
@@ -454,9 +455,5 @@ footer{
 }
 
 @media (max-width: 768px) {
-	.mobile-header-img {
-		background-image: asset-data-url("Stoop_Mobile_Headline.jpg");
-		background-size: cover;
-		height: 500px;
-	}
+
 }
