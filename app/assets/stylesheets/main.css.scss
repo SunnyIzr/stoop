@@ -217,7 +217,7 @@ header.inner {
 			left:0;
 			top: 0;
 			width: 100%;
-			z-index: -1;
+			z-index: 1;
 			a.mini-profile-pic{
 				margin: 0;
 		    left: 17px;
@@ -228,5 +228,10 @@ header.inner {
 				}
 			}
 		}
+	}
+	header.inner .nav-column .dropdown .notification-dropdown{
+		width: 100%;
+		left: 0;
+		margin: 0;
 	}
 }
