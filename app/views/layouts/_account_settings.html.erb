@@ -9,11 +9,11 @@
         <table class='table'>
           <tr>
             <th width='20%'>First Name</th>
-            <td><a id="inline-title-<%= current_user.id %>" data-type="text" class='inline-field' data-url="/users/<%=current_user.id%>" data-object="user" data-attribute="first_name" data-placeholder="First Name"><%= current_user.first_name %></a></td>
+            <td><%= current_user.first_name %></td>
           </tr>
           <tr>
             <th>Last Name</th>
-            <td><a id="inline-title-<%= current_user.id %>" data-type="text" class='inline-field' data-url="/users/<%=current_user.id%>" data-object="user" data-attribute="last_name" data-placeholder="Last Name"><%= current_user.last_name %></a></td>
+            <td><%= current_user.last_name %></td>
           </tr>
           <tr>
             <th>Email</th>
