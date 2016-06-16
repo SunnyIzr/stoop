@@ -1,5 +1,5 @@
 <%= form_for Post.new, html: {class: 'non-dropzone new_post'}, remote: true do |f| %>
-  <%= f.text_area :body, class: 'text-area', placeholder: 'Status' %>
+  <%= f.text_area :body, class: 'text-area', placeholder: 'Status', required: true %>
   <%= hidden_field_tag :account_type, account_type %>
   <%= f.hidden_field :lat, value: nil %>
   <%= f.hidden_field :lng, value: nil %>
