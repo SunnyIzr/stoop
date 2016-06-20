@@ -94,6 +94,7 @@ gem 'dropzonejs-rails'
 
 gem 'geocoder'
 
+gem "mini_magick"
 
 gem 'yelp', require: 'yelp'
 

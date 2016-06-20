@@ -52,6 +52,20 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user == current_user
+      # if avatar then resize image to be a square
+      if user_params[:avatar].present? and user_params[:avatar].tempfile.present?
+        #open file
+        image = MiniMagick::Image.open(user_params[:avatar].tempfile.path);
+
+        #crop the image and center
+        min_dimension = [image[:width], image[:height]].min
+        x_offset = min_dimension < image[:width] ? (image[:width]-min_dimension) / 2 : 0
+        y_offset = min_dimension < image[:height] ? (image[:height]-min_dimension) / 2 : 0
+        image.crop("#{min_dimension}x#{min_dimension}+#{x_offset}+#{y_offset}")
+
+        #save new image
+        image.write user_params[:avatar].tempfile.path
+      end
       if @user.update!(user_params)
         respond_to do |format|
           format.json{ render json: @user }
