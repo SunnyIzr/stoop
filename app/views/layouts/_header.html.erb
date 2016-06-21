@@ -1,59 +1,60 @@
 <header class="inner">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-2 col-xs-2">
-        <a href='/' class='logo-link'><img class="img-responsive logo" src="<%= asset_path 'logos/header-logo-beta.jpg' %>" alt=""></a>
-      </div>
-      <div class="col-sm-6 search-column hidden-xs">
-        <%= autocomplete_field_tag :search, params[:search], autocomplete_user_first_name_users_path, {class: "search-query search-field empty", placeholder: "&#xF002; ".html_safe, type: "search"} %> 
-        <div class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-1" tabindex="0" style="width: 555px; top: 40px; left: 15px; display:none;">
-          <h5>USERS</h5>
-          <ul class='usersList' style='padding: 0;'>
-          </ul>
-          <h5>BUSINESSES</h5>
-          <ul class='bizList' style='padding: 0;'>
-          </ul>
-          <ul class='yelpBizList' style='padding: 0;'>
-          </ul>
-        </div>
-      </div>
-      <div class="col-sm-4 col-xs-4 nav-column">
-        <div class="dropdown settings-menu">
-          <a class="settings dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            <i class="fa fa-cog"></i>
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><a href='#' class='nav-link' data-toggle='modal' data-target='#accountSettings'>Account</a></li>
-            <li><%= link_to('Log Out', destroy_user_session_path, class: 'nav-link', :method => :delete) %></li>
-          </ul>
-        </div>
-        <% if false %>
-        <% end %>
-        
-        <% if current_user.business? %>
-          <a class='mini-profile-pic' href='/businesses/<%= current_user.business.id %>'><img class="profile-pic" src="<%= asset_path current_user.business.avatar %>" alt=""></a>
-        <% else %>
-          <div class='mini-profile-pic'>
-            <a href='/users/<%= current_user.id %>'><img class="profile-pic" src="<%= asset_path current_user.avatar %>" alt=""></a>
-          </div>
-        <% end %>
-        
-        <% unless current_user.business? %>
-          <div class="dropdown">
-            <a class="notifications dropdown-toggle <%= 'unread-notifications' if current_user.unread_notifications.size > 0 %>" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              <i class="fa fa-bell"></i><span class='notificationCount'><%= current_user.unread_notifications.size %></span>
-            </a>
-            <ul class="notification-dropdown dropdown-menu" aria-labelledby="dropdownMenu1">
-              <h5>Notifications</h5>
-              <% current_user.non_chat_notifications.reverse.each do | noti| %>
-              <li class="<%= 'unread' unless noti.read %>"><%= noti.html %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>  
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-2 col-xs-2">
+				<a href='/' class='logo-link'><img class="img-responsive logo" src="<%= asset_path 'logos/header-logo-beta.jpg' %>" alt=""></a>
+			</div>
+			<div class="col-sm-6 search-column hidden-xs">
+				<%= autocomplete_field_tag :search, params[:search], autocomplete_user_first_name_users_path, {class: "search-query search-field empty", placeholder: "&#xF002; ".html_safe, type: "search"} %>
+				<div class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-1" tabindex="0" style="width: 555px; top: 40px; left: 15px; display:none;">
+					<h5 class="loading">loading</h5>
+					<h5 class="noResults">No results</h5>
+					<h5 class="users title">Users</h5>
+					<ul class='usersList' style='padding: 0;'>
+					</ul>
+					<h5 class="businesses title">Businesses</h5>
+					<ul class='businessesList' style='padding: 0;'>
+					</ul>
+					<ul class='yelpList' style='padding: 0;'>
+					</ul>
+				</div>
+			</div>
+			<div class="col-sm-4 col-xs-4 nav-column">
+				<div class="dropdown settings-menu">
+					<a class="settings dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						<i class="fa fa-cog"></i>
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+						<li><a href='#' class='nav-link' data-toggle='modal' data-target='#accountSettings'>Account</a>
+						</li>
+						<li><%= link_to('Log Out', destroy_user_session_path, class: 'nav-link', :method => :delete) %></li>
+					</ul>
+				</div>
+
+				<% if current_user.business? %>
+					<a class='mini-profile-pic' href='/businesses/<%= current_user.business.id %>'><img class="profile-pic" src="<%= asset_path current_user.business.avatar %>" alt=""></a>
+				<% else %>
+					<div class='mini-profile-pic'>
+						<a href='/users/<%= current_user.id %>'><img class="profile-pic" src="<%= asset_path current_user.avatar %>" alt=""></a>
+					</div>
+				<% end %>
+
+				<% unless current_user.business? %>
+					<div class="dropdown">
+						<a class="notifications dropdown-toggle <%= 'unread-notifications' if current_user.unread_notifications.size > 0 %>" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							<i class="fa fa-bell"></i><span class='notificationCount'><%= current_user.unread_notifications.size %></span>
+						</a>
+						<ul class="notification-dropdown dropdown-menu" aria-labelledby="dropdownMenu1">
+							<h5>Notifications</h5>
+							<% current_user.non_chat_notifications.reverse.each do |noti| %>
+								<li class="<%= 'unread' unless noti.read %>"><%= noti.html %></li>
+							<% end %>
+						</ul>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
 </header>
 
 

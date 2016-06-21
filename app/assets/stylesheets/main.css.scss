@@ -1,236 +1,265 @@
 .container {
-	max-width:1200px;
+  max-width: 1200px;
 }
-.body-container{
-	padding-top: 71px;
-}
-footer {
-	background-color:$offwhite;
-	color:#abccce;
-	text-align:center;
-	padding:20px;
-	margin-bottom:45px;
 
-	img {
-		width:120px;
-		margin:0 auto;
-	}
-	p {
-		margin:0px;
-		padding:0px;
-	}
+.body-container {
+  padding-top: 71px;
+}
+
+footer {
+  background-color: $offwhite;
+  color: #abccce;
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 45px;
+
+  img {
+    width: 120px;
+    margin: 0 auto;
+  }
+  p {
+    margin: 0px;
+    padding: 0px;
+  }
 }
 
 .inner-page {
-	background-color:#f4f9f9;
+  background-color: #f4f9f9;
 }
+
 header.inner {
-	background-color:$header;
-	padding:8px 0px;
-	position: fixed;
-	width: 100%;
-	z-index: 1;
-	top:0;
+  background-color: $header;
+  padding: 8px 0px;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  top: 0;
 
-	.search-column {
-		margin-top:3px;
+  .search-column {
+    margin-top: 3px;
 
-		.search-field {
-			height:40px;
-			border:none;
-			background-color:white;
-			padding:0px 10px;
-			width:100%;
+    .search-field {
+      height: 40px;
+      border: none;
+      background-color: white;
+      padding: 0px 10px;
+      width: 100%;
 
-		}
-	}
-	.logo{
-		max-width: 70%;
-	}
-	.nav-column {
-		margin-top:5px;
-		
-		.mini-profile-pic{
-			width: 40px;
-			overflow: hidden;
-			border: 3px solid #abccce;
-		}
+    }
+    .ui-autocomplete {
+      padding: 3px;
+      border-radius: 0;
+      border: 1px solid #ccc;
+      h5 {
+        padding: 5px;
+        color: #abccce;
+        font-weight: normal;
+        font-size: 16px;
+        letter-spacing: .5px;
+      }
+      .selected {
+        background: #abcdcf;
 
-		.mini-profile-pic, a.settings, a.notifications {
-			float:right;
-			margin-left:30px;
-			height:40px;
-			color: $lightBlue;
-		
-		}
-		a.mini-profile-pic{
-			margin-left: 3px;
-		}
-		.settings{
-			font-size: 35px;
-			line-height: 42px;
-		}
-		.settings-menu{
-			.dropdown-menu{
-				right: -8px;
-		    left: inherit;
-		    top: 40px;
-		    box-shadow: none;
-		    border-radius: 0;
-		    padding: 0;
-		    li{
-		    	a{
-		    		border-bottom: 1px solid $lightBlue;
-    				padding: 11px 15px;
-		    	}
-		    }
-		    li:nth-last-child(1){
-		    	a{
-		    		border: none;
-		    	}
-		    }
-			}
-		}
-		.notifications{
-			font-size: 27px;
-			line-height: 40px;
-		}
-		span.notificationCount{
-			font-size: 12px;
-	    background: #fff;
-	    border-radius: 100%;
-	    width: 20px;
-	    height: 20px;
-	    text-align: center;
-	    line-height: 21px;
-	    position: absolute;
-	    margin-left: -15px;
-	    margin-top: -1px;
-	    display: none;
-		}
-		.unread-notifications{
-			span.notificationCount{
-				display: inline-block;
-			}
-		}
-		.dropdown{
-			.notification-dropdown{
-				width: 400px;
-		    top: 55px;
-		    left: -55px;
-		    box-shadow: none;
-		    height: 500px;
-		    overflow-y: scroll;
-		    h5{
-		    	margin: 0;
-		    	padding: 10px 15px;
-    			border-bottom: 1px solid $blue;
-		    }
-		    li{
-		    	padding: 18px 15px;
-    			height: 63px;
-    			border-bottom: 1px solid #abccce;
-    			.avatar_container{
-				    margin-top: -9px;
-				    float: right;
-				    margin-left: 30px;
-				    width: 40px;
-				    color: #abccce;
-				    height: 40px;
-				    overflow: hidden;
-	    			img{
-	    				width: 100%;
-	    			}
-    			}
-		    }
-		    li.unread{
-		    	background: rgba(100, 196, 202, 0.12);
-		    }
-		    li:nth-last-child(1){
-		    	border-bottom: none;
-		    }
-		    a{
-		    	display: inline;
-		    	padding: 0;
-		    	color: $midGreen;
-		    }
-			}
-		}
-	}
-	.profile-pic{
-		width: 100%;
-		// border-radius: 100%;
-		// border: 3px solid $lightBlue;
-	}
+      }
+    }
+
+    li.ui-menu-item {
+      img{
+        height: 35px;
+        width: 35px;
+        background: #c5c5c5;
+      }
+      .name {
+        color: #365165;
+        font-size: 14px;
+      }
+    }
+
+  }
+  .logo {
+    max-width: 70%;
+  }
+  .nav-column {
+    margin-top: 5px;
+
+    .mini-profile-pic {
+      width: 40px;
+      overflow: hidden;
+      border: 3px solid #abccce;
+    }
+
+    .mini-profile-pic, a.settings, a.notifications {
+      float: right;
+      margin-left: 30px;
+      height: 40px;
+      color: $lightBlue;
+
+    }
+    a.mini-profile-pic {
+      margin-left: 3px;
+    }
+    .settings {
+      font-size: 35px;
+      line-height: 42px;
+    }
+    .settings-menu {
+      .dropdown-menu {
+        right: -8px;
+        left: inherit;
+        top: 40px;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0;
+        li {
+          a {
+            border-bottom: 1px solid $lightBlue;
+            padding: 11px 15px;
+          }
+        }
+        li:nth-last-child(1) {
+          a {
+            border: none;
+          }
+        }
+      }
+    }
+    .notifications {
+      font-size: 27px;
+      line-height: 40px;
+    }
+    span.notificationCount {
+      font-size: 12px;
+      background: #fff;
+      border-radius: 100%;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      line-height: 21px;
+      position: absolute;
+      margin-left: -15px;
+      margin-top: -1px;
+      display: none;
+    }
+    .unread-notifications {
+      span.notificationCount {
+        display: inline-block;
+      }
+    }
+    .dropdown {
+      .notification-dropdown {
+        width: 400px;
+        top: 55px;
+        left: -55px;
+        box-shadow: none;
+        height: 500px;
+        overflow-y: scroll;
+        h5 {
+          margin: 0;
+          padding: 10px 15px;
+          border-bottom: 1px solid $blue;
+        }
+        li {
+          padding: 18px 15px;
+          height: 63px;
+          border-bottom: 1px solid #abccce;
+          .avatar_container {
+            margin-top: -9px;
+            float: right;
+            margin-left: 30px;
+            width: 40px;
+            color: #abccce;
+            height: 40px;
+            overflow: hidden;
+            img {
+              width: 100%;
+            }
+          }
+        }
+        li.unread {
+          background: rgba(100, 196, 202, 0.12);
+        }
+        li:nth-last-child(1) {
+          border-bottom: none;
+        }
+        a {
+          display: inline;
+          padding: 0;
+          color: $midGreen;
+        }
+      }
+    }
+  }
+  .profile-pic {
+    width: 100%;
+    // border-radius: 100%;
+    // border: 3px solid $lightBlue;
+  }
 }
 
-#accountSettings{
-  .modal-backdrop{
+#accountSettings {
+  .modal-backdrop {
     background-color: #fff;
   }
-  .modal-backdrop.in{
+  .modal-backdrop.in {
     opacity: 0.75;
   }
-  .modal-content{
+  .modal-content {
     box-shadow: none;
     border-radius: 0;
     font-size: 13px;
-    input,select,textarea{
+    input, select, textarea {
       border-radius: 0 !important;
     }
-    .editable-input{
-    	width: auto;
+    .editable-input {
+      width: auto;
     }
-    .btn-primary{
+    .btn-primary {
       background: #abcdcf;
       border-color: #abcdcf;
     }
   }
 }
 
-
-
-
 .col-sm-1.setting img {
   cursor: pointer;
   padding: 8px 0;
   width: 100%;
 }
-.setting{
-	background:#dfeced;
+
+.setting {
+  background: #dfeced;
 }
 
-
-@media (max-width:768px) {
-	header.inner{
-		.logo{
-			max-width: 75px;
-			margin-left: auto;
-			margin-right: auto;
-		}
-		.logo-link{
-			z-index: 999;
-		}
-		.nav-column{
-			position: absolute;
-			left:0;
-			top: 0;
-			width: 100%;
-			z-index: 1;
-			a.mini-profile-pic{
-				margin: 0;
-		    left: 17px;
-		    position: absolute;
-		    top: -8px;
-				img{
-					margin: 0;
-				}
-			}
-		}
-	}
-	header.inner .nav-column .dropdown .notification-dropdown{
-		width: 100%;
-		left: 0;
-		margin: 0;
-	}
+@media (max-width: 768px) {
+  header.inner {
+    .logo {
+      max-width: 75px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .logo-link {
+      z-index: 999;
+    }
+    .nav-column {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      z-index: 1;
+      a.mini-profile-pic {
+        margin: 0;
+        left: 17px;
+        position: absolute;
+        top: -8px;
+        img {
+          margin: 0;
+        }
+      }
+    }
+  }
+  header.inner .nav-column .dropdown .notification-dropdown {
+    width: 100%;
+    left: 0;
+    margin: 0;
+  }
 }
